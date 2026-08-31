@@ -66,25 +66,7 @@ class RomanticAudioEngine {
   }
 
   initAutoplay() {
-    const startFullSong = () => {
-      if (!this.isPlaying) {
-        this.play();
-      }
-    };
-
-    // 1. Immediate attempt
-    setTimeout(startFullSong, 150);
-
-    // 2. Unmute on first user gesture (touch, scroll, click, keydown)
-    const triggerEvents = ['click', 'touchstart', 'touchend', 'scroll', 'wheel', 'keydown', 'pointerdown'];
-    const onFirstGesture = () => {
-      startFullSong();
-      triggerEvents.forEach(evt => window.removeEventListener(evt, onFirstGesture, { capture: true }));
-      triggerEvents.forEach(evt => document.removeEventListener(evt, onFirstGesture, { capture: true }));
-    };
-
-    triggerEvents.forEach(evt => window.addEventListener(evt, onFirstGesture, { capture: true, passive: true }));
-    triggerEvents.forEach(evt => document.addEventListener(evt, onFirstGesture, { capture: true, passive: true }));
+    // Audio starts upon iPad Lock Screen unlock (passcode: 123987)
   }
 
   togglePlayback() {
@@ -106,15 +88,8 @@ class RomanticAudioEngine {
     if (playPromise !== undefined) {
       playPromise.then(() => {
         this.updateUIPlyingState(true);
-        const overlay = document.getElementById('sanctuary-entry-overlay');
-        if (overlay) {
-          overlay.classList.add('opacity-0', 'pointer-events-none');
-          setTimeout(() => {
-            if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
-          }, 800);
-        }
       }).catch((err) => {
-        console.log("Autoplay waiting for user gesture:", err);
+        console.log("Audio waiting for unlock gesture:", err);
       });
     } else {
       this.updateUIPlyingState(true);
