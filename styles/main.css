@@ -814,3 +814,117 @@ body {
   color: #ffffff;
 }
 
+/* ==========================================================================
+   📱 COMPREHENSIVE MOBILE OPTIMIZATION & TOUCH ERGONOMICS
+   ========================================================================== */
+
+/* 1. iOS Safe Area Handling & Smooth Tap Highlights */
+:root {
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+}
+
+body {
+  padding-top: var(--sat);
+  padding-bottom: var(--sab);
+  padding-left: var(--sal);
+  padding-right: var(--sar);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+button, a, input {
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+}
+
+/* 2. Touch Device Performance & Hover Isolation */
+@media (hover: none) and (pointer: coarse) {
+  /* Prevent sticky hover jumps on touch devices */
+  .tilt-card {
+    transform: none !important;
+  }
+  .tilt-glare {
+    display: none !important;
+  }
+  .media-card {
+    transition: transform 0.15s ease, box-shadow 0.2s ease !important;
+  }
+  .media-card:active {
+    transform: scale(0.98) !important;
+  }
+  .glass-panel:hover {
+    transform: none;
+  }
+}
+
+/* 3. Small Screen Optimizations (< 640px) */
+@media (max-width: 640px) {
+  html, body {
+    overflow-x: hidden;
+    width: 100vw;
+  }
+
+  /* Compact Header Pill */
+  header .glass-pill {
+    padding: 0.6rem 1rem;
+  }
+
+  /* Full Width Mobile Action Buttons */
+  .btn-celestial, .glass-panel.px-7 {
+    width: 100%;
+    justify-content: center;
+    padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
+  }
+
+  /* Milestone Counter Mobile Fit */
+  #hero .grid-cols-4 {
+    gap: 0.35rem;
+  }
+  #hero .grid-cols-4 span.font-bold {
+    font-size: 1.25rem;
+  }
+
+  /* Fluid Column Masonry */
+  #media-gallery-grid {
+    column-gap: 1rem;
+  }
+  .media-card {
+    margin-bottom: 1rem;
+    border-radius: 1.25rem;
+  }
+
+  /* Mobile Card Action Buttons */
+  .card-song-btn, .card-voice-btn {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.65rem;
+    min-height: 32px;
+  }
+
+  /* Wax Seal Stamp Mobile Scale */
+  .wax-seal-monogram {
+    width: 72px;
+    height: 72px;
+  }
+
+  /* Cinema Lightbox Full Mobile Framing */
+  .cinema-lightbox {
+    padding: 0.75rem;
+  }
+  .cinema-lightbox video, .cinema-lightbox img {
+    max-height: 60vh;
+    max-width: 96vw;
+    border-radius: 0.85rem;
+  }
+
+  /* Secret Vault Keypad Mobile Touch Targets */
+  .vault-key {
+    width: 62px;
+    height: 62px;
+    font-size: 1.25rem;
+  }
+}
+

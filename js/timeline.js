@@ -170,6 +170,8 @@ class MediaGalleryEngine {
                 muted
                 loop
                 playsinline
+                webkit-playsinline="true"
+                x5-playsinline="true"
                 preload="none">
               </video>
 
@@ -293,6 +295,42 @@ class MediaGalleryEngine {
         this.closeCinemaLightbox();
       }
     });
+
+    // Touch Swipe Gestures for Mobile (Next/Prev/Close)
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchEndX = 0;
+    let touchEndY = 0;
+
+    this.lightbox.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+
+    this.lightbox.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      touchEndY = e.changedTouches[0].screenY;
+      handleSwipe();
+    }, { passive: true });
+
+    const handleSwipe = () => {
+      const diffX = touchEndX - touchStartX;
+      const diffY = touchEndY - touchStartY;
+
+      if (Math.abs(diffX) > Math.abs(diffY)) {
+        // Horizontal Swipe
+        if (diffX < -45) {
+          this.nextItem(); // Swipe left -> Next
+        } else if (diffX > 45) {
+          this.prevItem(); // Swipe right -> Previous
+        }
+      } else {
+        // Vertical Swipe
+        if (diffY > 80) {
+          this.closeCinemaLightbox(); // Swipe down -> Close
+        }
+      }
+    };
 
     window.addEventListener('keydown', (e) => {
       if (!this.lightbox.classList.contains('is-open')) return;
