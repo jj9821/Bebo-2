@@ -1,0 +1,816 @@
+/* ==========================================================================
+   ✨ MIDNIGHT LUXURY ROMANCE - CORE DESIGN SYSTEM & STYLES
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Sacramento&display=swap');
+
+:root {
+  /* Color Palette */
+  --bg-obsidian: #06060c;
+  --bg-midnight: #0a0a14;
+  --bg-amethyst: #120d1c;
+  --bg-velvet: #0e0e18;
+
+  --rose-blush: #f4d0d2;
+  --coral-dusty: #e8a598;
+  --champagne: #fceade;
+  --rose-gold: #e5b299;
+  --gold-warm: #f6d8ae;
+  --crimson-glow: #e63946;
+
+  /* Glassmorphism Tokens */
+  --glass-bg: rgba(18, 16, 28, 0.65);
+  --glass-bg-hover: rgba(26, 22, 40, 0.8);
+  --glass-border: rgba(244, 208, 210, 0.12);
+  --glass-border-hover: rgba(244, 208, 210, 0.35);
+  --glass-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.6), 0 0 30px 2px rgba(232, 165, 152, 0.05);
+
+  /* Typography */
+  --font-serif-editorial: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-serif-display: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-cursive: 'Great Vibes', 'Sacramento', cursive;
+}
+
+/* --------------------------------------------------------------------------
+   Base & Reset
+   -------------------------------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--bg-obsidian);
+  color: #f3f3f7;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+  line-height: 1.6;
+  selection-background-color: rgba(232, 165, 152, 0.3);
+}
+
+::selection {
+  background: rgba(232, 165, 152, 0.35);
+  color: #ffffff;
+}
+
+/* Custom Smooth Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-obsidian);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(244, 208, 210, 0.2);
+  border-radius: 9999px;
+  border: 2px solid var(--bg-obsidian);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(244, 208, 210, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   Typography Utilities
+   -------------------------------------------------------------------------- */
+.font-serif-editorial {
+  font-family: var(--font-serif-editorial);
+}
+
+.font-serif-display {
+  font-family: var(--font-serif-display);
+}
+
+.font-cursive {
+  font-family: var(--font-cursive);
+}
+
+/* Gradient Text Shimmers */
+.text-gradient-rose {
+  background: linear-gradient(135deg, #ffffff 0%, var(--rose-blush) 40%, var(--coral-dusty) 80%, var(--champagne) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #ffffff 10%, var(--champagne) 50%, var(--rose-gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-subtle {
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* --------------------------------------------------------------------------
+   Background Atmospheres & Canvas
+   -------------------------------------------------------------------------- */
+#stardust-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+  animation: orbFloat 18s ease-in-out infinite alternate;
+}
+
+.ambient-orb-rose {
+  background: radial-gradient(circle, rgba(232, 165, 152, 0.4) 0%, rgba(18, 13, 28, 0) 70%);
+}
+
+.ambient-orb-purple {
+  background: radial-gradient(circle, rgba(142, 68, 173, 0.25) 0%, rgba(18, 13, 28, 0) 70%);
+}
+
+.ambient-orb-champagne {
+  background: radial-gradient(circle, rgba(252, 234, 222, 0.25) 0%, rgba(18, 13, 28, 0) 70%);
+}
+
+@keyframes orbFloat {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(30px, -40px) scale(1.12);
+  }
+  100% {
+    transform: translate(-30px, 30px) scale(0.95);
+  }
+}
+
+/* Subtle Vignette Overlay */
+.vignette-overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, transparent 60%, rgba(6, 6, 12, 0.8) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Glassmorphism Containers
+   -------------------------------------------------------------------------- */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel:hover {
+  border-color: var(--glass-border-hover);
+  box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.7), 0 0 35px 4px rgba(244, 208, 210, 0.12);
+}
+
+.glass-pill {
+  background: rgba(22, 18, 34, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(244, 208, 210, 0.15);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.4);
+}
+
+.animate-fadeIn {
+  animation: fadeInMenu 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInMenu {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3D Tilt & Parallax Utilities
+   -------------------------------------------------------------------------- */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+  will-change: transform;
+  position: relative;
+}
+
+.tilt-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  mix-blend-mode: overlay;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.35) 0%, transparent 60%);
+  z-index: 10;
+}
+
+/* --------------------------------------------------------------------------
+   Polaroid Cards & Memory Wall
+   -------------------------------------------------------------------------- */
+.polaroid-card {
+  background: linear-gradient(175deg, #181524 0%, #12101b 100%);
+  border: 1px solid rgba(244, 208, 210, 0.18);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 20px 1px rgba(232, 165, 152, 0.08);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.3s ease;
+  transform-origin: center center;
+  position: relative;
+}
+
+.polaroid-card:hover {
+  transform: translateY(-8px) scale(1.03) !important;
+  z-index: 20;
+  border-color: rgba(244, 208, 210, 0.45);
+  box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.85), 0 0 35px 4px rgba(244, 208, 210, 0.25);
+}
+
+/* Washi Tape Accent */
+.washi-tape {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1deg);
+  width: 90px;
+  height: 24px;
+  background: rgba(244, 208, 210, 0.25);
+  backdrop-filter: blur(4px);
+  border-left: 2px dashed rgba(255, 255, 255, 0.3);
+  border-right: 2px dashed rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 5;
+}
+
+.washi-tape.gold {
+  background: rgba(246, 216, 174, 0.3);
+}
+
+.washi-tape.blush {
+  background: rgba(232, 165, 152, 0.35);
+}
+
+/* --------------------------------------------------------------------------
+   Bento Grid & Interactive Flip Cards
+   -------------------------------------------------------------------------- */
+.bento-flip-card {
+  perspective: 1200px;
+  min-height: 260px;
+  cursor: pointer;
+}
+
+.bento-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  transition: transform 0.7s cubic-bezier(0.2, 0.85, 0.4, 1.2);
+  transform-style: preserve-3d;
+}
+
+.bento-flip-card.is-flipped .bento-flip-inner {
+  transform: rotateY(180deg);
+}
+
+.bento-card-front,
+.bento-card-back {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 1.25rem;
+}
+
+.bento-card-back {
+  transform: rotateY(180deg);
+  background: linear-gradient(145deg, #1c162e 0%, #110d1f 100%);
+  border: 1px solid rgba(244, 208, 210, 0.3);
+  box-shadow: 0 0 35px 2px rgba(232, 165, 152, 0.15);
+}
+
+/* Scratch / Mist Reveal Card */
+.scratch-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(25, 20, 38, 0.96) 0%, rgba(15, 12, 25, 0.98) 100%);
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s ease;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.scratch-overlay.revealed {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.96);
+}
+
+/* --------------------------------------------------------------------------
+   Interactive Love Letter & Stationary
+   -------------------------------------------------------------------------- */
+.parchment-letter {
+  background: radial-gradient(ellipse at 50% 30%, #1c172b 0%, #110e1d 100%);
+  border: 1px solid rgba(244, 208, 210, 0.25);
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9), 0 0 40px 3px rgba(244, 208, 210, 0.1);
+  position: relative;
+}
+
+.parchment-letter::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(244, 208, 210, 0.08);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Luxury 3D Artisan Wax Seal & Aesthetic Glowing Heart
+   -------------------------------------------------------------------------- */
+.seal-halo-glow {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(230, 57, 70, 0.35) 0%, rgba(244, 208, 210, 0.15) 50%, transparent 70%);
+  filter: blur(12px);
+  animation: sealPulseGlow 3s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.seal-stardust-orbit {
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 1px dashed rgba(244, 208, 210, 0.25);
+  animation: rotateOrbit 20s linear infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.aesthetic-wax-seal,
+.wax-seal-btn {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 32%, #f04353 0%, #b31624 45%, #6a0b14 85%, #3d0308 100%);
+  box-shadow: 
+    0 18px 40px -8px rgba(0, 0, 0, 0.85),
+    0 0 35px 2px rgba(230, 57, 70, 0.5),
+    inset 0 3px 6px rgba(255, 255, 255, 0.45),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 2px solid rgba(252, 234, 222, 0.3);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 5;
+  outline: none;
+}
+
+.aesthetic-wax-seal:hover,
+.wax-seal-btn:hover {
+  transform: scale(1.1) rotate(4deg);
+  box-shadow: 
+    0 25px 50px -10px rgba(0, 0, 0, 0.9),
+    0 0 45px 8px rgba(230, 57, 70, 0.75),
+    0 0 25px rgba(244, 208, 210, 0.6),
+    inset 0 3px 8px rgba(255, 255, 255, 0.6);
+  border-color: rgba(252, 234, 222, 0.6);
+}
+
+.aesthetic-wax-seal:active,
+.wax-seal-btn:active {
+  transform: scale(0.96);
+}
+
+/* Organic Scalloped Wax Border */
+.wax-scallop-border {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid rgba(244, 208, 210, 0.15);
+  pointer-events: none;
+}
+
+/* Inner Stamping Chamber */
+.wax-inner-core {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%, #9e1420 0%, #5c070e 80%, #3e0307 100%);
+  border: 1.5px solid rgba(252, 234, 222, 0.35);
+  box-shadow: 
+    inset 0 4px 8px rgba(0, 0, 0, 0.75),
+    0 1px 3px rgba(255, 255, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gold Monogram Lettering Ring */
+.wax-text-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  animation: rotateOrbit 30s linear infinite;
+  transform-origin: center;
+}
+
+.wax-rim-text {
+  fill: #fceade;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 2.2px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+/* Central 3D Heart */
+.wax-heart-center {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
+}
+
+/* Glossy Specular Sheen */
+.wax-light-sheen {
+  position: absolute;
+  top: 4px;
+  left: 12px;
+  width: 32px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 80%);
+  transform: rotate(-35deg);
+  pointer-events: none;
+  z-index: 6;
+}
+
+@keyframes sealPulseGlow {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0.9;
+  }
+}
+
+@keyframes rotateOrbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-heartbeat-soft {
+  animation: heartbeatSoft 2s ease-in-out infinite;
+}
+
+@keyframes heartbeatSoft {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 6px rgba(255, 180, 190, 0.6));
+  }
+  25% {
+    transform: scale(1.12);
+    filter: drop-shadow(0 0 14px rgba(255, 180, 190, 0.9));
+  }
+  35% {
+    transform: scale(1.02);
+  }
+  45% {
+    transform: scale(1.16);
+    filter: drop-shadow(0 0 18px rgba(255, 200, 210, 1));
+  }
+}
+
+/* Typewriter Caret */
+.typewriter-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background-color: var(--rose-blush);
+  vertical-align: middle;
+  margin-left: 2px;
+  animation: cursorBlink 0.9s infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* --------------------------------------------------------------------------
+   Audio Equalizer Visualizer Bars
+   -------------------------------------------------------------------------- */
+.eq-bar {
+  width: 3px;
+  background: linear-gradient(to top, var(--coral-dusty), var(--rose-blush), var(--champagne));
+  border-radius: 9999px;
+  transition: height 0.08s ease;
+  height: 4px;
+}
+
+.is-playing .eq-bar:nth-child(1) { animation: eqPulse 1.2s infinite ease-in-out 0.1s; }
+.is-playing .eq-bar:nth-child(2) { animation: eqPulse 1.4s infinite ease-in-out 0.3s; }
+.is-playing .eq-bar:nth-child(3) { animation: eqPulse 0.9s infinite ease-in-out 0.2s; }
+.is-playing .eq-bar:nth-child(4) { animation: eqPulse 1.5s infinite ease-in-out 0.4s; }
+.is-playing .eq-bar:nth-child(5) { animation: eqPulse 1.1s infinite ease-in-out 0.25s; }
+.is-playing .eq-bar:nth-child(6) { animation: eqPulse 1.3s infinite ease-in-out 0.15s; }
+
+@keyframes eqPulse {
+  0%, 100% { height: 4px; }
+  50% { height: 22px; }
+}
+
+/* --------------------------------------------------------------------------
+   Floating Heart Bursts Animation
+   -------------------------------------------------------------------------- */
+.floating-heart-burst {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  user-select: none;
+  animation: heartFloatUp 1.4s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes heartFloatUp {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.4) rotate(0deg);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translate(calc(-50% + var(--dx, 0px)), calc(-50% - 60px)) scale(1.3) rotate(var(--rot, 15deg));
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--dx, 0px) * 1.5), calc(-50% - 130px)) scale(0.9) rotate(var(--rot, 30deg));
+  }
+}
+
+/* Screen Celestial Flash Effect */
+.celestial-flash {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(244, 208, 210, 0.45) 0%, rgba(255, 230, 240, 0.1) 70%, transparent 100%);
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.celestial-flash.active {
+  opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Lightbox Spring Modal
+   -------------------------------------------------------------------------- */
+.lightbox-modal {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.lightbox-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-modal .modal-content {
+  transform: scale(0.92) translateY(20px);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.lightbox-modal.is-open .modal-content {
+  transform: scale(1) translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   Pulsing Glow Badges & Buttons
+   -------------------------------------------------------------------------- */
+.btn-celestial {
+  background: linear-gradient(135deg, rgba(232, 165, 152, 0.25) 0%, rgba(244, 208, 210, 0.15) 100%);
+  border: 1px solid rgba(244, 208, 210, 0.35);
+  box-shadow: 0 10px 30px -5px rgba(232, 165, 152, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-celestial::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  transform: skewX(-25deg);
+  transition: left 0.75s ease;
+}
+
+.btn-celestial:hover {
+  transform: translateY(-2px);
+  border-color: rgba(244, 208, 210, 0.6);
+  box-shadow: 0 15px 40px -5px rgba(232, 165, 152, 0.5), 0 0 25px 3px rgba(244, 208, 210, 0.3);
+}
+
+.btn-celestial:hover::before {
+  left: 150%;
+}
+
+.btn-celestial:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* --------------------------------------------------------------------------
+   Storytelling Spotlight Chapters
+   -------------------------------------------------------------------------- */
+.spotlight-card {
+  background: linear-gradient(145deg, rgba(26, 20, 42, 0.7) 0%, rgba(14, 11, 24, 0.85) 100%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(244, 208, 210, 0.2);
+  box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.8), 0 0 40px 2px rgba(232, 165, 152, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(232, 165, 152, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Dynamic Masonry 42-Item Gallery Grid
+   -------------------------------------------------------------------------- */
+.gallery-grid,
+#media-gallery-grid {
+  column-fill: balance;
+}
+
+/* Media Item Card Styles */
+.media-card {
+  break-inside: avoid;
+  page-break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(175deg, #181524 0%, #110f1c 100%);
+  border: 1px solid rgba(244, 208, 210, 0.16);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.7), 0 0 20px 1px rgba(232, 165, 152, 0.06);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.3s ease;
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.media-card:hover {
+  transform: translateY(-6px) scale(1.015);
+  border-color: rgba(244, 208, 210, 0.45);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.85), 0 0 30px 3px rgba(244, 208, 210, 0.2);
+  z-index: 15;
+}
+
+.media-card img,
+.media-card video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Video Badge & Reel Overlays */
+.video-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(10, 8, 18, 0.75);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(244, 208, 210, 0.3);
+  color: #fceade;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-family: monospace;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.video-play-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #e63946;
+  animation: playDotPulse 1.4s infinite;
+}
+
+@keyframes playDotPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.4); }
+}
+
+/* Progressive Image/Video Blur-Up Loading */
+.media-thumb {
+  transition: opacity 0.5s ease, filter 0.5s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.media-thumb.is-loading {
+  filter: blur(12px);
+  opacity: 0.7;
+}
+
+/* Cinema Lightbox Enhancements */
+.cinema-lightbox video {
+  max-height: 70vh;
+  width: auto;
+  margin: 0 auto;
+  border-radius: 1rem;
+}
+
+.cinema-ctrl-btn {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(244, 208, 210, 0.2);
+  color: #fdeded;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+
+.cinema-ctrl-btn:hover {
+  background: rgba(232, 165, 152, 0.3);
+  border-color: rgba(244, 208, 210, 0.5);
+  transform: scale(1.08);
+  color: #ffffff;
+}
+

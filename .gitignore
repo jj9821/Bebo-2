@@ -1,0 +1,12 @@
+# Python and OS caches
+__pycache__/
+*.pyc
+.DS_Store
+*.tmp.*
+
+# Scratch working files
+scratch/
+
+# Raw uncompressed source uploads (all web-optimized media lives in assets/)
+Photos-1-001/
+32/

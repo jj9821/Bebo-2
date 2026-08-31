@@ -1,0 +1,126 @@
+/**
+ * ============================================================================
+ * 🚀 APPLICATION COORDINATOR & INITIALIZATION
+ * ============================================================================
+ * Coordinates:
+ * - Dynamic config injection into DOM (names, titles, subtitles)
+ * - Module bootstrapping (Stardust, Audio, Tilt, Timeline, Bento, Letter, Vault)
+ * - Navigation links, mobile menu, and smooth scrolling
+ * ============================================================================
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  const config = window.SANCTUARY_CONFIG || {};
+
+  // 1. Populate text & name placeholders from SANCTUARY_CONFIG
+  populateConfigText(config);
+
+  // 2. Initialize Stardust Universe Canvas
+  const particles = new StardustUniverse('stardust-canvas');
+  window.particlesUniverse = particles;
+
+  // 3. Initialize Romantic Audio Engine
+  const audio = new RomanticAudioEngine(config.audio);
+  window.audioEngine = audio;
+
+  // 4. Initialize 3D Tilt Parallax (Desktop mouse & Mobile gyroscope)
+  const tilt = new TiltParallaxEngine({ maxTilt: 11, perspective: 1100, scale: 1.02 });
+  tilt.initMobileGyroscope();
+  window.tiltEngine = tilt;
+
+  // 5. Initialize Memory Timeline & Lightbox
+  const timeline = new MemoryTimeline();
+  window.memoryTimeline = timeline;
+
+  // 6. Initialize Bento Grid & Micro-interactions
+  const bento = new ReasonsBentoGrid();
+  window.reasonsBento = bento;
+
+  // 7. Initialize Love Letter & Grand Finale
+  const letter = new RomanticLoveLetter();
+  window.loveLetter = letter;
+
+  // 8. Initialize Milestone & Secret Vault
+  const milestoneVault = new MilestoneAndVault();
+  window.milestoneVault = milestoneVault;
+
+  // 9. Initialize Lucide Icons
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
+
+  // 10. Smooth navigation handlers
+  initNavigation();
+});
+
+function populateConfigText(config) {
+  if (!config) return;
+
+  // Nav name
+  const navName = document.getElementById('nav-recipient-name');
+  if (navName && config.recipientName) {
+    navName.textContent = config.recipientName;
+  }
+
+  // Hero badge
+  const heroBadge = document.getElementById('hero-badge-text');
+  if (heroBadge && config.hero?.badge) {
+    heroBadge.textContent = config.hero.badge;
+  }
+
+  // Hero title prefix
+  const heroPrefix = document.getElementById('hero-title-prefix');
+  if (heroPrefix && config.hero?.titlePrefix) {
+    heroPrefix.textContent = config.hero.titlePrefix;
+  }
+
+  // Hero title highlight
+  const heroHighlight = document.getElementById('hero-title-highlight');
+  if (heroHighlight && config.recipientName) {
+    heroHighlight.textContent = config.recipientName;
+  }
+
+  // Hero subtitle
+  const heroSubtitle = document.getElementById('hero-subtitle');
+  if (heroSubtitle && config.hero?.subtitle) {
+    heroSubtitle.textContent = config.hero.subtitle;
+  }
+
+  // Letter greeting
+  const letterGreeting = document.getElementById('letter-greeting-text');
+  if (letterGreeting && config.recipientName) {
+    letterGreeting.textContent = `To My Beloved ${config.recipientName},`;
+  }
+}
+
+function initNavigation() {
+  // Mobile nav toggle
+  const mobileToggle = document.getElementById('mobile-nav-toggle');
+  const mobileMenu = document.getElementById('mobile-nav-menu');
+
+  if (mobileToggle && mobileMenu) {
+    mobileToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  }
+
+  // Scroll to section helper
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === '#' || targetId === '') return;
+      
+      const target = document.querySelector(targetId);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+}
