@@ -225,7 +225,7 @@ const SANCTUARY_CONFIG = {
       "Today, tomorrow, and through every galaxy yet to be born..."
     ],
     signOff: "Eternally & Unconditionally Yours,",
-    signatureName: "Your Soulmate ❤️",
+    signatureName: "Your Fatty ❤️",
     waxSealText: "SEALED WITH LOVE",
     typingSpeed: 20, // milliseconds per character
   },
