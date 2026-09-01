@@ -11,7 +11,10 @@
 class MilestoneAndVault {
   constructor() {
     this.config = window.SANCTUARY_CONFIG || {};
-    this.anniversary = this.config.anniversaryDate || new Date(2023, 2, 14, 18, 30, 0); // March 14, 2023
+    // Milestone start: March 14, 2023 00:00:00 (14/03/2023)
+    this.anniversary = (this.config.anniversaryDate instanceof Date)
+      ? this.config.anniversaryDate
+      : new Date(2023, 2, 14, 0, 0, 0);
     this.vaultConfig = this.config.secretVault || {};
     
     this.cachedDigits = { days: '', hours: '', minutes: '', seconds: '' };
@@ -34,37 +37,38 @@ class MilestoneAndVault {
     setInterval(() => this.updateCounter(), 1000);
   }
 
-  updateDigitWithRoll(element, newValue, key) {
-    if (!element) return;
-    if (this.cachedDigits[key] === newValue) return;
-    this.cachedDigits[key] = newValue;
-
-    let digitSpan = element.querySelector('.digit-value');
-    if (!digitSpan) {
-      element.innerHTML = `<span class="digit-box"><span class="digit-value is-rolling">${newValue}</span></span>`;
-    } else {
-      digitSpan.classList.remove('is-rolling');
-      void digitSpan.offsetWidth; // Force reflow to replay roll animation
-      digitSpan.textContent = newValue;
-      digitSpan.classList.add('is-rolling');
-    }
-  }
-
   updateCounter() {
     const now = new Date();
+    // Milliseconds elapsed since March 14, 2023 00:00:00
     const diff = Math.max(0, now.getTime() - this.anniversary.getTime());
 
     const totalSeconds = Math.floor(diff / 1000);
-    const days = String(Math.floor(totalSeconds / (3600 * 24))).padStart(2, '0');
-    const hours = String(Math.floor((totalSeconds % (3600 * 24)) / 3600)).padStart(2, '0');
-    const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
-    const seconds = String(totalSeconds % 60).padStart(2, '0');
+    const days = Math.floor(totalSeconds / (3600 * 24));
+    const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
 
-    // Rolling digit transition
-    this.updateDigitWithRoll(this.daysEl, days, 'days');
-    this.updateDigitWithRoll(this.hoursEl, hours, 'hours');
-    this.updateDigitWithRoll(this.minutesEl, minutes, 'minutes');
-    this.updateDigitWithRoll(this.secondsEl, seconds, 'seconds');
+    const daysStr = String(days);
+    const hoursStr = String(hours).padStart(2, '0');
+    const minutesStr = String(minutes).padStart(2, '0');
+    const secondsStr = String(seconds).padStart(2, '0');
+
+    if (this.daysEl && this.cachedDigits.days !== daysStr) {
+      this.daysEl.textContent = daysStr;
+      this.cachedDigits.days = daysStr;
+    }
+    if (this.hoursEl && this.cachedDigits.hours !== hoursStr) {
+      this.hoursEl.textContent = hoursStr;
+      this.cachedDigits.hours = hoursStr;
+    }
+    if (this.minutesEl && this.cachedDigits.minutes !== minutesStr) {
+      this.minutesEl.textContent = minutesStr;
+      this.cachedDigits.minutes = minutesStr;
+    }
+    if (this.secondsEl && this.cachedDigits.seconds !== secondsStr) {
+      this.secondsEl.textContent = secondsStr;
+      this.cachedDigits.seconds = secondsStr;
+    }
   }
 
   initVault() {
