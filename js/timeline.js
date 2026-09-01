@@ -198,9 +198,7 @@ class MediaGalleryEngine {
                 alt="${item.title}"
                 loading="lazy"
                 decoding="async"
-                class="media-thumb w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-108"
-                onload="this.style.opacity = '1';"
-                style="opacity: 0.9;"
+                class="media-thumb w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108"
               />
             `}
 
