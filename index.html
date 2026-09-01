@@ -65,33 +65,12 @@
   </audio>
 
   <!-- =========================================================================
-       🔄 LANDSCAPE / HORIZONTAL ORIENTATION GUARD
-       ========================================================================= -->
-  <div id="orientation-guard" class="fixed inset-0 z-[1000000] flex flex-col items-center justify-center p-6 text-center">
-    <div class="glass-panel p-8 rounded-3xl max-w-sm w-full flex flex-col items-center gap-5 border border-rose-200/30 shadow-2xl shadow-rose-950/80">
-      <div class="w-16 h-16 rounded-2xl bg-rose-500/15 border border-rose-300/30 flex items-center justify-center text-rose-200 shadow-xl shadow-rose-500/20">
-        <i data-lucide="smartphone" class="w-9 h-9 text-rose-300 animate-rotate-device"></i>
-      </div>
-      <div class="flex flex-col gap-1.5">
-        <h3 class="font-serif-editorial text-2xl text-rose-100 font-bold">Please Rotate Device 🔄</h3>
-        <p class="text-xs text-gray-300 font-sans leading-relaxed">
-          Bebo’s Sanctuary is crafted exclusively for a widescreen landscape view. Please turn your phone or iPad horizontally to enter.
-        </p>
-      </div>
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rose-500/20 border border-rose-300/30 text-[11px] font-mono text-rose-200 uppercase tracking-widest">
-        <i data-lucide="monitor" class="w-3.5 h-3.5 text-rose-300"></i>
-        <span>Landscape Mode Required</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- =========================================================================
-       📱 AUTHENTIC IPAD LOCK SCREEN (Wallpaper -> Swipe Up -> Passcode: 123987)
+       📱 AUTHENTIC APPLE LOCK SCREEN (Wallpaper -> Swipe Up -> Passcode: 123987)
        ========================================================================= -->
   <div id="ipad-lock-screen" class="fixed inset-0 z-[99999] overflow-hidden select-none transition-all duration-700 bg-black">
     
     <!-- PHASE 1: Fullscreen Wallpaper Cover View -->
-    <div id="ipad-wallpaper-view" class="absolute inset-0 flex flex-col items-center justify-between p-6 sm:p-10 z-10 transition-all duration-500 cursor-pointer apple-font">
+    <div id="ipad-wallpaper-view" class="absolute inset-0 flex flex-col items-center justify-between p-4 sm:p-8 md:p-10 z-10 transition-all duration-500 cursor-pointer apple-font">
       <!-- High-Res Wallpaper Background -->
       <img 
         src="assets/photos/ipad_lockscreen_wallpaper.jpg" 
@@ -101,11 +80,11 @@
       <!-- Soft Vignette & Atmospheric Tint -->
       <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/10 to-black/75 pointer-events-none"></div>
 
-      <!-- iPad Top Status Bar -->
+      <!-- Top Status Bar -->
       <div class="relative w-full max-w-4xl flex items-center justify-between apple-status-text text-white/90 drop-shadow-md z-20 pt-1">
         <span class="flex items-center gap-1.5 tracking-wide">
           <i data-lucide="sparkles" class="w-3.5 h-3.5 text-rose-300"></i>
-          <span>Bebo's iPad</span>
+          <span class="device-status-label">Bebo's iPad</span>
         </span>
         <div class="flex items-center gap-1.5">
           <i data-lucide="lock" class="w-4 h-4 text-white/90"></i>
@@ -156,7 +135,7 @@
       <div class="relative w-full max-w-4xl flex items-center justify-between apple-status-text text-white/80 z-20 pt-1">
         <span class="flex items-center gap-1.5">
           <i data-lucide="sparkles" class="w-3.5 h-3.5 text-rose-300"></i>
-          <span>Bebo's iPad</span>
+          <span class="device-status-label">Bebo's iPad</span>
         </span>
         <span class="flex items-center gap-2.5">
           <i data-lucide="wifi" class="w-3.5 h-3.5 text-white"></i>
@@ -188,7 +167,7 @@
           Incorrect passcode. Hint: Your iPad PIN (6 digits)
         </div>
 
-        <!-- iPad Circular Keypad (Landscape-friendly sizing) -->
+        <!-- iPad Circular Keypad (Landscape & Mobile adaptive sizing) -->
         <div class="grid grid-cols-3 gap-x-6 sm:gap-x-8 gap-y-2.5 sm:gap-y-3.5 max-w-[260px] sm:max-w-[300px] mx-auto mt-1">
           <button type="button" class="ipad-key" data-key="1">
             <span class="apple-keypad-number text-2xl sm:text-3xl">1</span>
@@ -261,6 +240,13 @@
       var errorMsg = document.getElementById('ipad-error-msg');
       var coverTime = document.getElementById('ipad-cover-time');
       var coverDate = document.getElementById('ipad-cover-date');
+
+      // Adaptive Device Detection (iPhone vs iPad vs Desktop)
+      var isPhone = window.innerWidth <= 640 || /iPhone|Android.*Mobile|iPod/i.test(navigator.userAgent);
+      var deviceName = isPhone ? "Bebo's iPhone" : "Bebo's iPad";
+      document.querySelectorAll('.device-status-label').forEach(function(el) {
+        el.textContent = deviceName;
+      });
 
       // Live iPad Clock update
       function updateClock() {

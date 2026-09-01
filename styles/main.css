@@ -357,42 +357,77 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   🔄 LANDSCAPE / HORIZONTAL ORIENTATION GUARD
+   📱 ADAPTIVE PHONE & IPAD LAYOUTS (Portrait & Landscape Support)
    -------------------------------------------------------------------------- */
 #orientation-guard {
-  display: none;
+  display: none !important;
 }
 
-@media screen and (orientation: portrait) and (max-width: 1180px) {
-  #orientation-guard {
-    display: flex !important;
-    position: fixed;
-    inset: 0;
-    z-index: 1000000;
-    background: radial-gradient(circle at center, #181226 0%, #08060f 100%);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    align-items: center;
-    justify-content: center;
-    padding: 1.5rem;
-    text-align: center;
+/* Compact Landscape Phone Adaptation (Height < 520px) */
+@media screen and (max-height: 520px) and (orientation: landscape) {
+  #ipad-wallpaper-view {
+    padding: 0.75rem 1.5rem !important;
+  }
+  #ipad-cover-time {
+    font-size: 3.25rem !important;
+  }
+  #ipad-cover-date {
+    font-size: 0.85rem !important;
+    margin-top: 0.15rem !important;
+  }
+  #ipad-passcode-view {
+    padding: 0.5rem 1.5rem !important;
+  }
+  #ipad-passcode-view .my-auto {
+    margin-top: auto !important;
+    margin-bottom: auto !important;
+  }
+  .ipad-key {
+    width: 44px !important;
+    height: 44px !important;
+  }
+  .ipad-key .apple-keypad-number {
+    font-size: 1.25rem !important;
+  }
+  .ipad-key .apple-keypad-subletters {
+    display: none !important;
+  }
+  #ipad-pin-dots {
+    margin-bottom: 0.5rem !important;
+    gap: 0.5rem !important;
+  }
+  .pin-dot {
+    width: 10px !important;
+    height: 10px !important;
   }
 }
 
-@keyframes rotateDeviceAnim {
-  0%, 20% {
-    transform: rotate(0deg);
+/* Standard Mobile Phone Portrait Adaptation (Width <= 640px) */
+@media screen and (max-width: 640px) and (min-height: 521px) {
+  #ipad-cover-time {
+    font-size: 4.75rem !important;
   }
-  50%, 80% {
-    transform: rotate(-90deg);
+  #ipad-cover-date {
+    font-size: 0.95rem !important;
   }
-  100% {
-    transform: rotate(0deg);
+  .ipad-key {
+    width: 60px !important;
+    height: 60px !important;
+  }
+  .ipad-key .apple-keypad-number {
+    font-size: 1.65rem !important;
   }
 }
 
-.animate-rotate-device {
-  animation: rotateDeviceAnim 3s infinite ease-in-out;
+/* iPad / Tablet / Desktop Spacious Layout (Width > 640px & Height > 520px) */
+@media screen and (min-width: 641px) and (min-height: 521px) {
+  #ipad-cover-time {
+    font-size: 6.5rem !important;
+  }
+  .ipad-key {
+    width: 72px !important;
+    height: 72px !important;
+  }
 }
 
 /* --------------------------------------------------------------------------
