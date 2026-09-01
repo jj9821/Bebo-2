@@ -227,7 +227,47 @@ class StardustUniverse {
     }
   }
 
+  bindEvents() {
+    window.addEventListener('resize', () => {
+      this.handleResize();
+      this.createStars();
+    });
+
+    const updateMouse = (x, y) => {
+      this.mouse.x = x;
+      this.mouse.y = y;
+      this.mouse.isHovering = true;
+    };
+
+    window.addEventListener('mousemove', (e) => updateMouse(e.clientX, e.clientY));
+    window.addEventListener('touchmove', (e) => {
+      if (e.touches.length > 0) {
+        updateMouse(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    }, { passive: true });
+
+    window.addEventListener('mouseleave', () => {
+      this.mouse.isHovering = false;
+      this.mouse.x = -1000;
+      this.mouse.y = -1000;
+    });
+
+    // Pause rendering when tab is hidden to save battery & CPU
+    document.addEventListener('visibilitychange', () => {
+      this.isPaused = document.hidden;
+      if (!this.isPaused && !this.animating) {
+        this.animate();
+      }
+    });
+  }
+
   animate() {
+    if (this.isPaused) {
+      this.animating = false;
+      return;
+    }
+    this.animating = true;
+
     this.ctx.clearRect(0, 0, this.width, this.height);
     this.drawStars();
     this.drawConstellations();

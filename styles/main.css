@@ -19,6 +19,12 @@
   --gold-warm: #f6d8ae;
   --crimson-glow: #e63946;
 
+  /* Easing Curves Tokens */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-back: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+
   /* Glassmorphism Tokens */
   --glass-bg: rgba(18, 16, 28, 0.65);
   --glass-bg-hover: rgba(26, 22, 40, 0.8);
@@ -58,13 +64,57 @@ body {
   position: relative;
   min-height: 100vh;
   line-height: 1.6;
-  selection-background-color: rgba(232, 165, 152, 0.3);
 }
 
 ::selection {
   background: rgba(232, 165, 152, 0.35);
   color: #ffffff;
 }
+
+/* Accessible Focus Rings */
+button:focus-visible, 
+a:focus-visible, 
+input:focus-visible, 
+div[tabindex="0"]:focus-visible {
+  outline: 2px solid var(--rose-blush) !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 16px rgba(244, 208, 210, 0.5) !important;
+}
+
+/* Minimum 44x44px Touch Targets */
+.touch-target-44 {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+/* --------------------------------------------------------------------------
+   ✨ IntersectionObserver Scroll-Triggered Reveals
+   -------------------------------------------------------------------------- */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.85s var(--ease-smooth), transform 0.85s var(--ease-smooth);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.75s var(--ease-smooth), transform 0.75s var(--ease-smooth);
+  will-change: opacity, transform;
+}
+
+.reveal-stagger.is-revealed > *:nth-child(1) { transition-delay: 0.04s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.is-revealed > *:nth-child(2) { transition-delay: 0.12s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.is-revealed > *:nth-child(3) { transition-delay: 0.20s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.is-revealed > *:nth-child(4) { transition-delay: 0.28s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.is-revealed > *:nth-child(5) { transition-delay: 0.36s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.is-revealed > *:nth-child(6) { transition-delay: 0.44s; opacity: 1; transform: translateY(0); }
 
 /* Custom Smooth Scrollbar */
 ::-webkit-scrollbar {
@@ -509,8 +559,9 @@ body {
   width: 100%;
   height: 100%;
   text-align: left;
-  transition: transform 0.7s cubic-bezier(0.2, 0.85, 0.4, 1.2);
+  transition: transform 0.8s var(--ease-spring);
   transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
 }
 
 .bento-flip-card.is-flipped .bento-flip-inner {
@@ -526,10 +577,13 @@ body {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   border-radius: 1.25rem;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
 }
 
 .bento-card-back {
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) translate3d(0, 0, 0);
+  -webkit-transform: rotateY(180deg) translate3d(0, 0, 0);
   background: linear-gradient(145deg, #1c162e 0%, #110d1f 100%);
   border: 1px solid rgba(244, 208, 210, 0.3);
   box-shadow: 0 0 35px 2px rgba(232, 165, 152, 0.15);
@@ -542,11 +596,12 @@ body {
   border-radius: inherit;
   background: linear-gradient(135deg, rgba(25, 20, 38, 0.96) 0%, rgba(15, 12, 25, 0.98) 100%);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s ease;
+  transition: opacity 0.6s var(--ease-smooth), transform 0.6s var(--ease-smooth);
   z-index: 10;
   cursor: pointer;
 }
@@ -554,7 +609,7 @@ body {
 .scratch-overlay.revealed {
   opacity: 0;
   pointer-events: none;
-  transform: scale(0.96);
+  transform: scale(0.95);
 }
 
 /* --------------------------------------------------------------------------
@@ -619,14 +674,14 @@ body {
   justify-content: center;
   cursor: pointer;
   border: 2px solid rgba(252, 234, 222, 0.3);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.4s var(--ease-spring);
   z-index: 5;
   outline: none;
 }
 
 .aesthetic-wax-seal:hover,
 .wax-seal-btn:hover {
-  transform: scale(1.1) rotate(4deg);
+  transform: scale(1.08) rotate(3deg);
   box-shadow: 
     0 25px 50px -10px rgba(0, 0, 0, 0.9),
     0 0 45px 8px rgba(230, 57, 70, 0.75),
@@ -637,7 +692,18 @@ body {
 
 .aesthetic-wax-seal:active,
 .wax-seal-btn:active {
-  transform: scale(0.96);
+  transform: scale(0.95);
+}
+
+.aesthetic-wax-seal.is-cracking {
+  animation: sealFracture 0.6s var(--ease-smooth) forwards;
+}
+
+@keyframes sealFracture {
+  0% { transform: scale(1) rotate(0deg); opacity: 1; filter: brightness(1); }
+  25% { transform: scale(1.18) rotate(-6deg); filter: brightness(1.5); box-shadow: 0 0 60px rgba(230, 57, 70, 1); }
+  60% { transform: scale(0.85) rotate(14deg); opacity: 0.75; }
+  100% { transform: scale(0.3) rotate(30deg); opacity: 0; pointer-events: none; }
 }
 
 /* Organic Scalloped Wax Border */

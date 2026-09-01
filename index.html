@@ -168,52 +168,52 @@
         </div>
 
         <!-- iPad Circular Keypad (Landscape & Mobile adaptive sizing) -->
-        <div class="grid grid-cols-3 gap-x-6 sm:gap-x-8 gap-y-2.5 sm:gap-y-3.5 max-w-[260px] sm:max-w-[300px] mx-auto mt-1">
-          <button type="button" class="ipad-key" data-key="1">
+        <div class="grid grid-cols-3 gap-x-6 sm:gap-x-8 gap-y-2.5 sm:gap-y-3.5 max-w-[260px] sm:max-w-[300px] mx-auto mt-1" role="group" aria-label="Passcode Keypad">
+          <button type="button" class="ipad-key" data-key="1" aria-label="1">
             <span class="apple-keypad-number text-2xl sm:text-3xl">1</span>
           </button>
-          <button type="button" class="ipad-key" data-key="2">
+          <button type="button" class="ipad-key" data-key="2" aria-label="2 ABC">
             <span class="apple-keypad-number text-2xl sm:text-3xl">2</span>
             <span class="apple-keypad-subletters text-[8px] text-white/80">ABC</span>
           </button>
-          <button type="button" class="ipad-key" data-key="3">
+          <button type="button" class="ipad-key" data-key="3" aria-label="3 DEF">
             <span class="apple-keypad-number text-2xl sm:text-3xl">3</span>
             <span class="apple-keypad-subletters text-[8px] text-white/80">DEF</span>
           </button>
 
-          <button type="button" class="ipad-key" data-key="4">
+          <button type="button" class="ipad-key" data-key="4" aria-label="4 GHI">
             <span class="apple-keypad-number text-2xl sm:text-3xl">4</span>
             <span class="apple-keypad-subletters text-[8px] text-white/80">GHI</span>
           </button>
-          <button type="button" class="ipad-key" data-key="5">
+          <button type="button" class="ipad-key" data-key="5" aria-label="5 JKL">
             <span class="apple-keypad-number text-2xl sm:text-3xl">5</span>
             <span class="apple-keypad-subletters text-[8px] text-white/80">JKL</span>
           </button>
-          <button type="button" class="ipad-key" data-key="6">
+          <button type="button" class="ipad-key" data-key="6" aria-label="6 MNO">
             <span class="apple-keypad-number text-2xl sm:text-3xl">6</span>
             <span class="apple-keypad-subletters text-[8px] text-white/80">MNO</span>
           </button>
 
-          <button type="button" class="ipad-key" data-key="7">
+          <button type="button" class="ipad-key" data-key="7" aria-label="7 PQRS">
             <span class="apple-keypad-number text-2xl sm:text-3xl">7</span>
             <span class="apple-keypad-subletters text-[8px] text-white/80">PQRS</span>
           </button>
-          <button type="button" class="ipad-key" data-key="8">
+          <button type="button" class="ipad-key" data-key="8" aria-label="8 TUV">
             <span class="apple-keypad-number text-2xl sm:text-3xl">8</span>
             <span class="apple-keypad-subletters text-[8px] text-white/80">TUV</span>
           </button>
-          <button type="button" class="ipad-key" data-key="9">
+          <button type="button" class="ipad-key" data-key="9" aria-label="9 WXYZ">
             <span class="apple-keypad-number text-2xl sm:text-3xl">9</span>
             <span class="apple-keypad-subletters text-[8px] text-white/80">WXYZ</span>
           </button>
 
-          <button type="button" class="ipad-key" id="ipad-key-cancel" title="Cancel (Back to Lockscreen)">
+          <button type="button" class="ipad-key" id="ipad-key-cancel" aria-label="Cancel to lockscreen" title="Cancel (Back to Lockscreen)">
             <span class="apple-cancel-btn text-xs sm:text-sm text-white/95">Cancel</span>
           </button>
-          <button type="button" class="ipad-key" data-key="0">
+          <button type="button" class="ipad-key" data-key="0" aria-label="0">
             <span class="apple-keypad-number text-2xl sm:text-3xl">0</span>
           </button>
-          <button type="button" class="ipad-key" id="ipad-key-delete" title="Delete">
+          <button type="button" class="ipad-key" id="ipad-key-delete" aria-label="Delete last digit" title="Delete">
             <i data-lucide="delete" class="w-4.5 h-4.5 text-white/90"></i>
           </button>
         </div>
@@ -240,6 +240,11 @@
       var errorMsg = document.getElementById('ipad-error-msg');
       var coverTime = document.getElementById('ipad-cover-time');
       var coverDate = document.getElementById('ipad-cover-date');
+
+      var failedAttempts = 0;
+      var maxAttempts = 5;
+      var lockoutUntil = 0;
+      var lockoutInterval = null;
 
       // Adaptive Device Detection (iPhone vs iPad vs Desktop)
       var isPhone = window.innerWidth <= 640 || /iPhone|Android.*Mobile|iPod/i.test(navigator.userAgent);
@@ -279,7 +284,7 @@
         if (!passcodeView || !wallpaperView) return;
         currentInput = '';
         renderDots();
-        if (errorMsg) errorMsg.style.opacity = '0';
+        if (errorMsg && Date.now() >= lockoutUntil) errorMsg.style.opacity = '0';
 
         passcodeView.classList.remove('translate-y-0', 'opacity-100');
         passcodeView.classList.add('translate-y-full', 'opacity-0', 'pointer-events-none');
@@ -300,7 +305,7 @@
 
         wallpaperView.addEventListener('touchend', function(e) {
           var touchEndY = e.changedTouches[0].screenY;
-          if (touchStartY - touchEndY > 40) {
+          if (touchStartY - touchEndY > 35) {
             showPasscodeView();
           }
         }, { passive: true });
@@ -330,6 +335,7 @@
       }
 
       function handleKey(digit) {
+        if (Date.now() < lockoutUntil) return;
         if (currentInput.length >= 6) return;
         currentInput += digit;
         renderDots();
@@ -340,16 +346,18 @@
       }
 
       function handleDelete() {
+        if (Date.now() < lockoutUntil) return;
         if (currentInput.length > 0) {
           currentInput = currentInput.slice(0, -1);
           renderDots();
-          if (errorMsg) errorMsg.style.opacity = '0';
+          if (errorMsg && Date.now() >= lockoutUntil) errorMsg.style.opacity = '0';
         }
       }
 
       function checkPasscode() {
         if (currentInput === TARGET_PASSCODE) {
           // Success! Unlock
+          failedAttempts = 0;
           if (lockIcon) {
             lockIcon.innerHTML = '<i data-lucide="unlock" class="w-4.5 h-4.5 text-emerald-400"></i>';
             lockIcon.classList.add('bg-emerald-500/20', 'border-emerald-300/40', 'scale-110');
@@ -377,6 +385,8 @@
           }, 400);
         } else {
           // Error! Shake
+          failedAttempts++;
+
           if (pinContainer) {
             pinContainer.classList.add('animate-shake');
             for (var i = 0; i < 6; i++) {
@@ -384,7 +394,33 @@
               if (dot) dot.classList.add('error');
             }
           }
-          if (errorMsg) errorMsg.style.opacity = '1';
+
+          if (failedAttempts >= maxAttempts) {
+            lockoutUntil = Date.now() + 30000;
+            failedAttempts = 0;
+
+            if (errorMsg) {
+              errorMsg.style.opacity = '1';
+              errorMsg.textContent = 'iPad is disabled. Try again in 30 seconds';
+            }
+
+            if (lockoutInterval) clearInterval(lockoutInterval);
+            lockoutInterval = setInterval(function() {
+              var remaining = Math.ceil((lockoutUntil - Date.now()) / 1000);
+              if (remaining <= 0) {
+                clearInterval(lockoutInterval);
+                if (errorMsg) errorMsg.textContent = 'Enter Passcode (6 digits)';
+              } else {
+                if (errorMsg) errorMsg.textContent = 'iPad is disabled. Try again in ' + remaining + ' seconds';
+              }
+            }, 1000);
+          } else {
+            if (errorMsg) {
+              errorMsg.style.opacity = '1';
+              var attemptsLeft = maxAttempts - failedAttempts;
+              errorMsg.textContent = 'Incorrect passcode (' + attemptsLeft + ' left). Hint: iPad PIN';
+            }
+          }
 
           setTimeout(function() {
             if (pinContainer) pinContainer.classList.remove('animate-shake');
@@ -666,7 +702,7 @@
   <!-- =========================================================================
        STORYTELLING CHAPTER 1: "LOVED YOU BEFORE WE EVER BEGAN"
        ========================================================================= -->
-  <section id="story-beginning" class="relative py-28 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto z-10">
+  <section id="story-beginning" class="reveal-on-scroll relative py-28 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto z-10">
     <div class="spotlight-card rounded-3xl p-8 sm:p-12 lg:p-16 border border-rose-200/25 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
       
       <!-- Left Column: Dual Saree Radiance Showcase -->
@@ -677,6 +713,8 @@
             <img 
               src="assets/photos/bebo_saree_radiance.jpg" 
               alt="Maria in green embroidered saree" 
+              loading="lazy"
+              decoding="async"
               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108"
             />
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-4 flex flex-col justify-end">
@@ -693,6 +731,8 @@
             <img 
               src="assets/photos/bebo_fairy_lights_saree.jpg" 
               alt="Maria in festive red saree with fairy lights" 
+              loading="lazy"
+              decoding="async"
               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108"
             />
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-4 flex flex-col justify-end">
@@ -739,7 +779,7 @@
   <!-- =========================================================================
        STORYTELLING CHAPTER 2: "MY WHOLE WORLD (EVERYDAY MAGIC WITH BEBO)"
        ========================================================================= -->
-  <section id="story-whole-world" class="relative py-28 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto z-10">
+  <section id="story-whole-world" class="reveal-on-scroll relative py-28 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto z-10">
     <div class="spotlight-card rounded-3xl p-8 sm:p-12 lg:p-16 border border-rose-200/25 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
       
       <!-- Left Column: Story Text -->
@@ -780,19 +820,19 @@
       <!-- Right Column: 4-Photo Bento Collage Grid -->
       <div class="lg:col-span-5 order-1 lg:order-2 grid grid-cols-2 gap-3.5">
         <div class="tilt-card rounded-xl overflow-hidden aspect-[3/4] border border-rose-200/20 shadow-lg group relative">
-          <img src="assets/photos/bebo_sunlit_bliss.jpg" alt="Maria Sunlit Bliss" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" />
+          <img src="assets/photos/bebo_sunlit_bliss.jpg" alt="Maria Sunlit Bliss" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" />
           <span class="absolute bottom-2 left-2 text-[10px] font-mono bg-black/60 backdrop-blur-md px-2 py-0.5 rounded text-rose-200">Sunlit Bliss</span>
         </div>
         <div class="tilt-card rounded-xl overflow-hidden aspect-[3/4] border border-rose-200/20 shadow-lg group relative">
-          <img src="assets/photos/bebo_glasses_cozy.jpg" alt="Maria Cozy Glasses" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" />
+          <img src="assets/photos/bebo_glasses_cozy.jpg" alt="Maria Cozy Glasses" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" />
           <span class="absolute bottom-2 left-2 text-[10px] font-mono bg-black/60 backdrop-blur-md px-2 py-0.5 rounded text-rose-200">Cozy Glasses</span>
         </div>
         <div class="tilt-card rounded-xl overflow-hidden aspect-[3/4] border border-rose-200/20 shadow-lg group relative">
-          <img src="assets/photos/bebo_forehead_boop.jpg" alt="Maria Forehead Boop" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" />
+          <img src="assets/photos/bebo_forehead_boop.jpg" alt="Maria Forehead Boop" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" />
           <span class="absolute bottom-2 left-2 text-[10px] font-mono bg-black/60 backdrop-blur-md px-2 py-0.5 rounded text-rose-200">Playful Boop</span>
         </div>
         <div class="tilt-card rounded-xl overflow-hidden aspect-[3/4] border border-rose-200/20 shadow-lg group relative">
-          <img src="assets/photos/bebo_breakfast_date.jpg" alt="Maria Breakfast Date" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" />
+          <img src="assets/photos/bebo_breakfast_date.jpg" alt="Maria Breakfast Date" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" />
           <span class="absolute bottom-2 left-2 text-[10px] font-mono bg-black/60 backdrop-blur-md px-2 py-0.5 rounded text-rose-200">Food Dates</span>
         </div>
       </div>
@@ -803,7 +843,7 @@
   <!-- =========================================================================
        SECTION 3: 42-ITEM HYBRID BENTO & MASONRY MEDIA GALLERY
        ========================================================================= -->
-  <section id="gallery" class="relative py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10">
+  <section id="gallery" class="reveal-on-scroll relative py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10">
     <div class="text-center max-w-3xl mx-auto mb-12">
       <span class="text-xs uppercase tracking-widest font-mono text-rose-300/80 mb-2 block">
         🎬 Curated Moments & Video Reels 🎬
@@ -834,7 +874,7 @@
   </section>
 
   <!-- Fullscreen Cinema Lightbox Modal -->
-  <div id="cinema-lightbox" class="lightbox-modal cinema-lightbox fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/95 backdrop-blur-2xl">
+  <div id="cinema-lightbox" class="lightbox-modal cinema-lightbox fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/95 backdrop-blur-2xl" role="dialog" aria-modal="true" aria-label="Cinema Memory Player">
     <div class="lightbox-backdrop absolute inset-0"></div>
 
     <div class="modal-content relative z-10 max-w-4xl w-full glass-panel rounded-3xl overflow-hidden border border-rose-200/30 shadow-2xl flex flex-col">
@@ -847,7 +887,7 @@
           <span id="cinema-tag" class="text-[11px] font-mono text-gray-400 uppercase"></span>
         </div>
 
-        <button id="cinema-close-btn" class="cinema-ctrl-btn" title="Close Cinema View (Esc)">
+        <button id="cinema-close-btn" class="cinema-ctrl-btn touch-target-44" aria-label="Close Cinema View (Esc)" title="Close Cinema View (Esc)">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
@@ -870,10 +910,10 @@
 
         <!-- Navigation Buttons -->
         <div class="flex items-center gap-3 self-end sm:self-center">
-          <button id="cinema-prev-btn" class="cinema-ctrl-btn" title="Previous Memory (Left Arrow)">
+          <button id="cinema-prev-btn" class="cinema-ctrl-btn touch-target-44" aria-label="Previous Memory (Left Arrow)" title="Previous Memory (Left Arrow)">
             <i data-lucide="chevron-left" class="w-5 h-5"></i>
           </button>
-          <button id="cinema-next-btn" class="cinema-ctrl-btn" title="Next Memory (Right Arrow)">
+          <button id="cinema-next-btn" class="cinema-ctrl-btn touch-target-44" aria-label="Next Memory (Right Arrow)" title="Next Memory (Right Arrow)">
             <i data-lucide="chevron-right" class="w-5 h-5"></i>
           </button>
         </div>
@@ -884,7 +924,7 @@
   <!-- =========================================================================
        SECTION 4: "REASONS WHY YOU'RE MY UNIVERSE" BENTO GRID
        ========================================================================= -->
-  <section id="reasons" class="relative py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10">
+  <section id="reasons" class="reveal-on-scroll relative py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10">
     <div class="text-center max-w-3xl mx-auto mb-14">
       <span class="text-xs uppercase tracking-widest font-mono text-rose-300/80 mb-2 block">
         💖 Endless Affection 💖
@@ -910,7 +950,7 @@
       </div>
 
       <div class="min-h-[70px] flex items-center justify-center px-4">
-        <blockquote id="whisper-quote-text" class="font-serif-editorial text-xl sm:text-2xl text-rose-100 font-medium italic transition-all duration-300 leading-relaxed">
+        <blockquote id="whisper-quote-text" class="font-serif-editorial text-xl sm:text-2xl text-rose-100 font-medium italic transition-all duration-300 leading-relaxed" aria-live="polite">
           “You are the poetry I never knew how to write until I met you.”
         </blockquote>
       </div>
@@ -918,7 +958,8 @@
       <div class="mt-6 flex items-center justify-center">
         <button 
           id="whisper-next-btn" 
-          class="px-6 py-2.5 rounded-full text-xs font-mono bg-rose-500/20 hover:bg-rose-500/30 text-rose-200 border border-rose-300/30 transition-all hover:scale-105 flex items-center gap-2 shadow-sm">
+          aria-label="Generate another love note"
+          class="px-6 py-2.5 rounded-full text-xs font-mono bg-rose-500/20 hover:bg-rose-500/30 text-rose-200 border border-rose-300/30 transition-all hover:scale-105 flex items-center gap-2 shadow-sm touch-target-44">
           <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
           <span>Whisper Another Love Note</span>
         </button>
@@ -929,7 +970,7 @@
   <!-- =========================================================================
        SECTION 5: INTERACTIVE LOVE LETTER & GRAND FINALE
        ========================================================================= -->
-  <section id="letter" class="relative py-28 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto z-10">
+  <section id="letter" class="reveal-on-scroll relative py-28 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto z-10">
     <div class="text-center max-w-2xl mx-auto mb-14">
       <span class="text-xs uppercase tracking-widest font-mono text-rose-300/80 mb-2 block">
         💌 From the Depths of My Soul 💌
@@ -963,14 +1004,20 @@
           <div class="seal-stardust-orbit"></div>
 
           <!-- 3D Artisan Wax Seal -->
-          <button id="wax-seal-btn" class="aesthetic-wax-seal group" title="Click to break seal and unveil my heart">
+          <button 
+            id="wax-seal-btn" 
+            class="aesthetic-wax-seal group touch-target-44" 
+            tabindex="0"
+            role="button"
+            aria-label="Break 3D wax seal and read love letter"
+            title="Click to break seal and unveil my heart">
             <!-- Organic Melted Wax Edges -->
             <div class="wax-scallop-border"></div>
 
             <!-- Deep Burgundy & Gold Inner Core -->
             <div class="wax-inner-core">
               <!-- Golden Lettering Monogram Ring -->
-              <svg class="wax-text-ring" viewBox="0 0 100 100">
+              <svg class="wax-text-ring" viewBox="0 0 100 100" aria-hidden="true">
                 <path id="seal-text-path" d="M 50, 50 m -36, 0 a 36,36 0 1,1 72,0 a 36,36 0 1,1 -72,0" fill="none" />
                 <text class="wax-rim-text">
                   <textPath href="#seal-text-path" startOffset="50%" text-anchor="middle">
@@ -992,7 +1039,7 @@
 
         <span class="text-xs font-mono tracking-widest text-rose-200/90 uppercase flex items-center gap-2 mt-1 animate-pulse">
           <i data-lucide="sparkles" class="w-3.5 h-3.5 text-rose-300"></i>
-          <span>Click Heart Seal to Open Letter</span>
+          <span>Click Heart Seal or Press Enter to Open</span>
           <i data-lucide="sparkles" class="w-3.5 h-3.5 text-rose-300"></i>
         </span>
       </div>
@@ -1005,14 +1052,15 @@
         <div class="pt-10 mt-8 border-t border-rose-200/15 flex flex-wrap items-center justify-between gap-4">
           <button 
             id="letter-replay-btn" 
-            class="hidden text-xs font-mono text-rose-300/70 hover:text-rose-100 flex items-center gap-1.5 transition-colors">
+            class="hidden text-xs font-mono text-rose-300/70 hover:text-rose-100 flex items-center gap-1.5 transition-colors touch-target-44">
             <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i> Replay Typewriter
           </button>
 
           <!-- Grand Climax Button -->
           <button 
             id="open-my-heart-btn" 
-            class="btn-celestial ml-auto px-8 py-3.5 rounded-full text-sm font-semibold tracking-wide text-white flex items-center gap-2.5 shadow-lg">
+            aria-label="Open my entire heart celebration modal"
+            class="btn-celestial ml-auto px-8 py-3.5 rounded-full text-sm font-semibold tracking-wide text-white flex items-center gap-2.5 shadow-lg touch-target-44">
             <i data-lucide="heart" class="w-4 h-4 text-rose-300 fill-rose-300"></i>
             <span>Open My Entire Heart ✨</span>
           </button>
@@ -1023,7 +1071,7 @@
   </section>
 
   <!-- Grand Finale Celebration Modal -->
-  <div id="finale-modal" class="lightbox-modal fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/90 backdrop-blur-2xl">
+  <div id="finale-modal" class="lightbox-modal fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/90 backdrop-blur-2xl" role="dialog" aria-modal="true" aria-label="Grand Finale Declaration">
     <div class="modal-content relative z-10 max-w-xl w-full glass-panel rounded-3xl p-8 sm:p-10 border border-rose-200/30 text-center shadow-2xl">
       <div class="w-16 h-16 rounded-full bg-rose-500/20 border border-rose-300/40 flex items-center justify-center mx-auto mb-6 text-rose-200 shadow-lg shadow-rose-500/20">
         <i data-lucide="sparkles" class="w-8 h-8 text-rose-300 animate-spin" style="animation-duration: 8s;"></i>
@@ -1047,21 +1095,22 @@
 
       <button 
         id="finale-modal-close" 
-        class="px-8 py-3 rounded-full text-xs font-mono bg-rose-500/20 hover:bg-rose-500/30 text-rose-200 border border-rose-300/40 transition-all hover:scale-105">
+        class="px-8 py-3 rounded-full text-xs font-mono bg-rose-500/20 hover:bg-rose-500/30 text-rose-200 border border-rose-300/40 transition-all hover:scale-105 touch-target-44"
+        aria-label="Close celebration modal">
         Close & Treasure Forever ♡
       </button>
     </div>
   </div>
 
   <!-- Secret Vault Modal (Easter Egg) -->
-  <div id="vault-modal" class="lightbox-modal fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/90 backdrop-blur-2xl">
+  <div id="vault-modal" class="lightbox-modal fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/90 backdrop-blur-2xl" role="dialog" aria-modal="true" aria-label="Secret Constellation Vault">
     <div class="modal-content relative z-10 max-w-lg w-full glass-panel rounded-3xl p-8 border border-rose-200/30 shadow-2xl">
       <div class="flex items-center justify-between mb-6">
         <div class="flex items-center gap-2 text-rose-300 font-mono text-xs uppercase tracking-wider">
           <i data-lucide="lock" class="w-4 h-4"></i>
           <span>Secret Constellation Vault</span>
         </div>
-        <button id="vault-modal-close" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-gray-300 hover:text-white flex items-center justify-center">
+        <button id="vault-modal-close" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-gray-300 hover:text-white flex items-center justify-center touch-target-44" aria-label="Close Secret Vault">
           <i data-lucide="x" class="w-4 h-4"></i>
         </button>
       </div>
@@ -1079,13 +1128,15 @@
           <input 
             type="text" 
             id="vault-passcode-input" 
+            aria-label="Vault passcode key input"
             placeholder="e.g. 140323, bebo, forever..." 
             class="w-full px-4 py-3 rounded-xl bg-black/40 border border-rose-200/20 text-center text-rose-100 placeholder-gray-500 focus:outline-none focus:border-rose-400 font-mono text-sm"
           />
-          <p id="vault-error-msg" class="hidden text-xs text-rose-400 font-sans"></p>
+          <p id="vault-error-msg" class="hidden text-xs text-rose-400 font-sans" aria-live="polite"></p>
           <button 
             id="vault-submit-btn" 
-            class="w-full py-3 rounded-xl btn-celestial text-xs font-mono text-white tracking-wider uppercase">
+            aria-label="Submit passcode to unlock vault"
+            class="w-full py-3 rounded-xl btn-celestial text-xs font-mono text-white tracking-wider uppercase touch-target-44">
             Unlock Vault Key ✨
           </button>
         </div>
@@ -1100,7 +1151,7 @@
           Vault Chamber Unlocked!
         </h3>
         <div class="w-full aspect-[3/4] max-h-[420px] rounded-2xl overflow-hidden my-4 border border-rose-200/30 shadow-2xl bg-black/60">
-          <img src="assets/photos/bebo_vault_family_memory.jpg" alt="Secret Family Memory with Bebo" class="w-full h-full object-cover" />
+          <img src="assets/photos/bebo_vault_family_memory.jpg" alt="Secret Family Memory with Bebo" loading="lazy" decoding="async" class="w-full h-full object-cover" />
         </div>
         <p class="text-sm font-serif-editorial text-rose-100 italic mb-4 leading-relaxed">
           “You found the most sacred chamber of my heart, Bebo! Seeing your radiant smile, holding hands, and building our world together—my forever begins and ends with you.”
@@ -1112,7 +1163,7 @@
   <!-- =========================================================================
        FOOTER
        ========================================================================= -->
-  <footer class="relative py-12 px-4 border-t border-rose-200/10 text-center text-xs font-mono text-gray-400 z-10">
+  <footer class="reveal-on-scroll relative py-12 px-4 border-t border-rose-200/10 text-center text-xs font-mono text-gray-400 z-10">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-2 text-rose-300/80">
         <i data-lucide="heart" class="w-4 h-4 text-rose-400 fill-rose-400"></i>
@@ -1123,7 +1174,7 @@
         Crafted with infinite love for Maria (Bebo) • Written in the Stars ✨
       </p>
 
-      <a href="#hero" class="text-rose-300/70 hover:text-rose-100 flex items-center gap-1 transition-colors">
+      <a href="#hero" class="text-rose-300/70 hover:text-rose-100 flex items-center gap-1 transition-colors touch-target-44 py-2" aria-label="Back to top">
         <span>Back to top</span>
         <i data-lucide="arrow-up" class="w-3.5 h-3.5"></i>
       </a>

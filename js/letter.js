@@ -37,6 +37,12 @@ class RomanticLoveLetter {
 
     if (this.sealBtn) {
       this.sealBtn.addEventListener('click', () => this.unsealLetter());
+      this.sealBtn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          this.unsealLetter();
+        }
+      });
     }
 
     if (this.replayBtn) {
@@ -47,12 +53,32 @@ class RomanticLoveLetter {
       this.finaleBtn.addEventListener('click', () => this.triggerGrandFinale());
     }
 
-    if (this.finaleCloseBtn && this.finaleModal) {
-      this.finaleCloseBtn.addEventListener('click', () => {
+    const closeFinale = () => {
+      if (this.finaleModal) {
         this.finaleModal.classList.remove('is-open');
+        this.finaleModal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
+        if (this.finaleBtn) this.finaleBtn.focus();
+      }
+    };
+
+    if (this.finaleCloseBtn) {
+      this.finaleCloseBtn.addEventListener('click', closeFinale);
+    }
+
+    if (this.finaleModal) {
+      this.finaleModal.addEventListener('click', (e) => {
+        if (e.target === this.finaleModal || e.target.classList.contains('lightbox-backdrop')) {
+          closeFinale();
+        }
       });
     }
+
+    window.addEventListener('keydown', (e) => {
+      if (this.finaleModal && this.finaleModal.classList.contains('is-open') && e.key === 'Escape') {
+        closeFinale();
+      }
+    });
   }
 
   unsealLetter() {
@@ -63,15 +89,24 @@ class RomanticLoveLetter {
       window.audioEngine.playSealBreak();
     }
 
-    // Envelope break animation
+    // 1. Trigger realistic wax fracture burst animation
     if (this.sealBtn) {
-      this.sealBtn.style.transform = 'scale(0.8) rotate(20deg)';
-      this.sealBtn.style.opacity = '0';
+      this.sealBtn.classList.add('is-cracking');
+    }
+
+    // 2. Confetti sparkle burst
+    if (typeof confetti === 'function') {
+      confetti({
+        particleCount: 35,
+        spread: 60,
+        origin: { y: 0.65 },
+        colors: ['#e63946', '#f4d0d2', '#fceade', '#ffd700']
+      });
     }
 
     setTimeout(() => {
       if (this.envelopeCover) {
-        this.envelopeCover.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+        this.envelopeCover.style.transition = 'all 0.85s var(--ease-smooth)';
         this.envelopeCover.style.transform = 'translateY(-100%) scaleY(0)';
         this.envelopeCover.style.opacity = '0';
         this.envelopeCover.style.pointerEvents = 'none';
@@ -80,16 +115,16 @@ class RomanticLoveLetter {
       if (this.letterPaper) {
         this.letterPaper.classList.remove('hidden');
         this.letterPaper.style.opacity = '0';
-        this.letterPaper.style.transform = 'translateY(20px)';
+        this.letterPaper.style.transform = 'translateY(24px)';
         
         setTimeout(() => {
-          this.letterPaper.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+          this.letterPaper.style.transition = 'all 0.85s var(--ease-smooth)';
           this.letterPaper.style.opacity = '1';
           this.letterPaper.style.transform = 'translateY(0)';
           this.startTypewriter();
         }, 100);
       }
-    }, 400);
+    }, 450);
   }
 
   startTypewriter() {

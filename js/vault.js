@@ -11,9 +11,15 @@
 class MilestoneAndVault {
   constructor() {
     this.config = window.SANCTUARY_CONFIG || {};
-    this.anniversary = this.config.anniversaryDate || new Date(2023, 1, 14, 18, 30, 0);
+    this.anniversary = this.config.anniversaryDate || new Date(2023, 2, 14, 18, 30, 0); // March 14, 2023
     this.vaultConfig = this.config.secretVault || {};
     
+    this.cachedDigits = { days: '', hours: '', minutes: '', seconds: '' };
+    this.failedAttempts = 0;
+    this.maxAttempts = 5;
+    this.lockoutUntil = 0;
+    this.lockoutInterval = null;
+
     this.initCounter();
     this.initVault();
   }
@@ -33,15 +39,28 @@ class MilestoneAndVault {
     const diff = Math.max(0, now.getTime() - this.anniversary.getTime());
 
     const totalSeconds = Math.floor(diff / 1000);
-    const days = Math.floor(totalSeconds / (3600 * 24));
-    const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
-    const minutes = Math.floor((totalSeconds % 3600) / 60);
-    const seconds = totalSeconds % 60;
+    const days = String(Math.floor(totalSeconds / (3600 * 24))).padStart(2, '0');
+    const hours = String(Math.floor((totalSeconds % (3600 * 24)) / 3600)).padStart(2, '0');
+    const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+    const seconds = String(totalSeconds % 60).padStart(2, '0');
 
-    if (this.daysEl) this.daysEl.textContent = String(days).padStart(2, '0');
-    if (this.hoursEl) this.hoursEl.textContent = String(hours).padStart(2, '0');
-    if (this.minutesEl) this.minutesEl.textContent = String(minutes).padStart(2, '0');
-    if (this.secondsEl) this.secondsEl.textContent = String(seconds).padStart(2, '0');
+    // Isolated DOM updates: only mutate text node if digit changed (zero reflow)
+    if (this.daysEl && this.cachedDigits.days !== days) {
+      this.daysEl.textContent = days;
+      this.cachedDigits.days = days;
+    }
+    if (this.hoursEl && this.cachedDigits.hours !== hours) {
+      this.hoursEl.textContent = hours;
+      this.cachedDigits.hours = hours;
+    }
+    if (this.minutesEl && this.cachedDigits.minutes !== minutes) {
+      this.minutesEl.textContent = minutes;
+      this.cachedDigits.minutes = minutes;
+    }
+    if (this.secondsEl && this.cachedDigits.seconds !== seconds) {
+      this.secondsEl.textContent = seconds;
+      this.cachedDigits.seconds = seconds;
+    }
   }
 
   initVault() {
@@ -58,36 +77,68 @@ class MilestoneAndVault {
 
     triggerBtn.addEventListener('click', () => {
       modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
-      if (inputEl) inputEl.focus();
+      if (inputEl) {
+        inputEl.value = '';
+        setTimeout(() => inputEl.focus(), 100);
+      }
       if (window.audioEngine) window.audioEngine.playChime();
     });
 
     const closeModal = () => {
       modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
       if (errorEl) errorEl.classList.add('hidden');
+      triggerBtn.focus();
     };
 
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
 
     modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal();
+      if (e.target === modal || e.target.classList.contains('lightbox-backdrop')) closeModal();
     });
+
+    window.addEventListener('keydown', (e) => {
+      if (modal.classList.contains('is-open') && e.key === 'Escape') {
+        closeModal();
+      }
+    });
+
+    if (inputEl) {
+      inputEl.addEventListener('input', () => {
+        if (errorEl && Date.now() >= this.lockoutUntil) {
+          errorEl.classList.add('hidden');
+        }
+      });
+    }
 
     const checkPasscode = () => {
       if (!inputEl) return;
+
+      const now = Date.now();
+      if (now < this.lockoutUntil) {
+        const remainingSec = Math.ceil((this.lockoutUntil - now) / 1000);
+        if (errorEl) {
+          errorEl.classList.remove('hidden');
+          errorEl.textContent = `Vault locked due to multiple attempts. Please wait ${remainingSec}s ✨`;
+        }
+        return;
+      }
+
       const val = inputEl.value.trim().toLowerCase();
-      const validCodes = (this.vaultConfig.validCodes || ['1402', 'bebo', 'forever']).map(c => c.toLowerCase());
+      const validCodes = (this.vaultConfig.validCodes || ['140323', '1402', 'bebo', 'forever']).map(c => c.toLowerCase());
 
       if (validCodes.includes(val)) {
         // Unlock Vault!
+        this.failedAttempts = 0;
         if (formSection) formSection.classList.add('hidden');
         if (unlockedSection) {
           unlockedSection.classList.remove('hidden');
           unlockedSection.style.opacity = '0';
           setTimeout(() => {
-            unlockedSection.style.transition = 'opacity 0.6s ease';
+            unlockedSection.style.transition = 'opacity 0.6s var(--ease-smooth)';
             unlockedSection.style.opacity = '1';
           }, 50);
         }
@@ -97,17 +148,51 @@ class MilestoneAndVault {
         // Confetti shower
         if (typeof confetti === 'function') {
           confetti({
-            particleCount: 50,
-            spread: 70,
+            particleCount: 65,
+            spread: 80,
             origin: { y: 0.5 },
-            colors: ['#F4D0D2', '#FFD700', '#E8A598']
+            colors: ['#F4D0D2', '#FFD700', '#E8A598', '#FFFFFF']
           });
         }
       } else {
-        if (errorEl) {
-          errorEl.classList.remove('hidden');
-          errorEl.textContent = "A gentle whisper says: That's not the secret key, try our special date or nickname ✨";
+        this.failedAttempts++;
+
+        if (this.failedAttempts >= this.maxAttempts) {
+          this.lockoutUntil = Date.now() + 30000; // 30s lockout
+          this.failedAttempts = 0;
+
+          if (errorEl) {
+            errorEl.classList.remove('hidden');
+            errorEl.textContent = "Too many attempts! Vault security paused for 30 seconds 🔒";
+          }
+
+          if (submitBtn) submitBtn.disabled = true;
+          if (inputEl) inputEl.disabled = true;
+
+          const updateLockoutMsg = () => {
+            const timeLeft = Math.ceil((this.lockoutUntil - Date.now()) / 1000);
+            if (timeLeft <= 0) {
+              clearInterval(this.lockoutInterval);
+              if (errorEl) errorEl.textContent = "Vault unlocked. You may try again ✨";
+              if (submitBtn) submitBtn.disabled = false;
+              if (inputEl) {
+                inputEl.disabled = false;
+                inputEl.focus();
+              }
+            } else {
+              if (errorEl) errorEl.textContent = `Security pause active. Please wait ${timeLeft}s 🔒`;
+            }
+          };
+
+          this.lockoutInterval = setInterval(updateLockoutMsg, 1000);
+        } else {
+          if (errorEl) {
+            errorEl.classList.remove('hidden');
+            const remaining = this.maxAttempts - this.failedAttempts;
+            errorEl.textContent = `That's not the key, my love! (${remaining} attempts left) Hint: Special date 140323 or nickname 💖`;
+          }
         }
+
         if (window.audioEngine) window.audioEngine.playHeartPop();
       }
     };

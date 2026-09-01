@@ -136,14 +136,18 @@ class MediaGalleryEngine {
         <div 
           class="media-card tilt-card break-inside-avoid w-full mb-6 group cursor-pointer"
           data-id="${item.id}"
-          data-index="${index}">
+          data-index="${index}"
+          tabindex="0"
+          role="button"
+          aria-label="View memory #${item.id}: ${item.title}. Press Enter to expand.">
           
           <!-- Top Interactive Frosted Glass Action Buttons -->
           <div class="absolute top-3 left-3 right-3 flex items-center justify-between z-20 pointer-events-auto gap-2">
             <button 
               type="button"
-              class="card-song-btn glass-pill px-2.5 py-1 rounded-full text-[10px] font-mono text-rose-200 hover:text-white flex items-center gap-1.5 border border-white/20 bg-black/50 backdrop-blur-md transition-all hover:scale-105 active:scale-95 shadow-md shadow-black/40"
+              class="card-song-btn glass-pill px-2.5 py-1 rounded-full text-[10px] font-mono text-rose-200 hover:text-white flex items-center gap-1.5 border border-white/20 bg-black/50 backdrop-blur-md transition-all hover:scale-105 active:scale-95 shadow-md shadow-black/40 touch-target-44"
               data-card-id="${item.id}"
+              aria-label="Play Our Song for ${item.title}"
               title="Tap for Our Song">
               <i data-lucide="music" class="w-3 h-3 text-rose-300"></i>
               <span>Our Song</span>
@@ -151,8 +155,9 @@ class MediaGalleryEngine {
             
             <button 
               type="button"
-              class="card-voice-btn glass-pill px-2.5 py-1 rounded-full text-[10px] font-mono text-amber-200 hover:text-white flex items-center gap-1.5 border border-white/20 bg-black/50 backdrop-blur-md transition-all hover:scale-105 active:scale-95 shadow-md shadow-black/40"
+              class="card-voice-btn glass-pill px-2.5 py-1 rounded-full text-[10px] font-mono text-amber-200 hover:text-white flex items-center gap-1.5 border border-white/20 bg-black/50 backdrop-blur-md transition-all hover:scale-105 active:scale-95 shadow-md shadow-black/40 touch-target-44"
               data-card-id="${item.id}"
+              aria-label="Hear voice note for ${item.title}"
               title="Click to Hear My Voice">
               <i data-lucide="mic" class="w-3 h-3 text-amber-300"></i>
               <span>Hear Voice</span>
@@ -193,7 +198,9 @@ class MediaGalleryEngine {
                 alt="${item.title}"
                 loading="lazy"
                 decoding="async"
-                class="media-thumb w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108"
+                class="media-thumb w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-108"
+                onload="this.style.opacity = '1';"
+                style="opacity: 0.9;"
               />
             `}
 
@@ -266,14 +273,22 @@ class MediaGalleryEngine {
       });
     });
 
-    // Attach card click handlers to open Cinema Lightbox
+    // Attach card click & keyboard handlers to open Cinema Lightbox
     this.gridContainer.querySelectorAll('.media-card').forEach(card => {
-      card.addEventListener('click', (e) => {
+      const openCard = (e) => {
         if (e.target.closest('.card-song-btn') || e.target.closest('.card-voice-btn')) return;
         const id = parseInt(card.dataset.id, 10);
         const itemIdx = this.mediaItems.findIndex(m => m.id === id);
         if (itemIdx !== -1) {
           this.openCinemaLightbox(itemIdx);
+        }
+      };
+
+      card.addEventListener('click', openCard);
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openCard(e);
         }
       });
     });

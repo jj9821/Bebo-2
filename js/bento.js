@@ -32,7 +32,13 @@ class ReasonsBentoGrid {
     this.container.innerHTML = this.reasons.map((item) => {
       if (item.interactiveType === 'flip') {
         return `
-          <div class="${item.gridSpan} bento-flip-card group" data-id="${item.id}">
+          <div 
+            class="${item.gridSpan} bento-flip-card group" 
+            data-id="${item.id}"
+            tabindex="0"
+            role="button"
+            aria-label="Flip card: ${item.title}. Press Enter or Space to reveal note."
+            aria-expanded="false">
             <div class="bento-flip-inner">
               <!-- Card Front -->
               <div class="bento-card-front glass-panel p-6 flex flex-col justify-between overflow-hidden relative">
@@ -59,7 +65,7 @@ class ReasonsBentoGrid {
 
                 <div class="pt-4 mt-auto flex items-center justify-between text-xs text-rose-300/90 font-medium">
                   <span class="flex items-center gap-1.5 group-hover:translate-x-1 transition-transform">
-                    <i data-lucide="sparkles" class="w-3.5 h-3.5 text-rose-400"></i> Tap to reveal deeper reason
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5 text-rose-400"></i> Tap or press Enter to reveal
                   </span>
                   <i data-lucide="arrow-right" class="w-4 h-4 opacity-60 group-hover:opacity-100 transition-opacity"></i>
                 </div>
@@ -74,7 +80,7 @@ class ReasonsBentoGrid {
                     <span class="text-xs font-mono text-rose-300/80 uppercase tracking-wider flex items-center gap-1">
                       <i data-lucide="heart" class="w-3.5 h-3.5 text-rose-400 fill-rose-400"></i> From My Heart
                     </span>
-                    <span class="text-[11px] text-gray-400">Tap to flip back</span>
+                    <span class="text-[11px] text-gray-400">Tap / Enter to flip back</span>
                   </div>
 
                   <h4 class="font-serif-editorial text-xl text-rose-200 font-semibold mb-3">
@@ -96,7 +102,13 @@ class ReasonsBentoGrid {
       } else {
         // Scratch / Mist Reveal Card
         return `
-          <div class="${item.gridSpan} relative rounded-2xl overflow-hidden glass-panel p-6 min-h-[260px] flex flex-col justify-between group" data-id="${item.id}">
+          <div 
+            class="${item.gridSpan} relative rounded-2xl overflow-hidden glass-panel p-6 min-h-[260px] flex flex-col justify-between group" 
+            data-id="${item.id}"
+            tabindex="0"
+            role="button"
+            aria-label="Mist card: ${item.title}. Press Enter or Space to clear mist."
+            aria-expanded="false">
             <!-- Background Content (Revealed) -->
             <div class="relative z-0 h-full flex flex-col justify-between">
               <div>
@@ -134,7 +146,7 @@ class ReasonsBentoGrid {
                 ${item.shortDescription}
               </p>
               <span class="px-4 py-1.5 rounded-full text-xs font-mono bg-white/10 hover:bg-rose-500/20 text-rose-200 border border-rose-200/30 transition-all shadow-sm">
-                ✨ Click to clear the mist
+                ✨ Click or press Enter to clear
               </span>
             </div>
           </div>
@@ -146,21 +158,42 @@ class ReasonsBentoGrid {
 
     // Attach card flip listeners
     this.container.querySelectorAll('.bento-flip-card').forEach(card => {
-      card.addEventListener('click', (e) => {
-        card.classList.toggle('is-flipped');
+      const toggleFlip = (e) => {
+        const isFlipped = card.classList.toggle('is-flipped');
+        card.setAttribute('aria-expanded', isFlipped ? 'true' : 'false');
         this.spawnHeartBurst(e.clientX || e.pageX, e.clientY || e.pageY);
         if (window.audioEngine) window.audioEngine.playHeartPop();
+      };
+
+      card.addEventListener('click', toggleFlip);
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleFlip(e);
+        }
       });
     });
 
     // Attach scratch overlay listeners
     this.container.querySelectorAll('.scratch-overlay').forEach(overlay => {
-      overlay.addEventListener('click', (e) => {
+      const parentCard = overlay.closest('[data-id]');
+      const revealMist = (e) => {
         e.stopPropagation();
         overlay.classList.add('revealed');
+        if (parentCard) parentCard.setAttribute('aria-expanded', 'true');
         this.spawnHeartBurst(e.clientX || e.pageX, e.clientY || e.pageY);
         if (window.audioEngine) window.audioEngine.playChime();
-      });
+      };
+
+      overlay.addEventListener('click', revealMist);
+      if (parentCard) {
+        parentCard.addEventListener('keydown', (e) => {
+          if ((e.key === 'Enter' || e.key === ' ') && !overlay.classList.contains('revealed')) {
+            e.preventDefault();
+            revealMist(e);
+          }
+        });
+      }
     });
   }
 

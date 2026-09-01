@@ -61,12 +61,22 @@ class RomanticAudioEngine {
       });
     }
 
-    // Auto-start full song automatically on site visit
+    // Auto-start full song automatically on site visit & interaction
     this.initAutoplay();
   }
 
   initAutoplay() {
-    // Audio starts upon iPad Lock Screen unlock (passcode: 123987)
+    // One-shot user interaction unlock for strict iOS Safari autoplay policies
+    const unlockAudio = () => {
+      if (this.audioEl && this.audioEl.paused && this.isPlaying) {
+        this.audioEl.play().catch(() => {});
+      }
+      window.removeEventListener('click', unlockAudio);
+      window.removeEventListener('touchstart', unlockAudio);
+    };
+
+    window.addEventListener('click', unlockAudio, { passive: true, once: true });
+    window.addEventListener('touchstart', unlockAudio, { passive: true, once: true });
   }
 
   togglePlayback() {
