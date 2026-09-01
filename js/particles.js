@@ -48,21 +48,24 @@ class StardustUniverse {
 
   createStars() {
     this.stars = [];
+    this.lastScrollY = window.scrollY || 0;
     // Adjust star count dynamically based on screen size
-    const count = Math.min(this.config.starCount, Math.floor((this.width * this.height) / 7000));
+    const count = Math.min(this.config.starCount, Math.floor((this.width * this.height) / 6500));
     
     for (let i = 0; i < count; i++) {
+      const depth = Math.random() < 0.6 ? 1 : (Math.random() < 0.85 ? 2 : 3); // 1 = far, 2 = mid, 3 = near
       this.stars.push({
         x: Math.random() * this.width,
         y: Math.random() * this.height,
-        radius: Math.random() * 1.5 + 0.4,
-        baseAlpha: Math.random() * 0.7 + 0.3,
+        depth: depth,
+        radius: depth === 1 ? (Math.random() * 0.9 + 0.4) : (depth === 2 ? (Math.random() * 1.3 + 0.8) : (Math.random() * 1.8 + 1.2)),
+        baseAlpha: depth === 1 ? (Math.random() * 0.4 + 0.2) : (depth === 2 ? (Math.random() * 0.6 + 0.35) : (Math.random() * 0.8 + 0.4)),
         alpha: Math.random() * 0.7 + 0.3,
-        twinkleSpeed: Math.random() * 0.02 + 0.005,
+        twinkleSpeed: (Math.random() * 0.02 + 0.006) * (depth === 3 ? 1.3 : 1),
         twinklePhase: Math.random() * Math.PI * 2,
         color: this.config.starColors[Math.floor(Math.random() * this.config.starColors.length)],
-        vx: (Math.random() - 0.5) * 0.15,
-        vy: (Math.random() - 0.5) * 0.15
+        vx: (Math.random() - 0.5) * 0.12 * depth,
+        vy: (Math.random() - 0.5) * 0.12 * depth
       });
     }
   }
@@ -112,13 +115,25 @@ class StardustUniverse {
       this.mouse.x = -1000;
       this.mouse.y = -1000;
     });
+
+    // Pause rendering when tab is hidden to save battery & CPU
+    document.addEventListener('visibilitychange', () => {
+      this.isPaused = document.hidden;
+      if (!this.isPaused && !this.animating) {
+        this.animate();
+      }
+    });
   }
 
   drawStars() {
+    const currentScrollY = window.scrollY || 0;
+    const scrollDelta = (currentScrollY - (this.lastScrollY || currentScrollY));
+    this.lastScrollY = currentScrollY;
+
     for (let star of this.stars) {
-      // Update position
+      // Update position with natural velocity and depth-based parallax scroll displacement
       star.x += star.vx;
-      star.y += star.vy;
+      star.y += star.vy - (scrollDelta * 0.035 * star.depth);
 
       if (star.x < 0) star.x = this.width;
       if (star.x > this.width) star.x = 0;

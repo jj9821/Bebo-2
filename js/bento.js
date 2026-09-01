@@ -156,10 +156,34 @@ class ReasonsBentoGrid {
 
     if (window.lucide) window.lucide.createIcons();
 
-    // Attach card flip listeners
+    // Attach card flip listeners & 3D perspective hover tilt
     this.container.querySelectorAll('.bento-flip-card').forEach(card => {
+      const inner = card.querySelector('.bento-flip-inner');
+
+      // 3D Cursor Hover Tilt
+      card.addEventListener('mousemove', (e) => {
+        if (card.classList.contains('is-flipped')) return;
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -8;
+        const rotateY = ((x - centerX) / centerX) * 8;
+        if (inner) {
+          inner.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        }
+      });
+
+      card.addEventListener('mouseleave', () => {
+        if (!card.classList.contains('is-flipped') && inner) {
+          inner.style.transform = '';
+        }
+      });
+
       const toggleFlip = (e) => {
         const isFlipped = card.classList.toggle('is-flipped');
+        if (inner) inner.style.transform = '';
         card.setAttribute('aria-expanded', isFlipped ? 'true' : 'false');
         this.spawnHeartBurst(e.clientX || e.pageX, e.clientY || e.pageY);
         if (window.audioEngine) window.audioEngine.playHeartPop();

@@ -51,6 +51,10 @@
   <!-- Canvas Confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
+  <!-- GSAP 3 & ScrollTrigger Animation Engine -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
   <!-- Core Theme Stylesheet -->
   <link rel="stylesheet" href="styles/main.css" />
 </head>
@@ -430,10 +434,14 @@
         }
       }
 
-      // Keypad listeners
+      // Keypad listeners with tactile ripple
       document.querySelectorAll('.ipad-key[data-key]').forEach(function(btn) {
         btn.addEventListener('click', function(e) {
           e.stopPropagation();
+          var ripple = document.createElement('span');
+          ripple.className = 'key-tap-ripple';
+          btn.appendChild(ripple);
+          setTimeout(function() { if (ripple.parentNode) ripple.parentNode.removeChild(ripple); }, 400);
           handleKey(btn.dataset.key);
         });
       });
@@ -442,6 +450,10 @@
       if (deleteBtn) {
         deleteBtn.addEventListener('click', function(e) {
           e.stopPropagation();
+          var ripple = document.createElement('span');
+          ripple.className = 'key-tap-ripple';
+          deleteBtn.appendChild(ripple);
+          setTimeout(function() { if (ripple.parentNode) ripple.parentNode.removeChild(ripple); }, 400);
           handleDelete();
         });
       }
@@ -465,6 +477,12 @@
 
   <!-- Interactive Stardust & Aurora Canvas -->
   <canvas id="stardust-canvas"></canvas>
+
+  <!-- Celestial Comet Scroll Progress Bar -->
+  <div id="celestial-scroll-comet" class="fixed right-2 sm:right-4 top-0 bottom-0 w-1.5 sm:w-2 z-40 pointer-events-none opacity-0 transition-opacity duration-500" aria-hidden="true">
+    <div class="comet-track absolute inset-y-0 w-[1px] left-1/2 -translate-x-1/2 bg-white/10"></div>
+    <div id="comet-head" class="comet-head absolute left-1/2 -translate-x-1/2 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-rose-200 shadow-[0_0_12px_#ffb4be,0_0_24px_#e8a598]"></div>
+  </div>
 
   <!-- Ambient Glowing Atmospheric Orbs -->
   <div class="ambient-orb ambient-orb-rose w-[550px] h-[550px] -top-32 -left-32"></div>
@@ -622,7 +640,7 @@
     <div class="max-w-4xl mx-auto flex flex-col items-center">
       
       <!-- Top Glowing Badge -->
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-pill mb-8 animate-bounce" style="animation-duration: 3s;">
+      <div class="hero-badge-float inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-pill mb-8">
         <i data-lucide="stars" class="w-4 h-4 text-rose-300"></i>
         <span id="hero-badge-text" class="text-xs font-mono tracking-widest text-rose-200 uppercase">
           ✨ A Private Digital Sanctuary For Bebo ✨

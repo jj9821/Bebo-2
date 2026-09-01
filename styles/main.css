@@ -1200,3 +1200,215 @@ button, a, input {
   }
 }
 
+/* ==========================================================================
+   ✨ CELESTIAL MOTION & GSAP-COMPATIBLE ANIMATION SYSTEM
+   ========================================================================== */
+
+/* Ambient Aurora Gradient Breathing */
+@keyframes celestialAuroraBreath {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    filter: blur(80px) saturate(1);
+  }
+  50% {
+    transform: translate(30px, -25px) scale(1.12) rotate(15deg);
+    filter: blur(100px) saturate(1.25);
+  }
+  100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    filter: blur(80px) saturate(1);
+  }
+}
+
+.ambient-orb {
+  animation: celestialAuroraBreath 18s ease-in-out infinite alternate !important;
+  will-change: transform, filter;
+}
+.ambient-orb-purple {
+  animation-duration: 24s !important;
+  animation-delay: -6s !important;
+}
+.ambient-orb-champagne {
+  animation-duration: 20s !important;
+  animation-delay: -12s !important;
+}
+
+/* Floating Breathing Hero Badge */
+@keyframes floatGlow {
+  0%, 100% {
+    transform: translateY(0);
+    box-shadow: 0 0 15px rgba(244, 208, 210, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    transform: translateY(-5px);
+    box-shadow: 0 0 28px rgba(244, 208, 210, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  }
+}
+
+.hero-badge-float {
+  animation: floatGlow 4.5s ease-in-out infinite;
+}
+
+/* Word & Character Reveal Typography */
+.reveal-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(18px) rotateX(15deg);
+  transition: opacity 0.65s var(--ease-smooth), transform 0.65s var(--ease-smooth);
+  will-change: opacity, transform;
+}
+
+.reveal-word.is-revealed {
+  opacity: 1;
+  transform: translateY(0) rotateX(0deg);
+}
+
+/* Rolling Odometer Digit Transition */
+.digit-box {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  height: 1.35em;
+  line-height: 1.35em;
+  vertical-align: baseline;
+}
+
+.digit-value {
+  display: inline-block;
+  transition: transform 0.42s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease;
+  will-change: transform, opacity;
+}
+
+.digit-value.is-rolling {
+  animation: digitRollIn 0.42s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes digitRollIn {
+  0% {
+    transform: translateY(80%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Keypad Micro-Ripple & Physical Feedback */
+.ipad-key {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.12s var(--ease-smooth), background-color 0.15s ease;
+}
+
+.ipad-key:active {
+  transform: scale(0.92) !important;
+}
+
+.key-tap-ripple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  transform: translate(-50%, -50%) scale(0);
+  animation: keyRippleAnim 0.35s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes keyRippleAnim {
+  0% {
+    transform: translate(-50%, -50%) scale(0.2);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Celestial Comet Scroll Progress */
+#celestial-scroll-comet {
+  transition: opacity 0.4s ease;
+}
+
+.comet-head {
+  box-shadow: 0 0 12px #ffb4be, 0 0 24px #e8a598, 0 0 36px #c084fc;
+  animation: cometPulse 1.8s infinite alternate ease-in-out;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes cometPulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.85);
+    box-shadow: 0 0 10px #ffb4be, 0 0 20px #e8a598;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.3);
+    box-shadow: 0 0 16px #ffb4be, 0 0 32px #e8a598, 0 0 44px #c084fc;
+  }
+}
+
+/* Secret Vault Radiant Chamber Glow */
+.vault-unlocked-reveal {
+  animation: chamberOpen 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes chamberOpen {
+  0% {
+    opacity: 0;
+    transform: scale(0.88) translateY(20px);
+    filter: blur(12px) brightness(1.6);
+  }
+  60% {
+    filter: blur(2px) brightness(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0) brightness(1);
+  }
+}
+
+/* Interactive Pulsing Heart Hover */
+.group:hover .hover-heart-beat,
+button:hover .hover-heart-beat {
+  animation: heartPulseSoft 0.85s infinite ease-in-out !important;
+}
+
+@keyframes heartPulseSoft {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.24);
+  }
+}
+
+/* Reduced Motion User Accessibility Preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .ambient-orb {
+    animation: none !important;
+  }
+  .reveal-word {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  #celestial-scroll-comet {
+    display: none !important;
+  }
+}
+

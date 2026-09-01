@@ -34,6 +34,22 @@ class MilestoneAndVault {
     setInterval(() => this.updateCounter(), 1000);
   }
 
+  updateDigitWithRoll(element, newValue, key) {
+    if (!element) return;
+    if (this.cachedDigits[key] === newValue) return;
+    this.cachedDigits[key] = newValue;
+
+    let digitSpan = element.querySelector('.digit-value');
+    if (!digitSpan) {
+      element.innerHTML = `<span class="digit-box"><span class="digit-value is-rolling">${newValue}</span></span>`;
+    } else {
+      digitSpan.classList.remove('is-rolling');
+      void digitSpan.offsetWidth; // Force reflow to replay roll animation
+      digitSpan.textContent = newValue;
+      digitSpan.classList.add('is-rolling');
+    }
+  }
+
   updateCounter() {
     const now = new Date();
     const diff = Math.max(0, now.getTime() - this.anniversary.getTime());
@@ -44,23 +60,11 @@ class MilestoneAndVault {
     const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
     const seconds = String(totalSeconds % 60).padStart(2, '0');
 
-    // Isolated DOM updates: only mutate text node if digit changed (zero reflow)
-    if (this.daysEl && this.cachedDigits.days !== days) {
-      this.daysEl.textContent = days;
-      this.cachedDigits.days = days;
-    }
-    if (this.hoursEl && this.cachedDigits.hours !== hours) {
-      this.hoursEl.textContent = hours;
-      this.cachedDigits.hours = hours;
-    }
-    if (this.minutesEl && this.cachedDigits.minutes !== minutes) {
-      this.minutesEl.textContent = minutes;
-      this.cachedDigits.minutes = minutes;
-    }
-    if (this.secondsEl && this.cachedDigits.seconds !== seconds) {
-      this.secondsEl.textContent = seconds;
-      this.cachedDigits.seconds = seconds;
-    }
+    // Rolling digit transition
+    this.updateDigitWithRoll(this.daysEl, days, 'days');
+    this.updateDigitWithRoll(this.hoursEl, hours, 'hours');
+    this.updateDigitWithRoll(this.minutesEl, minutes, 'minutes');
+    this.updateDigitWithRoll(this.secondsEl, seconds, 'seconds');
   }
 
   initVault() {
@@ -136,22 +140,18 @@ class MilestoneAndVault {
         if (formSection) formSection.classList.add('hidden');
         if (unlockedSection) {
           unlockedSection.classList.remove('hidden');
-          unlockedSection.style.opacity = '0';
-          setTimeout(() => {
-            unlockedSection.style.transition = 'opacity 0.6s var(--ease-smooth)';
-            unlockedSection.style.opacity = '1';
-          }, 50);
+          unlockedSection.classList.add('vault-unlocked-reveal');
         }
 
         if (window.audioEngine) window.audioEngine.playConfettiFanfare();
 
-        // Confetti shower
+        // Stardust & Confetti explosion
         if (typeof confetti === 'function') {
           confetti({
-            particleCount: 65,
-            spread: 80,
+            particleCount: 85,
+            spread: 90,
             origin: { y: 0.5 },
-            colors: ['#F4D0D2', '#FFD700', '#E8A598', '#FFFFFF']
+            colors: ['#F4D0D2', '#FFD700', '#E8A598', '#FFFFFF', '#C084FC']
           });
         }
       } else {

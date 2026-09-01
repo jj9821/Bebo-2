@@ -52,9 +52,109 @@ document.addEventListener('DOMContentLoaded', () => {
   // 10. Smooth navigation handlers
   initNavigation();
 
-  // 11. IntersectionObserver Scroll Reveals
+  // 11. Celestial Scroll Comet Tracker
+  initScrollComet();
+
+  // 12. Word-by-Word Headline Spans
+  initHeadlineSplits();
+
+  // 13. GSAP Scroll Parallax & Staggered Reveal Engine
+  initGSAPMotion();
+
+  // 14. Fallback IntersectionObserver Scroll Reveals
   initScrollReveals();
 });
+
+function initScrollComet() {
+  const cometContainer = document.getElementById('celestial-scroll-comet');
+  const cometHead = document.getElementById('comet-head');
+  if (!cometContainer || !cometHead) return;
+
+  const updateComet = () => {
+    const scrollY = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (docHeight <= 0) return;
+
+    const progress = Math.min(Math.max(scrollY / docHeight, 0), 1);
+
+    if (scrollY > 120) {
+      cometContainer.style.opacity = '1';
+      cometHead.style.top = `${progress * 100}%`;
+    } else {
+      cometContainer.style.opacity = '0';
+    }
+  };
+
+  window.addEventListener('scroll', updateComet, { passive: true });
+  updateComet();
+}
+
+function initHeadlineSplits() {
+  const headlines = document.querySelectorAll('h1, h2.font-serif-editorial');
+  headlines.forEach(heading => {
+    // Avoid re-splitting if already processed
+    if (heading.dataset.splitDone) return;
+    heading.dataset.splitDone = 'true';
+
+    const words = heading.textContent.trim().split(/\s+/);
+    heading.innerHTML = words.map(w => `<span class="reveal-word">${w}</span>`).join(' ');
+  });
+
+  // Reveal words on scroll or immediately
+  const wordObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const words = entry.target.querySelectorAll('.reveal-word');
+        words.forEach((word, idx) => {
+          setTimeout(() => {
+            word.classList.add('is-revealed');
+          }, idx * 45);
+        });
+        wordObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  headlines.forEach(h => wordObserver.observe(h));
+}
+
+function initGSAPMotion() {
+  if (typeof gsap === 'undefined') return;
+
+  // Register ScrollTrigger if available
+  if (typeof ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 1. Parallax chapter & hero showcase images against scroll
+    document.querySelectorAll('.tilt-card img').forEach(img => {
+      gsap.to(img, {
+        yPercent: 8,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: img.closest('.tilt-card') || img,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1.2
+        }
+      });
+    });
+
+    // 2. Parallax ambient atmospheric glowing orbs
+    document.querySelectorAll('.ambient-orb').forEach((orb, i) => {
+      const speed = (i + 1) * 35;
+      gsap.to(orb, {
+        y: speed,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: document.body,
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: 2
+        }
+      });
+    });
+  }
+}
 
 function populateConfigText(config) {
   if (!config) return;
