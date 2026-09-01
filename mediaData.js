@@ -53,9 +53,9 @@ const MEDIA_ITEMS = [
   {
     "id": 6,
     "type": "image",
-    "src": "assets/photos/bebo_vault_family_memory.jpg",
-    "title": "My Safe Haven & Whole World \ud83d\udc96",
-    "caption": "Holding your hand makes me realize I don\u2019t need anything else. You make my entire life feel safe, warm, and complete.",
+    "src": "assets/photos/bebo_saree_sunlight_portrait.jpg",
+    "title": "Golden Hour Glow ✨",
+    "caption": "Every ray of golden sunlight pales compared to your natural radiance. Loving you is the sweetest blessing in my life.",
     "tag": "favorites",
     "aspectRatio": "portrait"
   },

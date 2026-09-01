@@ -368,11 +368,17 @@
             if (window.lucide) window.lucide.createIcons();
           }
 
+          // Immediately start playing the song as soon as unlocking is done!
+          if (window.audioEngine) {
+            window.audioEngine.play();
+          }
           if (audio) {
             audio.volume = 0.85;
-            audio.play().catch(function(e) { console.log(e); });
+            var p = audio.play();
+            if (p && p.catch) {
+              p.catch(function(e) { console.log('Audio unlock:', e); });
+            }
           }
-          if (window.audioEngine) window.audioEngine.updateUIPlyingState(true);
 
           if (typeof confetti === 'function') {
             confetti({ particleCount: 55, spread: 70, origin: { y: 0.5 } });
