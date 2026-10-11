@@ -1,14 +1,6 @@
 /**
  * ============================================================================
- * 📸 42-ITEM HYBRID BENTO-MASONRY GALLERY & CINEMA LIGHTBOX ENGINE
- * ============================================================================
- * Features:
- * - 42 structured items (photos and HD videos)
- * - IntersectionObserver for lazy loading & auto-pausing off-screen videos
- * - Inline video hover preview & muted viewport playback
- * - Cinema Lightbox modal supporting both photo zoom & video playback
- * - Category filter chips ("All", "The Beginning", "My Whole World", "Adventures", "Unfiltered", "Favorites")
- * - Scroll milestone heart burst triggers & final gallery completion celebration
+ * 📸 42-ITEM SOULMATE POLAROID WALL, DRAGGABLE DECALS & CINEMA LIGHTBOX
  * ============================================================================
  */
 
@@ -34,30 +26,31 @@ class MediaGalleryEngine {
     this.renderGallery();
     this.initLightboxEvents();
     this.initScrollMilestones();
+    this.initDraggableDecals();
   }
 
   renderFilterChips() {
     if (!this.filterContainer) return;
 
     const filters = [
-      { id: 'all', label: 'All 42 Memories ✨', count: this.mediaItems.length },
-      { id: 'beginning', label: 'Loved You Before We Began 🌙', count: this.mediaItems.filter(m => m.tag === 'beginning').length },
+      { id: 'all', label: `All ${this.mediaItems.length} Memories ★`, count: this.mediaItems.length },
+      { id: 'beginning', label: 'Loved You Before We Met 🌙', count: this.mediaItems.filter(m => m.tag === 'beginning').length },
       { id: 'whole-world', label: 'My Whole World 💖', count: this.mediaItems.filter(m => m.tag === 'whole-world').length },
-      { id: 'adventures', label: 'Our Adventures 🚗', count: this.mediaItems.filter(m => m.tag === 'adventures').length },
-      { id: 'unfiltered', label: 'Unfiltered & Candid ☕', count: this.mediaItems.filter(m => m.tag === 'unfiltered').length },
-      { id: 'favorites', label: 'Forever Keepsakes 👑', count: this.mediaItems.filter(m => m.tag === 'favorites').length }
+      { id: 'adventures', label: 'Cosmic Adventures 🚗', count: this.mediaItems.filter(m => m.tag === 'adventures').length },
+      { id: 'unfiltered', label: 'Unfiltered Twin Flame ☕', count: this.mediaItems.filter(m => m.tag === 'unfiltered').length },
+      { id: 'favorites', label: 'Eternity Keepsakes 👑', count: this.mediaItems.filter(m => m.tag === 'favorites').length }
     ];
 
     this.filterContainer.innerHTML = filters.map(f => `
       <button 
         data-filter="${f.id}"
-        class="filter-chip px-5 py-2 rounded-full text-xs font-mono tracking-wider transition-all duration-300 flex items-center gap-2 ${
+        class="filter-chip px-4 sm:px-5 py-2.5 rounded-full text-xs font-mono font-bold tracking-wider transition-all duration-150 flex items-center gap-2 border-[2.8px] border-[#0D001A] active:translate-x-[2px] active:translate-y-[2px] ${
           this.currentFilter === f.id 
-            ? 'bg-rose-500/25 text-rose-100 border border-rose-300/50 shadow-md shadow-rose-500/20 scale-105' 
-            : 'bg-white/5 text-gray-400 hover:text-rose-200 hover:bg-white/10 border border-white/10'
+            ? 'bg-[#FF0066] text-white shadow-[4px_4px_0px_#00F5FF,7px_7px_0px_#0D001A] -translate-y-0.5' 
+            : 'bg-white text-[#0D001A] hover:bg-[#FFF8E7] shadow-[3px_3px_0px_#0D001A]'
         }">
         <span>${f.label}</span>
-        <span class="text-[10px] opacity-70 px-1.5 py-0.5 rounded-full bg-black/30">${f.count}</span>
+        <span class="text-[10px] font-mono px-2 py-0.5 rounded-full ${this.currentFilter === f.id ? 'bg-[#0D001A] text-white' : 'bg-[#0D001A]/10 text-[#0D001A]'}">${f.count}</span>
       </button>
     `).join('');
 
@@ -91,15 +84,11 @@ class MediaGalleryEngine {
       entries.forEach(entry => {
         const video = entry.target;
         if (entry.isIntersecting) {
-          // Play video muted when in view
           const playPromise = video.play();
           if (playPromise !== undefined) {
-            playPromise.catch(() => {
-              // Autoplay policy fallback
-            });
+            playPromise.catch(() => {});
           }
         } else {
-          // Pause video when scrolled away
           video.pause();
         }
       });
@@ -116,57 +105,101 @@ class MediaGalleryEngine {
 
     if (items.length === 0) {
       this.gridContainer.innerHTML = `
-        <div class="col-span-full py-20 text-center text-rose-200/60 font-serif-editorial text-2xl">
-          No memories found in this constellation.
+        <div class="col-span-full py-20 text-center text-[#FF0066] font-display text-2xl font-bold">
+          No soulmate memories found in this constellation.
         </div>
       `;
       return;
     }
 
+    const soulmateStamps = [
+      "★ CERTIFIED SOULMATE ★",
+      "NON-NEGOTIABLE FOREVER",
+      "TWIN FLAMES COLLIDING",
+      "MY HOME, MY HUMAN",
+      "DESTINED ACROSS TIME",
+      "1 IN 8 BILLION SOULS"
+    ];
+
+    const tapeStyles = ['tape-pink', 'tape-cyan', 'tape-gold', 'tape-lime'];
+    const tapeLabels = ["COSMICALLY ENTANGLED", "MY WHOLE WORLD", "DESTINED FOREVER", "100% PURE LOVE"];
+
+    const speechCallouts = [
+      "The exact smile I fell for in every lifetime.",
+      "My universe in a single gaze ♡",
+      "Every timeline leads to you.",
+      "Pure sunshine in human form."
+    ];
+
     this.gridContainer.innerHTML = items.map((item, index) => {
-      // Dynamic aspect ratio class matching intrinsic photo/video orientation
       let aspectClass = 'aspect-[3/4]';
       if (item.aspectRatio === 'portrait') aspectClass = 'aspect-[3/4] sm:aspect-[4/5]';
       if (item.aspectRatio === 'landscape') aspectClass = 'aspect-[16/10] sm:aspect-[16/11]';
       if (item.aspectRatio === 'square') aspectClass = 'aspect-square';
 
       const isVideo = item.type === 'video';
+      const rotClass = ['-rotate-1', 'rotate-2', '-rotate-2', 'rotate-1'][index % 4];
+      const tapeClass = tapeStyles[index % tapeStyles.length];
+      const tapeLabel = tapeLabels[index % tapeLabels.length];
+      const stampText = soulmateStamps[index % soulmateStamps.length];
+      const tapeSide = index % 2 === 0 ? '-top-3.5 -left-3 rotate-[-10deg]' : '-top-3.5 -right-3 rotate-[12deg]';
+
+      // Occasional speech bubble callout
+      const hasSpeech = (index % 5 === 0);
+      const speechText = speechCallouts[(index / 5) % speechCallouts.length];
 
       return `
         <div 
-          class="media-card tilt-card break-inside-avoid w-full mb-6 group cursor-pointer"
+          class="media-card tilt-card break-inside-avoid w-full mb-8 group cursor-pointer bg-white border-[3.5px] border-[#0D001A] shadow-[4px_4px_0px_#00F5FF,8px_8px_0px_#FF0066,12px_12px_0px_#0D001A] hover:-translate-y-2 transition-all duration-200 relative p-3.5 pb-6 ${rotClass} hover:rotate-0 hover:z-30"
           data-id="${item.id}"
           data-index="${index}"
           tabindex="0"
           role="button"
           aria-label="View memory #${item.id}: ${item.title}. Press Enter to expand.">
           
-          <!-- Top Interactive Frosted Glass Action Buttons -->
-          <div class="absolute top-3 left-3 right-3 flex items-center justify-between z-20 pointer-events-auto gap-2">
+          <!-- Holographic Rainbow Sheen Layer -->
+          <div class="absolute inset-0 holographic-sheen opacity-0 group-hover:opacity-35 transition-opacity duration-300 pointer-events-none rounded-xl z-20"></div>
+
+          <!-- Stamped Washi Tape Strip -->
+          <div class="washi-tape-strip ${tapeClass} ${tapeSide}">${tapeLabel}</div>
+
+          <!-- Top Interactive Neo-Brutalist Badges -->
+          <div class="flex items-center justify-between mb-2 z-20 pointer-events-auto gap-1">
             <button 
               type="button"
-              class="card-song-btn glass-pill px-2.5 py-1 rounded-full text-[10px] font-mono text-rose-200 hover:text-white flex items-center gap-1.5 border border-white/20 bg-black/50 backdrop-blur-md transition-all hover:scale-105 active:scale-95 shadow-md shadow-black/40 touch-target-44"
+              class="card-song-btn px-2.5 py-1 rounded-full text-[10px] font-mono font-bold text-white bg-[#FF0066] hover:bg-[#e60057] flex items-center gap-1.5 border-[2px] border-[#0D001A] shadow-[2px_2px_0px_#0D001A] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all touch-target-44"
               data-card-id="${item.id}"
               aria-label="Play Our Song for ${item.title}"
-              title="Tap for Our Song">
-              <i data-lucide="music" class="w-3 h-3 text-rose-300"></i>
-              <span>Our Song</span>
+              title="Tap for Song">
+              <i data-lucide="music" class="w-3 h-3 text-white"></i>
+              <span>Song</span>
             </button>
-            
+
+            <!-- Physical Barcode Strip -->
+            <div class="barcode-strip hidden sm:inline-flex scale-90">
+              <div class="barcode-lines"></div>
+              <span class="text-[8px] font-mono font-bold text-[#0D001A]">SOULMATE-${String(item.id).padStart(3, '0')}</span>
+            </div>
+
             <button 
               type="button"
-              class="card-voice-btn glass-pill px-2.5 py-1 rounded-full text-[10px] font-mono text-amber-200 hover:text-white flex items-center gap-1.5 border border-white/20 bg-black/50 backdrop-blur-md transition-all hover:scale-105 active:scale-95 shadow-md shadow-black/40 touch-target-44"
+              class="card-voice-btn px-2.5 py-1 rounded-full text-[10px] font-mono font-bold text-[#0D001A] bg-[#FFE600] hover:bg-[#edd500] flex items-center gap-1.5 border-[2px] border-[#0D001A] shadow-[2px_2px_0px_#0D001A] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all touch-target-44"
               data-card-id="${item.id}"
               aria-label="Hear voice note for ${item.title}"
-              title="Click to Hear My Voice">
-              <i data-lucide="mic" class="w-3 h-3 text-amber-300"></i>
-              <span>Hear Voice</span>
+              title="Click for Voice Note">
+              <i data-lucide="mic" class="w-3 h-3 text-[#0D001A]"></i>
+              <span>Voice</span>
             </button>
           </div>
 
-          <!-- Media Container with Dynamic Framing -->
-          <div class="relative w-full ${aspectClass} overflow-hidden bg-black/60">
+          <!-- Media Container with Polaroid Window -->
+          <div class="relative w-full ${aspectClass} overflow-hidden border-[2.8px] border-[#0D001A] bg-[#0D001A]">
             ${isVideo ? `
+              <!-- Film Sprocket Overlay -->
+              <div class="film-sprocket-track track-top z-10">
+                <div class="sprocket-hole"></div><div class="sprocket-hole"></div><div class="sprocket-hole"></div><div class="sprocket-hole"></div><div class="sprocket-hole"></div>
+              </div>
+
               <!-- HD Video Tile -->
               <video 
                 class="media-thumb inline-video w-full h-full object-cover"
@@ -180,15 +213,17 @@ class MediaGalleryEngine {
                 preload="none">
               </video>
 
-              <!-- Video Badge Overlay -->
-              <div class="video-badge">
-                <span class="video-play-pulse"></span>
-                <span>HD REEL</span>
+              <div class="film-sprocket-track track-bottom z-10">
+                <div class="sprocket-hole"></div><div class="sprocket-hole"></div><div class="sprocket-hole"></div><div class="sprocket-hole"></div><div class="sprocket-hole"></div>
+              </div>
+
+              <div class="absolute bottom-4 left-3 px-2 py-0.5 rounded bg-[#00FF75] border-[2px] border-[#0D001A] text-[#0D001A] text-[9px] font-mono font-extrabold shadow-[2px_2px_0px_#0D001A] z-20">
+                ★ DESTINED REEL ★
               </div>
 
               <div class="absolute inset-0 flex items-center justify-center pointer-events-none group-hover:scale-110 transition-transform">
-                <div class="w-11 h-11 rounded-full bg-black/50 backdrop-blur-md border border-rose-300/40 flex items-center justify-center text-rose-100 shadow-lg group-hover:bg-rose-500/40 group-hover:border-rose-300 transition-all">
-                  <i data-lucide="play" class="w-4.5 h-4.5 fill-rose-100 ml-0.5"></i>
+                <div class="w-12 h-12 rounded-full bg-[#FF0066] border-[2.5px] border-[#0D001A] flex items-center justify-center text-white shadow-[3px_3px_0px_#0D001A]">
+                  <i data-lucide="play" class="w-5 h-5 fill-white ml-0.5"></i>
                 </div>
               </div>
             ` : `
@@ -198,33 +233,39 @@ class MediaGalleryEngine {
                 alt="${item.title}"
                 loading="lazy"
                 decoding="async"
-                class="media-thumb w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108"
+                class="media-thumb w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
               />
             `}
 
             <!-- Hover Quick Info Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5 pointer-events-none">
-              <span class="text-[10px] font-mono uppercase tracking-widest text-rose-300/90 mb-1 flex items-center gap-1">
-                <i data-lucide="maximize-2" class="w-3 h-3"></i> Expand Cinema View
+            <div class="absolute inset-0 bg-[#00F5FF]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center pointer-events-none">
+              <span class="px-3.5 py-1.5 rounded-full bg-white border-[2px] border-[#0D001A] text-[#0D001A] font-mono text-xs font-bold shadow-[3px_3px_0px_#0D001A] flex items-center gap-1.5">
+                <i data-lucide="maximize-2" class="w-3.5 h-3.5 text-[#FF0066]"></i> Expand Polaroid
               </span>
             </div>
           </div>
 
-          <!-- Flush Personalized Metadata Bar with Embedded Captions -->
-          <div class="p-4 bg-gradient-to-b from-[#161324] to-[#100d1c] border-t border-rose-200/10 flex flex-col gap-1.5">
-            <div class="flex items-center justify-between text-[10px] font-mono uppercase text-rose-300/70">
-              <span class="flex items-center gap-1.5">
-                <i data-lucide="${isVideo ? 'video' : 'camera'}" class="w-3 h-3 text-rose-400"></i>
-                ${item.tag.replace('-', ' ')}
+          <!-- Bottom Handwritten Polaroid Caption Area -->
+          <div class="pt-3 px-1 flex flex-col gap-1 relative">
+            
+            ${hasSpeech ? `
+              <div class="soulmate-speech-bubble -top-6 right-2 absolute">
+                ${speechText}
+              </div>
+            ` : ''}
+
+            <div class="flex items-center justify-between text-[10px] font-mono font-bold uppercase text-[#0D001A]/80">
+              <span class="px-2 py-0.5 rounded bg-[#FFF8E7] border border-[#0D001A]">
+                ${stampText}
               </span>
-              <span class="text-gray-400 font-mono text-[9px] px-1.5 py-0.5 rounded bg-black/40 border border-white/5">#${item.id}</span>
+              <span class="text-[#FF0066] font-bold">#${item.id} / ${this.mediaItems.length}</span>
             </div>
 
-            <h3 class="font-serif-editorial text-base text-rose-100 font-medium group-hover:text-rose-200 transition-colors leading-tight">
+            <h3 class="font-display text-base font-bold text-[#0D001A] leading-snug group-hover:text-[#FF0066] transition-colors">
               ${item.title}
             </h3>
 
-            <p class="text-xs text-gray-300 font-sans italic leading-relaxed pt-0.5 border-t border-white/5">
+            <p class="font-handwriting text-lg text-[#0D001A] font-bold leading-tight pt-1">
               “${item.caption}”
             </p>
           </div>
@@ -234,19 +275,16 @@ class MediaGalleryEngine {
 
     if (window.lucide) window.lucide.createIcons();
 
-    // Reattach Tilt engine
     if (window.tiltEngine) {
       window.tiltEngine.attachElements();
     }
 
-    // Observe videos for viewport auto-play
     if (this.videoObserver) {
       this.gridContainer.querySelectorAll('video.inline-video').forEach(vid => {
         this.videoObserver.observe(vid);
       });
     }
 
-    // Attach card action listeners for Tap for Song & Voice Note
     this.gridContainer.querySelectorAll('.card-song-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -254,8 +292,8 @@ class MediaGalleryEngine {
         if (window.audioEngine) {
           window.audioEngine.playCardSong(id);
         }
-        btn.classList.add('scale-110', 'bg-rose-500/40');
-        setTimeout(() => btn.classList.remove('scale-110', 'bg-rose-500/40'), 500);
+        btn.classList.add('scale-110');
+        setTimeout(() => btn.classList.remove('scale-110'), 400);
       });
     });
 
@@ -266,25 +304,24 @@ class MediaGalleryEngine {
         if (window.audioEngine) {
           window.audioEngine.playVoiceNote(id);
         }
-        btn.classList.add('scale-110', 'bg-amber-500/40');
-        setTimeout(() => btn.classList.remove('scale-110', 'bg-amber-500/40'), 500);
+        btn.classList.add('scale-110');
+        setTimeout(() => btn.classList.remove('scale-110'), 400);
       });
     });
 
-    // Attach card click & keyboard handlers to open Cinema Lightbox
     this.gridContainer.querySelectorAll('.media-card').forEach(card => {
       const openCard = (e) => {
         if (e.target.closest('.card-song-btn') || e.target.closest('.card-voice-btn')) return;
         const id = parseInt(card.dataset.id, 10);
         const itemIdx = this.mediaItems.findIndex(m => m.id === id);
         if (itemIdx !== -1) {
-          this.openCinemaLightbox(itemIdx);
+          this.openLightbox(itemIdx);
         }
       };
 
       card.addEventListener('click', openCard);
       card.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
+        if (e.key === 'Enter') {
           e.preventDefault();
           openCard(e);
         }
@@ -292,6 +329,64 @@ class MediaGalleryEngine {
     });
   }
 
+  /* --------------------------------------------------------------------------
+     Draggable Soulmate Decals Engine
+     -------------------------------------------------------------------------- */
+  initDraggableDecals() {
+    const decals = document.querySelectorAll('.draggable-decal');
+    decals.forEach(decal => {
+      let isDragging = false;
+      let startX, startY, initialLeft, initialTop;
+
+      const onMouseDown = (e) => {
+        isDragging = true;
+        startX = e.clientX || (e.touches && e.touches[0].clientX);
+        startY = e.clientY || (e.touches && e.touches[0].clientY);
+
+        const rect = decal.getBoundingClientRect();
+        initialLeft = rect.left + window.scrollX;
+        initialTop = rect.top + window.scrollY;
+
+        decal.style.position = 'absolute';
+        decal.style.left = `${initialLeft}px`;
+        decal.style.top = `${initialTop}px`;
+        decal.classList.add('decal-active');
+
+        if (window.audioEngine) window.audioEngine.playHeartPop();
+      };
+
+      const onMouseMove = (e) => {
+        if (!isDragging) return;
+        const currentX = e.clientX || (e.touches && e.touches[0].clientX);
+        const currentY = e.clientY || (e.touches && e.touches[0].clientY);
+        const dx = currentX - startX;
+        const dy = currentY - startY;
+
+        decal.style.left = `${initialLeft + dx}px`;
+        decal.style.top = `${initialTop + dy}px`;
+      };
+
+      const onMouseUp = () => {
+        if (!isDragging) return;
+        isDragging = false;
+        decal.classList.remove('decal-active');
+        if (window.audioEngine) window.audioEngine.playChime();
+      };
+
+      decal.addEventListener('mousedown', onMouseDown);
+      decal.addEventListener('touchstart', onMouseDown, { passive: true });
+
+      window.addEventListener('mousemove', onMouseMove);
+      window.addEventListener('touchmove', onMouseMove, { passive: true });
+
+      window.addEventListener('mouseup', onMouseUp);
+      window.addEventListener('touchend', onMouseUp);
+    });
+  }
+
+  /* --------------------------------------------------------------------------
+     Cinema Lightbox Handling
+     -------------------------------------------------------------------------- */
   initLightboxEvents() {
     if (!this.lightbox) return;
 
@@ -299,87 +394,46 @@ class MediaGalleryEngine {
     const prevBtn = document.getElementById('cinema-prev-btn');
     const nextBtn = document.getElementById('cinema-next-btn');
 
-    if (closeBtn) closeBtn.addEventListener('click', () => this.closeCinemaLightbox());
-    if (prevBtn) prevBtn.addEventListener('click', () => this.prevItem());
-    if (nextBtn) nextBtn.addEventListener('click', () => this.nextItem());
+    if (closeBtn) closeBtn.addEventListener('click', () => this.closeLightbox());
+    if (prevBtn) prevBtn.addEventListener('click', () => this.prevMedia());
+    if (nextBtn) nextBtn.addEventListener('click', () => this.nextMedia());
 
     this.lightbox.addEventListener('click', (e) => {
       if (e.target === this.lightbox || e.target.classList.contains('lightbox-backdrop')) {
-        this.closeCinemaLightbox();
+        this.closeLightbox();
       }
     });
-
-    // Touch Swipe Gestures for Mobile (Next/Prev/Close)
-    let touchStartX = 0;
-    let touchStartY = 0;
-    let touchEndX = 0;
-    let touchEndY = 0;
-
-    this.lightbox.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-      touchStartY = e.changedTouches[0].screenY;
-    }, { passive: true });
-
-    this.lightbox.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      touchEndY = e.changedTouches[0].screenY;
-      handleSwipe();
-    }, { passive: true });
-
-    const handleSwipe = () => {
-      const diffX = touchEndX - touchStartX;
-      const diffY = touchEndY - touchStartY;
-
-      if (Math.abs(diffX) > Math.abs(diffY)) {
-        // Horizontal Swipe
-        if (diffX < -45) {
-          this.nextItem(); // Swipe left -> Next
-        } else if (diffX > 45) {
-          this.prevItem(); // Swipe right -> Previous
-        }
-      } else {
-        // Vertical Swipe
-        if (diffY > 80) {
-          this.closeCinemaLightbox(); // Swipe down -> Close
-        }
-      }
-    };
 
     window.addEventListener('keydown', (e) => {
       if (!this.lightbox.classList.contains('is-open')) return;
-
-      if (e.key === 'Escape') this.closeCinemaLightbox();
-      if (e.key === 'ArrowLeft') this.prevItem();
-      if (e.key === 'ArrowRight') this.nextItem();
-      if (e.key === ' ') {
-        const vid = document.getElementById('cinema-video-player');
-        if (vid && !vid.classList.contains('hidden')) {
-          e.preventDefault();
-          if (vid.paused) vid.play(); else vid.pause();
-        }
-      }
+      if (e.key === 'Escape') this.closeLightbox();
+      if (e.key === 'ArrowLeft') this.prevMedia();
+      if (e.key === 'ArrowRight') this.nextMedia();
     });
   }
 
-  openCinemaLightbox(index) {
+  openLightbox(index) {
+    if (!this.lightbox || !this.mediaItems[index]) return;
     this.currentIndex = index;
-    const item = this.mediaItems[this.currentIndex];
-    if (!item || !this.lightbox) return;
+    const item = this.mediaItems[index];
 
     const imgEl = document.getElementById('cinema-image-player');
     const vidEl = document.getElementById('cinema-video-player');
     const titleEl = document.getElementById('cinema-title');
+    const capEl = document.getElementById('cinema-caption');
+    const countEl = document.getElementById('cinema-counter');
     const tagEl = document.getElementById('cinema-tag');
-    const captionEl = document.getElementById('cinema-caption');
-    const counterEl = document.getElementById('cinema-counter');
+
+    if (countEl) countEl.textContent = `${this.currentIndex + 1} / ${this.mediaItems.length}`;
+    if (tagEl) tagEl.textContent = `★ ${item.tag.replace('-', ' ')} ★`;
+    if (titleEl) titleEl.textContent = item.title;
+    if (capEl) capEl.textContent = `“${item.caption}”`;
 
     if (item.type === 'video') {
       if (imgEl) imgEl.classList.add('hidden');
       if (vidEl) {
         vidEl.classList.remove('hidden');
         vidEl.src = item.src;
-        vidEl.poster = item.poster || '';
-        vidEl.currentTime = 0;
         vidEl.play().catch(() => {});
       }
     } else {
@@ -393,73 +447,61 @@ class MediaGalleryEngine {
       }
     }
 
-    if (titleEl) titleEl.textContent = item.title;
-    if (tagEl) tagEl.textContent = `Era: ${item.tag.replace('-', ' ').toUpperCase()}`;
-    if (captionEl) captionEl.textContent = item.caption;
-    if (counterEl) counterEl.textContent = `${this.currentIndex + 1} / ${this.mediaItems.length}`;
-
     this.lightbox.classList.add('is-open');
     document.body.style.overflow = 'hidden';
 
-    if (window.audioEngine) {
-      window.audioEngine.playChime();
-    }
+    if (window.audioEngine) window.audioEngine.playChime();
   }
 
-  closeCinemaLightbox() {
+  closeLightbox() {
     if (!this.lightbox) return;
     const vidEl = document.getElementById('cinema-video-player');
     if (vidEl) {
       vidEl.pause();
       vidEl.src = '';
     }
+
     this.lightbox.classList.remove('is-open');
     document.body.style.overflow = '';
   }
 
-  prevItem() {
-    const newIdx = (this.currentIndex - 1 + this.mediaItems.length) % this.mediaItems.length;
-    this.openCinemaLightbox(newIdx);
+  prevMedia() {
+    let newIndex = this.currentIndex - 1;
+    if (newIndex < 0) newIndex = this.mediaItems.length - 1;
+    this.openLightbox(newIndex);
   }
 
-  nextItem() {
-    const newIdx = (this.currentIndex + 1) % this.mediaItems.length;
-    this.openCinemaLightbox(newIdx);
+  nextMedia() {
+    let newIndex = (this.currentIndex + 1) % this.mediaItems.length;
+    this.openLightbox(newIndex);
   }
 
   initScrollMilestones() {
-    // Trigger celebratory confetti / hearts when user reaches bottom of gallery
-    const triggerEl = document.getElementById('gallery-completion-trigger');
-    if (!triggerEl || !('IntersectionObserver' in window)) return;
+    const trigger = document.getElementById('gallery-completion-trigger');
+    if (!trigger || !('IntersectionObserver' in window)) return;
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting && !this.celebrationTriggered) {
           this.celebrationTriggered = true;
-          this.triggerGalleryCelebration();
+          if (typeof confetti === 'function') {
+            confetti({
+              particleCount: 80,
+              spread: 90,
+              origin: { y: 0.8 },
+              colors: ['#FF0066', '#00F5FF', '#FFE600', '#00FF75', '#7B00FF']
+            });
+          }
+          if (window.audioEngine) window.audioEngine.playConfettiFanfare();
         }
       });
     }, { threshold: 0.5 });
 
-    observer.observe(triggerEl);
-  }
-
-  triggerGalleryCelebration() {
-    if (window.audioEngine) {
-      window.audioEngine.playConfettiFanfare();
-    }
-
-    if (typeof confetti === 'function') {
-      confetti({
-        particleCount: 70,
-        spread: 90,
-        origin: { y: 0.8 },
-        colors: ['#F4D0D2', '#E8A598', '#FCEADE', '#FF6B8B', '#FFD700']
-      });
-    }
+    observer.observe(trigger);
   }
 }
 
-// Attach globally
-window.MediaGalleryEngine = MediaGalleryEngine;
-window.MemoryTimeline = MediaGalleryEngine; // Backwards compatible alias
+if (typeof window !== 'undefined') {
+  window.MediaGalleryEngine = MediaGalleryEngine;
+  window.MemoryTimeline = MediaGalleryEngine;
+}

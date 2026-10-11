@@ -1,43 +1,46 @@
 /* ==========================================================================
-   ✨ MIDNIGHT LUXURY ROMANCE - CORE DESIGN SYSTEM & STYLES
+   ⚡ ULTRA-MAXIMALIST "DESTINED SOULMATES" HYPER-COLOR DESIGN SYSTEM
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Sacramento&display=swap');
-@import url('https://fonts.cdnfonts.com/css/sf-pro-display');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=JetBrains+Mono:wght@500;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Reenie+Beanie&family=Space+Grotesk:wght@500;600;700;800&family=Syne:wght@700;800&display=swap');
 
 :root {
-  /* Color Palette */
-  --bg-obsidian: #06060c;
-  --bg-midnight: #0a0a14;
-  --bg-amethyst: #120d1c;
-  --bg-velvet: #0e0e18;
+  /* High-Voltage Soulmate Symphony Palette */
+  --destiny-magenta: #FF0066;
+  --aurora-violet: #7B00FF;
+  --sunburst-gold: #FFE600;
+  --cyber-cyan: #00F5FF;
+  --heartbeat-lime: #00FF75;
+  --soul-tangerine: #FF4D00;
+  --obsidian-velvet: #0D001A;
+  
+  --bg-canvas: #FFFDF5;
+  --bg-cream: #FFF8E7;
 
-  --rose-blush: #f4d0d2;
-  --coral-dusty: #e8a598;
-  --champagne: #fceade;
-  --rose-gold: #e5b299;
-  --gold-warm: #f6d8ae;
-  --crimson-glow: #e63946;
+  /* Deep Punchy Borders */
+  --border-thick: 3.5px solid var(--obsidian-velvet);
+  --border-mid: 2.5px solid var(--obsidian-velvet);
+  --border-thin: 2px solid var(--obsidian-velvet);
 
-  /* Easing Curves Tokens */
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-out-back: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
-
-  /* Glassmorphism Tokens */
-  --glass-bg: rgba(18, 16, 28, 0.65);
-  --glass-bg-hover: rgba(26, 22, 40, 0.8);
-  --glass-border: rgba(244, 208, 210, 0.12);
-  --glass-border-hover: rgba(244, 208, 210, 0.35);
-  --glass-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.6), 0 0 30px 2px rgba(232, 165, 152, 0.05);
+  /* Multi-Layer Chromatic Drop Shadows */
+  --shadow-chromatic: 4px 4px 0px var(--cyber-cyan), 8px 8px 0px var(--destiny-magenta), 12px 12px 0px var(--obsidian-velvet);
+  --shadow-chromatic-sm: 3px 3px 0px var(--cyber-cyan), 6px 6px 0px var(--destiny-magenta), 9px 9px 0px var(--obsidian-velvet);
+  --shadow-chromatic-gold: 4px 4px 0px var(--sunburst-gold), 8px 8px 0px var(--destiny-magenta), 12px 12px 0px var(--obsidian-velvet);
+  --shadow-chromatic-lime: 4px 4px 0px var(--heartbeat-lime), 8px 8px 0px var(--aurora-violet), 12px 12px 0px var(--obsidian-velvet);
+  --shadow-hard: 6px 6px 0px var(--obsidian-velvet);
+  --shadow-hard-lg: 10px 10px 0px var(--obsidian-velvet);
 
   /* Typography */
-  --font-sf-pro: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-serif-editorial: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
-  --font-serif-display: 'Playfair Display', Georgia, serif;
-  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --font-cursive: 'Great Vibes', 'Sacramento', cursive;
+  --font-display: 'Syne', 'Playfair Display', sans-serif;
+  --font-headline: 'Playfair Display', Georgia, serif;
+  --font-mono: 'Space Grotesk', 'JetBrains Mono', monospace;
+  --font-sans: 'Space Grotesk', -apple-system, sans-serif;
+  --font-handwriting: 'Caveat', 'Reenie Beanie', cursive;
+  --font-scribble: 'Reenie Beanie', cursive;
+
+  /* Exaggerated Micro-Spring */
+  --spring-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --snap-ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* --------------------------------------------------------------------------
@@ -53,21 +56,28 @@
 
 html {
   scroll-behavior: smooth;
-  color-scheme: dark;
+  background-color: var(--bg-canvas);
+  color: var(--obsidian-velvet);
+  overflow-x: clip;
 }
 
 body {
-  background-color: var(--bg-obsidian);
-  color: #f3f3f7;
+  background-color: var(--bg-canvas);
+  background-image: 
+    radial-gradient(#d6cba6 1.8px, transparent 1.8px),
+    radial-gradient(#d6cba6 1.8px, #FFFDF5 1.8px);
+  background-size: 26px 26px;
+  background-position: 0 0, 13px 13px;
+  color: var(--obsidian-velvet);
   font-family: var(--font-sans);
-  overflow-x: hidden;
+  overflow-x: clip;
   position: relative;
   min-height: 100vh;
-  line-height: 1.6;
+  line-height: 1.55;
 }
 
 ::selection {
-  background: rgba(232, 165, 152, 0.35);
+  background: var(--destiny-magenta);
   color: #ffffff;
 }
 
@@ -76,478 +86,780 @@ button:focus-visible,
 a:focus-visible, 
 input:focus-visible, 
 div[tabindex="0"]:focus-visible {
-  outline: 2px solid var(--rose-blush) !important;
+  outline: 3.5px solid var(--destiny-magenta) !important;
   outline-offset: 3px !important;
-  box-shadow: 0 0 16px rgba(244, 208, 210, 0.5) !important;
+  box-shadow: 4px 4px 0px var(--cyber-cyan), 8px 8px 0px var(--obsidian-velvet) !important;
 }
 
-/* Minimum 44x44px Touch Targets */
 .touch-target-44 {
   min-width: 44px;
   min-height: 44px;
 }
 
 /* --------------------------------------------------------------------------
-   ✨ IntersectionObserver Scroll-Triggered Reveals
+   Holographic Foil & Chrome Lettering Keyframes
    -------------------------------------------------------------------------- */
-.reveal-on-scroll {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.85s var(--ease-smooth), transform 0.85s var(--ease-smooth);
+@keyframes holographicFoil {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-.reveal-stagger > * {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.75s var(--ease-smooth), transform 0.75s var(--ease-smooth);
+.holographic-sheen {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 0, 102, 0.35) 0%,
+    rgba(0, 245, 255, 0.45) 25%,
+    rgba(255, 230, 0, 0.4) 50%,
+    rgba(123, 0, 255, 0.45) 75%,
+    rgba(0, 255, 117, 0.35) 100%
+  );
+  background-size: 300% 300%;
+  animation: holographicFoil 6s ease infinite;
 }
 
-/* Custom Smooth Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+.chrome-title-3d {
+  color: var(--obsidian-velvet);
+  text-shadow: 
+    2px 2px 0px var(--cyber-cyan),
+    4px 4px 0px var(--destiny-magenta),
+    7px 7px 0px var(--obsidian-velvet);
 }
-::-webkit-scrollbar-track {
-  background: var(--bg-obsidian);
+
+.chrome-title-gold {
+  color: #ffffff;
+  text-shadow: 
+    2px 2px 0px var(--sunburst-gold),
+    4px 4px 0px var(--soul-tangerine),
+    7px 7px 0px var(--obsidian-velvet);
 }
-::-webkit-scrollbar-thumb {
-  background: rgba(244, 208, 210, 0.2);
-  border-radius: 9999px;
-  border: 2px solid var(--bg-obsidian);
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(244, 208, 210, 0.4);
+
+/* Checkerboard Border Pattern */
+.checkerboard-strip {
+  height: 12px;
+  background-image: 
+    linear-gradient(45deg, #0D001A 25%, transparent 25%), 
+    linear-gradient(-45deg, #0D001A 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, #0D001A 75%), 
+    linear-gradient(-45deg, transparent 75%, #0D001A 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
 }
 
 /* --------------------------------------------------------------------------
-   Typography Utilities
+   Typography Utility Classes
    -------------------------------------------------------------------------- */
-.font-serif-editorial {
-  font-family: var(--font-serif-editorial);
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.03em;
 }
 
-.font-serif-display {
-  font-family: var(--font-serif-display);
+.font-editorial-massive {
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 8vw, 8rem);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
 }
 
-.font-cursive {
-  font-family: var(--font-cursive);
+.font-editorial {
+  font-family: var(--font-headline);
 }
 
-/* Gradient Text Shimmers */
-.text-gradient-rose {
-  background: linear-gradient(135deg, #ffffff 0%, var(--rose-blush) 40%, var(--coral-dusty) 80%, var(--champagne) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.font-handwriting {
+  font-family: var(--font-handwriting);
 }
 
-.text-gradient-gold {
-  background: linear-gradient(135deg, #ffffff 10%, var(--champagne) 50%, var(--rose-gold) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.font-scribble {
+  font-family: var(--font-scribble);
 }
 
-.text-gradient-subtle {
-  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.7) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.font-mono {
+  font-family: var(--font-mono);
 }
 
 /* --------------------------------------------------------------------------
-   Background Atmospheres & Canvas
+   Neo-Brutalist & Chromatic Buttons
    -------------------------------------------------------------------------- */
-#stardust-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
+.neo-btn {
+  background: #ffffff;
+  border: var(--border-thick);
+  box-shadow: 4px 4px 0px var(--obsidian-velvet);
+  font-family: var(--font-mono);
+  font-weight: 800;
+  text-transform: uppercase;
+  transition: transform 0.2s var(--spring-bounce), box-shadow 0.2s var(--spring-bounce), background-color 0.15s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.neo-btn:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 6px 6px 0px var(--cyber-cyan), 9px 9px 0px var(--obsidian-velvet);
+}
+
+.neo-btn:active {
+  transform: translate(3px, 3px) !important;
+  box-shadow: 1px 1px 0px var(--obsidian-velvet) !important;
+}
+
+.neo-btn-magenta {
+  background: var(--destiny-magenta);
+  color: #ffffff;
+  border: var(--border-thick);
+  box-shadow: 4px 4px 0px var(--cyber-cyan), 7px 7px 0px var(--obsidian-velvet);
+}
+
+.neo-btn-magenta:hover {
+  background: #e60057;
+  transform: translate(-3px, -3px);
+  box-shadow: 6px 6px 0px var(--cyber-cyan), 10px 10px 0px var(--obsidian-velvet);
+}
+
+.neo-btn-magenta:active {
+  transform: translate(3px, 3px) !important;
+  box-shadow: 2px 2px 0px var(--obsidian-velvet) !important;
+}
+
+.neo-btn-cyan {
+  background: var(--cyber-cyan);
+  color: var(--obsidian-velvet);
+  border: var(--border-thick);
+  box-shadow: 4px 4px 0px var(--destiny-magenta), 7px 7px 0px var(--obsidian-velvet);
+}
+
+.neo-btn-cyan:hover {
+  background: #00dce6;
+  transform: translate(-3px, -3px);
+  box-shadow: 6px 6px 0px var(--destiny-magenta), 10px 10px 0px var(--obsidian-velvet);
+}
+
+.neo-btn-gold {
+  background: var(--sunburst-gold);
+  color: var(--obsidian-velvet);
+  border: var(--border-thick);
+  box-shadow: 4px 4px 0px var(--destiny-magenta), 7px 7px 0px var(--obsidian-velvet);
+}
+
+.neo-btn-gold:hover {
+  background: #edd500;
+  transform: translate(-3px, -3px);
+  box-shadow: 6px 6px 0px var(--destiny-magenta), 10px 10px 0px var(--obsidian-velvet);
+}
+
+.neo-btn-lime {
+  background: var(--heartbeat-lime);
+  color: var(--obsidian-velvet);
+  border: var(--border-thick);
+  box-shadow: 4px 4px 0px var(--aurora-violet), 7px 7px 0px var(--obsidian-velvet);
+}
+
+/* --------------------------------------------------------------------------
+   Tri-Color Opposing Infinite Marquees
+   -------------------------------------------------------------------------- */
+.marquee-container {
+  overflow: hidden;
+  user-select: none;
+  white-space: nowrap;
+  display: flex;
+  position: relative;
   width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 0;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 }
 
-.ambient-orb {
+.marquee-band {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 2rem;
+  padding: 0.85rem 1.25rem;
+  animation: marqueeScroll 22s linear infinite;
+}
+
+.marquee-band-reverse {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 2rem;
+  padding: 0.85rem 1.25rem;
+  animation: marqueeScrollReverse 24s linear infinite;
+}
+
+.marquee-band-slow {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 2rem;
+  padding: 0.85rem 1.25rem;
+  animation: marqueeScroll 28s linear infinite;
+}
+
+.marquee-container:hover .marquee-band,
+.marquee-container:hover .marquee-band-reverse,
+.marquee-container:hover .marquee-band-slow {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeScroll {
+  from { transform: translateX(0%); }
+  to { transform: translateX(-100%); }
+}
+
+@keyframes marqueeScrollReverse {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0%); }
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* --------------------------------------------------------------------------
+   Tactile Soulmate Decals & Washi Tapes
+   -------------------------------------------------------------------------- */
+.sticker-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.95rem;
+  border-radius: 9999px;
+  border: 2.8px solid var(--obsidian-velvet);
+  box-shadow: 3px 3px 0px var(--obsidian-velvet);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: relative;
+  user-select: none;
+  transition: transform 0.25s var(--spring-bounce), box-shadow 0.25s var(--spring-bounce);
+}
+
+.sticker-badge:hover {
+  transform: scale(1.12) rotate(-3deg);
+  box-shadow: 4px 4px 0px var(--cyber-cyan), 6px 6px 0px var(--obsidian-velvet);
+}
+
+.sticker-stamp {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 0.85rem;
+  border: 3px dashed var(--destiny-magenta);
+  border-radius: 10px;
+  color: var(--destiny-magenta);
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1.15;
+  background: rgba(255, 0, 102, 0.08);
+  user-select: none;
+  transition: transform 0.2s var(--spring-bounce);
+}
+
+.sticker-stamp:hover {
+  transform: scale(1.1) rotate(4deg);
+}
+
+/* Speech Bubble Callouts */
+.soulmate-speech-bubble {
+  position: relative;
+  background: #ffffff;
+  border: 2.5px solid var(--obsidian-velvet);
+  box-shadow: 3px 3px 0px var(--obsidian-velvet);
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-family: var(--font-handwriting);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--destiny-magenta);
+  z-index: 25;
+}
+
+.soulmate-speech-bubble::after {
+  content: '';
   position: absolute;
+  bottom: -9px;
+  left: 20px;
+  border-width: 9px 8px 0;
+  border-style: solid;
+  border-color: #ffffff transparent;
+  display: block;
+  width: 0;
+}
+
+.soulmate-speech-bubble::before {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 18px;
+  border-width: 11px 10px 0;
+  border-style: solid;
+  border-color: var(--obsidian-velvet) transparent;
+  display: block;
+  width: 0;
+}
+
+/* Washi Tape Strips */
+.washi-tape-strip {
+  position: absolute;
+  height: 26px;
+  width: 105px;
+  z-index: 25;
+  border: 1.5px solid rgba(13, 0, 26, 0.3);
+  box-shadow: 0 2px 6px rgba(13, 0, 26, 0.15);
+  opacity: 0.95;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #0D001A;
+  letter-spacing: 0.06em;
+}
+
+.washi-tape-strip.tape-pink {
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 0, 102, 0.85),
+    rgba(255, 0, 102, 0.85) 9px,
+    rgba(255, 133, 179, 0.85) 9px,
+    rgba(255, 133, 179, 0.85) 18px
+  );
+  color: #ffffff;
+}
+
+.washi-tape-strip.tape-cyan {
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(0, 245, 255, 0.9),
+    rgba(0, 245, 255, 0.9) 7px,
+    rgba(255, 255, 255, 0.9) 7px,
+    rgba(255, 255, 255, 0.9) 14px
+  );
+}
+
+.washi-tape-strip.tape-gold {
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 230, 0, 0.9),
+    rgba(255, 230, 0, 0.9) 8px,
+    rgba(255, 77, 0, 0.85) 8px,
+    rgba(255, 77, 0, 0.85) 16px
+  );
+}
+
+.washi-tape-strip.tape-lime {
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(0, 255, 117, 0.85),
+    rgba(0, 255, 117, 0.85) 8px,
+    rgba(123, 0, 255, 0.8) 8px,
+    rgba(123, 0, 255, 0.8) 16px
+  );
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   Interactive Draggable Soulmate Decals
+   -------------------------------------------------------------------------- */
+.draggable-decal {
+  position: absolute;
+  cursor: grab;
+  user-select: none;
+  z-index: 40;
+  transition: transform 0.15s var(--spring-bounce);
+  touch-action: none;
+}
+
+.draggable-decal:active {
+  cursor: grabbing;
+  transform: scale(1.18) rotate(6deg) !important;
+  z-index: 50 !important;
+}
+
+/* --------------------------------------------------------------------------
+   3D Tilt Holographic Polaroid Wall
+   -------------------------------------------------------------------------- */
+.polaroid-frame {
+  background: #ffffff;
+  padding: 12px 12px 40px 12px;
+  border: var(--border-thick);
+  box-shadow: var(--shadow-chromatic-sm);
+  transition: transform 0.35s var(--spring-bounce), box-shadow 0.35s var(--spring-bounce);
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+.polaroid-frame:hover {
+  transform: translateY(-8px) rotate(0deg) scale(1.03) !important;
+  box-shadow: var(--shadow-chromatic) !important;
+  z-index: 35 !important;
+}
+
+.polaroid-caption {
+  position: absolute;
+  bottom: 8px;
+  left: 12px;
+  right: 12px;
+  font-family: var(--font-handwriting);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--obsidian-velvet);
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Film Sprocket Track */
+.film-sprocket-track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 12px;
+  display: flex;
+  justify-content: space-around;
+  pointer-events: none;
+}
+
+.film-sprocket-track.track-top { top: 3px; }
+.film-sprocket-track.track-bottom { bottom: 3px; }
+
+.sprocket-hole {
+  width: 10px;
+  height: 7px;
+  background: #ffffff;
+  border-radius: 2px;
+}
+
+/* Barcode */
+.barcode-strip {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  background: #ffffff;
+  border: 2px solid var(--obsidian-velvet);
+  padding: 3px 6px;
+  border-radius: 3px;
+  box-shadow: 2px 2px 0px var(--obsidian-velvet);
+  user-select: none;
+}
+
+.barcode-lines {
+  height: 18px;
+  width: 72px;
+  background: repeating-linear-gradient(
+    90deg,
+    #0D001A,
+    #0D001A 2px,
+    transparent 2px,
+    transparent 4px,
+    #0D001A 4px,
+    #0D001A 7px,
+    transparent 7px,
+    transparent 9px,
+    #0D001A 9px,
+    #0D001A 10px
+  );
+}
+
+/* --------------------------------------------------------------------------
+   "SOUL TRACK" CLEAR CASSETTE DECK (12-BAR STEREO VISUALIZER)
+   -------------------------------------------------------------------------- */
+.cassette-player-box {
+  background: #ffffff;
+  border: var(--border-thick);
+  box-shadow: 3px 3px 0px var(--cyber-cyan), 6px 6px 0px var(--obsidian-velvet);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.45rem 0.85rem;
+  position: relative;
+  user-select: none;
+}
+
+.cassette-reels-window {
+  width: 52px;
+  height: 30px;
+  background: var(--obsidian-velvet);
+  border-radius: 6px;
+  border: 2px solid var(--obsidian-velvet);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 4px;
+}
+
+.cassette-spoke {
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
-  filter: blur(120px);
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.35;
-  animation: orbFloat 18s ease-in-out infinite alternate;
+  border: 2px dashed #ffffff;
+  background: var(--destiny-magenta);
 }
 
-.ambient-orb-rose {
-  background: radial-gradient(circle, rgba(232, 165, 152, 0.4) 0%, rgba(18, 13, 28, 0) 70%);
+.cassette-spinning .cassette-spoke {
+  animation: spinCassette 1.6s linear infinite;
 }
 
-.ambient-orb-purple {
-  background: radial-gradient(circle, rgba(142, 68, 173, 0.25) 0%, rgba(18, 13, 28, 0) 70%);
+@keyframes spinCassette {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-.ambient-orb-champagne {
-  background: radial-gradient(circle, rgba(252, 234, 222, 0.25) 0%, rgba(18, 13, 28, 0) 70%);
+/* 12-Bar Multi-Color Stereo Equalizer */
+.eq-bar {
+  width: 3.5px;
+  height: 4px;
+  border-radius: 2px;
+  transition: height 0.12s ease;
 }
 
-@keyframes orbFloat {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(30px, -40px) scale(1.12);
-  }
-  100% {
-    transform: translate(-30px, 30px) scale(0.95);
-  }
-}
+.eq-bar:nth-child(1), .eq-bar:nth-child(12) { background: var(--cyber-cyan); }
+.eq-bar:nth-child(2), .eq-bar:nth-child(11) { background: var(--destiny-magenta); }
+.eq-bar:nth-child(3), .eq-bar:nth-child(10) { background: var(--sunburst-gold); }
+.eq-bar:nth-child(4), .eq-bar:nth-child(9)  { background: var(--heartbeat-lime); }
+.eq-bar:nth-child(5), .eq-bar:nth-child(8)  { background: var(--aurora-violet); }
+.eq-bar:nth-child(6), .eq-bar:nth-child(7)  { background: var(--soul-tangerine); }
 
-/* Subtle Vignette Overlay */
-.vignette-overlay {
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at 50% 50%, transparent 60%, rgba(6, 6, 12, 0.8) 100%);
-  pointer-events: none;
-  z-index: 1;
-}
+.cassette-spinning .eq-bar:nth-child(1)  { animation: eqJump 0.5s ease-in-out infinite alternate; }
+.cassette-spinning .eq-bar:nth-child(2)  { animation: eqJump 0.7s ease-in-out infinite alternate 0.05s; }
+.cassette-spinning .eq-bar:nth-child(3)  { animation: eqJump 0.6s ease-in-out infinite alternate 0.1s; }
+.cassette-spinning .eq-bar:nth-child(4)  { animation: eqJump 0.8s ease-in-out infinite alternate 0.15s; }
+.cassette-spinning .eq-bar:nth-child(5)  { animation: eqJump 0.55s ease-in-out infinite alternate 0.08s; }
+.cassette-spinning .eq-bar:nth-child(6)  { animation: eqJump 0.75s ease-in-out infinite alternate 0.2s; }
+.cassette-spinning .eq-bar:nth-child(7)  { animation: eqJump 0.65s ease-in-out infinite alternate 0.12s; }
+.cassette-spinning .eq-bar:nth-child(8)  { animation: eqJump 0.85s ease-in-out infinite alternate 0.18s; }
+.cassette-spinning .eq-bar:nth-child(9)  { animation: eqJump 0.5s ease-in-out infinite alternate 0.22s; }
+.cassette-spinning .eq-bar:nth-child(10) { animation: eqJump 0.7s ease-in-out infinite alternate 0.07s; }
+.cassette-spinning .eq-bar:nth-child(11) { animation: eqJump 0.6s ease-in-out infinite alternate 0.14s; }
+.cassette-spinning .eq-bar:nth-child(12) { animation: eqJump 0.8s ease-in-out infinite alternate 0.03s; }
 
-/* --------------------------------------------------------------------------
-   Glassmorphism Containers
-   -------------------------------------------------------------------------- */
-.glass-panel {
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--glass-shadow);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.glass-panel:hover {
-  border-color: var(--glass-border-hover);
-  box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.7), 0 0 35px 4px rgba(244, 208, 210, 0.12);
-}
-
-.glass-pill {
-  background: rgba(22, 18, 34, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(244, 208, 210, 0.15);
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.4);
-}
-
-.animate-fadeIn {
-  animation: fadeInMenu 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes fadeInMenu {
-  from {
-    opacity: 0;
-    transform: translateY(8px) scale(0.97);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+@keyframes eqJump {
+  0% { height: 4px; }
+  100% { height: 18px; }
 }
 
 /* --------------------------------------------------------------------------
-   📱 iPad Lock Screen PIN & Keypad Styles
+   SOULMATE SOUNDTRACK SELECTOR & CASSETTE PLAYLIST
    -------------------------------------------------------------------------- */
-.pin-dot {
+.soundtrack-track-card {
+  background: #ffffff;
+  border: 2.5px solid var(--obsidian-velvet);
+  border-radius: 14px;
+  box-shadow: 3px 3px 0px var(--obsidian-velvet);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.soundtrack-track-card * {
+  pointer-events: none;
+}
+
+.soundtrack-track-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px var(--destiny-magenta);
+}
+
+.soundtrack-track-card:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px var(--obsidian-velvet);
+}
+
+.soundtrack-track-card.is-active-track {
+  border-color: var(--destiny-magenta);
+  background: #FFF5F9;
+  box-shadow: 3px 3px 0px var(--cyber-cyan), 6px 6px 0px var(--destiny-magenta);
+}
+
+.soundtrack-track-card.is-active-track .track-disc-icon {
+  animation: spinCassette 2s linear infinite;
+  color: var(--destiny-magenta);
+}
+
+.soundtrack-scroll-list::-webkit-scrollbar {
+  width: 6px;
+}
+.soundtrack-scroll-list::-webkit-scrollbar-track {
+  background: #f1ecdf;
+  border-radius: 4px;
+}
+.soundtrack-scroll-list::-webkit-scrollbar-thumb {
+  background: var(--destiny-magenta);
+  border-radius: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   RED THREAD OF FATE & STATIONERY LOVE LETTER
+   -------------------------------------------------------------------------- */
+.thread-of-fate-path {
+  stroke-dasharray: 8 6;
+  animation: dashThread 20s linear infinite;
+}
+
+@keyframes dashThread {
+  to { stroke-dashoffset: -1000; }
+}
+
+.lined-stationery-paper {
+  background-color: #ffffff;
+  background-image: 
+    linear-gradient(90deg, transparent 54px, rgba(255, 0, 102, 0.45) 54px, rgba(255, 0, 102, 0.45) 56px, transparent 56px),
+    repeating-linear-gradient(transparent, transparent 27px, #e8dfc8 27px, #e8dfc8 28px);
+  background-size: 100% 28px;
+  border: var(--border-thick);
+  box-shadow: var(--shadow-chromatic);
+  padding: 40px 32px 40px 72px;
+  position: relative;
+  line-height: 28px;
+  font-family: var(--font-handwriting);
+  font-size: 1.45rem;
+  color: var(--obsidian-velvet);
+}
+
+.lined-stationery-paper::before {
+  content: "";
+  position: absolute;
+  top: 14px;
+  left: 18px;
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  border: 1.5px solid rgba(255, 255, 255, 0.4);
-  background: transparent;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  background: var(--bg-canvas);
+  border: 2px solid var(--obsidian-velvet);
+  box-shadow: 0 56px 0 -2px var(--bg-canvas), 0 56px 0 0px var(--obsidian-velvet),
+              0 112px 0 -2px var(--bg-canvas), 0 112px 0 0px var(--obsidian-velvet);
 }
 
-.pin-dot.filled {
-  background: #ffffff;
-  border-color: #ffffff;
-  box-shadow: 0 0 14px rgba(255, 255, 255, 0.9);
-  transform: scale(1.15);
-}
-
-.pin-dot.error {
-  background: #e63946;
-  border-color: #e63946;
-  box-shadow: 0 0 14px rgba(230, 57, 70, 0.9);
-}
-
-.animate-shake {
-  animation: shakeKeypad 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-}
-
-@keyframes shakeKeypad {
-  10%, 90% { transform: translate3d(-3px, 0, 0); }
-  20%, 80% { transform: translate3d(5px, 0, 0); }
-  30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
-  40%, 60% { transform: translate3d(6px, 0, 0); }
-}
-
-.ipad-key {
-  width: 72px;
-  height: 72px;
+/* Embossed Golden Heart-Lock Wax Seal */
+.aesthetic-wax-seal {
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: radial-gradient(circle at 35% 35%, #ffe600, #ffb800 55%, #c47d00 100%);
+  border: 3.5px solid var(--obsidian-velvet);
+  box-shadow: 4px 4px 0px var(--destiny-magenta), 7px 7px 0px var(--obsidian-velvet);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.25s var(--spring-bounce), box-shadow 0.25s var(--spring-bounce);
+}
+
+.aesthetic-wax-seal:hover {
+  transform: scale(1.15) rotate(8deg);
+  box-shadow: 6px 6px 0px var(--destiny-magenta), 10px 10px 0px var(--obsidian-velvet);
+}
+
+.aesthetic-wax-seal:active {
+  transform: scale(0.95) translate(3px, 3px);
+  box-shadow: 2px 2px 0px var(--obsidian-velvet);
+}
+
+/* --------------------------------------------------------------------------
+   SOULMATE DNA & HEARTBEAT LOCKSCREEN
+   -------------------------------------------------------------------------- */
+.y2k-keypad-btn {
+  background: #ffffff;
+  border: 3px solid var(--obsidian-velvet);
+  box-shadow: 3px 3px 0px var(--cyber-cyan), 6px 6px 0px var(--obsidian-velvet);
+  border-radius: 18px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
-  transition: all 0.12s ease;
+  height: 66px;
+  transition: transform 0.1s var(--spring-bounce), box-shadow 0.1s var(--spring-bounce), background-color 0.15s ease;
   user-select: none;
-  touch-action: manipulation;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
 }
 
-.ipad-key:active {
-  background: rgba(255, 255, 255, 0.35);
-  transform: scale(0.92);
+.y2k-keypad-btn:hover {
+  background: var(--bg-cream);
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0px var(--destiny-magenta), 8px 8px 0px var(--obsidian-velvet);
 }
 
-@media (max-width: 480px) {
-  .ipad-key {
-    width: 64px;
-    height: 64px;
-  }
+.y2k-keypad-btn:active {
+  transform: translate(3px, 3px) !important;
+  box-shadow: 1px 1px 0px var(--obsidian-velvet) !important;
+  background: var(--heartbeat-lime) !important;
 }
 
-/* Authentic Official Apple iPadOS Lock Screen Typography */
-.apple-font {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+/* PIN Indicator Dots */
+.pin-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2.5px solid var(--obsidian-velvet);
+  background: #ffffff;
+  transition: all 0.2s var(--spring-bounce);
 }
 
-.apple-clock-time {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-  font-weight: 300 !important;
-  letter-spacing: -0.04em !important;
-  font-feature-settings: "tnum" 1;
-  font-variant-numeric: tabular-nums;
-  line-height: 1;
+.pin-dot.filled {
+  background: var(--destiny-magenta);
+  transform: scale(1.2);
+  box-shadow: 2px 2px 0px var(--cyber-cyan), 4px 4px 0px var(--obsidian-velvet);
 }
 
-.apple-clock-date {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-  font-weight: 500 !important;
-  letter-spacing: -0.01em !important;
+.pin-dot.error {
+  background: #ff0033;
+  animation: shake 0.4s ease;
 }
 
-.apple-status-text {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-  font-weight: 600 !important;
-  letter-spacing: -0.01em !important;
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
 }
 
-.apple-passcode-title {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.01em !important;
-}
-
-.apple-keypad-number {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-  font-weight: 300 !important;
-  line-height: 1 !important;
-}
-
-.apple-keypad-subletters {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.16em !important;
-}
-
-.apple-cancel-btn {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-  font-weight: 400 !important;
-}
-
-/* Home Bar Indicator & Text Shimmer */
-.ios-home-bar {
-  width: 140px;
-  height: 5px;
-  background: rgba(255, 255, 255, 0.85);
-  border-radius: 9999px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  animation: pulseBar 2s infinite ease-in-out;
-}
-
-@keyframes pulseBar {
-  0%, 100% { opacity: 0.8; transform: translateY(0); }
-  50% { opacity: 1; transform: translateY(-4px); }
-}
-
-.shimmer-text {
-  background: linear-gradient(90deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0.4) 100%);
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmerSweep 2.8s infinite linear;
-}
-
-@keyframes shimmerSweep {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+.animate-shake {
+  animation: shake 0.4s ease;
 }
 
 /* --------------------------------------------------------------------------
-   📱 ADAPTIVE PHONE & IPAD LAYOUTS (Portrait & Landscape Support)
-   -------------------------------------------------------------------------- */
-#orientation-guard {
-  display: none !important;
-}
-
-/* Compact Landscape Phone Adaptation (Height < 520px) */
-@media screen and (max-height: 520px) and (orientation: landscape) {
-  #ipad-wallpaper-view {
-    padding: 0.75rem 1.5rem !important;
-  }
-  #ipad-cover-time {
-    font-size: 3.25rem !important;
-  }
-  #ipad-cover-date {
-    font-size: 0.85rem !important;
-    margin-top: 0.15rem !important;
-  }
-  #ipad-passcode-view {
-    padding: 0.5rem 1.5rem !important;
-  }
-  #ipad-passcode-view .my-auto {
-    margin-top: auto !important;
-    margin-bottom: auto !important;
-  }
-  .ipad-key {
-    width: 44px !important;
-    height: 44px !important;
-  }
-  .ipad-key .apple-keypad-number {
-    font-size: 1.25rem !important;
-  }
-  .ipad-key .apple-keypad-subletters {
-    display: none !important;
-  }
-  #ipad-pin-dots {
-    margin-bottom: 0.5rem !important;
-    gap: 0.5rem !important;
-  }
-  .pin-dot {
-    width: 10px !important;
-    height: 10px !important;
-  }
-}
-
-/* Standard Mobile Phone Portrait Adaptation (Width <= 640px) */
-@media screen and (max-width: 640px) and (min-height: 521px) {
-  #ipad-cover-time {
-    font-size: 4.75rem !important;
-  }
-  #ipad-cover-date {
-    font-size: 0.95rem !important;
-  }
-  .ipad-key {
-    width: 60px !important;
-    height: 60px !important;
-  }
-  .ipad-key .apple-keypad-number {
-    font-size: 1.65rem !important;
-  }
-}
-
-/* iPad / Tablet / Desktop Spacious Layout (Width > 640px & Height > 520px) */
-@media screen and (min-width: 641px) and (min-height: 521px) {
-  #ipad-cover-time {
-    font-size: 6.5rem !important;
-  }
-  .ipad-key {
-    width: 72px !important;
-    height: 72px !important;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   3D Tilt & Parallax Utilities
-   -------------------------------------------------------------------------- */
-.tilt-card {
-  transform-style: preserve-3d;
-  transition: transform 0.15s ease-out, box-shadow 0.3s ease;
-  will-change: transform;
-  position: relative;
-}
-
-.tilt-glare {
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  opacity: 0;
-  mix-blend-mode: overlay;
-  transition: opacity 0.3s ease;
-  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.35) 0%, transparent 60%);
-  z-index: 10;
-}
-
-/* --------------------------------------------------------------------------
-   Polaroid Cards & Memory Wall
-   -------------------------------------------------------------------------- */
-.polaroid-card {
-  background: linear-gradient(175deg, #181524 0%, #12101b 100%);
-  border: 1px solid rgba(244, 208, 210, 0.18);
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 20px 1px rgba(232, 165, 152, 0.08);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.3s ease;
-  transform-origin: center center;
-  position: relative;
-}
-
-.polaroid-card:hover {
-  transform: translateY(-8px) scale(1.03) !important;
-  z-index: 20;
-  border-color: rgba(244, 208, 210, 0.45);
-  box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.85), 0 0 35px 4px rgba(244, 208, 210, 0.25);
-}
-
-/* Washi Tape Accent */
-.washi-tape {
-  position: absolute;
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%) rotate(-1deg);
-  width: 90px;
-  height: 24px;
-  background: rgba(244, 208, 210, 0.25);
-  backdrop-filter: blur(4px);
-  border-left: 2px dashed rgba(255, 255, 255, 0.3);
-  border-right: 2px dashed rgba(255, 255, 255, 0.3);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  z-index: 5;
-}
-
-.washi-tape.gold {
-  background: rgba(246, 216, 174, 0.3);
-}
-
-.washi-tape.blush {
-  background: rgba(232, 165, 152, 0.35);
-}
-
-/* --------------------------------------------------------------------------
-   Bento Grid & Interactive Flip Cards
+   Bento Flip Cards
    -------------------------------------------------------------------------- */
 .bento-flip-card {
   perspective: 1200px;
-  min-height: 260px;
-  cursor: pointer;
 }
 
 .bento-flip-inner {
   position: relative;
   width: 100%;
   height: 100%;
-  text-align: left;
-  transition: transform 0.8s var(--ease-spring);
+  transition: transform 0.6s var(--snap-ease);
   transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d;
 }
 
 .bento-flip-card.is-flipped .bento-flip-inner {
@@ -558,857 +870,127 @@ div[tabindex="0"]:focus-visible {
 .bento-card-back {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  border-radius: 1.25rem;
-  transform: translate3d(0, 0, 0);
-  -webkit-transform: translate3d(0, 0, 0);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-chromatic-sm);
+  border-radius: 22px;
+  background: #ffffff;
 }
 
 .bento-card-back {
-  transform: rotateY(180deg) translate3d(0, 0, 0);
-  -webkit-transform: rotateY(180deg) translate3d(0, 0, 0);
-  background: linear-gradient(145deg, #1c162e 0%, #110d1f 100%);
-  border: 1px solid rgba(244, 208, 210, 0.3);
-  box-shadow: 0 0 35px 2px rgba(232, 165, 152, 0.15);
+  transform: rotateY(180deg);
+  background: var(--bg-cream);
 }
 
-/* Scratch / Mist Reveal Card */
+/* Scratch / Mist Overlay */
 .scratch-overlay {
   position: absolute;
   inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(135deg, rgba(25, 20, 38, 0.96) 0%, rgba(15, 12, 25, 0.98) 100%);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.6s var(--ease-smooth), transform 0.6s var(--ease-smooth);
+  transition: opacity 0.4s var(--snap-ease), transform 0.4s var(--snap-ease);
   z-index: 10;
-  cursor: pointer;
 }
 
 .scratch-overlay.revealed {
   opacity: 0;
   pointer-events: none;
-  transform: scale(0.95);
+  transform: scale(1.05);
 }
 
 /* --------------------------------------------------------------------------
-   Interactive Love Letter & Stationary
-   -------------------------------------------------------------------------- */
-.parchment-letter {
-  background: radial-gradient(ellipse at 50% 30%, #1c172b 0%, #110e1d 100%);
-  border: 1px solid rgba(244, 208, 210, 0.25);
-  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9), 0 0 40px 3px rgba(244, 208, 210, 0.1);
-  position: relative;
-}
-
-.parchment-letter::before {
-  content: '';
-  position: absolute;
-  inset: 8px;
-  border: 1px solid rgba(244, 208, 210, 0.08);
-  border-radius: inherit;
-  pointer-events: none;
-}
-
-/* --------------------------------------------------------------------------
-   Luxury 3D Artisan Wax Seal & Aesthetic Glowing Heart
-   -------------------------------------------------------------------------- */
-.seal-halo-glow {
-  position: absolute;
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(230, 57, 70, 0.35) 0%, rgba(244, 208, 210, 0.15) 50%, transparent 70%);
-  filter: blur(12px);
-  animation: sealPulseGlow 3s ease-in-out infinite alternate;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.seal-stardust-orbit {
-  position: absolute;
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  border: 1px dashed rgba(244, 208, 210, 0.25);
-  animation: rotateOrbit 20s linear infinite;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.aesthetic-wax-seal,
-.wax-seal-btn {
-  position: relative;
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 32%, #f04353 0%, #b31624 45%, #6a0b14 85%, #3d0308 100%);
-  box-shadow: 
-    0 18px 40px -8px rgba(0, 0, 0, 0.85),
-    0 0 35px 2px rgba(230, 57, 70, 0.5),
-    inset 0 3px 6px rgba(255, 255, 255, 0.45),
-    inset 0 -4px 8px rgba(0, 0, 0, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  border: 2px solid rgba(252, 234, 222, 0.3);
-  transition: all 0.4s var(--ease-spring);
-  z-index: 5;
-  outline: none;
-}
-
-.aesthetic-wax-seal:hover,
-.wax-seal-btn:hover {
-  transform: scale(1.08) rotate(3deg);
-  box-shadow: 
-    0 25px 50px -10px rgba(0, 0, 0, 0.9),
-    0 0 45px 8px rgba(230, 57, 70, 0.75),
-    0 0 25px rgba(244, 208, 210, 0.6),
-    inset 0 3px 8px rgba(255, 255, 255, 0.6);
-  border-color: rgba(252, 234, 222, 0.6);
-}
-
-.aesthetic-wax-seal:active,
-.wax-seal-btn:active {
-  transform: scale(0.95);
-}
-
-.aesthetic-wax-seal.is-cracking {
-  animation: sealFracture 0.6s var(--ease-smooth) forwards;
-}
-
-@keyframes sealFracture {
-  0% { transform: scale(1) rotate(0deg); opacity: 1; filter: brightness(1); }
-  25% { transform: scale(1.18) rotate(-6deg); filter: brightness(1.5); box-shadow: 0 0 60px rgba(230, 57, 70, 1); }
-  60% { transform: scale(0.85) rotate(14deg); opacity: 0.75; }
-  100% { transform: scale(0.3) rotate(30deg); opacity: 0; pointer-events: none; }
-}
-
-/* Organic Scalloped Wax Border */
-.wax-scallop-border {
-  position: absolute;
-  inset: -3px;
-  border-radius: 50%;
-  background: transparent;
-  border: 2px solid rgba(244, 208, 210, 0.15);
-  pointer-events: none;
-}
-
-/* Inner Stamping Chamber */
-.wax-inner-core {
-  width: 76px;
-  height: 76px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 40% 40%, #9e1420 0%, #5c070e 80%, #3e0307 100%);
-  border: 1.5px solid rgba(252, 234, 222, 0.35);
-  box-shadow: 
-    inset 0 4px 8px rgba(0, 0, 0, 0.75),
-    0 1px 3px rgba(255, 255, 255, 0.25);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Gold Monogram Lettering Ring */
-.wax-text-ring {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  animation: rotateOrbit 30s linear infinite;
-  transform-origin: center;
-}
-
-.wax-rim-text {
-  fill: #fceade;
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 8px;
-  font-weight: 700;
-  letter-spacing: 2.2px;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
-}
-
-/* Central 3D Heart */
-.wax-heart-center {
-  position: relative;
-  z-index: 5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
-}
-
-/* Glossy Specular Sheen */
-.wax-light-sheen {
-  position: absolute;
-  top: 4px;
-  left: 12px;
-  width: 32px;
-  height: 18px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 80%);
-  transform: rotate(-35deg);
-  pointer-events: none;
-  z-index: 6;
-}
-
-@keyframes sealPulseGlow {
-  0% {
-    transform: scale(0.9);
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(1.2);
-    opacity: 0.9;
-  }
-}
-
-@keyframes rotateOrbit {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.animate-heartbeat-soft {
-  animation: heartbeatSoft 2s ease-in-out infinite;
-}
-
-@keyframes heartbeatSoft {
-  0%, 100% {
-    transform: scale(1);
-    filter: drop-shadow(0 0 6px rgba(255, 180, 190, 0.6));
-  }
-  25% {
-    transform: scale(1.12);
-    filter: drop-shadow(0 0 14px rgba(255, 180, 190, 0.9));
-  }
-  35% {
-    transform: scale(1.02);
-  }
-  45% {
-    transform: scale(1.16);
-    filter: drop-shadow(0 0 18px rgba(255, 200, 210, 1));
-  }
-}
-
-/* Typewriter Caret */
-.typewriter-cursor {
-  display: inline-block;
-  width: 2px;
-  height: 1.1em;
-  background-color: var(--rose-blush);
-  vertical-align: middle;
-  margin-left: 2px;
-  animation: cursorBlink 0.9s infinite;
-}
-
-@keyframes cursorBlink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-/* --------------------------------------------------------------------------
-   Audio Equalizer Visualizer Bars
-   -------------------------------------------------------------------------- */
-.eq-bar {
-  width: 3px;
-  background: linear-gradient(to top, var(--coral-dusty), var(--rose-blush), var(--champagne));
-  border-radius: 9999px;
-  transition: height 0.08s ease;
-  height: 4px;
-}
-
-.is-playing .eq-bar:nth-child(1) { animation: eqPulse 1.2s infinite ease-in-out 0.1s; }
-.is-playing .eq-bar:nth-child(2) { animation: eqPulse 1.4s infinite ease-in-out 0.3s; }
-.is-playing .eq-bar:nth-child(3) { animation: eqPulse 0.9s infinite ease-in-out 0.2s; }
-.is-playing .eq-bar:nth-child(4) { animation: eqPulse 1.5s infinite ease-in-out 0.4s; }
-.is-playing .eq-bar:nth-child(5) { animation: eqPulse 1.1s infinite ease-in-out 0.25s; }
-.is-playing .eq-bar:nth-child(6) { animation: eqPulse 1.3s infinite ease-in-out 0.15s; }
-
-@keyframes eqPulse {
-  0%, 100% { height: 4px; }
-  50% { height: 22px; }
-}
-
-/* --------------------------------------------------------------------------
-   Floating Heart Bursts Animation
-   -------------------------------------------------------------------------- */
-.floating-heart-burst {
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  user-select: none;
-  animation: heartFloatUp 1.4s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
-}
-
-@keyframes heartFloatUp {
-  0% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(0.4) rotate(0deg);
-  }
-  50% {
-    opacity: 0.9;
-    transform: translate(calc(-50% + var(--dx, 0px)), calc(-50% - 60px)) scale(1.3) rotate(var(--rot, 15deg));
-  }
-  100% {
-    opacity: 0;
-    transform: translate(calc(-50% + var(--dx, 0px) * 1.5), calc(-50% - 130px)) scale(0.9) rotate(var(--rot, 30deg));
-  }
-}
-
-/* Screen Celestial Flash Effect */
-.celestial-flash {
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(244, 208, 210, 0.45) 0%, rgba(255, 230, 240, 0.1) 70%, transparent 100%);
-  pointer-events: none;
-  z-index: 9998;
-  opacity: 0;
-  transition: opacity 0.8s ease;
-}
-
-.celestial-flash.active {
-  opacity: 1;
-}
-
-/* --------------------------------------------------------------------------
-   Lightbox Spring Modal
+   Modals & Flash
    -------------------------------------------------------------------------- */
 .lightbox-modal {
   opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.35s ease, visibility 0.35s ease;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
 }
 
 .lightbox-modal.is-open {
   opacity: 1;
-  visibility: visible;
+  pointer-events: auto;
 }
 
 .lightbox-modal .modal-content {
-  transform: scale(0.92) translateY(20px);
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform: scale(0.95);
+  transition: transform 0.3s var(--spring-bounce);
 }
 
 .lightbox-modal.is-open .modal-content {
-  transform: scale(1) translateY(0);
+  transform: scale(1);
 }
 
-/* --------------------------------------------------------------------------
-   Pulsing Glow Badges & Buttons
-   -------------------------------------------------------------------------- */
-.btn-celestial {
-  background: linear-gradient(135deg, rgba(232, 165, 152, 0.25) 0%, rgba(244, 208, 210, 0.15) 100%);
-  border: 1px solid rgba(244, 208, 210, 0.35);
-  box-shadow: 0 10px 30px -5px rgba(232, 165, 152, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-.btn-celestial::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
-  transform: skewX(-25deg);
-  transition: left 0.75s ease;
-}
-
-.btn-celestial:hover {
-  transform: translateY(-2px);
-  border-color: rgba(244, 208, 210, 0.6);
-  box-shadow: 0 15px 40px -5px rgba(232, 165, 152, 0.5), 0 0 25px 3px rgba(244, 208, 210, 0.3);
-}
-
-.btn-celestial:hover::before {
-  left: 150%;
-}
-
-.btn-celestial:active {
-  transform: translateY(0) scale(0.98);
-}
-
-/* --------------------------------------------------------------------------
-   Storytelling Spotlight Chapters
-   -------------------------------------------------------------------------- */
-.spotlight-card {
-  background: linear-gradient(145deg, rgba(26, 20, 42, 0.7) 0%, rgba(14, 11, 24, 0.85) 100%);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(244, 208, 210, 0.2);
-  box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.8), 0 0 40px 2px rgba(232, 165, 152, 0.12);
-  position: relative;
-  overflow: hidden;
-}
-
-.spotlight-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 250px;
-  height: 250px;
-  background: radial-gradient(circle, rgba(232, 165, 152, 0.15) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-/* --------------------------------------------------------------------------
-   Dynamic Masonry 42-Item Gallery Grid
-   -------------------------------------------------------------------------- */
-.gallery-grid,
-#media-gallery-grid {
-  column-fill: balance;
-}
-
-/* Media Item Card Styles */
-.media-card {
-  break-inside: avoid;
-  page-break-inside: avoid;
-  -webkit-column-break-inside: avoid;
-  margin-bottom: 1.5rem;
-  background: linear-gradient(175deg, #181524 0%, #110f1c 100%);
-  border: 1px solid rgba(244, 208, 210, 0.16);
-  border-radius: 1.25rem;
-  overflow: hidden;
-  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.7), 0 0 20px 1px rgba(232, 165, 152, 0.06);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.3s ease;
-  position: relative;
-  display: block;
-  width: 100%;
-}
-
-.media-card:hover {
-  transform: translateY(-6px) scale(1.015);
-  border-color: rgba(244, 208, 210, 0.45);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.85), 0 0 30px 3px rgba(244, 208, 210, 0.2);
-  z-index: 15;
-}
-
-.media-card img,
-.media-card video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* Video Badge & Reel Overlays */
-.video-badge {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: rgba(10, 8, 18, 0.75);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(244, 208, 210, 0.3);
-  color: #fceade;
-  padding: 4px 10px;
-  border-radius: 9999px;
-  font-family: monospace;
-  font-size: 11px;
-  letter-spacing: 0.05em;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  z-index: 10;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-}
-
-.video-play-pulse {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: #e63946;
-  animation: playDotPulse 1.4s infinite;
-}
-
-@keyframes playDotPulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(1.4); }
-}
-
-/* Progressive Image/Video Blur-Up Loading */
-.media-thumb {
-  transition: opacity 0.5s ease, filter 0.5s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.media-thumb.is-loading {
-  filter: blur(12px);
-  opacity: 0.7;
-}
-
-/* Cinema Lightbox Enhancements */
-.cinema-lightbox video {
-  max-height: 70vh;
-  width: auto;
-  margin: 0 auto;
-  border-radius: 1rem;
-}
-
-.cinema-ctrl-btn {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(244, 208, 210, 0.2);
-  color: #fdeded;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.25s ease;
-}
-
-.cinema-ctrl-btn:hover {
-  background: rgba(232, 165, 152, 0.3);
-  border-color: rgba(244, 208, 210, 0.5);
-  transform: scale(1.08);
-  color: #ffffff;
-}
-
-/* ==========================================================================
-   📱 COMPREHENSIVE MOBILE OPTIMIZATION & TOUCH ERGONOMICS
-   ========================================================================== */
-
-/* 1. iOS Safe Area Handling & Smooth Tap Highlights */
-:root {
-  --sat: env(safe-area-inset-top, 0px);
-  --sab: env(safe-area-inset-bottom, 0px);
-  --sal: env(safe-area-inset-left, 0px);
-  --sar: env(safe-area-inset-right, 0px);
-}
-
-body {
-  padding-top: var(--sat);
-  padding-bottom: var(--sab);
-  padding-left: var(--sal);
-  padding-right: var(--sar);
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
-}
-
-button, a, input {
-  touch-action: manipulation;
-  -webkit-touch-callout: none;
-}
-
-/* 2. Touch Device Performance & Hover Isolation */
-@media (hover: none) and (pointer: coarse) {
-  /* Prevent sticky hover jumps on touch devices */
-  .tilt-card {
-    transform: none !important;
-  }
-  .tilt-glare {
-    display: none !important;
-  }
-  .media-card {
-    transition: transform 0.15s ease, box-shadow 0.2s ease !important;
-  }
-  .media-card:active {
-    transform: scale(0.98) !important;
-  }
-  .glass-panel:hover {
-    transform: none;
-  }
-}
-
-/* 3. Small Screen Optimizations (< 640px) */
-@media (max-width: 640px) {
-  html, body {
-    overflow-x: hidden;
-    width: 100vw;
-  }
-
-  /* Compact Header Pill */
-  header .glass-pill {
-    padding: 0.6rem 1rem;
-  }
-
-  /* Full Width Mobile Action Buttons */
-  .btn-celestial, .glass-panel.px-7 {
-    width: 100%;
-    justify-content: center;
-    padding-top: 0.85rem;
-    padding-bottom: 0.85rem;
-  }
-
-  /* Milestone Counter Mobile Fit */
-  #hero .grid-cols-4 {
-    gap: 0.35rem;
-  }
-  #hero .grid-cols-4 span.font-bold {
-    font-size: 1.25rem;
-  }
-
-  /* Fluid Column Masonry */
-  #media-gallery-grid {
-    column-gap: 1rem;
-  }
-  .media-card {
-    margin-bottom: 1rem;
-    border-radius: 1.25rem;
-  }
-
-  /* Mobile Card Action Buttons */
-  .card-song-btn, .card-voice-btn {
-    padding: 0.35rem 0.65rem;
-    font-size: 0.65rem;
-    min-height: 32px;
-  }
-
-  /* Wax Seal Stamp Mobile Scale */
-  .wax-seal-monogram {
-    width: 72px;
-    height: 72px;
-  }
-
-  /* Cinema Lightbox Full Mobile Framing */
-  .cinema-lightbox {
-    padding: 0.75rem;
-  }
-  .cinema-lightbox video, .cinema-lightbox img {
-    max-height: 60vh;
-    max-width: 96vw;
-    border-radius: 0.85rem;
-  }
-
-  /* Secret Vault Keypad Mobile Touch Targets */
-  .vault-key {
-    width: 62px;
-    height: 62px;
-    font-size: 1.25rem;
-  }
-}
-
-/* ==========================================================================
-   ✨ CELESTIAL MOTION & GSAP-COMPATIBLE ANIMATION SYSTEM
-   ========================================================================== */
-
-/* Ambient Aurora Gradient Breathing */
-@keyframes celestialAuroraBreath {
-  0% {
-    transform: translate(0, 0) scale(1) rotate(0deg);
-    filter: blur(80px) saturate(1);
-  }
-  50% {
-    transform: translate(30px, -25px) scale(1.12) rotate(15deg);
-    filter: blur(100px) saturate(1.25);
-  }
-  100% {
-    transform: translate(0, 0) scale(1) rotate(0deg);
-    filter: blur(80px) saturate(1);
-  }
-}
-
-.ambient-orb {
-  animation: celestialAuroraBreath 18s ease-in-out infinite alternate !important;
-  will-change: transform, filter;
-}
-.ambient-orb-purple {
-  animation-duration: 24s !important;
-  animation-delay: -6s !important;
-}
-.ambient-orb-champagne {
-  animation-duration: 20s !important;
-  animation-delay: -12s !important;
-}
-
-/* Floating Breathing Hero Badge */
-@keyframes floatGlow {
-  0%, 100% {
-    transform: translateY(0);
-    box-shadow: 0 0 15px rgba(244, 208, 210, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  }
-  50% {
-    transform: translateY(-5px);
-    box-shadow: 0 0 28px rgba(244, 208, 210, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.35);
-  }
-}
-
-.hero-badge-float {
-  animation: floatGlow 4.5s ease-in-out infinite;
-}
-
-/* Word & Character Reveal Typography */
-.reveal-word {
-  display: inline-block;
+.celestial-flash {
+  position: fixed;
+  inset: 0;
+  background: #ffffff;
   opacity: 0;
-  transform: translateY(18px) rotateX(15deg);
-  transition: opacity 0.65s var(--ease-smooth), transform 0.65s var(--ease-smooth);
-  will-change: opacity, transform;
+  pointer-events: none;
+  z-index: 99998;
+  transition: opacity 0.8s ease;
 }
 
-.reveal-word.is-revealed {
-  opacity: 1;
-  transform: translateY(0) rotateX(0deg);
+.celestial-flash.active {
+  opacity: 0.95;
 }
 
-/* Rolling Odometer Digit Transition */
-.digit-box {
-  display: inline-block;
-  overflow: hidden;
-  position: relative;
-  height: 1.35em;
-  line-height: 1.35em;
-  vertical-align: baseline;
-}
-
-.digit-value {
-  display: inline-block;
-  transition: transform 0.42s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease;
-  will-change: transform, opacity;
-}
-
-.digit-value.is-rolling {
-  animation: digitRollIn 0.42s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-}
-
-@keyframes digitRollIn {
-  0% {
-    transform: translateY(80%);
-    opacity: 0;
-  }
-  50% {
-    opacity: 0.8;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Keypad Micro-Ripple & Physical Feedback */
-.ipad-key {
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.12s var(--ease-smooth), background-color 0.15s ease;
-}
-
-.ipad-key:active {
-  transform: scale(0.92) !important;
-}
-
-.key-tap-ripple {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+/* Background Stardust Canvas */
+#stardust-canvas {
+  position: fixed;
+  inset: 0;
   width: 100%;
   height: 100%;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.45);
-  transform: translate(-50%, -50%) scale(0);
-  animation: keyRippleAnim 0.35s ease-out forwards;
   pointer-events: none;
+  z-index: 0;
+  opacity: 0.55;
 }
 
-@keyframes keyRippleAnim {
+/* Floating Heart Burst */
+.floating-heart-burst {
+  position: fixed;
+  pointer-events: none;
+  z-index: 99999;
+  user-select: none;
+  animation: floatHeartPop 1.35s ease-out forwards;
+}
+
+@keyframes floatHeartPop {
   0% {
-    transform: translate(-50%, -50%) scale(0.2);
     opacity: 1;
+    transform: translate(-50%, -50%) translate(0, 0) scale(0.6) rotate(0deg);
+  }
+  30% {
+    transform: translate(-50%, -50%) translate(var(--dx, 0px), -45px) scale(1.35) rotate(var(--rot, 15deg));
   }
   100% {
-    transform: translate(-50%, -50%) scale(1.5);
     opacity: 0;
+    transform: translate(-50%, -50%) translate(var(--dx, 0px), -130px) scale(0.9) rotate(var(--rot, 35deg));
   }
 }
 
-/* Celestial Comet Scroll Progress */
-#celestial-scroll-comet {
-  transition: opacity 0.4s ease;
+/* Typewriter Cursor */
+.typewriter-cursor {
+  display: inline-block;
+  width: 3.5px;
+  height: 1.2em;
+  background-color: var(--destiny-magenta);
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blinkCursor 0.8s infinite;
 }
 
-.comet-head {
-  box-shadow: 0 0 12px #ffb4be, 0 0 24px #e8a598, 0 0 36px #c084fc;
-  animation: cometPulse 1.8s infinite alternate ease-in-out;
-  transform: translate(-50%, -50%);
+@keyframes blinkCursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
-@keyframes cometPulse {
-  0% {
-    transform: translate(-50%, -50%) scale(0.85);
-    box-shadow: 0 0 10px #ffb4be, 0 0 20px #e8a598;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1.3);
-    box-shadow: 0 0 16px #ffb4be, 0 0 32px #e8a598, 0 0 44px #c084fc;
+@media (max-width: 640px) {
+  .lined-stationery-paper {
+    padding: 30px 18px 30px 48px;
+    font-size: 1.25rem;
   }
 }
-
-/* Secret Vault Radiant Chamber Glow */
-.vault-unlocked-reveal {
-  animation: chamberOpen 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes chamberOpen {
-  0% {
-    opacity: 0;
-    transform: scale(0.88) translateY(20px);
-    filter: blur(12px) brightness(1.6);
-  }
-  60% {
-    filter: blur(2px) brightness(1.2);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-    filter: blur(0) brightness(1);
-  }
-}
-
-/* Interactive Pulsing Heart Hover */
-.group:hover .hover-heart-beat,
-button:hover .hover-heart-beat {
-  animation: heartPulseSoft 0.85s infinite ease-in-out !important;
-}
-
-@keyframes heartPulseSoft {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.24);
-  }
-}
-
-/* Reduced Motion User Accessibility Preferences */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-  .ambient-orb {
-    animation: none !important;
-  }
-  .reveal-word {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-  #celestial-scroll-comet {
-    display: none !important;
-  }
-}
-

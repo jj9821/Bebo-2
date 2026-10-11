@@ -90,10 +90,10 @@ function initScrollComet() {
 }
 
 function initHeadlineSplits() {
-  const headlines = document.querySelectorAll('h1, h2.font-serif-editorial');
+  const headlines = document.querySelectorAll('h2.split-headline');
   headlines.forEach(heading => {
-    // Avoid re-splitting if already processed
-    if (heading.dataset.splitDone) return;
+    // Avoid re-splitting if already processed or has child spans
+    if (heading.dataset.splitDone || heading.children.length > 0) return;
     heading.dataset.splitDone = 'true';
 
     const words = heading.textContent.trim().split(/\s+/);
@@ -179,8 +179,8 @@ function populateConfigText(config) {
 
   // Hero title highlight
   const heroHighlight = document.getElementById('hero-title-highlight');
-  if (heroHighlight && config.recipientName) {
-    heroHighlight.textContent = config.recipientName;
+  if (heroHighlight && (config.hero?.titleHighlight || config.recipientName)) {
+    heroHighlight.textContent = config.hero?.titleHighlight || config.recipientName;
   }
 
   // Hero subtitle

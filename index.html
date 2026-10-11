@@ -3,11 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#06060c" />
+  <meta name="theme-color" content="#FFFDF5" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <title>Maria’s Sanctuary (Bebo) — Our Memory Sanctuary</title>
-  <meta name="description" content="A breathtaking, romantic, high-aesthetic digital sanctuary dedicated to Maria (Bebo)." />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <title>Maria & Joel (Bebo) — Destined Soulmates • Hyper-Color Scrapbook</title>
+  <meta name="description" content="An ultra-maximalist, hyper-color digital tribute dedicated to Maria (Bebo) & Joel. Destined Soulmates across galaxies." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=JetBrains+Mono:wght@500;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Reenie+Beanie&family=Space+Grotesk:wght@500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -16,29 +21,23 @@
       theme: {
         extend: {
           colors: {
-            obsidian: '#06060c',
-            midnight: '#0a0a14',
-            amethyst: '#120d1c',
-            rose: {
-              100: '#fdeded',
-              200: '#f4d0d2',
-              300: '#e8a598',
-              400: '#dd8b7c',
-              500: '#d16a57',
-            },
-            champagne: '#fceade',
-            rosegold: '#e5b299',
-            warmgold: '#f6d8ae',
+            magenta: '#FF0066',
+            violet: '#7B00FF',
+            sunburst: '#FFE600',
+            cyan: '#00F5FF',
+            lime: '#00FF75',
+            tangerine: '#FF4D00',
+            obsidian: '#0D001A',
+            cream: '#FFF8E7',
+            canvas: '#FFFDF5'
           },
           fontFamily: {
-            serif: ['"Cormorant Garamond"', '"Playfair Display"', 'Georgia', 'serif'],
-            display: ['"Playfair Display"', 'Georgia', 'serif'],
-            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-            cursive: ['"Great Vibes"', '"Sacramento"', 'cursive'],
-          },
-          scale: {
-            '102': '1.02',
-            '108': '1.08',
+            display: ['"Syne"', '"Playfair Display"', 'sans-serif'],
+            editorial: ['"Playfair Display"', 'Georgia', 'serif'],
+            mono: ['"Space Grotesk"', '"JetBrains Mono"', 'monospace'],
+            sans: ['"Space Grotesk"', '-apple-system', 'sans-serif'],
+            handwriting: ['"Caveat"', '"Reenie Beanie"', 'cursive'],
+            scribble: ['"Reenie Beanie"', '"Caveat"', 'cursive']
           }
         }
       }
@@ -59,9 +58,9 @@
   <link rel="stylesheet" href="styles/main.css" />
 </head>
 
-<body class="bg-obsidian text-rose-100 font-sans selection:bg-rose-400/30 selection:text-white relative min-h-screen">
+<body class="bg-canvas text-obsidian font-sans selection:bg-magenta selection:text-white relative min-h-screen">
 
-  <!-- Direct HTML5 Background Audio Stream (1.mp3 Autoplay & Multiple Source Fallbacks) -->
+  <!-- Direct HTML5 Background Audio Stream -->
   <audio id="bg-audio-player" preload="auto" loop playsinline>
     <source src="assets/audio/1.mp3" type="audio/mpeg">
     <source src="1.mp3" type="audio/mpeg">
@@ -69,96 +68,126 @@
   </audio>
 
   <!-- =========================================================================
-       📱 AUTHENTIC APPLE LOCK SCREEN (Wallpaper -> Swipe Up -> Passcode: 123987)
+       📱 THE SOULMATE DNA & HEARTBEAT VAULT (LOCKSCREEN: 123987)
        ========================================================================= -->
-  <div id="ipad-lock-screen" class="fixed inset-0 z-[99999] overflow-hidden select-none transition-all duration-700 bg-black">
+  <div id="ipad-lock-screen" class="fixed inset-0 z-[99999] overflow-hidden select-none transition-all duration-700 bg-canvas">
     
-    <!-- PHASE 1: Fullscreen Wallpaper Cover View -->
-    <div id="ipad-wallpaper-view" class="absolute inset-0 flex flex-col items-center justify-between p-4 sm:p-8 md:p-10 z-10 transition-all duration-500 cursor-pointer apple-font">
-      <!-- High-Res Wallpaper Background -->
+    <!-- PHASE 1: Fullscreen Twin-Flame Cover View -->
+    <div id="ipad-wallpaper-view" class="absolute inset-0 flex flex-col items-center justify-between p-4 sm:p-8 md:p-10 z-10 transition-all duration-500 cursor-pointer">
+      
+      <!-- High-Res Wallpaper with Soft Vignette -->
       <img 
         src="assets/photos/ipad_lockscreen_wallpaper.jpg" 
-        alt="Bebo iPad Wallpaper" 
-        class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+        alt="Bebo Lockscreen Wallpaper" 
+        class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none opacity-85"
       />
-      <!-- Soft Vignette & Atmospheric Tint -->
-      <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/10 to-black/75 pointer-events-none"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-[#0D001A]/50 via-transparent to-[#0D001A]/85 pointer-events-none"></div>
 
-      <!-- Top Status Bar -->
-      <div class="relative w-full max-w-4xl flex items-center justify-between apple-status-text text-white/90 drop-shadow-md z-20 pt-1">
-        <span class="flex items-center gap-1.5 tracking-wide">
-          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-rose-300"></i>
-          <span class="device-status-label">Bebo's iPad</span>
+      <!-- Top Cosmic Status Bar -->
+      <div class="relative w-full max-w-4xl flex items-center justify-between text-white drop-shadow-md z-20 pt-2 font-mono font-bold text-xs">
+        <span class="flex items-center gap-2 bg-[#0D001A]/90 px-3.5 py-1.5 rounded-full border-[1.5px] border-cyan shadow-[2px_2px_0px_#00F5FF]">
+          <i data-lucide="sparkles" class="w-4 h-4 text-cyan animate-spin" style="animation-duration: 8s;"></i>
+          <span class="device-status-label uppercase tracking-wider">Two Souls • One Frequency</span>
         </span>
-        <div class="flex items-center gap-1.5">
-          <i data-lucide="lock" class="w-4 h-4 text-white/90"></i>
+        
+        <!-- Animated Heartbeat EKG Pulse -->
+        <div class="hidden sm:flex items-center gap-2 bg-[#FF0066] text-white px-3.5 py-1.5 rounded-full border-[2px] border-obsidian shadow-[2px_2px_0px_#0D001A]">
+          <svg class="w-5 h-3.5" viewBox="0 0 30 14" fill="none">
+            <path d="M1 7H7L10 1L14 13L18 4L21 9H29" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="tracking-widest">MARIA & JOEL</span>
         </div>
-        <span class="flex items-center gap-2.5">
-          <i data-lucide="wifi" class="w-3.5 h-3.5 text-white"></i>
-          <span class="text-xs">100%</span>
-          <i data-lucide="battery-charging" class="w-4 h-4 text-emerald-400"></i>
+
+        <span class="flex items-center gap-2 bg-[#0D001A]/90 px-3.5 py-1.5 rounded-full border-[1.5px] border-lime shadow-[2px_2px_0px_#00FF75]">
+          <i data-lucide="wifi" class="w-3.5 h-3.5 text-lime"></i>
+          <span>100% SYNC</span>
+          <i data-lucide="heart" class="w-3.5 h-3.5 fill-magenta text-magenta animate-pulse"></i>
         </span>
       </div>
 
-      <!-- Upper Clock & Date (Authentic Apple SF Pro iPad Style) -->
-      <div class="relative flex flex-col items-center text-center z-20 mt-4 sm:mt-8">
-        <div class="w-8 h-8 rounded-full bg-black/20 backdrop-blur-md border border-white/20 flex items-center justify-center text-white/90 mb-2 shadow-md">
-          <i data-lucide="lock" class="w-4 h-4 text-rose-200"></i>
+      <!-- Scattered Floating Badges on Cover -->
+      <div class="absolute top-24 left-6 sm:left-14 z-20 rotate-[-8deg] pointer-events-none hidden sm:block">
+        <div class="px-4 py-1.5 rounded-full bg-sunburst text-obsidian border-[2.8px] border-obsidian font-mono font-extrabold text-xs shadow-[4px_4px_0px_#FF0066,6px_6px_0px_#0D001A]">
+          ★ DESTINED BEFORE TIME ★
         </div>
-        <div id="ipad-cover-time" class="apple-clock-time text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-white drop-shadow-2xl">
+      </div>
+      <div class="absolute top-28 right-6 sm:right-14 z-20 rotate-[10deg] pointer-events-none hidden sm:block">
+        <div class="px-4 py-1.5 rounded-full bg-cyan text-obsidian border-[2.8px] border-obsidian font-mono font-extrabold text-xs shadow-[4px_4px_0px_#FF0066,6px_6px_0px_#0D001A]">
+          ♡ 1 IN 8 BILLION SOULS ♡
+        </div>
+      </div>
+
+      <!-- Center Digital Clock with Chromatic 3D Depth -->
+      <div class="relative flex flex-col items-center text-center z-20 my-auto">
+        <div class="px-4 py-1.5 rounded-full bg-white border-[2.5px] border-obsidian text-obsidian font-mono font-extrabold text-xs mb-3 shadow-[3px_3px_0px_#00F5FF,5px_5px_0px_#0D001A] flex items-center gap-2">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-magenta"></i>
+          <span>CALIBRATING COSMIC ALIGNMENT SINCE MARCH 14, 2023</span>
+        </div>
+
+        <div id="ipad-cover-time" class="font-display font-extrabold text-7xl sm:text-8xl md:text-9xl text-white chrome-title-3d tracking-tight">
           12:34
         </div>
-        <div id="ipad-cover-date" class="apple-clock-date text-sm sm:text-base md:text-lg text-white/95 drop-shadow-md mt-1">
+        <div id="ipad-cover-date" class="font-mono text-base sm:text-lg text-white font-bold bg-[#0D001A]/85 px-5 py-1.5 rounded-full border border-white/25 mt-2 shadow-md">
           Tuesday, September 1
+        </div>
+
+        <div class="mt-4 font-handwriting text-2xl sm:text-3xl text-sunburst font-bold drop-shadow-[2px_2px_0px_#0D001A] rotate-[-2deg]">
+          “In a multiverse of infinite timelines, my heart finds you every single time.”
         </div>
       </div>
 
-      <!-- Bottom Swipe-Up Indicator (Apple Home Bar) -->
-      <div class="relative flex flex-col items-center gap-3 z-20 mb-2">
-        <div class="flex flex-col items-center gap-1 animate-bounce" style="animation-duration: 2s;">
-          <i data-lucide="chevron-up" class="w-5 h-5 text-white/80"></i>
-          <span class="apple-font text-xs sm:text-sm tracking-widest shimmer-text uppercase font-semibold">
-            Swipe up to unlock
-          </span>
+      <!-- Bottom Unlock Button with Tactile Hover -->
+      <div class="relative flex flex-col items-center gap-3 z-20 mb-4">
+        <!-- Quick Soundtrack Indicator -->
+        <div class="px-4 py-1.5 rounded-full bg-[#0D001A]/85 text-white border-[1.5px] border-cyan font-mono font-bold text-xs shadow-[2px_2px_0px_#00F5FF] flex items-center gap-2">
+          <i data-lucide="music" class="w-3.5 h-3.5 text-magenta animate-pulse"></i>
+          <span>Soundtrack: <span id="lockscreen-selected-track-name" class="text-sunburst font-black">Apocalypse (Cigarettes After Sex)</span></span>
         </div>
-        <div class="ios-home-bar"></div>
+
+        <div class="px-7 py-3.5 rounded-full bg-magenta text-white border-[3px] border-obsidian font-mono font-bold text-sm tracking-wider shadow-[4px_4px_0px_#00F5FF,7px_7px_0px_#0D001A] hover:-translate-y-1 active:translate-x-1 active:translate-y-1 active:shadow-none transition-all flex items-center gap-2.5 animate-bounce" style="animation-duration: 2s;">
+          <i data-lucide="key" class="w-4 h-4 text-sunburst"></i>
+          <span>CLICK OR SWIPE UP TO UNLOCK TWIN FLAME</span>
+          <i data-lucide="chevron-up" class="w-4 h-4"></i>
+        </div>
       </div>
     </div>
 
-    <!-- PHASE 2: iPad Passcode Keypad View (Slide Up & Blurred Wallpaper) -->
-    <div id="ipad-passcode-view" class="absolute inset-0 flex flex-col items-center justify-between p-6 sm:p-10 z-20 transition-all duration-500 translate-y-full opacity-0 pointer-events-none bg-black/55 backdrop-blur-2xl apple-font">
-      <!-- Background Mirror Blurry Wallpaper -->
-      <img 
-        src="assets/photos/ipad_lockscreen_wallpaper.jpg" 
-        alt="Bebo iPad Wallpaper Blur" 
-        class="absolute inset-0 w-full h-full object-cover object-center blur-2xl scale-110 opacity-30 pointer-events-none"
-      />
-      <div class="absolute inset-0 bg-gradient-to-b from-[#0e0a1a]/80 via-[#08060f]/85 to-[#040308]/90 pointer-events-none"></div>
-
+    <!-- PHASE 2: Passcode Keypad View (Tactile Chime Keys & Neon Hearts) -->
+    <div id="ipad-passcode-view" class="absolute inset-0 flex flex-col items-center justify-between p-6 sm:p-10 z-20 transition-all duration-500 translate-y-full opacity-0 pointer-events-none bg-canvas">
+      
       <!-- Top Status Bar -->
-      <div class="relative w-full max-w-4xl flex items-center justify-between apple-status-text text-white/80 z-20 pt-1">
-        <span class="flex items-center gap-1.5">
-          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-rose-300"></i>
-          <span class="device-status-label">Bebo's iPad</span>
+      <div class="relative w-full max-w-4xl flex items-center justify-between text-obsidian font-mono font-bold text-xs pt-1">
+        <span class="flex items-center gap-2 bg-white px-3.5 py-1.5 rounded-full border-[2px] border-obsidian shadow-[2px_2px_0px_#0D001A]">
+          <i data-lucide="heart" class="w-3.5 h-3.5 fill-magenta text-magenta animate-pulse"></i>
+          <span class="device-status-label">Two Souls • One Frequency // Maria & Joel</span>
         </span>
-        <span class="flex items-center gap-2.5">
-          <i data-lucide="wifi" class="w-3.5 h-3.5 text-white"></i>
-          <i data-lucide="battery-charging" class="w-4 h-4 text-emerald-400"></i>
+        <span class="flex items-center gap-2 bg-lime px-3.5 py-1.5 rounded-full border-[2px] border-obsidian shadow-[2px_2px_0px_#0D001A]">
+          <span>FREQUENCY LOCKED</span>
+          <i data-lucide="check" class="w-3.5 h-3.5"></i>
         </span>
       </div>
 
-      <!-- Passcode Center Column -->
-      <div class="relative flex flex-col items-center text-center my-auto w-full max-w-md z-20">
-        <div id="ipad-lock-icon" class="w-11 h-11 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white mb-2 shadow-lg transition-transform">
-          <i data-lucide="lock" class="w-4.5 h-4.5 text-rose-200"></i>
+      <!-- Passcode Center Container -->
+      <div class="relative flex flex-col items-center text-center my-auto w-full max-w-md z-20 bg-white border-[3.8px] border-obsidian rounded-3xl p-6 sm:p-8 shadow-[4px_4px_0px_#00F5FF,8px_8px_0px_#FF0066,12px_12px_0px_#0D001A]">
+        
+        <!-- Washi Tape Tag on Top -->
+        <div class="washi-tape-strip tape-pink -top-4 left-1/2 -translate-x-1/2 rotate-[-1deg]">
+          DESTINED SOULMATES
         </div>
 
-        <div id="ipad-passcode-label" class="apple-passcode-title text-base sm:text-lg text-white mb-3">
-          Enter Passcode
+        <div id="ipad-lock-icon" class="w-14 h-14 rounded-full bg-cream border-[2.8px] border-obsidian flex items-center justify-center text-obsidian mb-3 shadow-[3px_3px_0px_#0D001A]">
+          <i data-lucide="lock" class="w-6 h-6 text-magenta"></i>
         </div>
+
+        <div id="ipad-passcode-label" class="font-display font-bold text-2xl text-obsidian mb-1">
+          Enter Soulmate Passcode
+        </div>
+        <p class="font-handwriting text-xl text-magenta font-bold mb-4">
+          Hint: iPad PIN (6 digits) — 123987
+        </p>
 
         <!-- 6 PIN Indicator Dots -->
-        <div id="ipad-pin-dots" class="flex items-center justify-center gap-3.5 sm:gap-4 mb-3">
+        <div id="ipad-pin-dots" class="flex items-center justify-center gap-4 mb-3">
           <div class="pin-dot" id="pin-dot-0"></div>
           <div class="pin-dot" id="pin-dot-1"></div>
           <div class="pin-dot" id="pin-dot-2"></div>
@@ -167,66 +196,343 @@
           <div class="pin-dot" id="pin-dot-5"></div>
         </div>
 
-        <div id="ipad-error-msg" class="text-xs font-sans text-rose-300 opacity-0 transition-opacity h-5">
-          Incorrect passcode. Hint: Your iPad PIN (6 digits)
+        <div id="ipad-error-msg" class="text-xs font-mono font-bold text-magenta opacity-0 transition-opacity h-5">
+          Incorrect passcode. Hint: 123987
         </div>
 
-        <!-- iPad Circular Keypad (Landscape & Mobile adaptive sizing) -->
-        <div class="grid grid-cols-3 gap-x-6 sm:gap-x-8 gap-y-2.5 sm:gap-y-3.5 max-w-[260px] sm:max-w-[300px] mx-auto mt-1" role="group" aria-label="Passcode Keypad">
-          <button type="button" class="ipad-key" data-key="1" aria-label="1">
-            <span class="apple-keypad-number text-2xl sm:text-3xl">1</span>
+        <!-- Chunky Keypad Grid with Tactile Audio Chimes -->
+        <div class="grid grid-cols-3 gap-3 sm:gap-4 w-full max-w-[280px] sm:max-w-[320px] mx-auto mt-2" role="group" aria-label="Passcode Keypad">
+          <button type="button" class="y2k-keypad-btn ipad-key" data-key="1" aria-label="1">
+            <span class="font-display text-2xl font-extrabold text-obsidian">1</span>
           </button>
-          <button type="button" class="ipad-key" data-key="2" aria-label="2 ABC">
-            <span class="apple-keypad-number text-2xl sm:text-3xl">2</span>
-            <span class="apple-keypad-subletters text-[8px] text-white/80">ABC</span>
+          <button type="button" class="y2k-keypad-btn ipad-key" data-key="2" aria-label="2 ABC">
+            <span class="font-display text-2xl font-extrabold text-obsidian">2</span>
+            <span class="font-mono text-[9px] font-bold text-obsidian/60">ABC</span>
           </button>
-          <button type="button" class="ipad-key" data-key="3" aria-label="3 DEF">
-            <span class="apple-keypad-number text-2xl sm:text-3xl">3</span>
-            <span class="apple-keypad-subletters text-[8px] text-white/80">DEF</span>
-          </button>
-
-          <button type="button" class="ipad-key" data-key="4" aria-label="4 GHI">
-            <span class="apple-keypad-number text-2xl sm:text-3xl">4</span>
-            <span class="apple-keypad-subletters text-[8px] text-white/80">GHI</span>
-          </button>
-          <button type="button" class="ipad-key" data-key="5" aria-label="5 JKL">
-            <span class="apple-keypad-number text-2xl sm:text-3xl">5</span>
-            <span class="apple-keypad-subletters text-[8px] text-white/80">JKL</span>
-          </button>
-          <button type="button" class="ipad-key" data-key="6" aria-label="6 MNO">
-            <span class="apple-keypad-number text-2xl sm:text-3xl">6</span>
-            <span class="apple-keypad-subletters text-[8px] text-white/80">MNO</span>
+          <button type="button" class="y2k-keypad-btn ipad-key" data-key="3" aria-label="3 DEF">
+            <span class="font-display text-2xl font-extrabold text-obsidian">3</span>
+            <span class="font-mono text-[9px] font-bold text-obsidian/60">DEF</span>
           </button>
 
-          <button type="button" class="ipad-key" data-key="7" aria-label="7 PQRS">
-            <span class="apple-keypad-number text-2xl sm:text-3xl">7</span>
-            <span class="apple-keypad-subletters text-[8px] text-white/80">PQRS</span>
+          <button type="button" class="y2k-keypad-btn ipad-key" data-key="4" aria-label="4 GHI">
+            <span class="font-display text-2xl font-extrabold text-obsidian">4</span>
+            <span class="font-mono text-[9px] font-bold text-obsidian/60">GHI</span>
           </button>
-          <button type="button" class="ipad-key" data-key="8" aria-label="8 TUV">
-            <span class="apple-keypad-number text-2xl sm:text-3xl">8</span>
-            <span class="apple-keypad-subletters text-[8px] text-white/80">TUV</span>
+          <button type="button" class="y2k-keypad-btn ipad-key" data-key="5" aria-label="5 JKL">
+            <span class="font-display text-2xl font-extrabold text-obsidian">5</span>
+            <span class="font-mono text-[9px] font-bold text-obsidian/60">JKL</span>
           </button>
-          <button type="button" class="ipad-key" data-key="9" aria-label="9 WXYZ">
-            <span class="apple-keypad-number text-2xl sm:text-3xl">9</span>
-            <span class="apple-keypad-subletters text-[8px] text-white/80">WXYZ</span>
+          <button type="button" class="y2k-keypad-btn ipad-key" data-key="6" aria-label="6 MNO">
+            <span class="font-display text-2xl font-extrabold text-obsidian">6</span>
+            <span class="font-mono text-[9px] font-bold text-obsidian/60">MNO</span>
           </button>
 
-          <button type="button" class="ipad-key" id="ipad-key-cancel" aria-label="Cancel to lockscreen" title="Cancel (Back to Lockscreen)">
-            <span class="apple-cancel-btn text-xs sm:text-sm text-white/95">Cancel</span>
+          <button type="button" class="y2k-keypad-btn ipad-key" data-key="7" aria-label="7 PQRS">
+            <span class="font-display text-2xl font-extrabold text-obsidian">7</span>
+            <span class="font-mono text-[9px] font-bold text-obsidian/60">PQRS</span>
           </button>
-          <button type="button" class="ipad-key" data-key="0" aria-label="0">
-            <span class="apple-keypad-number text-2xl sm:text-3xl">0</span>
+          <button type="button" class="y2k-keypad-btn ipad-key" data-key="8" aria-label="8 TUV">
+            <span class="font-display text-2xl font-extrabold text-obsidian">8</span>
+            <span class="font-mono text-[9px] font-bold text-obsidian/60">TUV</span>
           </button>
-          <button type="button" class="ipad-key" id="ipad-key-delete" aria-label="Delete last digit" title="Delete">
-            <i data-lucide="delete" class="w-4.5 h-4.5 text-white/90"></i>
+          <button type="button" class="y2k-keypad-btn ipad-key" data-key="9" aria-label="9 WXYZ">
+            <span class="font-display text-2xl font-extrabold text-obsidian">9</span>
+            <span class="font-mono text-[9px] font-bold text-obsidian/60">WXYZ</span>
+          </button>
+
+          <button type="button" class="y2k-keypad-btn ipad-key bg-cream" id="ipad-key-cancel" aria-label="Cancel">
+            <span class="font-mono text-xs font-bold text-obsidian">Cancel</span>
+          </button>
+          <button type="button" class="y2k-keypad-btn ipad-key" data-key="0" aria-label="0">
+            <span class="font-display text-2xl font-extrabold text-obsidian">0</span>
+          </button>
+          <button type="button" class="y2k-keypad-btn ipad-key bg-cream" id="ipad-key-delete" aria-label="Delete">
+            <i data-lucide="delete" class="w-5 h-5 text-obsidian"></i>
           </button>
         </div>
       </div>
 
       <!-- Bottom Hint -->
-      <div class="relative text-[11px] font-sans text-white/60 pb-1 flex items-center gap-1.5 z-20">
-        <i data-lucide="heart" class="w-3 h-3 text-rose-400 fill-rose-400 animate-pulse"></i>
-        <span>Protected Digital Memory Sanctum</span>
+      <div class="relative text-xs font-mono font-bold text-obsidian/75 pb-1 flex items-center gap-1.5 z-20">
+        <i data-lucide="heart" class="w-4 h-4 text-magenta fill-magenta animate-pulse"></i>
+        <span>Maria & Joel • Destined Soulmates Across All Timelines</span>
+      </div>
+    </div>
+
+    <!-- PHASE 3: Soulmate Soundtrack Selector View (Unlocked!) -->
+    <div id="ipad-soundtrack-view" class="absolute inset-0 flex flex-col items-center justify-between p-4 sm:p-8 z-30 transition-all duration-500 translate-y-full opacity-0 pointer-events-none bg-canvas select-none">
+      
+      <!-- Top Status Bar -->
+      <div class="relative w-full max-w-2xl flex items-center justify-between text-obsidian font-mono font-bold text-xs pt-1">
+        <span class="flex items-center gap-2 bg-white px-3.5 py-1.5 rounded-full border-[2px] border-obsidian shadow-[2px_2px_0px_#0D001A]">
+          <i data-lucide="unlock" class="w-3.5 h-3.5 text-lime"></i>
+          <span>PASSCODE VERIFIED: 123987</span>
+        </span>
+        <span class="flex items-center gap-2 bg-magenta text-white px-3.5 py-1.5 rounded-full border-[2px] border-obsidian shadow-[2px_2px_0px_#0D001A]">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-sunburst animate-spin" style="animation-duration: 4s;"></i>
+          <span>SOUL FREQUENCY UNLOCKED</span>
+        </span>
+      </div>
+
+      <!-- Soundtrack Selection Center Container -->
+      <div class="relative flex flex-col items-center my-auto w-full max-w-2xl z-20 bg-white border-[3.8px] border-obsidian rounded-3xl p-5 sm:p-7 shadow-[4px_4px_0px_#00F5FF,8px_8px_0px_#FF0066,12px_12px_0px_#0D001A]">
+        
+        <!-- Washi Tape Tag -->
+        <div class="washi-tape-strip tape-lime -top-4 left-1/2 -translate-x-1/2 rotate-[1deg]">
+          ★ CHOOSE YOUR SOULMATE SOUNDTRACK ★
+        </div>
+
+        <div class="flex items-center gap-3 mt-1 mb-2 text-left w-full">
+          <div class="w-11 h-11 rounded-full bg-sunburst border-[2.5px] border-obsidian flex items-center justify-center text-obsidian shadow-[2px_2px_0px_#0D001A] shrink-0">
+            <i data-lucide="disc" class="w-6 h-6 text-obsidian animate-spin" style="animation-duration: 4s;"></i>
+          </div>
+          <div>
+            <h3 class="font-display font-extrabold text-xl sm:text-2xl text-obsidian leading-tight">
+              Select Your Entrance Song, Bebo 🎧
+            </h3>
+            <p class="font-mono text-xs text-obsidian/75 font-bold">
+              Choose the melody that will score your journey into our sanctuary:
+            </p>
+          </div>
+        </div>
+
+        <!-- 8 Track Cards List (Scrollable) -->
+        <div class="w-full soundtrack-scroll-list max-h-[300px] sm:max-h-[340px] overflow-y-auto pr-1 mt-2 space-y-2">
+          
+          <!-- Track 1: Apocalypse -->
+          <div class="soundtrack-track-card p-3 flex items-center justify-between gap-3 group" data-track-id="apocalypse">
+            <div class="flex items-center gap-3 min-w-0">
+              <div class="w-9 h-9 rounded-xl bg-magenta text-white border-[2px] border-obsidian flex items-center justify-center shrink-0 shadow-[1px_1px_0px_#0D001A]">
+                <i data-lucide="heart" class="w-4 h-4 track-disc-icon"></i>
+              </div>
+              <div class="min-w-0 text-left">
+                <div class="flex items-center gap-2">
+                  <span class="font-display font-extrabold text-sm sm:text-base text-obsidian group-hover:text-magenta transition-colors truncate">
+                    Apocalypse
+                  </span>
+                  <span class="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-magenta/15 text-magenta border border-magenta/40 shrink-0">
+                    Cigarettes After Sex
+                  </span>
+                </div>
+                <p class="text-[11px] font-mono font-semibold text-obsidian/70 truncate">
+                  Dreamy • Slow Dance • Ethereal Romance
+                </p>
+              </div>
+            </div>
+            <button class="shrink-0 px-3 py-1.5 rounded-full bg-magenta text-white font-mono font-bold text-xs border-[2px] border-obsidian shadow-[2px_2px_0px_#0D001A] group-hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5">
+              <span>Play & Enter</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+
+          <!-- Track 2: I Wanna Be Yours -->
+          <div class="soundtrack-track-card p-3 flex items-center justify-between gap-3 group" data-track-id="iwanna-be-yours">
+            <div class="flex items-center gap-3 min-w-0">
+              <div class="w-9 h-9 rounded-xl bg-violet text-white border-[2px] border-obsidian flex items-center justify-center shrink-0 shadow-[1px_1px_0px_#0D001A]">
+                <i data-lucide="zap" class="w-4 h-4 track-disc-icon"></i>
+              </div>
+              <div class="min-w-0 text-left">
+                <div class="flex items-center gap-2">
+                  <span class="font-display font-extrabold text-sm sm:text-base text-obsidian group-hover:text-violet transition-colors truncate">
+                    I Wanna Be Yours
+                  </span>
+                  <span class="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-violet/15 text-violet border border-violet/40 shrink-0">
+                    Arctic Monkeys
+                  </span>
+                </div>
+                <p class="text-[11px] font-mono font-semibold text-obsidian/70 truncate">
+                  Deep Devotion • Electric Cosmic Pull
+                </p>
+              </div>
+            </div>
+            <button class="shrink-0 px-3 py-1.5 rounded-full bg-violet text-white font-mono font-bold text-xs border-[2px] border-obsidian shadow-[2px_2px_0px_#0D001A] group-hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5">
+              <span>Play & Enter</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+
+          <!-- Track 3: Cloud 9 -->
+          <div class="soundtrack-track-card p-3 flex items-center justify-between gap-3 group" data-track-id="cloud-9">
+            <div class="flex items-center gap-3 min-w-0">
+              <div class="w-9 h-9 rounded-xl bg-sunburst text-obsidian border-[2px] border-obsidian flex items-center justify-center shrink-0 shadow-[1px_1px_0px_#0D001A]">
+                <i data-lucide="sun" class="w-4 h-4 track-disc-icon"></i>
+              </div>
+              <div class="min-w-0 text-left">
+                <div class="flex items-center gap-2">
+                  <span class="font-display font-extrabold text-sm sm:text-base text-obsidian group-hover:text-magenta transition-colors truncate">
+                    Cloud 9
+                  </span>
+                  <span class="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-sunburst/25 text-obsidian border border-sunburst/60 shrink-0">
+                    Beach Bunny
+                  </span>
+                </div>
+                <p class="text-[11px] font-mono font-semibold text-obsidian/70 truncate">
+                  Pure Joy • Golden Sunshine • Butterflies
+                </p>
+              </div>
+            </div>
+            <button class="shrink-0 px-3 py-1.5 rounded-full bg-sunburst text-obsidian font-mono font-bold text-xs border-[2px] border-obsidian shadow-[2px_2px_0px_#0D001A] group-hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5">
+              <span>Play & Enter</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+
+          <!-- Track 4: Something About You -->
+          <div class="soundtrack-track-card p-3 flex items-center justify-between gap-3 group" data-track-id="something-about-you">
+            <div class="flex items-center gap-3 min-w-0">
+              <div class="w-9 h-9 rounded-xl bg-cyan text-obsidian border-[2px] border-obsidian flex items-center justify-center shrink-0 shadow-[1px_1px_0px_#0D001A]">
+                <i data-lucide="sparkles" class="w-4 h-4 track-disc-icon"></i>
+              </div>
+              <div class="min-w-0 text-left">
+                <div class="flex items-center gap-2">
+                  <span class="font-display font-extrabold text-sm sm:text-base text-obsidian group-hover:text-magenta transition-colors truncate">
+                    Something About You
+                  </span>
+                  <span class="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-cyan/20 text-obsidian border border-cyan/50 shrink-0">
+                    Eyedress & Dent May
+                  </span>
+                </div>
+                <p class="text-[11px] font-mono font-semibold text-obsidian/70 truncate">
+                  Warm Glow • Soulmate Groove • Magic
+                </p>
+              </div>
+            </div>
+            <button class="shrink-0 px-3 py-1.5 rounded-full bg-cyan text-obsidian font-mono font-bold text-xs border-[2px] border-obsidian shadow-[2px_2px_0px_#0D001A] group-hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5">
+              <span>Play & Enter</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+
+          <!-- Track 5: K. -->
+          <div class="soundtrack-track-card p-3 flex items-center justify-between gap-3 group" data-track-id="k">
+            <div class="flex items-center gap-3 min-w-0">
+              <div class="w-9 h-9 rounded-xl bg-tangerine text-white border-[2px] border-obsidian flex items-center justify-center shrink-0 shadow-[1px_1px_0px_#0D001A]">
+                <i data-lucide="moon" class="w-4 h-4 track-disc-icon"></i>
+              </div>
+              <div class="min-w-0 text-left">
+                <div class="flex items-center gap-2">
+                  <span class="font-display font-extrabold text-sm sm:text-base text-obsidian group-hover:text-tangerine transition-colors truncate">
+                    K.
+                  </span>
+                  <span class="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-tangerine/15 text-tangerine border border-tangerine/40 shrink-0">
+                    Cigarettes After Sex
+                  </span>
+                </div>
+                <p class="text-[11px] font-mono font-semibold text-obsidian/70 truncate">
+                  Late Night Whispers • Tender Heartbeats
+                </p>
+              </div>
+            </div>
+            <button class="shrink-0 px-3 py-1.5 rounded-full bg-tangerine text-white font-mono font-bold text-xs border-[2px] border-obsidian shadow-[2px_2px_0px_#0D001A] group-hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5">
+              <span>Play & Enter</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+
+          <!-- Track 6: The Night We Met -->
+          <div class="soundtrack-track-card p-3 flex items-center justify-between gap-3 group" data-track-id="the-night-we-met">
+            <div class="flex items-center gap-3 min-w-0">
+              <div class="w-9 h-9 rounded-xl bg-lime text-obsidian border-[2px] border-obsidian flex items-center justify-center shrink-0 shadow-[1px_1px_0px_#0D001A]">
+                <i data-lucide="compass" class="w-4 h-4 track-disc-icon"></i>
+              </div>
+              <div class="min-w-0 text-left">
+                <div class="flex items-center gap-2">
+                  <span class="font-display font-extrabold text-sm sm:text-base text-obsidian group-hover:text-magenta transition-colors truncate">
+                    The Night We Met
+                  </span>
+                  <span class="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-lime/20 text-obsidian border border-lime/50 shrink-0">
+                    Lord Huron
+                  </span>
+                </div>
+                <p class="text-[11px] font-mono font-semibold text-obsidian/70 truncate">
+                  Written in the Stars • Timeless Echoes
+                </p>
+              </div>
+            </div>
+            <button class="shrink-0 px-3 py-1.5 rounded-full bg-lime text-obsidian font-mono font-bold text-xs border-[2px] border-obsidian shadow-[2px_2px_0px_#0D001A] group-hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5">
+              <span>Play & Enter</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+
+          <!-- Track 7: Love You So -->
+          <div class="soundtrack-track-card p-3 flex items-center justify-between gap-3 group" data-track-id="love-you-so">
+            <div class="flex items-center gap-3 min-w-0">
+              <div class="w-9 h-9 rounded-xl bg-magenta text-white border-[2px] border-obsidian flex items-center justify-center shrink-0 shadow-[1px_1px_0px_#0D001A]">
+                <i data-lucide="smile" class="w-4 h-4 track-disc-icon"></i>
+              </div>
+              <div class="min-w-0 text-left">
+                <div class="flex items-center gap-2">
+                  <span class="font-display font-extrabold text-sm sm:text-base text-obsidian group-hover:text-magenta transition-colors truncate">
+                    Love You So
+                  </span>
+                  <span class="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-magenta/15 text-magenta border border-magenta/40 shrink-0">
+                    The Walters
+                  </span>
+                </div>
+                <p class="text-[11px] font-mono font-semibold text-obsidian/70 truncate">
+                  Playful Love • Infectious Smile • Pure Bebo
+                </p>
+              </div>
+            </div>
+            <button class="shrink-0 px-3 py-1.5 rounded-full bg-magenta text-white font-mono font-bold text-xs border-[2px] border-obsidian shadow-[2px_2px_0px_#0D001A] group-hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5">
+              <span>Play & Enter</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+
+          <!-- Track 8: Classic Sanctuary Anthem -->
+          <div class="soundtrack-track-card p-3 flex items-center justify-between gap-3 group" data-track-id="classic-anthem">
+            <div class="flex items-center gap-3 min-w-0">
+              <div class="w-9 h-9 rounded-xl bg-sunburst text-obsidian border-[2px] border-obsidian flex items-center justify-center shrink-0 shadow-[1px_1px_0px_#0D001A]">
+                <i data-lucide="music" class="w-4 h-4 track-disc-icon"></i>
+              </div>
+              <div class="min-w-0 text-left">
+                <div class="flex items-center gap-2">
+                  <span class="font-display font-extrabold text-sm sm:text-base text-obsidian group-hover:text-magenta transition-colors truncate">
+                    Until I Found You
+                  </span>
+                  <span class="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-sunburst/25 text-obsidian border border-sunburst/60 shrink-0">
+                    Stephen Sanchez
+                  </span>
+                </div>
+                <p class="text-[11px] font-mono font-semibold text-obsidian/70 truncate">
+                  Classic Track 08 • Eternal Sanctuary Anthem
+                </p>
+              </div>
+            </div>
+            <button class="shrink-0 px-3 py-1.5 rounded-full bg-sunburst text-obsidian font-mono font-bold text-xs border-[2px] border-obsidian shadow-[2px_2px_0px_#0D001A] group-hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5">
+              <span>Play & Enter</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Quick Action Footer Controls -->
+        <div class="w-full flex items-center justify-between gap-3 mt-3 pt-3 border-t-[2px] border-obsidian/15">
+          <button 
+            id="soundtrack-shuffle-btn"
+            type="button" 
+            class="px-4 py-2 rounded-xl bg-cyan hover:bg-[#00d4df] text-obsidian font-mono font-bold text-xs border-[2px] border-obsidian shadow-[2px_2px_0px_#0D001A] active:translate-x-0.5 active:translate-y-0.5 transition-all flex items-center gap-2">
+            <i data-lucide="shuffle" class="w-4 h-4"></i>
+            <span>Surprise Me 🎲</span>
+          </button>
+
+          <button 
+            id="soundtrack-quick-enter-btn"
+            type="button" 
+            class="px-5 py-2 rounded-xl bg-magenta hover:bg-[#e60057] text-white font-mono font-bold text-xs border-[2px] border-obsidian shadow-[3px_3px_0px_#0D001A] active:translate-x-0.5 active:translate-y-0.5 transition-all flex items-center gap-2">
+            <span>Enter Sanctuary</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Bottom Hint -->
+      <div class="relative text-xs font-mono font-bold text-obsidian/75 pb-1 flex items-center gap-1.5 z-20">
+        <i data-lucide="sparkles" class="w-4 h-4 text-magenta animate-spin" style="animation-duration: 6s;"></i>
+        <span>Two Souls Locked in Resonance Across All Multiverses</span>
       </div>
     </div>
   </div>
@@ -250,14 +556,6 @@
       var lockoutUntil = 0;
       var lockoutInterval = null;
 
-      // Adaptive Device Detection (iPhone vs iPad vs Desktop)
-      var isPhone = window.innerWidth <= 640 || /iPhone|Android.*Mobile|iPod/i.test(navigator.userAgent);
-      var deviceName = isPhone ? "Bebo's iPhone" : "Bebo's iPad";
-      document.querySelectorAll('.device-status-label').forEach(function(el) {
-        el.textContent = deviceName;
-      });
-
-      // Live iPad Clock update
       function updateClock() {
         var now = new Date();
         var hours = now.getHours();
@@ -272,7 +570,6 @@
       updateClock();
       setInterval(updateClock, 1000);
 
-      // Phase 1 -> Phase 2 Transition (Swipe Up to Passcode)
       function showPasscodeView() {
         if (!passcodeView || !wallpaperView) return;
         wallpaperView.style.transform = 'translateY(-30%)';
@@ -298,15 +595,12 @@
         wallpaperView.style.pointerEvents = 'auto';
       }
 
-      // Tap / Swipe on Wallpaper View
       if (wallpaperView) {
         wallpaperView.addEventListener('click', showPasscodeView);
-
         var touchStartY = 0;
         wallpaperView.addEventListener('touchstart', function(e) {
           touchStartY = e.changedTouches[0].screenY;
         }, { passive: true });
-
         wallpaperView.addEventListener('touchend', function(e) {
           var touchEndY = e.changedTouches[0].screenY;
           if (touchStartY - touchEndY > 35) {
@@ -315,7 +609,6 @@
         }, { passive: true });
       }
 
-      // Cancel button -> back to wallpaper
       var cancelBtn = document.getElementById('ipad-key-cancel');
       if (cancelBtn) {
         cancelBtn.addEventListener('click', function(e) {
@@ -324,7 +617,6 @@
         });
       }
 
-      // Render PIN dots
       function renderDots() {
         for (var i = 0; i < 6; i++) {
           var dot = document.getElementById('pin-dot-' + i);
@@ -341,6 +633,12 @@
       function handleKey(digit) {
         if (Date.now() < lockoutUntil) return;
         if (currentInput.length >= 6) return;
+
+        // Play musical synthesizer chime on each key tap
+        if (window.audioEngine) {
+          window.audioEngine.playKeypadTone(digit);
+        }
+
         currentInput += digit;
         renderDots();
 
@@ -360,43 +658,32 @@
 
       function checkPasscode() {
         if (currentInput === TARGET_PASSCODE) {
-          // Success! Unlock
           failedAttempts = 0;
           if (lockIcon) {
-            lockIcon.innerHTML = '<i data-lucide="unlock" class="w-4.5 h-4.5 text-emerald-400"></i>';
-            lockIcon.classList.add('bg-emerald-500/20', 'border-emerald-300/40', 'scale-110');
+            lockIcon.innerHTML = '<i data-lucide="unlock" class="w-7 h-7 text-lime"></i>';
+            lockIcon.classList.add('bg-lime', 'scale-115');
             if (window.lucide) window.lucide.createIcons();
           }
 
-          // Immediately start playing the song as soon as unlocking is done!
           if (window.audioEngine) {
-            window.audioEngine.play();
-          }
-          if (audio) {
-            audio.volume = 0.85;
-            var p = audio.play();
-            if (p && p.catch) {
-              p.catch(function(e) { console.log('Audio unlock:', e); });
-            }
+            window.audioEngine.playConfettiFanfare();
           }
 
           if (typeof confetti === 'function') {
-            confetti({ particleCount: 55, spread: 70, origin: { y: 0.5 } });
+            confetti({
+              particleCount: 90,
+              spread: 90,
+              origin: { y: 0.5 },
+              colors: ['#FF0066', '#00F5FF', '#FFE600', '#00FF75', '#7B00FF']
+            });
           }
 
+          // Transition to Phase 3: Song selection!
           setTimeout(function() {
-            if (lockScreen) {
-              lockScreen.style.transform = 'translateY(-100%)';
-              lockScreen.style.opacity = '0';
-              setTimeout(function() {
-                if (lockScreen.parentNode) lockScreen.parentNode.removeChild(lockScreen);
-              }, 750);
-            }
-          }, 400);
+            showSoundtrackView();
+          }, 350);
         } else {
-          // Error! Shake
           failedAttempts++;
-
           if (pinContainer) {
             pinContainer.classList.add('animate-shake');
             for (var i = 0; i < 6; i++) {
@@ -408,27 +695,25 @@
           if (failedAttempts >= maxAttempts) {
             lockoutUntil = Date.now() + 30000;
             failedAttempts = 0;
-
             if (errorMsg) {
               errorMsg.style.opacity = '1';
-              errorMsg.textContent = 'iPad is disabled. Try again in 30 seconds';
+              errorMsg.textContent = 'Device is disabled. Try again in 30 seconds';
             }
-
             if (lockoutInterval) clearInterval(lockoutInterval);
             lockoutInterval = setInterval(function() {
               var remaining = Math.ceil((lockoutUntil - Date.now()) / 1000);
               if (remaining <= 0) {
                 clearInterval(lockoutInterval);
-                if (errorMsg) errorMsg.textContent = 'Enter Passcode (6 digits)';
+                if (errorMsg) errorMsg.textContent = 'Enter Passcode (123987)';
               } else {
-                if (errorMsg) errorMsg.textContent = 'iPad is disabled. Try again in ' + remaining + ' seconds';
+                if (errorMsg) errorMsg.textContent = 'Device disabled. Try in ' + remaining + 's';
               }
             }, 1000);
           } else {
             if (errorMsg) {
               errorMsg.style.opacity = '1';
               var attemptsLeft = maxAttempts - failedAttempts;
-              errorMsg.textContent = 'Incorrect passcode (' + attemptsLeft + ' left). Hint: iPad PIN';
+              errorMsg.textContent = 'Incorrect (' + attemptsLeft + ' left). Hint: 123987';
             }
           }
 
@@ -440,14 +725,9 @@
         }
       }
 
-      // Keypad listeners with tactile ripple
       document.querySelectorAll('.ipad-key[data-key]').forEach(function(btn) {
         btn.addEventListener('click', function(e) {
           e.stopPropagation();
-          var ripple = document.createElement('span');
-          ripple.className = 'key-tap-ripple';
-          btn.appendChild(ripple);
-          setTimeout(function() { if (ripple.parentNode) ripple.parentNode.removeChild(ripple); }, 400);
           handleKey(btn.dataset.key);
         });
       });
@@ -456,15 +736,102 @@
       if (deleteBtn) {
         deleteBtn.addEventListener('click', function(e) {
           e.stopPropagation();
-          var ripple = document.createElement('span');
-          ripple.className = 'key-tap-ripple';
-          deleteBtn.appendChild(ripple);
-          setTimeout(function() { if (ripple.parentNode) ripple.parentNode.removeChild(ripple); }, 400);
           handleDelete();
         });
       }
 
-      // Physical keyboard typing support
+      var soundtrackView = document.getElementById('ipad-soundtrack-view');
+
+      function showSoundtrackView() {
+        if (!soundtrackView) {
+          dismissLockScreen();
+          return;
+        }
+
+        if (passcodeView) {
+          passcodeView.classList.remove('translate-y-0', 'opacity-100');
+          passcodeView.classList.add('translate-y-full', 'opacity-0', 'pointer-events-none');
+        }
+        if (wallpaperView) {
+          wallpaperView.style.transform = 'translateY(-30%)';
+          wallpaperView.style.opacity = '0';
+          wallpaperView.style.pointerEvents = 'none';
+        }
+
+        soundtrackView.classList.remove('translate-y-full', 'opacity-0', 'pointer-events-none');
+        soundtrackView.classList.add('translate-y-0', 'opacity-100');
+        soundtrackView.style.pointerEvents = 'auto';
+
+        if (window.audioEngine && window.audioEngine.currentTrack) {
+          window.audioEngine.updateSelectedTrackUI(window.audioEngine.currentTrack.id);
+        }
+        if (window.lucide) window.lucide.createIcons();
+      }
+
+      function dismissLockScreen(trackId) {
+        if (trackId && window.audioEngine) {
+          window.audioEngine.selectTrack(trackId, true);
+        } else if (window.audioEngine) {
+          window.audioEngine.play();
+        } else if (audio) {
+          audio.volume = 0.85;
+          audio.play().catch(function() {});
+        }
+
+        if (typeof confetti === 'function') {
+          confetti({
+            particleCount: 110,
+            spread: 95,
+            origin: { y: 0.4 },
+            colors: ['#FF0066', '#00F5FF', '#FFE600', '#00FF75', '#7B00FF']
+          });
+        }
+
+        if (lockScreen) {
+          lockScreen.style.transform = 'translateY(-100%)';
+          lockScreen.style.opacity = '0';
+          setTimeout(function() {
+            if (lockScreen.parentNode) lockScreen.parentNode.removeChild(lockScreen);
+          }, 750);
+        }
+      }
+
+      if (soundtrackView) {
+        soundtrackView.addEventListener('click', function(e) {
+          var card = e.target.closest('.soundtrack-track-card');
+          if (card) {
+            var trackId = card.getAttribute('data-track-id');
+            if (window.audioEngine) {
+              window.audioEngine.playHeartPop();
+              window.audioEngine.selectTrack(trackId, true);
+            }
+            dismissLockScreen(trackId);
+          }
+        });
+
+        var shuffleBtn = document.getElementById('soundtrack-shuffle-btn');
+        if (shuffleBtn) {
+          shuffleBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (window.audioEngine) {
+              var picked = window.audioEngine.shuffleTrack();
+              dismissLockScreen(picked ? picked.id : null);
+            } else {
+              dismissLockScreen();
+            }
+          });
+        }
+
+        var quickEnterBtn = document.getElementById('soundtrack-quick-enter-btn');
+        if (quickEnterBtn) {
+          quickEnterBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var curr = (window.audioEngine && window.audioEngine.currentTrack) ? window.audioEngine.currentTrack.id : null;
+            dismissLockScreen(curr);
+          });
+        }
+      }
+
       window.addEventListener('keydown', function(e) {
         if (!lockScreen || !lockScreen.parentNode) return;
         if (wallpaperView && wallpaperView.style.opacity !== '0') {
@@ -481,138 +848,89 @@
     })();
   </script>
 
-  <!-- Interactive Stardust & Aurora Canvas -->
+  <!-- Interactive Stardust & Trail of Destiny Canvas -->
   <canvas id="stardust-canvas"></canvas>
 
-  <!-- Celestial Comet Scroll Progress Bar -->
-  <div id="celestial-scroll-comet" class="fixed right-2 sm:right-4 top-0 bottom-0 w-1.5 sm:w-2 z-40 pointer-events-none opacity-0 transition-opacity duration-500" aria-hidden="true">
-    <div class="comet-track absolute inset-y-0 w-[1px] left-1/2 -translate-x-1/2 bg-white/10"></div>
-    <div id="comet-head" class="comet-head absolute left-1/2 -translate-x-1/2 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-rose-200 shadow-[0_0_12px_#ffb4be,0_0_24px_#e8a598]"></div>
-  </div>
-
-  <!-- Ambient Glowing Atmospheric Orbs -->
-  <div class="ambient-orb ambient-orb-rose w-[550px] h-[550px] -top-32 -left-32"></div>
-  <div class="ambient-orb ambient-orb-purple w-[650px] h-[650px] top-[30%] -right-48"></div>
-  <div class="ambient-orb ambient-orb-champagne w-[500px] h-[500px] top-[75%] -left-32"></div>
-
-  <!-- Screen Celestial Flash Overlay (Grand Climax) -->
+  <!-- Screen Celestial Flash Overlay -->
   <div id="celestial-flash-overlay" class="celestial-flash"></div>
 
-  <!-- Vignette Depth Layer -->
-  <div class="vignette-overlay"></div>
-
   <!-- =========================================================================
-       NAVIGATION BAR
+       NAVIGATION BAR — CHROMATIC SOULMATE HEADER & MIXTAPE DECK
        ========================================================================= -->
-  <header class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 py-4">
-    <div class="max-w-7xl mx-auto flex items-center justify-between glass-pill px-6 py-3 rounded-full">
-      <!-- Logo & Recipient Sanctuary -->
-      <a href="#hero" class="flex items-center gap-2.5 group">
-        <div class="w-8 h-8 rounded-full bg-rose-500/20 border border-rose-300/30 flex items-center justify-center text-rose-200 group-hover:rotate-12 transition-transform shadow-sm shadow-rose-500/20">
-          <i data-lucide="sparkles" class="w-4 h-4 text-rose-300"></i>
+  <header class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 py-3.5">
+    <div class="max-w-7xl mx-auto flex items-center justify-between bg-white/95 backdrop-blur-md border-[3.5px] border-obsidian shadow-[3px_3px_0px_#00F5FF,6px_6px_0px_#0D001A] px-5 sm:px-6 py-2.5 rounded-full">
+      
+      <!-- Brand & Soulmate Badge -->
+      <a href="#hero" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-full bg-magenta border-[2.5px] border-obsidian flex items-center justify-center text-white shadow-[2px_2px_0px_#00F5FF] group-hover:rotate-12 transition-transform">
+          <i data-lucide="sparkles" class="w-5 h-5 text-sunburst"></i>
         </div>
         <div class="flex flex-col">
-          <span class="font-serif-editorial text-lg tracking-wide text-rose-100 font-semibold leading-tight group-hover:text-rose-200 transition-colors">
-            <span id="nav-recipient-name">Maria</span>’s Sanctuary
+          <span class="font-display text-lg text-obsidian font-extrabold leading-tight">
+            <span id="nav-recipient-name">Maria</span> & Joel
           </span>
-          <span class="text-[10px] text-rose-300/70 uppercase tracking-widest font-mono">My Universe (Bebo)</span>
+          <span class="text-[10px] text-magenta font-mono font-bold tracking-wider uppercase">★ DESTINED SOULMATES // 1 IN 8 BILLION ★</span>
         </div>
       </a>
 
-      <!-- Desktop Nav Links & Submenus -->
-      <nav class="hidden lg:flex items-center gap-5 text-xs uppercase tracking-widest font-mono text-gray-300">
-        <a href="#hero" class="hover:text-rose-200 transition-colors">Home</a>
-
-        <!-- About Dropdown (Affectionate Submenu) -->
-        <div class="relative group">
-          <button class="flex items-center gap-1 hover:text-rose-200 transition-colors py-2 focus:outline-none">
-            <span>About</span>
-            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-rose-300/70 group-hover:rotate-180 transition-transform"></i>
-          </button>
-          <div class="absolute left-0 top-full hidden group-hover:flex flex-col w-56 p-2 rounded-2xl glass-panel border border-rose-200/20 shadow-2xl z-50 animate-fadeIn">
-            <a href="#story-beginning" class="px-3.5 py-2.5 rounded-xl hover:bg-rose-500/20 hover:text-rose-100 text-[11px] normal-case font-serif-editorial text-gray-200 flex items-center gap-2 transition-colors">
-              <i data-lucide="compass" class="w-3.5 h-3.5 text-rose-400"></i>
-              <span>The Beginning Days</span>
-            </a>
-            <a href="#story-whole-world" class="px-3.5 py-2.5 rounded-xl hover:bg-rose-500/20 hover:text-rose-100 text-[11px] normal-case font-serif-editorial text-gray-200 flex items-center gap-2 transition-colors">
-              <i data-lucide="heart" class="w-3.5 h-3.5 text-rose-400"></i>
-              <span>My Whole World</span>
-            </a>
-            <a href="#reasons" class="px-3.5 py-2.5 rounded-xl hover:bg-rose-500/20 hover:text-rose-100 text-[11px] normal-case font-serif-editorial text-gray-200 flex items-center gap-2 transition-colors">
-              <i data-lucide="star" class="w-3.5 h-3.5 text-amber-300"></i>
-              <span>Why I Adore You</span>
-            </a>
-            <a href="#letter" class="px-3.5 py-2.5 rounded-xl hover:bg-rose-500/20 hover:text-rose-100 text-[11px] normal-case font-serif-editorial text-gray-200 flex items-center gap-2 transition-colors">
-              <i data-lucide="mail" class="w-3.5 h-3.5 text-rose-300"></i>
-              <span>Letter to My Eternity</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Menu Jump Links -->
-        <a href="#gallery" class="hover:text-rose-200 transition-colors">Menu</a>
-
-        <!-- Midnight Stardust Player Track Switcher (Player Submenu) -->
-        <div class="relative group">
-          <button class="flex items-center gap-1.5 hover:text-rose-200 transition-colors py-2 text-rose-300/90 focus:outline-none">
-            <i data-lucide="disc" class="w-3.5 h-3.5 text-rose-400 animate-spin" style="animation-duration: 8s;"></i>
-            <span>Player</span>
-            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-rose-300/70 group-hover:rotate-180 transition-transform"></i>
-          </button>
-          <div class="absolute left-0 top-full hidden group-hover:flex flex-col w-64 p-2 rounded-2xl glass-panel border border-rose-200/20 shadow-2xl z-50 animate-fadeIn">
-            <span class="text-[10px] uppercase font-mono tracking-wider text-rose-300/60 px-3 py-1 block border-b border-white/5">
-              Select Soundscape
-            </span>
-            <button onclick="if(window.audioEngine) window.audioEngine.switchTrack('Our Song (1.mp3)')" class="text-left px-3.5 py-2 rounded-xl hover:bg-rose-500/20 hover:text-rose-100 text-xs normal-case font-sans text-rose-200 font-medium flex items-center gap-2 transition-colors bg-rose-500/10">
-              <i data-lucide="heart" class="w-3.5 h-3.5 text-rose-400 fill-rose-400"></i>
-              <span>Our Special Song (1.mp3)</span>
-            </button>
-            <button onclick="if(window.audioEngine) window.audioEngine.switchTrack('Midnight Stardust (Lofi Pad)')" class="text-left px-3.5 py-2 rounded-xl hover:bg-rose-500/20 hover:text-rose-100 text-xs normal-case font-sans text-gray-200 flex items-center gap-2 transition-colors">
-              <i data-lucide="sparkles" class="w-3.5 h-3.5 text-rose-400"></i>
-              <span>Midnight Stardust</span>
-            </button>
-            <button onclick="if(window.audioEngine) window.audioEngine.switchTrack('Celestial Waves (Harmonic Chimes)')" class="text-left px-3.5 py-2 rounded-xl hover:bg-rose-500/20 hover:text-rose-100 text-xs normal-case font-sans text-gray-200 flex items-center gap-2 transition-colors">
-              <i data-lucide="wind" class="w-3.5 h-3.5 text-cyan-400"></i>
-              <span>Celestial Waves</span>
-            </button>
-            <button onclick="if(window.audioEngine) window.audioEngine.switchTrack('Rain on Window (Cozy Lo-Fi)')" class="text-left px-3.5 py-2 rounded-xl hover:bg-rose-500/20 hover:text-rose-100 text-xs normal-case font-sans text-gray-200 flex items-center gap-2 transition-colors">
-              <i data-lucide="cloud-rain" class="w-3.5 h-3.5 text-blue-400"></i>
-              <span>Rain on Window</span>
-            </button>
-          </div>
-        </div>
-
-        <a href="#letter" class="hover:text-rose-200 transition-colors">Contact</a>
-        <a href="#story-beginning" class="hover:text-rose-200 transition-colors">Blog</a>
+      <!-- Desktop Nav Links -->
+      <nav class="hidden lg:flex items-center gap-6 text-xs uppercase font-mono font-bold text-obsidian">
+        <a href="#hero" class="hover:text-magenta transition-colors">Manifesto</a>
+        <a href="#story-beginning" class="hover:text-magenta transition-colors">Cosmic Story</a>
+        <a href="#gallery" class="hover:text-magenta transition-colors">Polaroid Constellation</a>
+        <a href="#reasons" class="hover:text-magenta transition-colors">Destiny Notes</a>
+        <a href="#letter" class="hover:text-magenta transition-colors">Thread of Fate</a>
       </nav>
 
-      <!-- Right Controls: Audio Player & Secret Vault Trigger -->
+      <!-- Right Controls: Mixtape Deck & Sanctuary of Destiny Trigger -->
       <div class="flex items-center gap-3">
-        <!-- Secret Vault Trigger -->
+        
+        <!-- Secret Sanctuary Vault Trigger -->
         <button 
           id="vault-trigger-btn"
-          title="Secret Constellation Vault (Key: 140323)"
-          class="w-9 h-9 rounded-full bg-white/5 hover:bg-rose-500/20 border border-rose-200/20 flex items-center justify-center text-rose-300 hover:text-rose-100 transition-all hover:scale-105">
-          <i data-lucide="key" class="w-4 h-4"></i>
+          title="Sanctuary of Destiny Vault (Key: 140323)"
+          class="w-10 h-10 rounded-full bg-sunburst hover:bg-[#edd500] border-[2.5px] border-obsidian flex items-center justify-center text-obsidian shadow-[2px_2px_0px_#FF0066] active:translate-x-0.5 active:translate-y-0.5 transition-all">
+          <i data-lucide="key" class="w-4 h-4 text-obsidian"></i>
         </button>
 
-        <!-- Ambient Audio Player Widget (Midnight Stardust Player) -->
-        <div id="audio-player-widget" class="flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/5 border border-rose-200/20 shadow-sm">
+        <!-- "Soul Track" Clear Cassette Deck -->
+        <div id="audio-player-widget" class="cassette-player-box">
           <button 
             id="audio-toggle-btn" 
-            title="Toggle Romantic Ambient Music"
-            class="w-7 h-7 rounded-full bg-rose-500/20 hover:bg-rose-500/40 text-rose-200 flex items-center justify-center transition-transform hover:scale-110">
+            title="Toggle Mixtape Playback"
+            class="w-7 h-7 rounded-full bg-magenta hover:bg-[#e60057] text-white border-[2px] border-obsidian flex items-center justify-center shadow-[1px_1px_0px_#0D001A] active:translate-x-0.5 active:translate-y-0.5 transition-all">
             <i data-lucide="music" class="w-3.5 h-3.5"></i>
           </button>
           
-          <div class="hidden sm:flex flex-col">
-            <span id="audio-track-title" class="text-[10px] text-rose-200/90 font-mono tracking-wider truncate max-w-[120px]">
-              Our Song (1.mp3)
+          <!-- Spinning Cassette Reels Window -->
+          <div class="cassette-reels-window hidden sm:flex">
+            <div class="cassette-spoke"></div>
+            <div class="cassette-spoke"></div>
+          </div>
+
+          <div class="hidden md:flex flex-col">
+            <span id="audio-track-title" class="text-[10px] text-obsidian font-mono font-bold truncate max-w-[130px]" title="Soulmate Mixtape">
+              Apocalypse — Cigarettes After Sex
             </span>
           </div>
 
-          <!-- Pulsing Equalizer Bars -->
-          <div class="flex items-end gap-0.5 h-4 px-1" title="Real-time Equalizer">
+          <!-- Select Tracklist Button -->
+          <button 
+            id="audio-playlist-btn"
+            title="Choose Soulmate Track (8 Songs)"
+            class="px-2 py-1 text-[10px] font-mono font-extrabold uppercase rounded bg-sunburst hover:bg-magenta hover:text-white text-obsidian border-[1.5px] border-obsidian flex items-center gap-1 shadow-[1px_1px_0px_#0D001A] active:translate-x-0.5 active:translate-y-0.5 transition-all">
+            <i data-lucide="disc" class="w-3 h-3"></i>
+            <span class="hidden sm:inline">Songs</span>
+          </button>
+
+          <!-- 12-Bar Stereo Jumping Equalizer Visualizer ("Heartbeat Sync") -->
+          <div class="flex items-end gap-0.5 h-4 px-1" title="Heartbeat Sync: 100%">
+            <div class="eq-bar"></div>
+            <div class="eq-bar"></div>
+            <div class="eq-bar"></div>
+            <div class="eq-bar"></div>
+            <div class="eq-bar"></div>
+            <div class="eq-bar"></div>
             <div class="eq-bar"></div>
             <div class="eq-bar"></div>
             <div class="eq-bar"></div>
@@ -623,93 +941,171 @@
         </div>
 
         <!-- Mobile Menu Toggle -->
-        <button id="mobile-nav-toggle" class="lg:hidden w-8 h-8 flex items-center justify-center text-rose-200">
+        <button id="mobile-nav-toggle" class="lg:hidden w-8 h-8 flex items-center justify-center text-obsidian">
           <i data-lucide="menu" class="w-5 h-5"></i>
         </button>
       </div>
     </div>
 
     <!-- Mobile Dropdown Menu -->
-    <div id="mobile-nav-menu" class="hidden lg:hidden max-w-7xl mx-auto mt-2 glass-panel rounded-2xl p-4 flex flex-col gap-3 text-sm font-mono text-center">
-      <a href="#hero" class="py-2 hover:text-rose-200">Home</a>
-      <a href="#story-beginning" class="py-2 hover:text-rose-200">About (Our Story)</a>
-      <a href="#gallery" class="py-2 hover:text-rose-200">Menu (Memories Grid)</a>
-      <a href="#reasons" class="py-2 hover:text-rose-200">Reasons I Love You</a>
-      <a href="#letter" class="py-2 hover:text-rose-200">Contact / Love Letter</a>
+    <div id="mobile-nav-menu" class="hidden lg:hidden max-w-7xl mx-auto mt-2 bg-white border-[3.5px] border-obsidian rounded-2xl p-4 flex flex-col gap-2 font-mono font-bold text-sm text-center shadow-[4px_4px_0px_#FF0066]">
+      <a href="#hero" class="py-2 hover:bg-cream rounded-xl text-obsidian">Manifesto Cover</a>
+      <a href="#story-beginning" class="py-2 hover:bg-cream rounded-xl text-obsidian">Our Cosmic Story</a>
+      <a href="#gallery" class="py-2 hover:bg-cream rounded-xl text-obsidian">Polaroid Wall (144 Memories)</a>
+      <a href="#reasons" class="py-2 hover:bg-cream rounded-xl text-obsidian">Destiny Notes</a>
+      <a href="#letter" class="py-2 hover:bg-cream rounded-xl text-obsidian">Thread of Fate Love Letter</a>
     </div>
   </header>
 
   <!-- =========================================================================
-       HERO SECTION: THE CELESTIAL UNIVERSE & MAIN TYPOGRAPHY HEADER
+       HERO STAGE: "WRITTEN IN THE STARS • TWIN FLAME MANIFESTO"
        ========================================================================= -->
-  <section id="hero" class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 pt-28 pb-16 z-10">
-    <div class="max-w-4xl mx-auto flex flex-col items-center">
+  <section id="hero" class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 pt-28 pb-16 z-10 overflow-hidden">
+    
+    <!-- TRI-COLOR OPPOSING MARQUEE RIBBONS -->
+
+    <!-- Strip 1 (Cyan/Violet, 2° tilt) -->
+    <div class="marquee-container rotate-2 bg-cyan text-obsidian border-y-[3px] border-obsidian shadow-[4px_4px_0px_#0D001A] my-2">
+      <div class="marquee-band">
+        <span class="marquee-item">★ 1 IN 8 BILLION SOULS ★</span>
+        <span class="marquee-item">DESTINED BEFORE TIME</span>
+        <span class="marquee-item">★ MARIA & JOEL FOREVER ★</span>
+        <span class="marquee-item">COSMICALLY ENTANGLED</span>
+        <span class="marquee-item">★ MARCH 14, 2023 ★</span>
+        <span class="marquee-item">WRITTEN IN THE STARS</span>
+      </div>
+      <div class="marquee-band" aria-hidden="true">
+        <span class="marquee-item">★ 1 IN 8 BILLION SOULS ★</span>
+        <span class="marquee-item">DESTINED BEFORE TIME</span>
+        <span class="marquee-item">★ MARIA & JOEL FOREVER ★</span>
+        <span class="marquee-item">COSMICALLY ENTANGLED</span>
+        <span class="marquee-item">★ MARCH 14, 2023 ★</span>
+        <span class="marquee-item">WRITTEN IN THE STARS</span>
+      </div>
+    </div>
+
+    <!-- Strip 2 (Hot Cherry/Yellow, -1.5° tilt) -->
+    <div class="marquee-container -rotate-1 bg-magenta text-white border-y-[3px] border-obsidian shadow-[4px_4px_0px_#FFE600] my-2">
+      <div class="marquee-band-reverse">
+        <span class="marquee-item">★ LOVED YOU BEFORE WE MET ★</span>
+        <span class="marquee-item">WRITTEN IN THE STARS</span>
+        <span class="marquee-item">★ MARCH 14, 2023 ★</span>
+        <span class="marquee-item">MY HOME, MY HUMAN</span>
+        <span class="marquee-item">★ TO INFINITY & BEYOND ★</span>
+        <span class="marquee-item">TWIN FLAMES COLLIDING</span>
+      </div>
+      <div class="marquee-band-reverse" aria-hidden="true">
+        <span class="marquee-item">★ LOVED YOU BEFORE WE MET ★</span>
+        <span class="marquee-item">WRITTEN IN THE STARS</span>
+        <span class="marquee-item">★ MARCH 14, 2023 ★</span>
+        <span class="marquee-item">MY HOME, MY HUMAN</span>
+        <span class="marquee-item">★ TO INFINITY & BEYOND ★</span>
+        <span class="marquee-item">TWIN FLAMES COLLIDING</span>
+      </div>
+    </div>
+
+    <!-- Strip 3 (Neon Lime/Magenta, 1° tilt) -->
+    <div class="marquee-container rotate-1 bg-lime text-obsidian border-y-[3px] border-obsidian shadow-[4px_4px_0px_#7B00FF] mb-8">
+      <div class="marquee-band-slow">
+        <span class="marquee-item">★ 100% MY FOREVER ★</span>
+        <span class="marquee-item">TWIN FLAMES COLLIDING</span>
+        <span class="marquee-item">★ TO INFINITY & BEYOND ★</span>
+        <span class="marquee-item">DESTINED SOULMATES</span>
+        <span class="marquee-item">★ BEAUTIFUL IN EVERY LIFETIME ★</span>
+        <span class="marquee-item">BEBO & JOEL</span>
+      </div>
+      <div class="marquee-band-slow" aria-hidden="true">
+        <span class="marquee-item">★ 100% MY FOREVER ★</span>
+        <span class="marquee-item">TWIN FLAMES COLLIDING</span>
+        <span class="marquee-item">★ TO INFINITY & BEYOND ★</span>
+        <span class="marquee-item">DESTINED SOULMATES</span>
+        <span class="marquee-item">★ BEAUTIFUL IN EVERY LIFETIME ★</span>
+        <span class="marquee-item">BEBO & JOEL</span>
+      </div>
+    </div>
+
+    <div class="max-w-5xl mx-auto flex flex-col items-center relative">
       
-      <!-- Top Glowing Badge -->
-      <div class="hero-badge-float inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-pill mb-8">
-        <i data-lucide="stars" class="w-4 h-4 text-rose-300"></i>
-        <span id="hero-badge-text" class="text-xs font-mono tracking-widest text-rose-200 uppercase">
-          ✨ A Private Digital Sanctuary For Bebo ✨
+      <!-- Scattered Holographic Badges -->
+      <div class="flex flex-wrap items-center justify-center gap-3 mb-6">
+        <span class="sticker-badge bg-sunburst text-obsidian rotate-[-3deg]">
+          ★ COSMIC ALIGNMENT: 100% ★
+        </span>
+        <span class="sticker-badge bg-cyan text-obsidian rotate-[2deg]">
+          NON-NEGOTIABLE FOREVER
+        </span>
+        <span class="sticker-badge bg-magenta text-white rotate-[-2deg]">
+          ♡ DESTINED SOULMATES ♡
         </span>
       </div>
 
-      <!-- Main Staggered Headline -->
-      <h1 class="font-serif-editorial text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-[1.08] mb-4">
-        <span id="hero-title-prefix" class="block font-light text-rose-100/90 text-2xl sm:text-4xl md:text-5xl font-serif-editorial italic mb-2">
+      <!-- Explosive Mixed-Type Headline with Chrome 3D Effect -->
+      <h1 class="font-editorial-massive leading-[0.92] mb-6">
+        <span id="hero-title-prefix" class="block font-handwriting normal-case text-4xl sm:text-6xl text-magenta font-bold rotate-[-3deg] mb-2">
           To My Dearest Maria,
         </span>
-        <span id="hero-title-highlight" class="text-gradient-rose font-serif-display drop-shadow-lg">
-          My Entire Universe (Bebo)
+        <span id="hero-title-highlight" class="chrome-title-3d block">
+          BEBO: MY ETERNAL SOULMATE
         </span>
       </h1>
 
-      <!-- Main Header Typography Block -->
-      <div class="max-w-3xl mx-auto my-6 p-6 sm:p-8 rounded-3xl bg-black/40 backdrop-blur-2xl border border-rose-200/25 shadow-2xl shadow-rose-950/50">
-        <p class="font-serif-display text-xl sm:text-2xl md:text-3xl text-rose-100 italic leading-relaxed text-gradient-gold">
-          “From the quiet glances to our grandest adventures, every moment is a chapter of us. Welcome to our memory sanctuary.”
+      <!-- Washi Tape Subtitle Badge -->
+      <div class="relative max-w-3xl mx-auto my-6 p-6 sm:p-8 rounded-3xl bg-white border-[3.8px] border-obsidian shadow-[4px_4px_0px_#00F5FF,8px_8px_0px_#FF0066,12px_12px_0px_#0D001A]">
+        <div class="washi-tape-strip tape-gold -top-3.5 left-10 rotate-[-2deg]">COSMIC PACT</div>
+        <div class="washi-tape-strip tape-lime -bottom-3.5 right-10 rotate-[3deg]">TWIN FLAMES</div>
+        <p class="font-editorial text-xl sm:text-2xl md:text-3xl text-obsidian italic leading-snug">
+          “In a multiverse of infinite timelines, my heart would search and find you every single time.”
         </p>
       </div>
 
-      <!-- Sentimental Subtitle -->
-      <p id="hero-subtitle" class="font-sans text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl font-light leading-relaxed mb-10">
-        In a galaxy of billions of souls, my heart orbits only around you. Welcome to our timeless sanctuary written in the stars, my sweet Bebo.
-      </p>
-
-      <!-- Action Buttons -->
-      <div class="flex flex-wrap items-center justify-center gap-4 mb-16">
-        <a href="#story-beginning" class="btn-celestial px-7 py-3.5 rounded-full text-sm font-medium tracking-wide text-white flex items-center gap-2.5 group">
-          <span>Read Our Story</span>
-          <i data-lucide="sparkles" class="w-4 h-4 text-rose-300 group-hover:rotate-45 transition-transform"></i>
+      <!-- Action Buttons with Exaggerated Spring -->
+      <div class="flex flex-wrap items-center justify-center gap-4 mb-12">
+        <a href="#story-beginning" class="neo-btn neo-btn-magenta px-8 py-4 rounded-full text-sm font-bold tracking-wide flex items-center gap-2.5">
+          <span>Read Our Cosmic Story</span>
+          <i data-lucide="sparkles" class="w-4 h-4 text-sunburst"></i>
         </a>
-        <a href="#gallery" class="glass-panel px-7 py-3.5 rounded-full text-sm font-medium tracking-wide text-rose-200 hover:text-white flex items-center gap-2 transition-all hover:bg-rose-500/10">
-          <i data-lucide="film" class="w-4 h-4 text-rose-400"></i>
-          <span>Explore Memories & Video Reels</span>
+        <a href="#gallery" class="neo-btn neo-btn-cyan px-8 py-4 rounded-full text-sm font-bold tracking-wide flex items-center gap-2">
+          <i data-lucide="film" class="w-4 h-4"></i>
+          <span>Polaroid Constellation Wall (144 Items)</span>
         </a>
       </div>
 
-      <!-- Live Milestone & Love Counter Ticker -->
-      <div class="glass-panel px-6 sm:px-8 py-5 rounded-2xl max-w-xl w-full border border-rose-200/15">
-        <div class="text-[11px] uppercase tracking-widest text-rose-300/80 font-mono mb-3 flex items-center justify-center gap-2">
-          <i data-lucide="heart" class="w-3.5 h-3.5 text-rose-400 fill-rose-400 animate-pulse"></i>
-          <span>Loving You Every Single Second Since March 14, 2023</span>
+      <!-- LIVE SOULMATE TELEMETRY COUNTER -->
+      <div class="relative max-w-2xl w-full p-6 sm:p-8 rounded-3xl bg-white border-[3.8px] border-obsidian shadow-[4px_4px_0px_#FFE600,8px_8px_0px_#FF0066,12px_12px_0px_#0D001A]">
+        <div class="washi-tape-strip tape-pink -top-4 left-1/2 -translate-x-1/2 rotate-[1deg]">
+          SOUL TELEMETRY
         </div>
 
-        <div class="grid grid-cols-4 gap-2 sm:gap-4 text-center">
-          <div class="bg-black/30 rounded-xl py-2 px-1 border border-white/5">
-            <span id="count-days" class="font-mono text-2xl sm:text-3xl font-bold text-rose-100">00</span>
-            <span class="block text-[10px] text-gray-400 uppercase tracking-wider mt-0.5">Days</span>
+        <div class="text-xs uppercase tracking-widest text-magenta font-mono font-bold mb-4 flex items-center justify-center gap-2">
+          <i data-lucide="heart" class="w-4 h-4 fill-magenta animate-pulse"></i>
+          <span>ORBITING EACH OTHER FOR & COUNTING INTO ETERNITY</span>
+          <i data-lucide="heart" class="w-4 h-4 fill-magenta animate-pulse"></i>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 text-center">
+          <!-- Solar Yellow Days Tile -->
+          <div class="bg-sunburst rounded-2xl py-3 px-2 border-[2.8px] border-obsidian shadow-[4px_4px_0px_#0D001A] rotate-[-1deg] relative">
+            <span class="absolute -top-2.5 left-2 text-xs">📌</span>
+            <span id="count-days" class="font-mono text-3xl sm:text-4xl font-extrabold text-obsidian">00</span>
+            <span class="block text-[11px] text-obsidian font-mono font-bold uppercase tracking-wider mt-0.5">Days</span>
           </div>
-          <div class="bg-black/30 rounded-xl py-2 px-1 border border-white/5">
-            <span id="count-hours" class="font-mono text-2xl sm:text-3xl font-bold text-rose-100">00</span>
-            <span class="block text-[10px] text-gray-400 uppercase tracking-wider mt-0.5">Hours</span>
+          <!-- Bubblegum Pink Hours Tile -->
+          <div class="bg-magenta rounded-2xl py-3 px-2 border-[2.8px] border-obsidian shadow-[4px_4px_0px_#0D001A] rotate-[2deg] relative">
+            <span class="absolute -top-2.5 right-2 text-xs">📌</span>
+            <span id="count-hours" class="font-mono text-3xl sm:text-4xl font-extrabold text-white">00</span>
+            <span class="block text-[11px] text-white font-mono font-bold uppercase tracking-wider mt-0.5">Hours</span>
           </div>
-          <div class="bg-black/30 rounded-xl py-2 px-1 border border-white/5">
-            <span id="count-minutes" class="font-mono text-2xl sm:text-3xl font-bold text-rose-100">00</span>
-            <span class="block text-[10px] text-gray-400 uppercase tracking-wider mt-0.5">Minutes</span>
+          <!-- Cyber Cyan Minutes Tile -->
+          <div class="bg-cyan rounded-2xl py-3 px-2 border-[2.8px] border-obsidian shadow-[4px_4px_0px_#0D001A] rotate-[-2deg] relative">
+            <span class="absolute -top-2.5 left-2 text-xs">📌</span>
+            <span id="count-minutes" class="font-mono text-3xl sm:text-4xl font-extrabold text-obsidian">00</span>
+            <span class="block text-[11px] text-obsidian font-mono font-bold uppercase tracking-wider mt-0.5">Minutes</span>
           </div>
-          <div class="bg-black/30 rounded-xl py-2 px-1 border border-white/5">
-            <span id="count-seconds" class="font-mono text-2xl sm:text-3xl font-bold text-gradient-rose">00</span>
-            <span class="block text-[10px] text-gray-400 uppercase tracking-wider mt-0.5">Seconds</span>
+          <!-- Neon Lime Seconds Tile -->
+          <div class="bg-lime rounded-2xl py-3 px-2 border-[2.8px] border-obsidian shadow-[4px_4px_0px_#0D001A] rotate-[1deg] relative">
+            <span class="absolute -top-2.5 right-2 text-xs">📌</span>
+            <span id="count-seconds" class="font-mono text-3xl sm:text-4xl font-extrabold text-obsidian">00</span>
+            <span class="block text-[11px] text-obsidian font-mono font-bold uppercase tracking-wider mt-0.5">Seconds</span>
           </div>
         </div>
       </div>
@@ -717,82 +1113,88 @@
     </div>
 
     <!-- Scroll Down Hint -->
-    <a href="#story-beginning" class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-xs font-mono text-rose-300/60 hover:text-rose-200 transition-colors">
-      <span>Begin Narrative Journey</span>
-      <i data-lucide="chevron-down" class="w-4 h-4 animate-bounce"></i>
+    <a href="#story-beginning" class="mt-12 flex flex-col items-center gap-2 text-xs font-mono font-bold text-magenta hover:text-obsidian transition-colors">
+      <span>EXPLORE CHAPTERS OF US</span>
+      <i data-lucide="chevron-down" class="w-5 h-5 animate-bounce"></i>
     </a>
   </section>
 
   <!-- =========================================================================
-       STORYTELLING CHAPTER 1: "LOVED YOU BEFORE WE EVER BEGAN"
+       NARRATIVE CHAPTER 1: "COSMIC GRAVITY • LOVED YOU BEFORE WE BEGAN"
        ========================================================================= -->
-  <section id="story-beginning" class="relative py-28 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto z-10">
-    <div class="spotlight-card rounded-3xl p-8 sm:p-12 lg:p-16 border border-rose-200/25 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+  <section id="story-beginning" class="relative py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto z-10">
+    <div class="rounded-3xl p-6 sm:p-10 lg:p-12 bg-white border-[3.8px] border-obsidian shadow-[4px_4px_0px_#00F5FF,8px_8px_0px_#FF0066,12px_12px_0px_#0D001A] grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative">
       
-      <!-- Left Column: Dual Saree Radiance Showcase -->
-      <div class="lg:col-span-5 relative grid grid-cols-2 gap-3.5">
-        <div class="tilt-card rounded-2xl overflow-hidden shadow-2xl border border-rose-200/30 group relative">
-          <div class="washi-tape gold"></div>
-          <div class="relative aspect-[3/4.5] overflow-hidden bg-black/60">
+      <!-- Top Washi Tape Accents -->
+      <div class="washi-tape-strip tape-pink -top-4 left-12 rotate-[-3deg]">COSMIC SPARK</div>
+      <div class="washi-tape-strip tape-cyan -top-4 right-12 rotate-[2deg]">SOUL GRAVITY</div>
+
+      <!-- Left Column: Overlapping Polaroid Saree Showcase -->
+      <div class="lg:col-span-5 relative grid grid-cols-2 gap-4">
+        
+        <!-- Polaroid 1 (Green Saree) -->
+        <div class="polaroid-frame rotate-[-3deg] hover:rotate-0">
+          <div class="washi-tape-strip tape-gold -top-3 left-4 rotate-[-6deg]">DIVINE GRACE</div>
+          <div class="aspect-[3/4] overflow-hidden border-[2px] border-obsidian bg-obsidian">
             <img 
               src="assets/photos/bebo_saree_radiance.jpg" 
               alt="Maria in green embroidered saree" 
               loading="lazy"
               decoding="async"
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108"
+              class="w-full h-full object-cover"
             />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-4 flex flex-col justify-end">
-              <span class="text-[10px] font-mono text-rose-300 uppercase tracking-widest">
-                Green Saree Grace
-              </span>
-            </div>
           </div>
+          <div class="polaroid-caption">Green Saree Grace ♡</div>
         </div>
 
-        <div class="tilt-card rounded-2xl overflow-hidden shadow-2xl border border-rose-200/30 group relative mt-6">
-          <div class="washi-tape blush"></div>
-          <div class="relative aspect-[3/4.5] overflow-hidden bg-black/60">
+        <!-- Polaroid 2 (Fairy Lights Saree) -->
+        <div class="polaroid-frame rotate-[3deg] hover:rotate-0 mt-6">
+          <div class="washi-tape-strip tape-lime -top-3 right-4 rotate-[6deg]">FAIRY LIGHTS</div>
+          <div class="aspect-[3/4] overflow-hidden border-[2px] border-obsidian bg-obsidian">
             <img 
               src="assets/photos/bebo_fairy_lights_saree.jpg" 
               alt="Maria in festive red saree with fairy lights" 
               loading="lazy"
               decoding="async"
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108"
+              class="w-full h-full object-cover"
             />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-4 flex flex-col justify-end">
-              <span class="text-[10px] font-mono text-rose-300 uppercase tracking-widest">
-                Fairy Lights Radiance
-              </span>
-            </div>
           </div>
+          <div class="polaroid-caption">Fairy Lights Radiance ✨</div>
         </div>
       </div>
 
       <!-- Right Column: Heartfelt Narrative -->
-      <div class="lg:col-span-7 space-y-6 text-left">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-rose-500/10 border border-rose-300/30 text-rose-300 text-xs font-mono uppercase tracking-wider">
-          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-          <span>Chapter I • The Unspoken Spark</span>
+      <div class="lg:col-span-7 space-y-5 text-left">
+        
+        <!-- Loud Soulmate Badges -->
+        <div class="flex flex-wrap items-center gap-2.5">
+          <span class="sticker-badge bg-magenta text-white">
+            ★ CHAPTER I • THE UNSPOKEN SPARK ★
+          </span>
+          <span class="sticker-stamp rotate-[-2deg]">
+            <span>CERTIFIED SOULMATE</span>
+            <span class="text-[9px]">NON-NEGOTIABLE FOREVER</span>
+          </span>
         </div>
 
-        <h2 class="font-serif-editorial text-3xl sm:text-5xl font-bold text-white leading-tight">
+        <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-obsidian leading-tight">
           Loved You Before We Ever Began
         </h2>
 
-        <p class="font-serif-editorial text-lg sm:text-xl text-rose-100/90 leading-relaxed italic border-l-2 border-rose-400/40 pl-4">
+        <p class="font-editorial text-xl sm:text-2xl text-magenta leading-snug italic border-l-4 border-magenta pl-4">
           “Before there was an anniversary date, before we counted the days and minutes together, there was already an unspoken gravity. Every time you walked into the room, everything else simply faded into the background.”
         </p>
 
-        <p class="text-gray-300 text-sm sm:text-base font-light leading-relaxed">
-          I remember watching you in your Black top, Blue Jeans with your open hair , smiling softly with Your braces as you caught your reflection. It wasn’t just physical beauty—it was an effortless grace, a kindness that radiated from your very essence. Long before we officially became ‘us’, my heart had already made up its mind. I loved you before our story even started.
+        <p class="text-obsidian/90 text-sm sm:text-base font-sans font-medium leading-relaxed">
+          I remember watching you in your Black top, Blue Jeans with your open hair, smiling softly with your braces as you caught your reflection. It wasn’t just physical beauty—it was an effortless grace, a kindness that radiated from your very essence. Long before we officially became ‘us’, my heart had already made up its mind. I loved you before our story even started.
         </p>
 
-        <div class="pt-4 flex items-center gap-4 text-xs font-mono text-rose-300/80">
-          <span class="flex items-center gap-1.5">
-            <i data-lucide="clock" class="w-3.5 h-3.5 text-rose-400"></i> February - March 2023
+        <div class="pt-2 flex flex-wrap items-center gap-4 text-xs font-mono font-bold text-obsidian/85">
+          <span class="flex items-center gap-1.5 px-3.5 py-1.5 bg-cream rounded-full border-[1.8px] border-obsidian shadow-[2px_2px_0px_#0D001A]">
+            <i data-lucide="clock" class="w-3.5 h-3.5 text-magenta"></i> February - March 2023
           </span>
-          <span class="flex items-center gap-1.5">
-            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-rose-400"></i> Where Our Story Sparked
+          <span class="flex items-center gap-1.5 px-3.5 py-1.5 bg-cream rounded-full border-[1.8px] border-obsidian shadow-[2px_2px_0px_#0D001A]">
+            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-magenta"></i> Where Our Story Sparked
           </span>
         </div>
       </div>
@@ -801,63 +1203,81 @@
   </section>
 
   <!-- =========================================================================
-       STORYTELLING CHAPTER 2: "MY WHOLE WORLD (EVERYDAY MAGIC WITH BEBO)"
+       NARRATIVE CHAPTER 2: "MY WHOLE WORLD • EVERYDAY MAGIC WITH BEBO"
        ========================================================================= -->
-  <section id="story-whole-world" class="relative py-28 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto z-10">
-    <div class="spotlight-card rounded-3xl p-8 sm:p-12 lg:p-16 border border-rose-200/25 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+  <section id="story-whole-world" class="relative py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto z-10">
+    <div class="rounded-3xl p-6 sm:p-10 lg:p-12 bg-white border-[3.8px] border-obsidian shadow-[4px_4px_0px_#00FF75,8px_8px_0px_#7B00FF,12px_12px_0px_#0D001A] grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative">
       
+      <!-- Top Washi Tape Accents -->
+      <div class="washi-tape-strip tape-gold -top-4 left-16 rotate-[2deg]">MY HOME, MY HUMAN</div>
+      <div class="washi-tape-strip tape-cyan -top-4 right-16 rotate-[-2deg]">TWIN FLAMES</div>
+
       <!-- Left Column: Story Text -->
-      <div class="lg:col-span-7 space-y-6 text-left order-2 lg:order-1">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-rose-500/10 border border-rose-300/30 text-rose-300 text-xs font-mono uppercase tracking-wider">
-          <i data-lucide="heart" class="w-3.5 h-3.5 fill-rose-400 text-rose-400"></i>
-          <span>Chapter II • Everyday Magic</span>
+      <div class="lg:col-span-7 space-y-5 text-left order-2 lg:order-1">
+        
+        <div class="flex flex-wrap items-center gap-2.5">
+          <span class="sticker-badge bg-lime text-obsidian">
+            ★ CHAPTER II • EVERYDAY MAGIC ★
+          </span>
+          <span class="sticker-stamp rotate-[3deg]">
+            <span>100% CUTIE</span>
+            <span class="text-[9px]">BEBO EDITION</span>
+          </span>
         </div>
 
-        <h2 class="font-serif-editorial text-3xl sm:text-5xl font-bold text-white leading-tight">
+        <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-obsidian leading-tight">
           You Are My Whole World
         </h2>
 
-        <p class="font-serif-editorial text-lg sm:text-xl text-rose-100/90 leading-relaxed italic border-l-2 border-rose-400/40 pl-4">
+        <p class="font-editorial text-xl sm:text-2xl text-magenta leading-snug italic border-l-4 border-magenta pl-4">
           “How one person can turn a simple plate of dosas, a quiet morning with glasses on, or golden café sunlight into the most sacred moment of my week will forever be life’s greatest wonder.”
         </p>
 
-        <p class="text-gray-300 text-sm sm:text-base font-light leading-relaxed">
+        <p class="text-obsidian/90 text-sm sm:text-base font-sans font-medium leading-relaxed">
           The world is vast, busy, and constantly rushing, but with you, Bebo, time pauses. Watching you close your eyes in bliss under the warm sun, catching your messy-haired smile in the morning, and teasing you..these everyday moments are the fabric of my happiness. Life without you is completely unimaginable.
         </p>
 
-        <div class="pt-4 flex flex-wrap items-center gap-2.5">
-          <span class="px-3.5 py-1.5 rounded-full bg-white/5 border border-rose-200/20 text-xs font-mono text-rose-200">
+        <div class="pt-2 flex flex-wrap items-center gap-2.5">
+          <span class="sticker-badge bg-cream text-obsidian rotate-[-1deg]">
             ☀️ Sunlit Bliss
           </span>
-          <span class="px-3.5 py-1.5 rounded-full bg-white/5 border border-rose-200/20 text-xs font-mono text-rose-200">
+          <span class="sticker-badge bg-cream text-obsidian rotate-[2deg]">
             👓 Cozy Glasses
           </span>
-          <span class="px-3.5 py-1.5 rounded-full bg-white/5 border border-rose-200/20 text-xs font-mono text-rose-200">
+          <span class="sticker-badge bg-cream text-obsidian rotate-[-2deg]">
             ☕ Breakfast Dates
           </span>
-          <span class="px-3.5 py-1.5 rounded-full bg-white/5 border border-rose-200/20 text-xs font-mono text-rose-200">
+          <span class="sticker-badge bg-cream text-obsidian rotate-[1deg]">
             👆 Forehead Boops
           </span>
         </div>
       </div>
 
-      <!-- Right Column: 4-Photo Bento Collage Grid -->
+      <!-- Right Column: 4-Polaroid Collage Grid with Dynamic Tilts -->
       <div class="lg:col-span-5 order-1 lg:order-2 grid grid-cols-2 gap-3.5">
-        <div class="tilt-card rounded-xl overflow-hidden aspect-[3/4] border border-rose-200/20 shadow-lg group relative">
-          <img src="assets/photos/bebo_sunlit_bliss.jpg" alt="Maria Sunlit Bliss" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" />
-          <span class="absolute bottom-2 left-2 text-[10px] font-mono bg-black/60 backdrop-blur-md px-2 py-0.5 rounded text-rose-200">Sunlit Bliss</span>
+        <div class="polaroid-frame rotate-[-2deg] hover:rotate-0">
+          <div class="aspect-[3/4] overflow-hidden border-[2px] border-obsidian bg-obsidian">
+            <img src="assets/photos/bebo_sunlit_bliss.jpg" alt="Maria Sunlit Bliss" loading="lazy" decoding="async" class="w-full h-full object-cover" />
+          </div>
+          <div class="polaroid-caption">Sunlit Bliss ☀️</div>
         </div>
-        <div class="tilt-card rounded-xl overflow-hidden aspect-[3/4] border border-rose-200/20 shadow-lg group relative">
-          <img src="assets/photos/bebo_glasses_cozy.jpg" alt="Maria Cozy Glasses" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" />
-          <span class="absolute bottom-2 left-2 text-[10px] font-mono bg-black/60 backdrop-blur-md px-2 py-0.5 rounded text-rose-200">Cozy Glasses</span>
+        <div class="polaroid-frame rotate-[3deg] hover:rotate-0">
+          <div class="aspect-[3/4] overflow-hidden border-[2px] border-obsidian bg-obsidian">
+            <img src="assets/photos/bebo_glasses_cozy.jpg" alt="Maria Cozy Glasses" loading="lazy" decoding="async" class="w-full h-full object-cover" />
+          </div>
+          <div class="polaroid-caption">Cozy Glasses 👓</div>
         </div>
-        <div class="tilt-card rounded-xl overflow-hidden aspect-[3/4] border border-rose-200/20 shadow-lg group relative">
-          <img src="assets/photos/bebo_forehead_boop.jpg" alt="Maria Forehead Boop" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" />
-          <span class="absolute bottom-2 left-2 text-[10px] font-mono bg-black/60 backdrop-blur-md px-2 py-0.5 rounded text-rose-200">Playful Boop</span>
+        <div class="polaroid-frame rotate-[2deg] hover:rotate-0">
+          <div class="aspect-[3/4] overflow-hidden border-[2px] border-obsidian bg-obsidian">
+            <img src="assets/photos/bebo_forehead_boop.jpg" alt="Maria Forehead Boop" loading="lazy" decoding="async" class="w-full h-full object-cover" />
+          </div>
+          <div class="polaroid-caption">Playful Boop 👆</div>
         </div>
-        <div class="tilt-card rounded-xl overflow-hidden aspect-[3/4] border border-rose-200/20 shadow-lg group relative">
-          <img src="assets/photos/bebo_breakfast_date.jpg" alt="Maria Breakfast Date" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" />
-          <span class="absolute bottom-2 left-2 text-[10px] font-mono bg-black/60 backdrop-blur-md px-2 py-0.5 rounded text-rose-200">Food Dates</span>
+        <div class="polaroid-frame rotate-[-3deg] hover:rotate-0">
+          <div class="aspect-[3/4] overflow-hidden border-[2px] border-obsidian bg-obsidian">
+            <img src="assets/photos/bebo_breakfast_date.jpg" alt="Maria Breakfast Date" loading="lazy" decoding="async" class="w-full h-full object-cover" />
+          </div>
+          <div class="polaroid-caption">Food Dates ☕</div>
         </div>
       </div>
 
@@ -865,18 +1285,44 @@
   </section>
 
   <!-- =========================================================================
-       SECTION 3: 42-ITEM HYBRID BENTO & MASONRY MEDIA GALLERY
+       SECTION 3: 144-ITEM POLAROID CONSTELLATION WALL & DRAGGABLE DECALS
        ========================================================================= -->
-  <section id="gallery" class="relative py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10">
-    <div class="text-center max-w-3xl mx-auto mb-12">
-      <span class="text-xs uppercase tracking-widest font-mono text-rose-300/80 mb-2 block">
-        🎬 Curated Moments & Video Reels 🎬
+  <section id="gallery" class="relative py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10">
+    
+    <!-- INTERACTIVE DRAGGABLE SOULMATE DECALS TRAY -->
+    <div class="max-w-3xl mx-auto mb-8 p-4 rounded-2xl bg-cream border-[3px] border-obsidian shadow-[4px_4px_0px_#0D001A] flex flex-wrap items-center justify-center gap-3 relative">
+      <span class="text-xs font-mono font-bold uppercase tracking-wider text-magenta mr-2">
+        ✨ DRAG & PIN STICKERS ANYWHERE:
       </span>
-      <h2 class="font-serif-editorial text-3xl sm:text-5xl font-bold text-white mb-4">
+      <div class="draggable-decal sticker-badge bg-sunburst text-obsidian shadow-[3px_3px_0px_#0D001A] rotate-[-4deg]">
+        💘 CUPID ARROW
+      </div>
+      <div class="draggable-decal sticker-badge bg-magenta text-white shadow-[3px_3px_0px_#0D001A] rotate-[3deg]">
+        🧶 THREAD OF FATE
+      </div>
+      <div class="draggable-decal sticker-badge bg-cyan text-obsidian shadow-[3px_3px_0px_#0D001A] rotate-[-2deg]">
+        ★ MY TWIN FLAME
+      </div>
+      <div class="draggable-decal sticker-badge bg-lime text-obsidian shadow-[3px_3px_0px_#0D001A] rotate-[5deg]">
+        ✨ 100% PURE LOVE
+      </div>
+    </div>
+
+    <div class="text-center max-w-3xl mx-auto mb-10">
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-3">
+        <span class="sticker-badge bg-magenta text-white">
+          🎬 144 CURATED SOULMATE MEMORIES 🎬
+        </span>
+        <span class="sticker-badge bg-cyan text-obsidian">
+          3D HOLOGRAPHIC POLAROID WALL
+        </span>
+      </div>
+
+      <h2 class="font-display text-4xl sm:text-6xl font-extrabold text-obsidian mb-4">
         Our Celestial Constellation
       </h2>
-      <p class="text-gray-300 text-sm sm:text-base font-light max-w-2xl mx-auto leading-relaxed">
-        A dynamic tapestry of high-definition video reels, authentic polaroids, and unforgettable candid memories with Maria.
+      <p class="text-obsidian/85 text-sm sm:text-base font-bold max-w-2xl mx-auto leading-relaxed">
+        Hover to reveal liquid holographic sheen, click for HD reels, and drag decals onto Maria's moments.
       </p>
 
       <!-- Category Filter Chips -->
@@ -885,59 +1331,58 @@
       </div>
     </div>
 
-    <!-- Dynamic Column Masonry Gallery Grid -->
+    <!-- Masonry Polaroid Gallery Grid -->
     <div id="media-gallery-grid" class="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6 pt-4">
-      <!-- Injected dynamically via timeline.js with break-inside-avoid -->
+      <!-- Injected dynamically via timeline.js -->
     </div>
 
-    <!-- Gallery Completion Scroll Trigger (fires fireworks & heart bursts) -->
-    <div id="gallery-completion-trigger" class="py-12 text-center text-rose-300/60 font-mono text-xs flex items-center justify-center gap-2">
-      <i data-lucide="sparkles" class="w-4 h-4 text-rose-400"></i>
-      <span>All 42 Memories Explored • To Infinity and Beyond</span>
+    <!-- Gallery Completion Scroll Trigger -->
+    <div id="gallery-completion-trigger" class="py-12 text-center text-magenta font-mono font-bold text-sm flex items-center justify-center gap-2">
+      <i data-lucide="sparkles" class="w-4 h-4 text-magenta"></i>
+      <span>All 144 Memories Explored • Destined Into Infinity & Beyond ♡</span>
+      <i data-lucide="sparkles" class="w-4 h-4 text-magenta"></i>
     </div>
   </section>
 
   <!-- Fullscreen Cinema Lightbox Modal -->
-  <div id="cinema-lightbox" class="lightbox-modal cinema-lightbox fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/95 backdrop-blur-2xl" role="dialog" aria-modal="true" aria-label="Cinema Memory Player">
+  <div id="cinema-lightbox" class="lightbox-modal cinema-lightbox fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md" role="dialog" aria-modal="true" aria-label="Cinema Memory Player">
     <div class="lightbox-backdrop absolute inset-0"></div>
 
-    <div class="modal-content relative z-10 max-w-4xl w-full glass-panel rounded-3xl overflow-hidden border border-rose-200/30 shadow-2xl flex flex-col">
+    <div class="modal-content relative z-10 max-w-4xl w-full bg-white border-[4px] border-obsidian rounded-3xl overflow-hidden shadow-[4px_4px_0px_#00F5FF,8px_8px_0px_#FF0066,12px_12px_0px_#0D001A] flex flex-col">
+      
       <!-- Top Bar -->
-      <div class="flex items-center justify-between p-4 sm:p-6 border-b border-white/10 bg-black/40">
+      <div class="flex items-center justify-between p-4 sm:p-5 border-b-[3px] border-obsidian bg-cream">
         <div class="flex items-center gap-3">
-          <span id="cinema-counter" class="text-xs font-mono text-rose-200 bg-rose-500/20 px-3 py-1 rounded-full border border-rose-300/30">
-            1 / 42
+          <span id="cinema-counter" class="text-xs font-mono font-bold text-white bg-magenta px-3.5 py-1 rounded-full border-[2px] border-obsidian shadow-[2px_2px_0px_#0D001A]">
+            1 / 144
           </span>
-          <span id="cinema-tag" class="text-[11px] font-mono text-gray-400 uppercase"></span>
+          <span id="cinema-tag" class="text-xs font-mono font-bold text-obsidian uppercase"></span>
         </div>
 
-        <button id="cinema-close-btn" class="cinema-ctrl-btn touch-target-44" aria-label="Close Cinema View (Esc)" title="Close Cinema View (Esc)">
+        <button id="cinema-close-btn" class="w-10 h-10 rounded-full bg-white border-[2px] border-obsidian flex items-center justify-center text-obsidian shadow-[2px_2px_0px_#0D001A] active:translate-x-0.5 active:translate-y-0.5 transition-all touch-target-44" aria-label="Close Cinema View">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
 
       <!-- Media Display Area -->
-      <div class="relative w-full aspect-[16/10] sm:aspect-[16/9] bg-black flex items-center justify-center overflow-hidden">
-        <!-- Photo Player -->
+      <div class="relative w-full aspect-[16/10] sm:aspect-[16/9] bg-obsidian flex items-center justify-center overflow-hidden">
         <img id="cinema-image-player" src="" alt="Cinema Memory" class="w-full h-full object-contain" />
-        
-        <!-- HD Video Player -->
         <video id="cinema-video-player" class="hidden w-full h-full object-contain" controls autoplay playsinline loop></video>
       </div>
 
       <!-- Bottom Caption & Controls -->
-      <div class="p-6 bg-gradient-to-b from-[#181324] to-[#100d1c] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div class="p-6 bg-white border-t-[3px] border-obsidian flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div class="space-y-1 max-w-xl text-left">
-          <h3 id="cinema-title" class="font-serif-editorial text-2xl text-rose-100 font-bold leading-tight"></h3>
-          <p id="cinema-caption" class="text-xs sm:text-sm text-gray-300 leading-relaxed font-sans italic border-l-2 border-rose-400/40 pl-3"></p>
+          <h3 id="cinema-title" class="font-display text-2xl text-obsidian font-bold leading-tight"></h3>
+          <p id="cinema-caption" class="text-base text-obsidian font-handwriting font-bold leading-relaxed border-l-3 border-magenta pl-3"></p>
         </div>
 
         <!-- Navigation Buttons -->
         <div class="flex items-center gap-3 self-end sm:self-center">
-          <button id="cinema-prev-btn" class="cinema-ctrl-btn touch-target-44" aria-label="Previous Memory (Left Arrow)" title="Previous Memory (Left Arrow)">
+          <button id="cinema-prev-btn" class="w-11 h-11 rounded-full bg-cream hover:bg-sunburst border-[2px] border-obsidian flex items-center justify-center text-obsidian shadow-[2px_2px_0px_#0D001A] active:translate-x-0.5 active:translate-y-0.5 transition-all touch-target-44" aria-label="Previous Memory">
             <i data-lucide="chevron-left" class="w-5 h-5"></i>
           </button>
-          <button id="cinema-next-btn" class="cinema-ctrl-btn touch-target-44" aria-label="Next Memory (Right Arrow)" title="Next Memory (Right Arrow)">
+          <button id="cinema-next-btn" class="w-11 h-11 rounded-full bg-cream hover:bg-sunburst border-[2px] border-obsidian flex items-center justify-center text-obsidian shadow-[2px_2px_0px_#0D001A] active:translate-x-0.5 active:translate-y-0.5 transition-all touch-target-44" aria-label="Next Memory">
             <i data-lucide="chevron-right" class="w-5 h-5"></i>
           </button>
         </div>
@@ -948,16 +1393,22 @@
   <!-- =========================================================================
        SECTION 4: "REASONS WHY YOU'RE MY UNIVERSE" BENTO GRID
        ========================================================================= -->
-  <section id="reasons" class="relative py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10">
-    <div class="text-center max-w-3xl mx-auto mb-14">
-      <span class="text-xs uppercase tracking-widest font-mono text-rose-300/80 mb-2 block">
-        💖 Endless Affection 💖
-      </span>
-      <h2 class="font-serif-editorial text-3xl sm:text-5xl font-bold text-white mb-4">
+  <section id="reasons" class="relative py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-3">
+        <span class="sticker-badge bg-sunburst text-obsidian">
+          💖 BOUNDLESS DEVOTION 💖
+        </span>
+        <span class="sticker-badge bg-cyan text-obsidian">
+          TWIN FLAME FLASHCARDS
+        </span>
+      </div>
+
+      <h2 class="font-display text-4xl sm:text-6xl font-extrabold text-obsidian mb-4">
         Reasons Why You're My Universe
       </h2>
-      <p class="text-gray-300 text-sm sm:text-base font-light max-w-xl mx-auto leading-relaxed">
-        Tap, flip, or clear the frosted mist to discover the boundless reasons my heart chose you, Bebo.
+      <p class="text-obsidian/85 text-sm sm:text-base font-bold max-w-xl mx-auto leading-relaxed">
+        Tap, flip, or clear the cards to discover the boundless reasons my soul chose you, Bebo.
       </p>
     </div>
 
@@ -966,15 +1417,19 @@
       <!-- Injected dynamically via bento.js -->
     </div>
 
-    <!-- Endless Sweet Affirmations & Whispers Generator -->
-    <div class="glass-panel rounded-3xl p-6 sm:p-8 max-w-3xl mx-auto text-center relative overflow-hidden border border-rose-200/20">
-      <div class="flex items-center justify-center gap-2 text-xs font-mono uppercase tracking-widest text-rose-300/80 mb-4">
-        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-rose-400"></i>
-        <span>Celestial Whispers & Daily Affirmations for Bebo</span>
+    <!-- Endless Sweet Affirmations Generator -->
+    <div class="relative rounded-3xl p-6 sm:p-8 max-w-3xl mx-auto text-center overflow-hidden bg-white border-[3.8px] border-obsidian shadow-[4px_4px_0px_#FFE600,8px_8px_0px_#FF0066,12px_12px_0px_#0D001A]">
+      <div class="washi-tape-strip tape-lime -top-4 left-1/2 -translate-x-1/2 rotate-[-1deg]">
+        DAILY AFFIRMATIONS
+      </div>
+
+      <div class="flex items-center justify-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-magenta mb-4">
+        <i data-lucide="sparkles" class="w-4 h-4 text-magenta"></i>
+        <span>DAILY AFFIRMATIONS & SWEET WHISPERS FOR BEBO</span>
       </div>
 
       <div class="min-h-[70px] flex items-center justify-center px-4">
-        <blockquote id="whisper-quote-text" class="font-serif-editorial text-xl sm:text-2xl text-rose-100 font-medium italic transition-all duration-300 leading-relaxed" aria-live="polite">
+        <blockquote id="whisper-quote-text" class="font-handwriting text-2xl sm:text-3xl text-obsidian font-bold leading-relaxed" aria-live="polite">
           “You are the poetry I never knew how to write until I met you.”
         </blockquote>
       </div>
@@ -983,8 +1438,8 @@
         <button 
           id="whisper-next-btn" 
           aria-label="Generate another love note"
-          class="px-6 py-2.5 rounded-full text-xs font-mono bg-rose-500/20 hover:bg-rose-500/30 text-rose-200 border border-rose-300/30 transition-all hover:scale-105 flex items-center gap-2 shadow-sm touch-target-44">
-          <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+          class="neo-btn neo-btn-magenta px-6 py-3 rounded-full text-xs font-mono font-bold flex items-center gap-2 touch-target-44">
+          <i data-lucide="refresh-cw" class="w-4 h-4"></i>
           <span>Whisper Another Love Note</span>
         </button>
       </div>
@@ -992,100 +1447,87 @@
   </section>
 
   <!-- =========================================================================
-       SECTION 5: INTERACTIVE LOVE LETTER & GRAND FINALE
+       SECTION 5: RED THREAD OF FATE • LOVE LETTER & GRAND FINALE
        ========================================================================= -->
-  <section id="letter" class="relative py-28 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto z-10">
-    <div class="text-center max-w-2xl mx-auto mb-14">
-      <span class="text-xs uppercase tracking-widest font-mono text-rose-300/80 mb-2 block">
-        💌 From the Depths of My Soul 💌
-      </span>
-      <h2 class="font-serif-editorial text-3xl sm:text-5xl font-bold text-white mb-4">
+  <section id="letter" class="relative py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto z-10 overflow-hidden">
+    
+    <!-- Animated SVG Red Thread of Fate -->
+    <svg class="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-40" viewBox="0 0 800 600" preserveAspectRatio="none">
+      <path class="thread-of-fate-path" d="M -50 150 Q 200 450 400 250 T 850 400" stroke="#FF0066" stroke-width="3" fill="none" />
+      <path class="thread-of-fate-path" d="M -50 350 Q 300 100 500 350 T 850 200" stroke="#FFE600" stroke-width="2" fill="none" />
+    </svg>
+
+    <div class="text-center max-w-2xl mx-auto mb-12 relative z-10">
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-3">
+        <span class="sticker-badge bg-magenta text-white">
+          💌 RED THREAD OF FATE 💌
+        </span>
+        <span class="sticker-badge bg-sunburst text-obsidian">
+          STATIONERY NOTEBOOK
+        </span>
+      </div>
+
+      <h2 class="font-display text-4xl sm:text-6xl font-extrabold text-obsidian mb-4">
         A Letter to My Eternity
       </h2>
-      <p class="text-gray-300 text-sm sm:text-base font-light leading-relaxed">
-        Break the wax seal to unveil the handwritten feelings I carry for you every single day.
+      <p class="text-obsidian/85 text-sm sm:text-base font-bold leading-relaxed">
+        Break the embossed golden heart-lock seal to unveil the handwritten feelings I carry for you every single day.
       </p>
     </div>
 
     <!-- Letter Container / Envelope Stationary -->
-    <div class="parchment-letter rounded-3xl p-6 sm:p-12 relative overflow-hidden min-h-[480px]">
+    <div class="relative rounded-3xl overflow-hidden min-h-[500px] z-10">
       
-      <!-- Envelope Closed Cover with Wax Seal -->
-      <div id="letter-envelope-cover" class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-gradient-to-b from-[#181324] via-[#110d1c] to-[#0d0a16] p-6 text-center">
-        <div class="mb-6">
-          <span class="text-xs font-mono uppercase tracking-widest text-rose-300/70 block mb-1">
-            CONFIDENTIAL & TIMELESS
+      <!-- Envelope Closed Cover with Embossed Golden Heart-Lock Seal -->
+      <div id="letter-envelope-cover" class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-gradient-to-b from-[#800020] via-[#5c0017] to-[#3a000e] border-[4px] border-obsidian p-6 text-center shadow-[4px_4px_0px_#00F5FF,8px_8px_0px_#FF0066,12px_12px_0px_#0D001A]">
+        
+        <div class="mb-4">
+          <span class="px-3 py-1 rounded-full bg-white/10 text-sunburst font-mono font-bold text-xs uppercase tracking-widest border border-sunburst/50">
+            ★ DESTINED BEFORE TIME ★
           </span>
-          <h3 id="letter-greeting-text" class="font-serif-editorial text-2xl sm:text-3xl text-rose-100 font-bold">
+          <h3 id="letter-greeting-text" class="font-display text-2xl sm:text-3xl text-white font-bold mt-2">
             To My Beloved Maria (Bebo),
           </h3>
         </div>
 
-        <!-- Aesthetic 3D Wax Seal with Ambient Glow & Gold Filigree -->
+        <!-- Embossed Golden Heart-Lock Seal Button -->
         <div class="relative flex items-center justify-center my-6">
-          <!-- Ambient Pulsing Romantic Halo -->
-          <div class="seal-halo-glow"></div>
-          <div class="seal-stardust-orbit"></div>
-
-          <!-- 3D Artisan Wax Seal -->
           <button 
             id="wax-seal-btn" 
             class="aesthetic-wax-seal group touch-target-44" 
             tabindex="0"
             role="button"
-            aria-label="Break 3D wax seal and read love letter"
+            aria-label="Break embossed golden wax seal and read love letter"
             title="Click to break seal and unveil my heart">
-            <!-- Organic Melted Wax Edges -->
-            <div class="wax-scallop-border"></div>
-
-            <!-- Deep Burgundy & Gold Inner Core -->
-            <div class="wax-inner-core">
-              <!-- Golden Lettering Monogram Ring -->
-              <svg class="wax-text-ring" viewBox="0 0 100 100" aria-hidden="true">
-                <path id="seal-text-path" d="M 50, 50 m -36, 0 a 36,36 0 1,1 72,0 a 36,36 0 1,1 -72,0" fill="none" />
-                <text class="wax-rim-text">
-                  <textPath href="#seal-text-path" startOffset="50%" text-anchor="middle">
-                    FOREVER & ALWAYS • BEBO •
-                  </textPath>
-                </text>
-              </svg>
-
-              <!-- Central 3D Embossed Glowing Heart -->
-              <div class="wax-heart-center">
-                <i data-lucide="heart" class="w-8 h-8 text-rose-100 fill-rose-200 group-hover:scale-120 transition-all duration-300 drop-shadow-[0_0_12px_rgba(255,180,190,0.9)] animate-heartbeat-soft"></i>
-              </div>
-            </div>
-
-            <!-- Specular Light Sheen -->
-            <div class="wax-light-sheen"></div>
+            <i data-lucide="lock" class="w-9 h-9 text-obsidian fill-obsidian group-hover:scale-120 transition-transform duration-300 drop-shadow-md"></i>
           </button>
         </div>
 
-        <span class="text-xs font-mono tracking-widest text-rose-200/90 uppercase flex items-center gap-2 mt-1 animate-pulse">
-          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-rose-300"></i>
-          <span>Click Heart Seal or Press Enter to Open</span>
-          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-rose-300"></i>
+        <span class="text-xs font-mono font-bold tracking-widest text-white uppercase flex items-center gap-2 mt-2">
+          <i data-lucide="sparkles" class="w-4 h-4 text-sunburst"></i>
+          <span>Click Golden Heart-Lock to Unseal</span>
+          <i data-lucide="sparkles" class="w-4 h-4 text-sunburst"></i>
         </span>
       </div>
 
-      <!-- Letter Body Content (Typewriter Target) -->
-      <div id="letter-paper-content" class="hidden relative z-10">
+      <!-- Letter Body on Authentic Lined Stationery Paper -->
+      <div id="letter-paper-content" class="hidden relative z-10 lined-stationery-paper rounded-3xl">
         <div id="letter-typewriter-body" class="min-h-[280px]"></div>
 
-        <!-- Letter Controls & Climax Button -->
-        <div class="pt-10 mt-8 border-t border-rose-200/15 flex flex-wrap items-center justify-between gap-4">
+        <!-- Letter Controls & Grand Climax Button -->
+        <div class="pt-8 mt-8 border-t-[2.5px] border-obsidian/20 flex flex-wrap items-center justify-between gap-4">
           <button 
             id="letter-replay-btn" 
-            class="hidden text-xs font-mono text-rose-300/70 hover:text-rose-100 flex items-center gap-1.5 transition-colors touch-target-44">
-            <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i> Replay Typewriter
+            class="hidden text-xs font-mono font-bold text-magenta hover:text-obsidian flex items-center gap-1.5 transition-colors touch-target-44">
+            <i data-lucide="rotate-ccw" class="w-4 h-4"></i> Replay Typewriter
           </button>
 
           <!-- Grand Climax Button -->
           <button 
             id="open-my-heart-btn" 
             aria-label="Open my entire heart celebration modal"
-            class="btn-celestial ml-auto px-8 py-3.5 rounded-full text-sm font-semibold tracking-wide text-white flex items-center gap-2.5 shadow-lg touch-target-44">
-            <i data-lucide="heart" class="w-4 h-4 text-rose-300 fill-rose-300"></i>
+            class="neo-btn neo-btn-magenta ml-auto px-8 py-4 rounded-full text-sm font-bold tracking-wide flex items-center gap-2.5 shadow-[4px_4px_0px_#00F5FF,7px_7px_0px_#0D001A] touch-target-44">
+            <i data-lucide="heart" class="w-4 h-4 fill-white"></i>
             <span>Open My Entire Heart ✨</span>
           </button>
         </div>
@@ -1095,57 +1537,59 @@
   </section>
 
   <!-- Grand Finale Celebration Modal -->
-  <div id="finale-modal" class="lightbox-modal fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/90 backdrop-blur-2xl" role="dialog" aria-modal="true" aria-label="Grand Finale Declaration">
-    <div class="modal-content relative z-10 max-w-xl w-full glass-panel rounded-3xl p-8 sm:p-10 border border-rose-200/30 text-center shadow-2xl">
-      <div class="w-16 h-16 rounded-full bg-rose-500/20 border border-rose-300/40 flex items-center justify-center mx-auto mb-6 text-rose-200 shadow-lg shadow-rose-500/20">
-        <i data-lucide="sparkles" class="w-8 h-8 text-rose-300 animate-spin" style="animation-duration: 8s;"></i>
+  <div id="finale-modal" class="lightbox-modal fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md" role="dialog" aria-modal="true" aria-label="Grand Finale Declaration">
+    <div class="modal-content relative z-10 max-w-xl w-full bg-white border-[4px] border-obsidian rounded-3xl p-8 sm:p-10 text-center shadow-[4px_4px_0px_#00F5FF,8px_8px_0px_#FF0066,12px_12px_0px_#0D001A]">
+      
+      <div class="w-16 h-16 rounded-full bg-magenta border-[2.5px] border-obsidian flex items-center justify-center mx-auto mb-6 text-white shadow-[3px_3px_0px_#0D001A]">
+        <i data-lucide="sparkles" class="w-8 h-8 text-sunburst"></i>
       </div>
 
-      <span class="text-xs font-mono uppercase tracking-widest text-rose-300/80 mb-2 block">
-        ✨ A Timeless Declaration ✨
+      <span class="text-xs font-mono font-bold uppercase tracking-widest text-magenta mb-2 block">
+        ★ WRITTEN IN THE STARS ★
       </span>
 
-      <h3 class="font-serif-editorial text-3xl sm:text-4xl text-gradient-rose font-bold mb-4">
+      <h3 class="font-display text-3xl sm:text-4xl text-obsidian font-extrabold mb-4">
         You Are My Forever & Always, Bebo
       </h3>
 
-      <p class="font-serif-editorial text-xl text-rose-100 italic mb-6 leading-relaxed">
+      <p class="font-editorial text-2xl text-magenta italic mb-6 leading-relaxed">
         “I loved you yesterday, I love you still, I always have, I always will.”
       </p>
 
-      <p class="text-sm text-gray-300 font-sans leading-relaxed mb-8">
+      <p class="text-sm sm:text-base text-obsidian/90 font-sans font-medium leading-relaxed mb-8">
         Thank you for being the sweetest miracle in my journey. Through every turn of the cosmos, my heart remains devoted to you.
       </p>
 
       <button 
         id="finale-modal-close" 
-        class="px-8 py-3 rounded-full text-xs font-mono bg-rose-500/20 hover:bg-rose-500/30 text-rose-200 border border-rose-300/40 transition-all hover:scale-105 touch-target-44"
+        class="neo-btn neo-btn-lime px-8 py-3.5 rounded-full text-xs font-mono font-bold tracking-wider touch-target-44"
         aria-label="Close celebration modal">
         Close & Treasure Forever ♡
       </button>
     </div>
   </div>
 
-  <!-- Secret Vault Modal (Easter Egg) -->
-  <div id="vault-modal" class="lightbox-modal fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/90 backdrop-blur-2xl" role="dialog" aria-modal="true" aria-label="Secret Constellation Vault">
-    <div class="modal-content relative z-10 max-w-lg w-full glass-panel rounded-3xl p-8 border border-rose-200/30 shadow-2xl">
-      <div class="flex items-center justify-between mb-6">
-        <div class="flex items-center gap-2 text-rose-300 font-mono text-xs uppercase tracking-wider">
+  <!-- SANCTUARY OF DESTINY VAULT MODAL (EASTER EGG) -->
+  <div id="vault-modal" class="lightbox-modal fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md" role="dialog" aria-modal="true" aria-label="Sanctuary of Destiny Vault">
+    <div class="modal-content relative z-10 max-w-lg w-full bg-white border-[4px] border-obsidian rounded-3xl p-8 shadow-[4px_4px_0px_#00F5FF,8px_8px_0px_#FF0066,12px_12px_0px_#0D001A]">
+      
+      <div class="flex items-center justify-between mb-6 pb-3 border-b-[2px] border-obsidian">
+        <div class="flex items-center gap-2 text-magenta font-mono font-bold text-xs uppercase tracking-wider">
           <i data-lucide="lock" class="w-4 h-4"></i>
-          <span>Secret Constellation Vault</span>
+          <span>SANCTUARY OF DESTINY // CYBER-VAULT</span>
         </div>
-        <button id="vault-modal-close" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-gray-300 hover:text-white flex items-center justify-center touch-target-44" aria-label="Close Secret Vault">
+        <button id="vault-modal-close" class="w-9 h-9 rounded-full bg-cream hover:bg-sunburst border-[2px] border-obsidian text-obsidian flex items-center justify-center touch-target-44" aria-label="Close Vault">
           <i data-lucide="x" class="w-4 h-4"></i>
         </button>
       </div>
 
       <!-- Vault Passcode Form -->
       <div id="vault-form-section" class="text-center">
-        <h3 class="font-serif-editorial text-2xl text-rose-100 font-bold mb-2">
-          Unlock Our Hidden Memory
+        <h3 class="font-display text-2xl text-obsidian font-bold mb-2">
+          Unlock the Chamber of Fate
         </h3>
-        <p class="text-xs text-gray-400 mb-6 font-sans">
-          Enter our special vault key (e.g. 140323, bebo) to unlock this chamber.
+        <p class="text-xs text-obsidian/75 mb-6 font-mono font-bold">
+          Enter our special vault key (e.g. 140323, bebo, forever) to align the tumblers.
         </p>
 
         <div class="space-y-4">
@@ -1154,56 +1598,250 @@
             id="vault-passcode-input" 
             aria-label="Vault passcode key input"
             placeholder="e.g. 140323, bebo, forever..." 
-            class="w-full px-4 py-3 rounded-xl bg-black/40 border border-rose-200/20 text-center text-rose-100 placeholder-gray-500 focus:outline-none focus:border-rose-400 font-mono text-sm"
+            class="w-full px-4 py-3 rounded-xl bg-cream border-[2.8px] border-obsidian text-center text-obsidian placeholder-obsidian/45 focus:outline-none focus:border-magenta font-mono font-bold text-sm shadow-[3px_3px_0px_#0D001A]"
           />
-          <p id="vault-error-msg" class="hidden text-xs text-rose-400 font-sans" aria-live="polite"></p>
+          <p id="vault-error-msg" class="hidden text-xs text-magenta font-mono font-bold" aria-live="polite"></p>
           <button 
             id="vault-submit-btn" 
             aria-label="Submit passcode to unlock vault"
-            class="w-full py-3 rounded-xl btn-celestial text-xs font-mono text-white tracking-wider uppercase touch-target-44">
-            Unlock Vault Key ✨
+            class="w-full py-3.5 rounded-xl neo-btn neo-btn-magenta text-xs font-mono font-bold tracking-wider uppercase touch-target-44">
+            Align Cosmic Tumblers ✨
           </button>
         </div>
       </div>
 
       <!-- Vault Unlocked Content -->
       <div id="vault-unlocked-section" class="hidden text-center">
-        <div class="w-12 h-12 rounded-full bg-rose-500/20 border border-rose-300/30 flex items-center justify-center mx-auto mb-3 text-rose-200">
+        <div class="w-12 h-12 rounded-full bg-lime border-[2px] border-obsidian flex items-center justify-center mx-auto mb-3 text-obsidian shadow-[2px_2px_0px_#0D001A]">
           <i data-lucide="unlock" class="w-6 h-6"></i>
         </div>
-        <h3 class="font-serif-editorial text-2xl text-gradient-gold font-bold mb-2">
-          Vault Chamber Unlocked!
+        <h3 class="font-display text-2xl text-magenta font-bold mb-2">
+          Sanctuary Chamber Unlocked!
         </h3>
-        <div class="w-full aspect-[3/4] max-h-[420px] rounded-2xl overflow-hidden my-4 border border-rose-200/30 shadow-2xl bg-black/60">
+        <div class="w-full aspect-[3/4] max-h-[420px] rounded-2xl overflow-hidden my-4 border-[3px] border-obsidian shadow-[6px_6px_0px_#0D001A] bg-obsidian">
           <img src="assets/photos/bebo_vault_family_memory.jpg" alt="Secret Family Memory with Bebo" loading="lazy" decoding="async" class="w-full h-full object-cover" />
         </div>
-        <p class="text-sm font-serif-editorial text-rose-100 italic mb-4 leading-relaxed">
-          “You found the most sacred chamber of my heart, Bebo! Seeing your radiant smile, holding hands, and building our world together—my forever begins and ends with you.”
+        <p class="text-base font-handwriting text-obsidian font-bold leading-relaxed">
+          “My soul chose yours, forever and always, Bebo! Seeing your radiant smile, holding hands, and building our world together—my forever begins and ends with you.”
         </p>
       </div>
     </div>
   </div>
 
   <!-- =========================================================================
-       FOOTER
+       FOOTER — SOULMATE BARCODE & FINALE
        ========================================================================= -->
-  <footer class="relative py-12 px-4 border-t border-rose-200/10 text-center text-xs font-mono text-gray-400 z-10">
+  <footer class="relative py-12 px-4 border-t-[3.5px] border-obsidian bg-cream text-center text-xs font-mono font-bold text-obsidian z-10">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-2 text-rose-300/80">
-        <i data-lucide="heart" class="w-4 h-4 text-rose-400 fill-rose-400"></i>
-        <span class="font-serif-editorial text-base text-rose-100">Forever & Always, Bebo</span>
+      
+      <div class="flex items-center gap-2">
+        <div class="w-7 h-7 rounded-full bg-magenta border-[1.5px] border-obsidian flex items-center justify-center text-white">
+          <i data-lucide="heart" class="w-3.5 h-3.5 fill-white"></i>
+        </div>
+        <span class="font-display text-base text-obsidian font-bold">Maria & Joel • Forever & Always</span>
       </div>
 
-      <p class="text-gray-400">
-        Crafted with infinite love for Maria (Bebo) • Written in the Stars ✨
+      <!-- Physical Soulmate Barcode Strip in Footer -->
+      <div class="barcode-strip scale-95">
+        <div class="barcode-lines"></div>
+        <span class="text-[9px] font-mono font-bold text-obsidian">DESTINED-SOULMATES-2023-ETERNITY</span>
+      </div>
+
+      <p class="text-obsidian/75">
+        Crafted with boundless devotion for Maria (Bebo) by Joel • Destined Soulmates ✨
       </p>
 
-      <a href="#hero" class="text-rose-300/70 hover:text-rose-100 flex items-center gap-1 transition-colors touch-target-44 py-2" aria-label="Back to top">
+      <a href="#hero" class="neo-btn px-4 py-2 rounded-full text-xs font-mono font-bold flex items-center gap-1.5 touch-target-44" aria-label="Back to top">
         <span>Back to top</span>
         <i data-lucide="arrow-up" class="w-3.5 h-3.5"></i>
       </a>
     </div>
   </footer>
+
+  <!-- =========================================================================
+       SOULMATE SOUNDTRACK MODAL (SWITCH SONGS ANYTIME)
+       ========================================================================= -->
+  <div id="soulmate-soundtrack-modal" class="fixed inset-0 z-[99990] hidden items-center justify-center p-4 bg-obsidian/75 backdrop-blur-sm transition-all" role="dialog" aria-modal="true" aria-label="Soulmate Soundtrack Playlist">
+    <div class="relative w-full max-w-xl bg-white border-[4px] border-obsidian rounded-3xl p-5 sm:p-7 shadow-[6px_6px_0px_#00F5FF,10px_10px_0px_#FF0066,14px_14px_0px_#0D001A]">
+      
+      <!-- Washi Tape -->
+      <div class="washi-tape-strip tape-pink -top-4 left-1/2 -translate-x-1/2 rotate-[-1deg]">
+        MIXTAPE: THE FREQUENCY OF US
+      </div>
+
+      <!-- Header with Close Button -->
+      <div class="flex items-center justify-between pb-3 mb-3 border-b-[2.5px] border-obsidian/20">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-full bg-sunburst border-[2px] border-obsidian flex items-center justify-center text-obsidian shadow-[2px_2px_0px_#0D001A]">
+            <i data-lucide="disc" class="w-4 h-4 text-obsidian animate-spin" style="animation-duration: 5s;"></i>
+          </div>
+          <div>
+            <h3 class="font-display font-extrabold text-lg sm:text-xl text-obsidian leading-tight">
+              Soulmate Soundtrack (8 Tracks)
+            </h3>
+            <p class="font-mono text-[11px] text-obsidian/70 font-bold">
+              Select any song to score our journey in real time
+            </p>
+          </div>
+        </div>
+
+        <button 
+          id="close-soundtrack-modal-btn" 
+          class="w-8 h-8 rounded-full bg-cream hover:bg-magenta hover:text-white border-[2px] border-obsidian flex items-center justify-center text-obsidian shadow-[1px_1px_0px_#0D001A] transition-colors"
+          aria-label="Close Tracklist">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <!-- Track List (Reuses .soundtrack-track-card) -->
+      <div class="soundtrack-scroll-list max-h-[340px] overflow-y-auto pr-1 space-y-2">
+        
+        <div class="soundtrack-track-card p-3 flex items-center justify-between gap-3 group" data-track-id="apocalypse">
+          <div class="flex items-center gap-3 min-w-0">
+            <div class="w-8 h-8 rounded-lg bg-magenta text-white border-[2px] border-obsidian flex items-center justify-center shrink-0">
+              <i data-lucide="heart" class="w-4 h-4 track-disc-icon"></i>
+            </div>
+            <div class="min-w-0 text-left">
+              <div class="flex items-center gap-2">
+                <span class="font-display font-extrabold text-sm text-obsidian group-hover:text-magenta transition-colors truncate">Apocalypse</span>
+                <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-magenta/15 text-magenta border border-magenta/40">Cigarettes After Sex</span>
+              </div>
+              <p class="text-[11px] font-mono text-obsidian/70 truncate">Dreamy • Slow Dance • Ethereal Romance</p>
+            </div>
+          </div>
+          <span class="track-active-pill hidden px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-lime border border-obsidian text-obsidian">NOW PLAYING</span>
+        </div>
+
+        <div class="soundtrack-track-card p-3 flex items-center justify-between gap-3 group" data-track-id="iwanna-be-yours">
+          <div class="flex items-center gap-3 min-w-0">
+            <div class="w-8 h-8 rounded-lg bg-violet text-white border-[2px] border-obsidian flex items-center justify-center shrink-0">
+              <i data-lucide="zap" class="w-4 h-4 track-disc-icon"></i>
+            </div>
+            <div class="min-w-0 text-left">
+              <div class="flex items-center gap-2">
+                <span class="font-display font-extrabold text-sm text-obsidian group-hover:text-violet transition-colors truncate">I Wanna Be Yours</span>
+                <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-violet/15 text-violet border border-violet/40">Arctic Monkeys</span>
+              </div>
+              <p class="text-[11px] font-mono text-obsidian/70 truncate">Deep Devotion • Electric Cosmic Pull</p>
+            </div>
+          </div>
+          <span class="track-active-pill hidden px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-lime border border-obsidian text-obsidian">NOW PLAYING</span>
+        </div>
+
+        <div class="soundtrack-track-card p-3 flex items-center justify-between gap-3 group" data-track-id="cloud-9">
+          <div class="flex items-center gap-3 min-w-0">
+            <div class="w-8 h-8 rounded-lg bg-sunburst text-obsidian border-[2px] border-obsidian flex items-center justify-center shrink-0">
+              <i data-lucide="sun" class="w-4 h-4 track-disc-icon"></i>
+            </div>
+            <div class="min-w-0 text-left">
+              <div class="flex items-center gap-2">
+                <span class="font-display font-extrabold text-sm text-obsidian group-hover:text-magenta transition-colors truncate">Cloud 9</span>
+                <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-sunburst/25 text-obsidian border border-sunburst/60">Beach Bunny</span>
+              </div>
+              <p class="text-[11px] font-mono text-obsidian/70 truncate">Pure Joy • Golden Sunshine • Butterflies</p>
+            </div>
+          </div>
+          <span class="track-active-pill hidden px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-lime border border-obsidian text-obsidian">NOW PLAYING</span>
+        </div>
+
+        <div class="soundtrack-track-card p-3 flex items-center justify-between gap-3 group" data-track-id="something-about-you">
+          <div class="flex items-center gap-3 min-w-0">
+            <div class="w-8 h-8 rounded-lg bg-cyan text-obsidian border-[2px] border-obsidian flex items-center justify-center shrink-0">
+              <i data-lucide="sparkles" class="w-4 h-4 track-disc-icon"></i>
+            </div>
+            <div class="min-w-0 text-left">
+              <div class="flex items-center gap-2">
+                <span class="font-display font-extrabold text-sm text-obsidian group-hover:text-magenta transition-colors truncate">Something About You</span>
+                <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-cyan/20 text-obsidian border border-cyan/50">Eyedress & Dent May</span>
+              </div>
+              <p class="text-[11px] font-mono text-obsidian/70 truncate">Warm Glow • Soulmate Groove • Magic</p>
+            </div>
+          </div>
+          <span class="track-active-pill hidden px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-lime border border-obsidian text-obsidian">NOW PLAYING</span>
+        </div>
+
+        <div class="soundtrack-track-card p-3 flex items-center justify-between gap-3 group" data-track-id="k">
+          <div class="flex items-center gap-3 min-w-0">
+            <div class="w-8 h-8 rounded-lg bg-tangerine text-white border-[2px] border-obsidian flex items-center justify-center shrink-0">
+              <i data-lucide="moon" class="w-4 h-4 track-disc-icon"></i>
+            </div>
+            <div class="min-w-0 text-left">
+              <div class="flex items-center gap-2">
+                <span class="font-display font-extrabold text-sm text-obsidian group-hover:text-tangerine transition-colors truncate">K.</span>
+                <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-tangerine/15 text-tangerine border border-tangerine/40">Cigarettes After Sex</span>
+              </div>
+              <p class="text-[11px] font-mono text-obsidian/70 truncate">Late Night Whispers • Tender Heartbeats</p>
+            </div>
+          </div>
+          <span class="track-active-pill hidden px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-lime border border-obsidian text-obsidian">NOW PLAYING</span>
+        </div>
+
+        <div class="soundtrack-track-card p-3 flex items-center justify-between gap-3 group" data-track-id="the-night-we-met">
+          <div class="flex items-center gap-3 min-w-0">
+            <div class="w-8 h-8 rounded-lg bg-lime text-obsidian border-[2px] border-obsidian flex items-center justify-center shrink-0">
+              <i data-lucide="compass" class="w-4 h-4 track-disc-icon"></i>
+            </div>
+            <div class="min-w-0 text-left">
+              <div class="flex items-center gap-2">
+                <span class="font-display font-extrabold text-sm text-obsidian group-hover:text-magenta transition-colors truncate">The Night We Met</span>
+                <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-lime/20 text-obsidian border border-lime/50">Lord Huron</span>
+              </div>
+              <p class="text-[11px] font-mono text-obsidian/70 truncate">Written in the Stars • Timeless Echoes</p>
+            </div>
+          </div>
+          <span class="track-active-pill hidden px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-lime border border-obsidian text-obsidian">NOW PLAYING</span>
+        </div>
+
+        <div class="soundtrack-track-card p-3 flex items-center justify-between gap-3 group" data-track-id="love-you-so">
+          <div class="flex items-center gap-3 min-w-0">
+            <div class="w-8 h-8 rounded-lg bg-magenta text-white border-[2px] border-obsidian flex items-center justify-center shrink-0">
+              <i data-lucide="smile" class="w-4 h-4 track-disc-icon"></i>
+            </div>
+            <div class="min-w-0 text-left">
+              <div class="flex items-center gap-2">
+                <span class="font-display font-extrabold text-sm text-obsidian group-hover:text-magenta transition-colors truncate">Love You So</span>
+                <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-magenta/15 text-magenta border border-magenta/40">The Walters</span>
+              </div>
+              <p class="text-[11px] font-mono text-obsidian/70 truncate">Playful Love • Infectious Smile • Pure Bebo</p>
+            </div>
+          </div>
+          <span class="track-active-pill hidden px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-lime border border-obsidian text-obsidian">NOW PLAYING</span>
+        </div>
+
+        <div class="soundtrack-track-card p-3 flex items-center justify-between gap-3 group" data-track-id="classic-anthem">
+          <div class="flex items-center gap-3 min-w-0">
+            <div class="w-8 h-8 rounded-lg bg-sunburst text-obsidian border-[2px] border-obsidian flex items-center justify-center shrink-0">
+              <i data-lucide="music" class="w-4 h-4 track-disc-icon"></i>
+            </div>
+            <div class="min-w-0 text-left">
+              <div class="flex items-center gap-2">
+                <span class="font-display font-extrabold text-sm text-obsidian group-hover:text-magenta transition-colors truncate">Until I Found You</span>
+                <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-sunburst/25 text-obsidian border border-sunburst/60">Stephen Sanchez</span>
+              </div>
+              <p class="text-[11px] font-mono text-obsidian/70 truncate">Classic Track 08 • Eternal Sanctuary Anthem</p>
+            </div>
+          </div>
+          <span class="track-active-pill hidden px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-lime border border-obsidian text-obsidian">NOW PLAYING</span>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="flex items-center justify-between pt-3 mt-3 border-t-[2px] border-obsidian/20">
+        <button 
+          id="soundtrack-modal-shuffle-btn" 
+          type="button" 
+          class="px-3.5 py-1.5 rounded-xl bg-cyan text-obsidian font-mono font-bold text-xs border-[2px] border-obsidian shadow-[2px_2px_0px_#0D001A] active:translate-x-0.5 active:translate-y-0.5 transition-all flex items-center gap-1.5">
+          <i data-lucide="shuffle" class="w-3.5 h-3.5"></i>
+          <span>Surprise Me 🎲</span>
+        </button>
+
+        <span class="text-[11px] font-mono text-obsidian/60 font-bold">
+          Tap any track to play instantly
+        </span>
+      </div>
+    </div>
+  </div>
 
   <!-- Scripts -->
   <script src="config.js"></script>

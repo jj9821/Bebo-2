@@ -6,7 +6,7 @@ This guide walks you through customizing and adding photos, videos, and narrativ
 
 ## 📸 Media Data Structure (`memories.ts` & `mediaData.js`)
 
-All 42 memories and videos are managed in **[`memories.ts`](file:///home/jo_vellappani/bebo/memories.ts)** (TypeScript) and **[`mediaData.js`](file:///home/jo_vellappani/bebo/mediaData.js)** (Browser runtime).
+All 144 memories and videos are managed in **[`memories.ts`](file:///home/jo_vellappani/bebo/memories.ts)** (TypeScript) and **[`mediaData.js`](file:///home/jo_vellappani/bebo/mediaData.js)** (Browser runtime).
 
 ### Structure of a Media Item:
 ```typescript

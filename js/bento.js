@@ -29,11 +29,14 @@ class ReasonsBentoGrid {
   renderBentoCards() {
     if (!this.container) return;
 
-    this.container.innerHTML = this.reasons.map((item) => {
+    this.container.innerHTML = this.reasons.map((item, idx) => {
+      const tapeClass = ['tape-pink', 'tape-lime', 'tape-gold', 'tape-sky'][idx % 4];
+      const tapeSide = idx % 2 === 0 ? '-top-3 left-6 -rotate-6' : '-top-3 right-6 rotate-6';
+
       if (item.interactiveType === 'flip') {
         return `
           <div 
-            class="${item.gridSpan} bento-flip-card group" 
+            class="${item.gridSpan} bento-flip-card group relative min-h-[300px]" 
             data-id="${item.id}"
             tabindex="0"
             role="button"
@@ -41,59 +44,57 @@ class ReasonsBentoGrid {
             aria-expanded="false">
             <div class="bento-flip-inner">
               <!-- Card Front -->
-              <div class="bento-card-front glass-panel p-6 flex flex-col justify-between overflow-hidden relative">
-                <div class="absolute top-0 right-0 w-36 h-36 bg-gradient-to-bl ${item.accentGradient} rounded-full blur-2xl pointer-events-none"></div>
+              <div class="bento-card-front bg-white border-[3.5px] border-[#0D001A] shadow-[4px_4px_0px_#00F5FF,8px_8px_0px_#0D001A] hover:shadow-[4px_4px_0px_#FFE600,8px_8px_0px_#FF0066,12px_12px_0px_#0D001A] hover:-translate-y-1.5 p-6 flex flex-col justify-between overflow-hidden relative rounded-2xl transition-all duration-200">
+                <div class="washi-tape-strip ${tapeClass} ${tapeSide}"></div>
 
                 <div>
                   <div class="flex items-center justify-between mb-4">
-                    <span class="px-3 py-1 rounded-full text-[11px] font-mono tracking-wider bg-rose-500/10 text-rose-300 border border-rose-400/20">
+                    <span class="px-3 py-1 rounded-full text-[11px] font-mono font-bold tracking-wider bg-[#FF0066] text-white border-[2px] border-[#0D001A] shadow-[2px_2px_0px_#0D001A]">
                       ${item.badge}
                     </span>
-                    <div class="w-9 h-9 rounded-full bg-white/5 border border-rose-200/15 flex items-center justify-center text-rose-300 group-hover:scale-110 group-hover:bg-rose-500/20 transition-all">
-                      <i data-lucide="${item.icon}" class="w-4 h-4"></i>
+                    <div class="w-10 h-10 rounded-full bg-[#FFF8E7] border-[2px] border-[#0D001A] flex items-center justify-center text-[#0D001A] shadow-[2px_2px_0px_#0D001A] group-hover:bg-[#00FF75] transition-colors">
+                      <i data-lucide="${item.icon}" class="w-5 h-5"></i>
                     </div>
                   </div>
 
-                  <span class="text-xs uppercase tracking-widest text-gray-400 font-mono">${item.category}</span>
-                  <h3 class="font-serif-editorial text-2xl text-rose-100 font-semibold mt-1 mb-2 leading-snug">
+                  <span class="text-xs uppercase tracking-widest text-[#0D001A]/70 font-mono font-bold">${item.category}</span>
+                  <h3 class="font-display text-2xl text-[#0D001A] font-bold mt-1 mb-2 leading-snug">
                     ${item.title}
                   </h3>
-                  <p class="text-sm text-gray-300/80 font-sans leading-relaxed">
+                  <p class="text-sm text-[#0D001A]/85 font-sans leading-relaxed">
                     ${item.shortDescription}
                   </p>
                 </div>
 
-                <div class="pt-4 mt-auto flex items-center justify-between text-xs text-rose-300/90 font-medium">
+                <div class="pt-4 mt-auto flex items-center justify-between text-xs text-[#FF0066] font-mono font-bold">
                   <span class="flex items-center gap-1.5 group-hover:translate-x-1 transition-transform">
-                    <i data-lucide="sparkles" class="w-3.5 h-3.5 text-rose-400"></i> Tap or press Enter to reveal
+                    <i data-lucide="sparkles" class="w-4 h-4 text-[#FFE600]"></i> Tap to flip note
                   </span>
-                  <i data-lucide="arrow-right" class="w-4 h-4 opacity-60 group-hover:opacity-100 transition-opacity"></i>
+                  <i data-lucide="arrow-right" class="w-4 h-4 opacity-70 group-hover:opacity-100"></i>
                 </div>
               </div>
 
               <!-- Card Back -->
-              <div class="bento-card-back p-6 flex flex-col justify-between overflow-hidden relative">
-                <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-gradient-to-tr ${item.accentGradient} rounded-full blur-2xl pointer-events-none"></div>
-
+              <div class="bento-card-back bg-[#FFF8E7] border-[3.5px] border-[#0D001A] shadow-[4px_4px_0px_#FF0066,8px_8px_0px_#0D001A] p-6 flex flex-col justify-between overflow-hidden relative rounded-2xl">
                 <div>
                   <div class="flex items-center justify-between mb-3">
-                    <span class="text-xs font-mono text-rose-300/80 uppercase tracking-wider flex items-center gap-1">
-                      <i data-lucide="heart" class="w-3.5 h-3.5 text-rose-400 fill-rose-400"></i> From My Heart
+                    <span class="text-xs font-mono font-bold text-[#FF0066] uppercase tracking-wider flex items-center gap-1">
+                      <i data-lucide="heart" class="w-3.5 h-3.5 fill-[#FF0066]"></i> From My Soul
                     </span>
-                    <span class="text-[11px] text-gray-400">Tap / Enter to flip back</span>
+                    <span class="text-[11px] font-mono text-[#0D001A]/60 font-bold">Tap to flip back</span>
                   </div>
 
-                  <h4 class="font-serif-editorial text-xl text-rose-200 font-semibold mb-3">
+                  <h4 class="font-display text-xl text-[#0D001A] font-bold mb-3">
                     ${item.title}
                   </h4>
 
-                  <p class="text-sm text-rose-100/90 font-sans leading-relaxed italic border-l-2 border-rose-400/40 pl-3">
+                  <p class="text-base text-[#0D001A] font-handwriting leading-relaxed font-bold border-l-3 border-[#FF0066] pl-3">
                     “${item.revealedContent}”
                   </p>
                 </div>
 
                 <div class="pt-4 mt-auto text-right">
-                  <span class="text-xs font-cursive text-rose-200 text-lg">forever yours ♡</span>
+                  <span class="font-handwriting text-2xl text-[#FF0066] font-bold">forever yours ♡</span>
                 </div>
               </div>
             </div>
@@ -103,50 +104,52 @@ class ReasonsBentoGrid {
         // Scratch / Mist Reveal Card
         return `
           <div 
-            class="${item.gridSpan} relative rounded-2xl overflow-hidden glass-panel p-6 min-h-[260px] flex flex-col justify-between group" 
+            class="${item.gridSpan} relative rounded-2xl overflow-hidden bg-white border-[3.5px] border-[#0D001A] shadow-[4px_4px_0px_#00FF75,8px_8px_0px_#0D001A] hover:shadow-[4px_4px_0px_#00F5FF,8px_8px_0px_#0D001A] p-6 min-h-[300px] flex flex-col justify-between group cursor-pointer transition-all duration-200" 
             data-id="${item.id}"
             tabindex="0"
             role="button"
             aria-label="Mist card: ${item.title}. Press Enter or Space to clear mist."
             aria-expanded="false">
+            <div class="washi-tape-strip ${tapeClass} ${tapeSide}"></div>
+
             <!-- Background Content (Revealed) -->
             <div class="relative z-0 h-full flex flex-col justify-between">
               <div>
                 <div class="flex items-center justify-between mb-3">
-                  <span class="px-3 py-1 rounded-full text-[11px] font-mono tracking-wider bg-rose-500/10 text-rose-300 border border-rose-400/20">
+                  <span class="px-3 py-1 rounded-full text-[11px] font-mono font-bold tracking-wider bg-[#00FF75] text-[#0D001A] border-[2px] border-[#0D001A] shadow-[2px_2px_0px_#0D001A]">
                     ${item.badge}
                   </span>
-                  <div class="w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center text-rose-300">
+                  <div class="w-9 h-9 rounded-full bg-[#FFF8E7] border-[2px] border-[#0D001A] flex items-center justify-center text-[#0D001A]">
                     <i data-lucide="${item.icon}" class="w-4 h-4"></i>
                   </div>
                 </div>
 
-                <h3 class="font-serif-editorial text-2xl text-rose-100 font-semibold mb-2">
+                <h3 class="font-display text-2xl text-[#0D001A] font-bold mb-2">
                   ${item.title}
                 </h3>
-                <p class="text-sm text-rose-100/90 leading-relaxed italic border-l-2 border-rose-400/50 pl-3 font-sans">
+                <p class="text-base text-[#0D001A] font-handwriting font-bold leading-relaxed border-l-3 border-[#00FF75] pl-3">
                   “${item.revealedContent}”
                 </p>
               </div>
 
-              <div class="pt-4 text-xs text-rose-300/70 font-mono flex items-center gap-1.5">
-                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-rose-400"></i> Secret Whispers Unveiled
+              <div class="pt-4 text-xs text-[#FF0066] font-mono font-bold flex items-center gap-1.5">
+                <i data-lucide="check-circle" class="w-4 h-4 text-[#00FF75]"></i> Secret Whispers Unveiled
               </div>
             </div>
 
             <!-- Scratch / Frosted Mist Overlay -->
-            <div class="scratch-overlay p-6 text-center">
-              <div class="w-12 h-12 rounded-full bg-rose-500/15 border border-rose-300/30 flex items-center justify-center text-rose-200 mb-3 animate-pulse">
+            <div class="scratch-overlay p-6 text-center bg-[#FFFDF5]/95 border-[2px] border-[#0D001A] rounded-xl flex flex-col items-center justify-center">
+              <div class="w-12 h-12 rounded-full bg-[#FF0066] border-[2px] border-[#0D001A] flex items-center justify-center text-white mb-3 shadow-[3px_3px_0px_#0D001A]">
                 <i data-lucide="sparkles" class="w-6 h-6"></i>
               </div>
-              <h4 class="font-serif-editorial text-xl text-rose-100 font-semibold mb-1">
+              <h4 class="font-display text-xl text-[#0D001A] font-bold mb-1">
                 ${item.title}
               </h4>
-              <p class="text-xs text-gray-300 font-sans max-w-xs mb-3">
+              <p class="text-xs text-[#0D001A]/70 font-sans max-w-xs mb-3">
                 ${item.shortDescription}
               </p>
-              <span class="px-4 py-1.5 rounded-full text-xs font-mono bg-white/10 hover:bg-rose-500/20 text-rose-200 border border-rose-200/30 transition-all shadow-sm">
-                ✨ Click or press Enter to clear
+              <span class="px-4 py-2 rounded-full text-xs font-mono font-bold bg-[#00FF75] text-[#0D001A] border-[2px] border-[#0D001A] shadow-[3px_3px_0px_#0D001A] active:translate-x-0.5 active:translate-y-0.5 transition-all">
+                ✨ Click to reveal note
               </span>
             </div>
           </div>

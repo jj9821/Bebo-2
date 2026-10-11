@@ -100,7 +100,7 @@ class RomanticLoveLetter {
         particleCount: 35,
         spread: 60,
         origin: { y: 0.65 },
-        colors: ['#e63946', '#f4d0d2', '#fceade', '#ffd700']
+        colors: ['#FF0066', '#FFE600', '#00F5FF', '#00FF75', '#7B00FF']
       });
     }
 
@@ -141,11 +141,11 @@ class RomanticLoveLetter {
 
     // Build the full narrative text with HTML formatting markers
     this.typewriterTarget.innerHTML = `
-      <div class="font-serif-editorial text-2xl text-rose-200 font-bold mb-4 tracking-wide">${greeting}</div>
-      <div id="typewriter-body-stream" class="space-y-4 font-serif-editorial text-lg md:text-xl text-rose-100/90 leading-relaxed"></div>
+      <div class="font-display text-2xl text-[#120824] font-bold mb-4 tracking-wide">${greeting}</div>
+      <div id="typewriter-body-stream" class="space-y-4 font-handwriting text-2xl text-[#190934] font-bold leading-relaxed"></div>
       <div id="typewriter-signoff" class="mt-8 pt-4 opacity-0 transition-opacity duration-700">
-        <div class="font-serif-editorial text-rose-300 text-lg italic">${signOff}</div>
-        <div class="font-cursive text-3xl md:text-4xl text-gradient-gold mt-1">${signature}</div>
+        <div class="font-mono text-xs uppercase tracking-wider text-[#FF1268] font-bold">${signOff}</div>
+        <div class="font-handwriting text-3xl md:text-4xl text-[#FF1268] font-bold mt-1">${signature}</div>
       </div>
     `;
 

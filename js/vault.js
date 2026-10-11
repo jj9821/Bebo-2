@@ -155,7 +155,7 @@ class MilestoneAndVault {
             particleCount: 85,
             spread: 90,
             origin: { y: 0.5 },
-            colors: ['#F4D0D2', '#FFD700', '#E8A598', '#FFFFFF', '#C084FC']
+            colors: ['#FF0066', '#00F5FF', '#FFE600', '#00FF75', '#7B00FF']
           });
         }
       } else {

@@ -766,6 +766,606 @@ export const MEDIA_ITEMS: MediaItem[] = [
     "caption": "Through every tomorrow and every chapter ahead, you make my life infinitely better, softer, and more beautiful. I love you, Bebo.",
     "tag": "favorites",
     "aspectRatio": "landscape"
+  },
+  {
+      "id": 82,
+      "type": "image",
+      "src": "assets/photos/20230607_154350_Original.jpg",
+      "title": "Sunlit Smiles & Endless Sunshine \u2600\ufe0f",
+      "caption": "The warmth of early summer days is nothing compared to how bright you make every single second of my world.",
+      "tag": "beginning",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 83,
+      "type": "video",
+      "src": "assets/videos/20230621_141641.mp4",
+      "poster": "assets/posters/20230621_141641.jpg",
+      "title": "Summer Escapade Together \ud83d\ude97",
+      "caption": "Windows rolled down, summer air rushing in, and your laughter ringing out across the highway.",
+      "tag": "adventures",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 84,
+      "type": "image",
+      "src": "assets/photos/20230811_215133_Original.jpg",
+      "title": "Late Night Soulmate Whispers \ud83c\udf19",
+      "caption": "Under the quiet August moon, talking with you until midnight felt like living inside my favorite dream.",
+      "tag": "unfiltered",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 85,
+      "type": "video",
+      "src": "assets/videos/20230621_141755.mp4",
+      "poster": "assets/posters/20230621_141755.jpg",
+      "title": "Unstoppable Sunlit Smiles \ud83c\udf1e",
+      "caption": "No script, just genuine joy with the girl who stole my heart and made it beat ten times stronger.",
+      "tag": "whole-world",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 86,
+      "type": "image",
+      "src": "assets/photos/20240217_170715_Original.jpg",
+      "title": "Winter Golden Hour Magic \u2728",
+      "caption": "Wrapped in scarves and laughter, you turn chilly February afternoons into pure cosmic gold.",
+      "tag": "adventures",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 87,
+      "type": "video",
+      "src": "assets/videos/20241129_114659.mp4",
+      "poster": "assets/posters/20241129_114659.jpg",
+      "title": "November Wanderlust \ud83c\udf42",
+      "caption": "Bundled up and discovering cozy little corners\u2014every journey with you is pure poetry.",
+      "tag": "adventures",
+      "aspectRatio": "landscape"
+  },
+  {
+      "id": 88,
+      "type": "image",
+      "src": "assets/photos/20250126_123330_Original.jpg",
+      "title": "New Year, Same Eternal Love \ud83d\udcab",
+      "caption": "Another year around the sun, and loving you continues to be the greatest, easiest privilege of my existence.",
+      "tag": "whole-world",
+      "aspectRatio": "landscape"
+  },
+  {
+      "id": 89,
+      "type": "video",
+      "src": "assets/videos/20250603_134230.mp4",
+      "poster": "assets/posters/20250603_134230.jpg",
+      "title": "Breezy Smiles & Sweet Banter \ud83c\udf2c\ufe0f",
+      "caption": "Teasing each other under the open sky\u2014nobody makes me laugh the way you do, Maria.",
+      "tag": "unfiltered",
+      "aspectRatio": "landscape"
+  },
+  {
+      "id": 90,
+      "type": "image",
+      "src": "assets/photos/20260804_173515_Original.jpg",
+      "title": "Forever Locked In Orbit \ud83e\ude90",
+      "caption": "No matter how much time passes, my heart still skips a beat every single time you look my way.",
+      "tag": "favorites",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 91,
+      "type": "video",
+      "src": "assets/videos/20250607_203518.mp4",
+      "poster": "assets/posters/20250607_203518.jpg",
+      "title": "Twilight Golden Hour Glow \ud83c\udf07",
+      "caption": "As the sun dips below the horizon, your glow outshines every city light in the distance.",
+      "tag": "favorites",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 92,
+      "type": "image",
+      "src": "assets/photos/IMG-20230909-WA0035_Original.jpg",
+      "title": "The Sweetest Giggle in the Universe \ud83c\udf38",
+      "caption": "Caught in the middle of a belly laugh\u2014this is the exact face that makes all the noise of the world fade away.",
+      "tag": "unfiltered",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 93,
+      "type": "video",
+      "src": "assets/videos/236ef13b-eb52-45e8-beb8-8e5c914566a7.mp4",
+      "poster": "assets/posters/236ef13b-eb52-45e8-beb8-8e5c914566a7.jpg",
+      "title": "Silly Shenanigans with Bebo \ud83e\udd2a",
+      "caption": "The goofiest, most precious moments where we can be 100% our weird, wonderful selves.",
+      "tag": "unfiltered",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 94,
+      "type": "image",
+      "src": "assets/photos/IMG_2562_Original.jpg",
+      "title": "Destined Before Day One \ud83d\udc8c",
+      "caption": "Looking at this photo, I swear the stars had us written together long before we even took our first breath.",
+      "tag": "beginning",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 95,
+      "type": "video",
+      "src": "assets/videos/27422041-0681-423d-8d2a-28a1dda6b7ae.mp4",
+      "poster": "assets/posters/27422041-0681-423d-8d2a-28a1dda6b7ae.jpg",
+      "title": "Spontaneous Joy Caught on Tape \ud83c\udfac",
+      "caption": "Catching your surprise smiles on camera is my favorite sport. You are pure delight.",
+      "tag": "whole-world",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 96,
+      "type": "image",
+      "src": "assets/photos/IMG_2708_Original.jpg",
+      "title": "My Favorite View Forever \ud83c\udf05",
+      "caption": "People travel across continents looking for wonders, but all I need is right here in front of me.",
+      "tag": "whole-world",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 97,
+      "type": "video",
+      "src": "assets/videos/2bbb063c-5027-4d76-9be1-e9701960fbca.mp4",
+      "poster": "assets/posters/2bbb063c-5027-4d76-9be1-e9701960fbca.jpg",
+      "title": "The Melody of Your Laughter \ud83c\udfb5",
+      "caption": "If I could record one sound to listen to for eternity, it would be you giggling at my jokes.",
+      "tag": "beginning",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 98,
+      "type": "image",
+      "src": "assets/photos/IMG_3016_Original.jpg",
+      "title": "Pure Candid Happiness \u2615",
+      "caption": "No posing, no filters, just our honest soulmate connection shining straight through the lens.",
+      "tag": "unfiltered",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 99,
+      "type": "video",
+      "src": "assets/videos/IMG_3387.mp4",
+      "poster": "assets/posters/IMG_3387.jpg",
+      "title": "Exploring Hand in Hand \ud83c\udf32",
+      "caption": "Walking side by side, discovering new trails, and realizing that home is anywhere you are.",
+      "tag": "adventures",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 100,
+      "type": "image",
+      "src": "assets/photos/IMG_3198_Original.jpg",
+      "title": "My Sanctuary & Safe Haven \ud83c\udfe1",
+      "caption": "Wherever you are is my home. Next to you, my soul feels instantly protected and profoundly at peace.",
+      "tag": "whole-world",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 101,
+      "type": "video",
+      "src": "assets/videos/IMG_3856.mp4",
+      "poster": "assets/posters/IMG_3856.jpg",
+      "title": "Whispered Inside Jokes \ud83e\udd2b",
+      "caption": "One glance across the room and we already know what the other is thinking. That's true soulmate energy.",
+      "tag": "unfiltered",
+      "aspectRatio": "landscape"
+  },
+  {
+      "id": 102,
+      "type": "image",
+      "src": "assets/photos/IMG_3212_Original.jpg",
+      "title": "A Vision in Every Universe \ud83d\udc51",
+      "caption": "If I searched a million galaxies and lived a thousand lifetimes, I would still choose only you.",
+      "tag": "favorites",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 103,
+      "type": "video",
+      "src": "assets/videos/IMG_3857.mp4",
+      "poster": "assets/posters/IMG_3857.jpg",
+      "title": "That Unstoppable Grin \ud83d\ude04",
+      "caption": "You tried not to smile, but it broke through anyway. My heart melts every single time.",
+      "tag": "favorites",
+      "aspectRatio": "landscape"
+  },
+  {
+      "id": 104,
+      "type": "image",
+      "src": "assets/photos/IMG_3461_Original.jpg",
+      "title": "Afternoon Roadtrip Bliss \ud83d\ude97",
+      "caption": "Passenger seat confessions, loud singing, and you smiling back at me\u2014the recipe for perfection.",
+      "tag": "adventures",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 105,
+      "type": "video",
+      "src": "assets/videos/IMG_4524.mp4",
+      "poster": "assets/posters/IMG_4524.jpg",
+      "title": "A Memory Frozen In Gold \u23f3",
+      "caption": "Holding you close while the world spins outside. In your arms, I have everything I'll ever need.",
+      "tag": "beginning",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 106,
+      "type": "image",
+      "src": "assets/photos/IMG_3581_Original.jpg",
+      "title": "The Look That Captivates My Soul \ud83d\udc96",
+      "caption": "That gentle, knowing gaze of yours has the power to heal every hard day in an instant.",
+      "tag": "favorites",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 107,
+      "type": "video",
+      "src": "assets/videos/IMG_5174.mp4",
+      "poster": "assets/posters/IMG_5174.jpg",
+      "title": "Dancing Through Everyday Life \ud83d\udc83",
+      "caption": "Turning grocery aisles and kitchen floors into our private ballroom. You make life a celebration.",
+      "tag": "whole-world",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 108,
+      "type": "image",
+      "src": "assets/photos/PXL_20230727_075509932_Original.jpg",
+      "title": "Morning Strolls With My Twin Flame \ud83c\udf3f",
+      "caption": "Walking step-by-step through dew-covered paths, hand in hand, dreaming of the lifetime ahead.",
+      "tag": "beginning",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 109,
+      "type": "video",
+      "src": "assets/videos/IMG_5175.mp4",
+      "poster": "assets/posters/IMG_5175.jpg",
+      "title": "My Favorite Partner in Mischief \ud83d\ude1c",
+      "caption": "Plotting silly pranks and laughing until our stomachs hurt\u2014life with you is never boring.",
+      "tag": "unfiltered",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 110,
+      "type": "image",
+      "src": "assets/photos/PXL_20230727_083312590.PORTRAIT_Original.jpg",
+      "title": "Breathtakingly Beautiful Bebo \ud83c\udf39",
+      "caption": "You have a natural grace that takes my breath away every single day. You are pure art.",
+      "tag": "favorites",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 111,
+      "type": "video",
+      "src": "assets/videos/IMG_5183.mp4",
+      "poster": "assets/posters/IMG_5183.jpg",
+      "title": "Sweet Chaos & Boundless Love \ud83c\udf89",
+      "caption": "Even when plans go sideways, being with you turns every mishap into an unforgettable story.",
+      "tag": "adventures",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 112,
+      "type": "image",
+      "src": "assets/photos/PXL_20230727_083332509.PORTRAIT_Original.jpg",
+      "title": "The Center of My Galaxy \ud83c\udf0c",
+      "caption": "Everything good in my life revolves around your kindness, your warmth, and your boundless love.",
+      "tag": "whole-world",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 113,
+      "type": "video",
+      "src": "assets/videos/IMG_5186.mp4",
+      "poster": "assets/posters/IMG_5186.jpg",
+      "title": "The Golden Spark in Your Gaze \u2728",
+      "caption": "The way you look at me when you think I'm not watching\u2014I carry that look with me everywhere.",
+      "tag": "favorites",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 114,
+      "type": "image",
+      "src": "assets/photos/PXL_20230727_084246015.PORTRAIT~2_Original.jpg",
+      "title": "Sun-Kissed Radiance \u2600\ufe0f",
+      "caption": "The golden summer light caught your features, and in that moment, time stood completely still.",
+      "tag": "favorites",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 115,
+      "type": "video",
+      "src": "assets/videos/IMG_5233.mp4",
+      "poster": "assets/posters/IMG_5233.jpg",
+      "title": "Unplanned Cosmic Roadtrip \ud83d\udee3\ufe0f",
+      "caption": "Driving towards the horizon with our favorite soundtrack playing and you singing along softly.",
+      "tag": "adventures",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 116,
+      "type": "image",
+      "src": "assets/photos/PXL_20230727_084259092.LONG_EXPOSURE-01.COVER_Original.jpg",
+      "title": "Eternity in a Millisecond \u23f3",
+      "caption": "Even as the world rushes by in a blur, you remain my stillness, my clarity, and my constant.",
+      "tag": "adventures",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 117,
+      "type": "video",
+      "src": "assets/videos/PXL_20230825_130207264.mp4",
+      "poster": "assets/posters/PXL_20230825_130207264.jpg",
+      "title": "August Breeze & Warm Embrace \ud83c\udf43",
+      "caption": "Feeling the summer breeze and holding your gentle hands\u2014peace doesn't get any purer than this.",
+      "tag": "whole-world",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 118,
+      "type": "image",
+      "src": "assets/photos/PXL_20230727_085453793.PORTRAIT_Original.jpg",
+      "title": "The Eyes That Hold My Universe \ud83d\udd2e",
+      "caption": "One look into your eyes and every question I ever had about destiny was answered forever.",
+      "tag": "beginning",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 119,
+      "type": "video",
+      "src": "assets/videos/PXL_20230825_150313502.mp4",
+      "poster": "assets/posters/PXL_20230825_150313502.jpg",
+      "title": "Radiant Sunlight Energy \u2600\ufe0f",
+      "caption": "You literally light up whatever room you step into. Being your partner is my ultimate pride.",
+      "tag": "favorites",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 120,
+      "type": "image",
+      "src": "assets/photos/PXL_20230727_085458372.PORTRAIT_Original.jpg",
+      "title": "Gentle Grace & Sweet Devotion \ud83c\udf37",
+      "caption": "The tender way you care for everyone around you inspires me to be a better man every single day.",
+      "tag": "whole-world",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 121,
+      "type": "video",
+      "src": "assets/videos/PXL_20230825_162115512.mp4",
+      "poster": "assets/posters/PXL_20230825_162115512.jpg",
+      "title": "Afternoon Softness & Calm \u2601\ufe0f",
+      "caption": "Quiet moments in the shade, resting our heads together, knowing we have all the time in the world.",
+      "tag": "unfiltered",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 122,
+      "type": "image",
+      "src": "assets/photos/PXL_20230807_091002966.PORTRAIT_Original.jpg",
+      "title": "High Summer Adventures \ud83c\udf3b",
+      "caption": "Exploring hidden corners and green valleys with you makes every ordinary road feel magical.",
+      "tag": "adventures",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 123,
+      "type": "video",
+      "src": "assets/videos/PXL_20230826_110947837.mp4",
+      "poster": "assets/posters/PXL_20230826_110947837.jpg",
+      "title": "Wandering Side by Side \ud83d\udc3e",
+      "caption": "Every step taken with you feels purposeful. You give my journey meaning, direction, and warmth.",
+      "tag": "adventures",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 124,
+      "type": "image",
+      "src": "assets/photos/PXL_20230811_100401726.PORTRAIT_Original.jpg",
+      "title": "Your Sweet Morning Glow \u2615",
+      "caption": "Fresh air, morning sunshine, and your soft smile\u2014nothing in this life will ever top this.",
+      "tag": "unfiltered",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 125,
+      "type": "video",
+      "src": "assets/videos/PXL_20230826_111137590.mp4",
+      "poster": "assets/posters/PXL_20230826_111137590.jpg",
+      "title": "You, Always and Forever \ud83d\udc96",
+      "caption": "From the very first second I saw you, there was never any doubt. It has always been you.",
+      "tag": "beginning",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 126,
+      "type": "image",
+      "src": "assets/photos/PXL_20230825_125500888.PORTRAIT_Original.jpg",
+      "title": "August Romance in Bloom \ud83c\udf3a",
+      "caption": "Summer days may fade into autumn, but my devotion to you only deepens with every sunrise.",
+      "tag": "favorites",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 127,
+      "type": "video",
+      "src": "assets/videos/PXL_20230827_053510366.LS.mp4",
+      "poster": "assets/posters/PXL_20230827_053510366.LS.jpg",
+      "title": "Early Morning Serenity \ud83c\udf05",
+      "caption": "The world is asleep, but our love is awake and peaceful. Waking up to you is heaven on earth.",
+      "tag": "whole-world",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 128,
+      "type": "image",
+      "src": "assets/photos/PXL_20230825_150058110.PORTRAIT_Original.jpg",
+      "title": "You Make Everything Effortless \ud83d\udc95",
+      "caption": "Being with you is as natural as breathing. There is nowhere else I'd rather be.",
+      "tag": "whole-world",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 129,
+      "type": "video",
+      "src": "assets/videos/PXL_20240309_090533711.mp4",
+      "poster": "assets/posters/PXL_20240309_090533711.jpg",
+      "title": "Spring Sunshine Walk \ud83c\udf37",
+      "caption": "Flowers blooming in the park, but none of them can match the radiance of my sweet Bebo.",
+      "tag": "favorites",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 130,
+      "type": "image",
+      "src": "assets/photos/PXL_20230826_075721772_Original.jpg",
+      "title": "Unscripted Soul Connection \ud83e\udd50",
+      "caption": "Just quiet moments over breakfast, exchanging secret smiles that only the two of us understand.",
+      "tag": "unfiltered",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 131,
+      "type": "video",
+      "src": "assets/videos/PXL_20240310_073116466.mp4",
+      "poster": "assets/posters/PXL_20240310_073116466.jpg",
+      "title": "Morning Coffee & Soft Kisses \u2615",
+      "caption": "Sleepy eyes, tangled blankets, and sweet good mornings\u2014these are the riches of my life.",
+      "tag": "unfiltered",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 132,
+      "type": "image",
+      "src": "assets/photos/PXL_20240309_075140514.PORTRAIT_Original.jpg",
+      "title": "Springtime Sunshine & Soft Kisses \ud83c\udf3c",
+      "caption": "With you, winter always ends and spring always arrives. You bring color back into my world.",
+      "tag": "favorites",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 133,
+      "type": "video",
+      "src": "assets/videos/Snapchat-1592424298.mp4",
+      "poster": "assets/posters/Snapchat-1592424298.jpg",
+      "title": "Our Goofy Little Universe \ud83d\udc7d",
+      "caption": "No filters can capture just how fun, wild, and hilarious our connection truly is.",
+      "tag": "unfiltered",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 134,
+      "type": "image",
+      "src": "assets/photos/PXL_20240309_085239303.PORTRAIT_Original.jpg",
+      "title": "Chasing Sunbeams With You \ud83c\udfc3\u200d\u2642\ufe0f",
+      "caption": "Running toward tomorrow with your hand held tightly in mine\u2014the adventure of a lifetime.",
+      "tag": "adventures",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 135,
+      "type": "video",
+      "src": "assets/videos/Snapchat-1883648215.mp4",
+      "poster": "assets/posters/Snapchat-1883648215.jpg",
+      "title": "Cute Faces & Stolen Kisses \ud83d\udc8b",
+      "caption": "Quick video check-ins that made my whole day ten thousand times brighter.",
+      "tag": "beginning",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 136,
+      "type": "image",
+      "src": "assets/photos/a552b93f-0085-41d1-8e1f-37313199fc06_Original.jpg",
+      "title": "Cosmic Soulmate Snapshot \ud83d\udcf8",
+      "caption": "Two souls bound across space and time, locked together in an unbreakable frequency.",
+      "tag": "beginning",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 137,
+      "type": "video",
+      "src": "assets/videos/VID-20230713-WA0005.mp4",
+      "poster": "assets/posters/VID-20230713-WA0005.jpg",
+      "title": "Captured Heartbeat Moments \ud83d\udc93",
+      "caption": "A quick clip that captures everything I cherish about your warmth, your eyes, and your voice.",
+      "tag": "whole-world",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 138,
+      "type": "image",
+      "src": "assets/photos/moment_c5c4dd992bee44918803b66e575be708_1694126187177_Original.jpg",
+      "title": "Unfiltered Magic in the Chaos \ud83d\udcab",
+      "caption": "In a noisy world full of distractions, your laughter is the only melody that matters to me.",
+      "tag": "unfiltered",
+      "aspectRatio": "landscape"
+  },
+  {
+      "id": 139,
+      "type": "video",
+      "src": "assets/videos/VID-20230713-WA0006.mp4",
+      "poster": "assets/posters/VID-20230713-WA0006.jpg",
+      "title": "A Replay for Every Bad Day \ud83d\udcfc",
+      "caption": "Whenever things feel tough, I watch this video and instantly remember that I am the luckiest guy alive.",
+      "tag": "favorites",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 140,
+      "type": "image",
+      "src": "assets/photos/original_81f61170-2ca5-4e92-a6ba-d98a450690a8_PXL_20230811_101941925.PORTRAIT_Original.jpg",
+      "title": "My Crown & My Forever Love \ud83d\udc51",
+      "caption": "You are my queen, my best friend, and my greatest blessing. I will love you until the end of time.",
+      "tag": "favorites",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 141,
+      "type": "video",
+      "src": "assets/videos/VID-20241116-WA0000.mp4",
+      "poster": "assets/posters/VID-20241116-WA0000.jpg",
+      "title": "Cozy Winter Snuggles \ud83e\udde3",
+      "caption": "Cold weather outside, but complete warmth inside because I have you by my side.",
+      "tag": "adventures",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 142,
+      "type": "video",
+      "src": "assets/videos/a91a2031-5993-44d4-b058-3080f0943160.mp4",
+      "poster": "assets/posters/a91a2031-5993-44d4-b058-3080f0943160.jpg",
+      "title": "The Greatest Journey of My Life \ud83d\ude80",
+      "caption": "Traveling with you is an infinite adventure. Here's to a thousand more destinations with my soulmate.",
+      "tag": "adventures",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 143,
+      "type": "video",
+      "src": "assets/videos/ab962ef3-6f9f-44a9-b28d-83fdbd4b9666.mp4",
+      "poster": "assets/posters/ab962ef3-6f9f-44a9-b28d-83fdbd4b9666.jpg",
+      "title": "Two Souls, One Destined Orbit \ud83d\udcab",
+      "caption": "Gravity pulled our paths together, and nothing in this cosmos will ever pull us apart.",
+      "tag": "favorites",
+      "aspectRatio": "portrait"
+  },
+  {
+      "id": 144,
+      "type": "video",
+      "src": "assets/videos/c2026ca2-f1fb-4146-90f4-30e5fd894247.mp4",
+      "poster": "assets/posters/c2026ca2-f1fb-4146-90f4-30e5fd894247.jpg",
+      "title": "Eternal Flame of My Life \ud83d\udd25",
+      "caption": "The spark that started our fire will burn bright and warm forever and always.",
+      "tag": "beginning",
+      "aspectRatio": "portrait"
   }
 ];
 export const memoriesData = MEDIA_ITEMS;

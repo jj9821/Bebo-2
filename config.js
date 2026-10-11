@@ -11,7 +11,7 @@
 const SANCTUARY_CONFIG = {
   // Couple Information
   recipientName: "Maria", // Your partner's name
-  senderName: "Yours Forever", // Your name or romantic signature
+  senderName: "Joel", // Your name or romantic signature
   petName: "Bebo", // Her special sweet nickname
   
   // Relationship Milestone Date (YYYY, MM-1, DD, HH, MM, SS)
@@ -20,20 +20,94 @@ const SANCTUARY_CONFIG = {
 
   // Hero Section Customization
   hero: {
-    badge: "✨ A PRIVATE DIGITAL SANCTUARY FOR BEBO ✨",
+    badge: "★ DESTINED SOULMATES // TWO SOULS • ONE FREQUENCY ★",
     titlePrefix: "To My Dearest Maria,",
-    titleHighlight: "My Entire Universe (Bebo)",
-    subtitle: "In a galaxy of billions of souls, my heart orbits only around you. Welcome to our timeless sanctuary written in the stars, my sweet Bebo.",
-    scrollHint: "Begin Our Celestial Journey",
-    milestoneLabel: "Loving You Every Second For"
+    titleHighlight: "BEBO: MY ETERNAL SOULMATE",
+    subtitle: "In a multiverse of infinite timelines, my heart would search and find you every single time.",
+    scrollHint: "Explore Our Cosmic Chapters",
+    milestoneLabel: "Orbiting Each Other For"
   },
 
-  // Ambient Audio Settings
+  // Ambient Audio Settings & Soulmate Mixtape Playlist
   audio: {
     autoplayPrompt: true, // Prompts subtle unmute on first user click
-    defaultVolume: 0.65,
-    trackTitle: "Our Song (1.mp3)",
-    customAudioUrl: "assets/audio/1.mp3",
+    defaultVolume: 0.85,
+    trackTitle: "Apocalypse — Cigarettes After Sex",
+    customAudioUrl: "assets/audio/Apocalypse.mp3",
+    playlist: [
+      {
+        id: "apocalypse",
+        title: "Apocalypse",
+        artist: "Cigarettes After Sex",
+        url: "assets/audio/Apocalypse.mp3",
+        vibe: "Dreamy • Slow Dance • Ethereal Romance",
+        color: "#FF0066",
+        badge: "TRACK 01"
+      },
+      {
+        id: "iwanna-be-yours",
+        title: "I Wanna Be Yours",
+        artist: "Arctic Monkeys",
+        url: "assets/audio/IWannaBeYours.mp3",
+        vibe: "Deep Devotion • Electric Cosmic Pull",
+        color: "#7B00FF",
+        badge: "TRACK 02"
+      },
+      {
+        id: "cloud-9",
+        title: "Cloud 9",
+        artist: "Beach Bunny",
+        url: "assets/audio/Cloud9.mp3",
+        vibe: "Pure Joy • Golden Sunshine • Butterflies",
+        color: "#FFE600",
+        badge: "TRACK 03"
+      },
+      {
+        id: "something-about-you",
+        title: "Something About You",
+        artist: "Eyedress & Dent May",
+        url: "assets/audio/SomethingAboutYou.mp3",
+        vibe: "Warm Glow • Soulmate Groove • Magic",
+        color: "#00F5FF",
+        badge: "TRACK 04"
+      },
+      {
+        id: "k",
+        title: "K.",
+        artist: "Cigarettes After Sex",
+        url: "assets/audio/K.mp3",
+        vibe: "Late Night Whispers • Tender Heartbeats",
+        color: "#FF4D00",
+        badge: "TRACK 05"
+      },
+      {
+        id: "the-night-we-met",
+        title: "The Night We Met",
+        artist: "Lord Huron",
+        url: "assets/audio/TheNightWeMet.mp3",
+        vibe: "Written in the Stars • Timeless Echoes",
+        color: "#00FF75",
+        badge: "TRACK 06"
+      },
+      {
+        id: "love-you-so",
+        title: "Love You So",
+        artist: "The Walters",
+        url: "assets/audio/LoveYouSo.mp3",
+        vibe: "Playful Love • Infectious Smile • Pure Bebo",
+        color: "#FF0066",
+        badge: "TRACK 07"
+      },
+      {
+        id: "classic-anthem",
+        title: "Until I Found You",
+        artist: "Stephen Sanchez",
+        url: "assets/audio/1.mp3",
+        vibe: "Classic Track 08 • Eternal Sanctuary Anthem",
+        color: "#FFE600",
+        badge: "TRACK 08"
+      }
+    ]
   },
 
   // Polaroid Memories Timeline Gallery
