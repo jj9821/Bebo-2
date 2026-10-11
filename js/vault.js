@@ -18,10 +18,6 @@ class MilestoneAndVault {
     this.vaultConfig = this.config.secretVault || {};
     
     this.cachedDigits = { days: '', hours: '', minutes: '', seconds: '' };
-    this.failedAttempts = 0;
-    this.maxAttempts = 5;
-    this.lockoutUntil = 0;
-    this.lockoutInterval = null;
 
     this.initCounter();
     this.initVault();
@@ -116,7 +112,7 @@ class MilestoneAndVault {
 
     if (inputEl) {
       inputEl.addEventListener('input', () => {
-        if (errorEl && Date.now() >= this.lockoutUntil) {
+        if (errorEl) {
           errorEl.classList.add('hidden');
         }
       });
@@ -125,22 +121,17 @@ class MilestoneAndVault {
     const checkPasscode = () => {
       if (!inputEl) return;
 
-      const now = Date.now();
-      if (now < this.lockoutUntil) {
-        const remainingSec = Math.ceil((this.lockoutUntil - now) / 1000);
-        if (errorEl) {
-          errorEl.classList.remove('hidden');
-          errorEl.textContent = `Vault locked due to multiple attempts. Please wait ${remainingSec}s ✨`;
-        }
-        return;
-      }
-
       const val = inputEl.value.trim().toLowerCase();
-      const validCodes = (this.vaultConfig.validCodes || ['140323', '1402', 'bebo', 'forever']).map(c => c.toLowerCase());
+      const validCodes = (this.vaultConfig.validCodes || ['210604', '21-06-04', '21/06/04']).map(c => String(c).toLowerCase().trim());
+      const normalizedInput = val.replace(/[\s\-_/]/g, '');
 
-      if (validCodes.includes(val)) {
+      const isMatch = validCodes.some(code => {
+        const normalizedCode = code.replace(/[\s\-_/]/g, '').toLowerCase();
+        return val === code || normalizedInput === normalizedCode;
+      }) || (normalizedInput === '210604');
+
+      if (isMatch) {
         // Unlock Vault!
-        this.failedAttempts = 0;
         if (formSection) formSection.classList.add('hidden');
         if (unlockedSection) {
           unlockedSection.classList.remove('hidden');
@@ -159,42 +150,9 @@ class MilestoneAndVault {
           });
         }
       } else {
-        this.failedAttempts++;
-
-        if (this.failedAttempts >= this.maxAttempts) {
-          this.lockoutUntil = Date.now() + 30000; // 30s lockout
-          this.failedAttempts = 0;
-
-          if (errorEl) {
-            errorEl.classList.remove('hidden');
-            errorEl.textContent = "Too many attempts! Vault security paused for 30 seconds 🔒";
-          }
-
-          if (submitBtn) submitBtn.disabled = true;
-          if (inputEl) inputEl.disabled = true;
-
-          const updateLockoutMsg = () => {
-            const timeLeft = Math.ceil((this.lockoutUntil - Date.now()) / 1000);
-            if (timeLeft <= 0) {
-              clearInterval(this.lockoutInterval);
-              if (errorEl) errorEl.textContent = "Vault unlocked. You may try again ✨";
-              if (submitBtn) submitBtn.disabled = false;
-              if (inputEl) {
-                inputEl.disabled = false;
-                inputEl.focus();
-              }
-            } else {
-              if (errorEl) errorEl.textContent = `Security pause active. Please wait ${timeLeft}s 🔒`;
-            }
-          };
-
-          this.lockoutInterval = setInterval(updateLockoutMsg, 1000);
-        } else {
-          if (errorEl) {
-            errorEl.classList.remove('hidden');
-            const remaining = this.maxAttempts - this.failedAttempts;
-            errorEl.textContent = `That's not the key, my love! (${remaining} attempts left) Hint: Special date 140323 or nickname 💖`;
-          }
+        if (errorEl) {
+          errorEl.classList.remove('hidden');
+          errorEl.textContent = "That's not the key, my love! Try again ✨";
         }
 
         if (window.audioEngine) window.audioEngine.playHeartPop();

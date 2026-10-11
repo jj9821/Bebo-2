@@ -1241,3 +1241,21 @@ div[tabindex="0"]:focus-visible {
   }
 }
 
+/* --------------------------------------------------------------------------
+   ANTI-INSPECTION & MEDIA SHIELD
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  -webkit-touch-callout: none !important;
+}
+
+img, video, canvas, audio, svg, button, a {
+  -webkit-user-drag: none !important;
+}
+
+#vault-modal, #ipad-lock-screen, .lightbox-modal, .barcode-strip {
+  -webkit-touch-callout: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+

@@ -16,7 +16,7 @@ var SANCTUARY_CONFIG = {
   
   // Relationship Milestone Date (YYYY, MM-1, DD, HH, MM, SS)
   // Note: Month is 0-indexed (0 = Jan, 1 = Feb, 2 = Mar, ..., 8 = Sept, etc.)
-  anniversaryDate: new Date(2023, 2, 14, 0, 0, 0), // March 14, 2023 (140323)
+  anniversaryDate: new Date(2023, 2, 14, 0, 0, 0), // March 14, 2023
 
   // Lockscreen & Screen Sleep Settings
   lockscreen: {
@@ -324,8 +324,8 @@ var SANCTUARY_CONFIG = {
   // Secret Star Vault (Easter Egg feature)
   secretVault: {
     enabled: true,
-    passcodePrompt: "Enter our special vault key (e.g. 140323)",
-    validCodes: ["140323", "14-03-23", "14/03/23", "14032023", "1403", "bebo", "maria", "forever", "love"],
+    passcodePrompt: "Enter our secret vault passcode",
+    validCodes: ["210604", "21-06-04", "21/06/04"],
     title: "✨ Secret Constellation Vault Unlocked ✨",
     secretMessage: "You found the most sacred chamber of my heart, Bebo! Seeing your radiant smile, holding hands, and building our world together—my forever begins and ends with you.",
     specialRewardPhoto: "assets/photos/bebo_vault_family_memory.jpg",

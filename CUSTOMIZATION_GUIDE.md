@@ -53,8 +53,8 @@ You can easily adjust the text directly in the HTML or in `config.js`!
 
 ## 🗝️ Secret Vault Passcode
 
-- **Vault Key**: `140323` (March 14, 2023)
-- Also unlocks with: `bebo`, `maria`, `forever`, `love`
+- **Vault Key**: `210604` (Configured in `config.js`)
+- Inspection and DevTools shortcuts are disabled across the sanctuary for privacy.
 
 ---
 

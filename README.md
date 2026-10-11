@@ -31,7 +31,7 @@
    - Crimson envelope with 3D wax seal button opening to authentic lined notebook stationery paper with margin line and typewriter cursive font.
    - Grand Climax button with confetti explosions and screen flash.
 9. **Secret Cyber-Vault**:
-   - Passcode key: `140323` (March 14, 2023).
+   - Passcode key: `210604` (Configurable in `config.js`; inspection blocked for privacy).
 
 ---
 

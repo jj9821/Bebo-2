@@ -59,6 +59,85 @@
 
   <!-- Global Sanctuary Configuration -->
   <script src="config.js"></script>
+
+  <!-- Anti-Inspection & Security Shield -->
+  <script>
+    (function() {
+      // 1. Prevent Right-Click Context Menu (Desktop & Mobile Long-Press)
+      document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      }, { capture: true, passive: false });
+
+      // 2. Prevent Keyboard Inspection Shortcuts (F12, DevTools, View Source, Save)
+      window.addEventListener('keydown', function(e) {
+        // F12 key
+        if (e.key === 'F12' || e.keyCode === 123) {
+          e.preventDefault();
+          e.stopPropagation();
+          return false;
+        }
+
+        var isCtrlOrCmd = e.ctrlKey || e.metaKey;
+        var isShiftOrAlt = e.shiftKey || e.altKey;
+
+        // DevTools: Ctrl+Shift+I / J / C / K / E or Cmd+Option+I / J / C / K / E
+        if (isCtrlOrCmd && isShiftOrAlt) {
+          var k = (e.key || '').toLowerCase();
+          if (['i', 'j', 'c', 'k', 'e'].indexOf(k) !== -1 || [73, 74, 67, 75, 69].indexOf(e.keyCode) !== -1) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+          }
+        }
+
+        // View Page Source: Ctrl+U, Cmd+U, Cmd+Option+U
+        if (isCtrlOrCmd && ((e.key || '').toLowerCase() === 'u' || e.keyCode === 85)) {
+          e.preventDefault();
+          e.stopPropagation();
+          return false;
+        }
+
+        // Save Page: Ctrl+S, Cmd+S
+        if (isCtrlOrCmd && ((e.key || '').toLowerCase() === 's' || e.keyCode === 83)) {
+          e.preventDefault();
+          e.stopPropagation();
+          return false;
+        }
+      }, { capture: true, passive: false });
+
+      // 3. Prevent Dragging elements & images off-screen
+      document.addEventListener('dragstart', function(e) {
+        e.preventDefault();
+        return false;
+      }, { capture: true, passive: false });
+
+      // 4. Console Protection: wipe console output
+      try {
+        console.clear();
+      } catch (e) {}
+
+      setInterval(function() {
+        try {
+          console.clear();
+        } catch (e) {}
+      }, 1500);
+
+      // 5. Anti-Debugging freeze trap when DevTools is opened
+      setInterval(function() {
+        try {
+          (function() {
+            var t0 = performance.now();
+            debugger;
+            if (performance.now() - t0 > 100) {
+              console.clear();
+            }
+          })();
+        } catch (e) {}
+      }, 1000);
+    })();
+  </script>
 </head>
 
 <body class="bg-canvas text-obsidian font-sans selection:bg-magenta selection:text-white relative min-h-screen">
@@ -897,7 +976,8 @@
         <!-- Secret Sanctuary Vault Trigger -->
         <button 
           id="vault-trigger-btn"
-          title="Sanctuary of Destiny Vault (Key: 140323)"
+          title="Sanctuary of Destiny Vault"
+          aria-label="Sanctuary of Destiny Vault"
           class="w-10 h-10 rounded-full bg-sunburst hover:bg-[#edd500] border-[2.5px] border-obsidian flex items-center justify-center text-obsidian shadow-[2px_2px_0px_#FF0066] active:translate-x-0.5 active:translate-y-0.5 transition-all">
           <i data-lucide="key" class="w-4 h-4 text-obsidian"></i>
         </button>
@@ -1598,16 +1678,20 @@
           Unlock the Chamber of Fate
         </h3>
         <p class="text-xs text-obsidian/75 mb-6 font-mono font-bold">
-          Enter our special vault key (e.g. 140323, bebo, forever) to align the tumblers.
+          Enter our secret vault passcode to align the cosmic tumblers.
         </p>
 
         <div class="space-y-4">
           <input 
-            type="text" 
+            type="password" 
             id="vault-passcode-input" 
             aria-label="Vault passcode key input"
-            placeholder="e.g. 140323, bebo, forever..." 
-            class="w-full px-4 py-3 rounded-xl bg-cream border-[2.8px] border-obsidian text-center text-obsidian placeholder-obsidian/45 focus:outline-none focus:border-magenta font-mono font-bold text-sm shadow-[3px_3px_0px_#0D001A]"
+            placeholder="Enter secret passcode..." 
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+            class="w-full px-4 py-3 rounded-xl bg-cream border-[2.8px] border-obsidian text-center text-obsidian placeholder-obsidian/45 focus:outline-none focus:border-magenta font-mono font-bold text-sm tracking-widest shadow-[3px_3px_0px_#0D001A]"
           />
           <p id="vault-error-msg" class="hidden text-xs text-magenta font-mono font-bold" aria-live="polite"></p>
           <button 
