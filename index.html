@@ -153,7 +153,7 @@
     </div>
 
     <!-- PHASE 2: Passcode Keypad View (Tactile Chime Keys & Neon Hearts) -->
-    <div id="ipad-passcode-view" class="absolute inset-0 flex flex-col items-center justify-between p-6 sm:p-10 z-20 transition-all duration-500 translate-y-full opacity-0 pointer-events-none bg-canvas">
+    <div id="ipad-passcode-view" class="absolute inset-0 flex flex-col items-center justify-between p-4 sm:p-10 z-20 transition-all duration-500 translate-y-full opacity-0 pointer-events-none bg-canvas overflow-y-auto min-h-full">
       
       <!-- Top Status Bar -->
       <div class="relative w-full max-w-4xl flex items-center justify-between text-obsidian font-mono font-bold text-xs pt-1">
@@ -260,7 +260,7 @@
     </div>
 
     <!-- PHASE 3: Soulmate Soundtrack Selector View (Unlocked!) -->
-    <div id="ipad-soundtrack-view" class="absolute inset-0 flex flex-col items-center justify-between p-4 sm:p-8 z-30 transition-all duration-500 translate-y-full opacity-0 pointer-events-none bg-canvas select-none">
+    <div id="ipad-soundtrack-view" class="absolute inset-0 flex flex-col items-center justify-between p-4 sm:p-8 z-30 transition-all duration-500 translate-y-full opacity-0 pointer-events-none bg-canvas select-none overflow-y-auto min-h-full">
       
       <!-- Top Status Bar -->
       <div class="relative w-full max-w-2xl flex items-center justify-between text-obsidian font-mono font-bold text-xs pt-1">
@@ -857,19 +857,19 @@
   <!-- =========================================================================
        NAVIGATION BAR — CHROMATIC SOULMATE HEADER & MIXTAPE DECK
        ========================================================================= -->
-  <header class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 py-3.5">
-    <div class="max-w-7xl mx-auto flex items-center justify-between bg-white/95 backdrop-blur-md border-[3.5px] border-obsidian shadow-[3px_3px_0px_#00F5FF,6px_6px_0px_#0D001A] px-5 sm:px-6 py-2.5 rounded-full">
+  <header class="fixed top-0 left-0 right-0 z-50 px-3 sm:px-8 py-3.5 safe-pt">
+    <div class="max-w-7xl mx-auto flex items-center justify-between bg-white/95 backdrop-blur-md border-[3.5px] border-obsidian shadow-[3px_3px_0px_#00F5FF,6px_6px_0px_#0D001A] px-4 sm:px-6 py-2.5 rounded-full">
       
       <!-- Brand & Soulmate Badge -->
-      <a href="#hero" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 rounded-full bg-magenta border-[2.5px] border-obsidian flex items-center justify-center text-white shadow-[2px_2px_0px_#00F5FF] group-hover:rotate-12 transition-transform">
-          <i data-lucide="sparkles" class="w-5 h-5 text-sunburst"></i>
+      <a href="#hero" class="flex items-center gap-2.5 sm:gap-3 group">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-magenta border-[2.5px] border-obsidian flex items-center justify-center text-white shadow-[2px_2px_0px_#00F5FF] group-hover:rotate-12 transition-transform shrink-0">
+          <i data-lucide="sparkles" class="w-4 h-4 sm:w-5 sm:h-5 text-sunburst"></i>
         </div>
-        <div class="flex flex-col">
-          <span class="font-display text-lg text-obsidian font-extrabold leading-tight">
+        <div class="flex flex-col min-w-0">
+          <span class="font-display text-base sm:text-lg text-obsidian font-extrabold leading-tight truncate">
             <span id="nav-recipient-name">Maria</span> & Joel
           </span>
-          <span class="text-[10px] text-magenta font-mono font-bold tracking-wider uppercase">★ DESTINED SOULMATES // 1 IN 8 BILLION ★</span>
+          <span class="brand-subtitle-badge text-[10px] text-magenta font-mono font-bold tracking-wider uppercase hidden sm:inline-block">★ DESTINED SOULMATES // 1 IN 8 BILLION ★</span>
         </div>
       </a>
 
@@ -1345,18 +1345,18 @@
   </section>
 
   <!-- Fullscreen Cinema Lightbox Modal -->
-  <div id="cinema-lightbox" class="lightbox-modal cinema-lightbox fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md" role="dialog" aria-modal="true" aria-label="Cinema Memory Player">
+  <div id="cinema-lightbox" class="lightbox-modal cinema-lightbox fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md" role="dialog" aria-modal="true" aria-label="Cinema Memory Player">
     <div class="lightbox-backdrop absolute inset-0"></div>
 
-    <div class="modal-content relative z-10 max-w-4xl w-full bg-white border-[4px] border-obsidian rounded-3xl overflow-hidden shadow-[4px_4px_0px_#00F5FF,8px_8px_0px_#FF0066,12px_12px_0px_#0D001A] flex flex-col">
+    <div class="modal-content relative z-10 max-w-4xl w-full max-h-[92dvh] overflow-y-auto bg-white border-[4px] border-obsidian rounded-3xl overflow-hidden shadow-[4px_4px_0px_#00F5FF,8px_8px_0px_#FF0066,12px_12px_0px_#0D001A] flex flex-col">
       
       <!-- Top Bar -->
-      <div class="flex items-center justify-between p-4 sm:p-5 border-b-[3px] border-obsidian bg-cream">
-        <div class="flex items-center gap-3">
-          <span id="cinema-counter" class="text-xs font-mono font-bold text-white bg-magenta px-3.5 py-1 rounded-full border-[2px] border-obsidian shadow-[2px_2px_0px_#0D001A]">
+      <div class="flex items-center justify-between p-3.5 sm:p-5 border-b-[3px] border-obsidian bg-cream shrink-0">
+        <div class="flex items-center gap-2.5 sm:gap-3">
+          <span id="cinema-counter" class="text-xs font-mono font-bold text-white bg-magenta px-3 py-1 rounded-full border-[2px] border-obsidian shadow-[2px_2px_0px_#0D001A]">
             1 / 144
           </span>
-          <span id="cinema-tag" class="text-xs font-mono font-bold text-obsidian uppercase"></span>
+          <span id="cinema-tag" class="text-xs font-mono font-bold text-obsidian uppercase truncate max-w-[170px] sm:max-w-none"></span>
         </div>
 
         <button id="cinema-close-btn" class="w-10 h-10 rounded-full bg-white border-[2px] border-obsidian flex items-center justify-center text-obsidian shadow-[2px_2px_0px_#0D001A] active:translate-x-0.5 active:translate-y-0.5 transition-all touch-target-44" aria-label="Close Cinema View">
@@ -1365,16 +1365,16 @@
       </div>
 
       <!-- Media Display Area -->
-      <div class="relative w-full aspect-[16/10] sm:aspect-[16/9] bg-obsidian flex items-center justify-center overflow-hidden">
+      <div class="relative w-full aspect-[16/10] sm:aspect-[16/9] max-h-[50dvh] bg-obsidian flex items-center justify-center overflow-hidden shrink-0">
         <img id="cinema-image-player" src="" alt="Cinema Memory" class="w-full h-full object-contain" />
         <video id="cinema-video-player" class="hidden w-full h-full object-contain" controls autoplay playsinline loop></video>
       </div>
 
       <!-- Bottom Caption & Controls -->
-      <div class="p-6 bg-white border-t-[3px] border-obsidian flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div class="p-4 sm:p-6 bg-white border-t-[3px] border-obsidian flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shrink-0">
         <div class="space-y-1 max-w-xl text-left">
-          <h3 id="cinema-title" class="font-display text-2xl text-obsidian font-bold leading-tight"></h3>
-          <p id="cinema-caption" class="text-base text-obsidian font-handwriting font-bold leading-relaxed border-l-3 border-magenta pl-3"></p>
+          <h3 id="cinema-title" class="font-display text-xl sm:text-2xl text-obsidian font-bold leading-tight"></h3>
+          <p id="cinema-caption" class="text-sm sm:text-base text-obsidian font-handwriting font-bold leading-relaxed border-l-3 border-magenta pl-3"></p>
         </div>
 
         <!-- Navigation Buttons -->

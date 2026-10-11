@@ -330,62 +330,71 @@ class MediaGalleryEngine {
   }
 
   /* --------------------------------------------------------------------------
-     Draggable Soulmate Decals Engine
+     Draggable Soulmate Decals Engine (Touch & Pointer Normalized)
      -------------------------------------------------------------------------- */
   initDraggableDecals() {
     const decals = document.querySelectorAll('.draggable-decal');
     decals.forEach(decal => {
       let isDragging = false;
-      let startX, startY, initialLeft, initialTop;
+      let startX = 0, startY = 0;
+      let initialLeft = 0, initialTop = 0;
 
-      const onMouseDown = (e) => {
+      decal.style.touchAction = 'none';
+
+      const onPointerDown = (e) => {
         isDragging = true;
-        startX = e.clientX || (e.touches && e.touches[0].clientX);
-        startY = e.clientY || (e.touches && e.touches[0].clientY);
+        startX = e.clientX;
+        startY = e.clientY;
 
         const rect = decal.getBoundingClientRect();
         initialLeft = rect.left + window.scrollX;
         initialTop = rect.top + window.scrollY;
 
+        if (decal.parentElement !== document.body) {
+          document.body.appendChild(decal);
+        }
+
         decal.style.position = 'absolute';
         decal.style.left = `${initialLeft}px`;
         decal.style.top = `${initialTop}px`;
+        decal.style.zIndex = '9999';
         decal.classList.add('decal-active');
+
+        if (decal.setPointerCapture) {
+          try { decal.setPointerCapture(e.pointerId); } catch (_) {}
+        }
 
         if (window.audioEngine) window.audioEngine.playHeartPop();
       };
 
-      const onMouseMove = (e) => {
+      const onPointerMove = (e) => {
         if (!isDragging) return;
-        const currentX = e.clientX || (e.touches && e.touches[0].clientX);
-        const currentY = e.clientY || (e.touches && e.touches[0].clientY);
-        const dx = currentX - startX;
-        const dy = currentY - startY;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
 
         decal.style.left = `${initialLeft + dx}px`;
         decal.style.top = `${initialTop + dy}px`;
       };
 
-      const onMouseUp = () => {
+      const onPointerUp = (e) => {
         if (!isDragging) return;
         isDragging = false;
         decal.classList.remove('decal-active');
+        if (decal.releasePointerCapture) {
+          try { decal.releasePointerCapture(e.pointerId); } catch (_) {}
+        }
         if (window.audioEngine) window.audioEngine.playChime();
       };
 
-      decal.addEventListener('mousedown', onMouseDown);
-      decal.addEventListener('touchstart', onMouseDown, { passive: true });
-
-      window.addEventListener('mousemove', onMouseMove);
-      window.addEventListener('touchmove', onMouseMove, { passive: true });
-
-      window.addEventListener('mouseup', onMouseUp);
-      window.addEventListener('touchend', onMouseUp);
+      decal.addEventListener('pointerdown', onPointerDown);
+      decal.addEventListener('pointermove', onPointerMove);
+      decal.addEventListener('pointerup', onPointerUp);
+      decal.addEventListener('pointercancel', onPointerUp);
     });
   }
 
   /* --------------------------------------------------------------------------
-     Cinema Lightbox Handling
+     Cinema Lightbox Handling & Native Touch Swiping
      -------------------------------------------------------------------------- */
   initLightboxEvents() {
     if (!this.lightbox) return;
@@ -410,6 +419,38 @@ class MediaGalleryEngine {
       if (e.key === 'ArrowLeft') this.prevMedia();
       if (e.key === 'ArrowRight') this.nextMedia();
     });
+
+    // Native Touch Swipe Gestures for Apple iPhones, Samsung Galaxy & iPads
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchStartTime = 0;
+
+    this.lightbox.addEventListener('touchstart', (e) => {
+      if (e.touches && e.touches.length === 1) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        touchStartTime = Date.now();
+      }
+    }, { passive: true });
+
+    this.lightbox.addEventListener('touchend', (e) => {
+      if (e.changedTouches && e.changedTouches.length === 1) {
+        const touchEndX = e.changedTouches[0].clientX;
+        const touchEndY = e.changedTouches[0].clientY;
+        const diffX = touchEndX - touchStartX;
+        const diffY = touchEndY - touchStartY;
+        const elapsed = Date.now() - touchStartTime;
+
+        // Horizontal swipe: threshold 45px, horizontal dominant, within 600ms
+        if (Math.abs(diffX) > 45 && Math.abs(diffX) > Math.abs(diffY) * 1.4 && elapsed < 600) {
+          if (diffX < 0) {
+            this.nextMedia();
+          } else {
+            this.prevMedia();
+          }
+        }
+      }
+    }, { passive: true });
   }
 
   openLightbox(index) {

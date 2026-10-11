@@ -25,6 +25,11 @@ class TiltParallaxEngine {
   }
 
   setupCard(card) {
+    // On coarse touch devices (smartphones, iPads), skip mouse tilt for buttery 60fps scrolling
+    if (window.matchMedia && window.matchMedia('(hover: none) and (pointer: coarse)').matches) {
+      return;
+    }
+
     // Add glare layer if not present
     let glare = card.querySelector('.tilt-glare');
     if (!glare) {

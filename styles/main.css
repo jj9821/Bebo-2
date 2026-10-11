@@ -41,6 +41,12 @@
   /* Exaggerated Micro-Spring */
   --spring-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
   --snap-ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Device Safe Areas (Apple iPhone/iPad notch, Dynamic Island, Samsung gesture bar) */
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+  --sar: env(safe-area-inset-right, 0px);
 }
 
 /* --------------------------------------------------------------------------
@@ -59,6 +65,8 @@ html {
   background-color: var(--bg-canvas);
   color: var(--obsidian-velvet);
   overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -73,7 +81,9 @@ body {
   overflow-x: clip;
   position: relative;
   min-height: 100vh;
+  min-height: 100dvh;
   line-height: 1.55;
+  -webkit-tap-highlight-color: transparent;
 }
 
 ::selection {
@@ -799,19 +809,24 @@ div[tabindex="0"]:focus-visible {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 66px;
+  height: clamp(48px, 8.5vh, 66px);
+  min-height: 48px;
+  touch-action: manipulation;
   transition: transform 0.1s var(--spring-bounce), box-shadow 0.1s var(--spring-bounce), background-color 0.15s ease;
   user-select: none;
+  -webkit-user-select: none;
 }
 
-.y2k-keypad-btn:hover {
-  background: var(--bg-cream);
-  transform: translate(-2px, -2px);
-  box-shadow: 4px 4px 0px var(--destiny-magenta), 8px 8px 0px var(--obsidian-velvet);
+@media (hover: hover) and (pointer: fine) {
+  .y2k-keypad-btn:hover {
+    background: var(--bg-cream);
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0px var(--destiny-magenta), 8px 8px 0px var(--obsidian-velvet);
+  }
 }
 
 .y2k-keypad-btn:active {
-  transform: translate(3px, 3px) !important;
+  transform: translate(2px, 2px) !important;
   box-shadow: 1px 1px 0px var(--obsidian-velvet) !important;
   background: var(--heartbeat-lime) !important;
 }
@@ -908,6 +923,11 @@ div[tabindex="0"]:focus-visible {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
+  padding-top: max(1rem, var(--sat));
+  padding-bottom: max(1rem, var(--sab));
+  padding-left: max(1rem, var(--sal));
+  padding-right: max(1rem, var(--sar));
+  overscroll-behavior: contain;
 }
 
 .lightbox-modal.is-open {
@@ -918,6 +938,9 @@ div[tabindex="0"]:focus-visible {
 .lightbox-modal .modal-content {
   transform: scale(0.95);
   transition: transform 0.3s var(--spring-bounce);
+  max-height: calc(100dvh - max(2rem, var(--sat) + var(--sab)));
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .lightbox-modal.is-open .modal-content {
@@ -988,9 +1011,233 @@ div[tabindex="0"]:focus-visible {
   50% { opacity: 0; }
 }
 
-@media (max-width: 640px) {
-  .lined-stationery-paper {
-    padding: 30px 18px 30px 48px;
-    font-size: 1.25rem;
+/* ==========================================================================
+   📱 COMPREHENSIVE RESPONSIVE ENGINE (Apple iPhones, Samsung Galaxy & iPads)
+   ========================================================================== */
+
+/* Device Touch Normalization: eliminate sticky hover */
+@media (hover: none) and (pointer: coarse) {
+  .tilt-card:hover {
+    transform: none !important;
+  }
+  .media-card:hover {
+    transform: none !important;
+  }
+  .neo-btn:hover {
+    transform: none !important;
+  }
+  .y2k-keypad-btn:hover {
+    transform: none !important;
+  }
+  .aesthetic-wax-seal:hover {
+    transform: none !important;
   }
 }
+
+/* Safe Area Utility Classes */
+.safe-pt {
+  padding-top: max(0.875rem, var(--sat));
+}
+.safe-pb {
+  padding-bottom: max(0.875rem, var(--sab));
+}
+.safe-pl {
+  padding-left: max(1rem, var(--sal));
+}
+.safe-pr {
+  padding-right: max(1rem, var(--sar));
+}
+
+/* --------------------------------------------------------------------------
+   Smartphones (Apple iPhone SE / 12-16 Pro / Max, Samsung Galaxy S20-S25, Z Flip/Fold)
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  /* Lined stationery paper */
+  .lined-stationery-paper {
+    padding: 24px 14px 24px 42px !important;
+    font-size: 1.15rem !important;
+    line-height: 24px !important;
+  }
+
+  .lined-stationery-paper::before {
+    left: 14px !important;
+    top: 10px !important;
+    box-shadow: 0 48px 0 -2px var(--bg-canvas), 0 48px 0 0px var(--obsidian-velvet),
+                0 96px 0 -2px var(--bg-canvas), 0 96px 0 0px var(--obsidian-velvet) !important;
+  }
+
+  /* Lockscreen Cover Clock Scaling */
+  #ipad-cover-time {
+    font-size: clamp(3.5rem, 17vw, 5.5rem) !important;
+    line-height: 1.05 !important;
+  }
+
+  /* Lockscreen Views: Safe Area Clearance */
+  #ipad-wallpaper-view {
+    padding-top: max(0.75rem, var(--sat)) !important;
+    padding-bottom: max(1.25rem, var(--sab)) !important;
+    padding-left: max(0.75rem, var(--sal)) !important;
+    padding-right: max(0.75rem, var(--sar)) !important;
+  }
+
+  #ipad-passcode-view, #ipad-soundtrack-view {
+    padding-top: max(0.75rem, var(--sat)) !important;
+    padding-bottom: max(1.25rem, var(--sab)) !important;
+    padding-left: max(0.75rem, var(--sal)) !important;
+    padding-right: max(0.75rem, var(--sar)) !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  /* Compact Keypad Card on Phones */
+  #ipad-passcode-view .relative.flex-col.my-auto {
+    margin-top: auto !important;
+    margin-bottom: auto !important;
+    padding: 1.25rem 1rem !important;
+    border-width: 3px !important;
+  }
+
+  .y2k-keypad-btn {
+    height: clamp(48px, 8.5vh, 60px) !important;
+    border-radius: 14px !important;
+    border-width: 2.5px !important;
+    box-shadow: 2px 2px 0px var(--cyber-cyan), 4px 4px 0px var(--obsidian-velvet) !important;
+  }
+
+  .y2k-keypad-btn span:first-child {
+    font-size: 1.35rem !important;
+  }
+
+  /* Fixed Navigation Header on Small Screens */
+  header.fixed {
+    padding-top: max(0.5rem, var(--sat)) !important;
+    padding-left: max(0.5rem, var(--sal)) !important;
+    padding-right: max(0.5rem, var(--sar)) !important;
+    padding-bottom: 0.5rem !important;
+  }
+
+  /* Compact Cassette Box */
+  .cassette-player-box {
+    padding: 3px 6px !important;
+    gap: 4px !important;
+  }
+
+  /* Single Column Polaroid Cards: Controlled width & shadows */
+  .media-card {
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-shadow: 3px 3px 0px var(--cyber-cyan), 6px 6px 0px var(--destiny-magenta), 9px 9px 0px var(--obsidian-velvet) !important;
+  }
+
+  /* Cinema Lightbox on Phones */
+  .cinema-lightbox .modal-content {
+    border-width: 3px !important;
+    border-radius: 22px !important;
+    margin: auto 0 !important;
+  }
+
+  #cinema-lightbox .relative.w-full.aspect-\[16\/10\] {
+    aspect-ratio: auto !important;
+    height: clamp(210px, 44vh, 320px) !important;
+  }
+
+  /* Bento Grid Flip Cards */
+  .bento-card-front, .bento-card-back {
+    border-radius: 18px !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Extra Compact Phones: iPhone SE (320px-375px), Galaxy Z Fold Cover (344px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 380px) {
+  #ipad-passcode-view .relative.flex-col.my-auto {
+    padding: 1rem 0.75rem !important;
+  }
+
+  .y2k-keypad-btn {
+    height: 48px !important;
+  }
+
+  .pin-dot {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  .device-status-label {
+    display: none !important;
+  }
+
+  .brand-subtitle-badge {
+    display: none !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   iPads & Tablets (iPad Mini 768px, iPad Air 820px, iPad Pro 1024px-1366px)
+   -------------------------------------------------------------------------- */
+@media (min-width: 768px) and (max-width: 1024px) {
+  #ipad-passcode-view .max-w-md,
+  #ipad-soundtrack-view .max-w-2xl {
+    padding: 2.25rem !important;
+  }
+
+  .y2k-keypad-btn {
+    height: 66px !important;
+  }
+
+  #media-gallery-grid {
+    column-gap: 1.5rem !important;
+  }
+
+  .cinema-lightbox .modal-content {
+    max-width: 90vw !important;
+  }
+
+  .lined-stationery-paper {
+    padding: 36px 28px 36px 64px !important;
+    font-size: 1.35rem !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Landscape Phones (iPhone or Galaxy rotated horizontally, height <= 500px)
+   -------------------------------------------------------------------------- */
+@media (max-height: 500px) and (orientation: landscape) {
+  #ipad-wallpaper-view {
+    flex-direction: row !important;
+    justify-content: space-around !important;
+    align-items: center !important;
+    padding: 0.5rem 1rem !important;
+  }
+
+  #ipad-cover-time {
+    font-size: 2.75rem !important;
+  }
+
+  #ipad-passcode-view, #ipad-soundtrack-view {
+    overflow-y: auto !important;
+    justify-content: flex-start !important;
+    padding-top: 1rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  #ipad-passcode-view .relative.flex-col.my-auto {
+    margin: 1rem auto !important;
+    padding: 1rem 1.5rem !important;
+  }
+
+  .y2k-keypad-btn {
+    height: 42px !important;
+  }
+
+  .cinema-lightbox .modal-content {
+    max-height: 94vh !important;
+  }
+
+  #cinema-lightbox .relative.w-full.aspect-\[16\/10\] {
+    height: 180px !important;
+  }
+}
+
