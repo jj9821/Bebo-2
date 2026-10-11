@@ -63,6 +63,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 14. Fallback IntersectionObserver Scroll Reveals
   initScrollReveals();
+
+  // 15. Keep screen awake on mobile & iPads (Screen Wake Lock API)
+  initScreenWakeLock(config);
 });
 
 function initScrollComet() {
@@ -253,3 +256,49 @@ function initScrollReveals() {
     observer.observe(el);
   });
 }
+
+/**
+ * Keeps mobile devices (Samsung, iPhone, iPad) awake while enjoying the sanctuary
+ * Prevents screen auto-dimming and OS-level sleep/lock timeouts.
+ */
+let screenWakeLockSentinel = null;
+
+function initScreenWakeLock(config) {
+  const cfg = config || window.SANCTUARY_CONFIG || {};
+  if (cfg.lockscreen && cfg.lockscreen.preventDeviceSleep === false) {
+    return;
+  }
+
+  const requestWakeLock = async () => {
+    if ('wakeLock' in navigator) {
+      try {
+        if (!screenWakeLockSentinel || screenWakeLockSentinel.released) {
+          screenWakeLockSentinel = await navigator.wakeLock.request('screen');
+          screenWakeLockSentinel.addEventListener('release', () => {
+            screenWakeLockSentinel = null;
+          });
+        }
+      } catch (err) {
+        // Silently handled: device battery saver, permissions, or background policy
+      }
+    }
+  };
+
+  // Attempt immediately on page load
+  requestWakeLock();
+
+  // Re-acquire wake lock whenever user switches back to the tab
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') {
+      requestWakeLock();
+    }
+  });
+
+  // Re-attempt on initial touch/click gestures
+  const onInteraction = () => {
+    requestWakeLock();
+  };
+  window.addEventListener('touchstart', onInteraction, { passive: true });
+  window.addEventListener('click', onInteraction, { passive: true });
+}
+

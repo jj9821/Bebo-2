@@ -56,6 +56,20 @@
 
   <!-- Core Theme Stylesheet -->
   <link rel="stylesheet" href="styles/main.css" />
+
+  <!-- Global Sanctuary Configuration & Instant Lockscreen Guard -->
+  <script src="config.js"></script>
+  <script>
+    (function() {
+      try {
+        var isUnlocked = localStorage.getItem('bebo_sanctuary_unlocked') === 'true';
+        var isLockEnabled = (typeof SANCTUARY_CONFIG !== 'undefined' && SANCTUARY_CONFIG.lockscreen) ? SANCTUARY_CONFIG.lockscreen.enabled : false;
+        if (!isLockEnabled || isUnlocked) {
+          document.documentElement.classList.add('lockscreen-dismissed');
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 
 <body class="bg-canvas text-obsidian font-sans selection:bg-magenta selection:text-white relative min-h-screen">
@@ -539,10 +553,25 @@
 
   <script>
     (function() {
-      var TARGET_PASSCODE = '123987';
+      var cfg = window.SANCTUARY_CONFIG || {};
+      var isLockEnabled = (cfg.lockscreen && typeof cfg.lockscreen.enabled !== 'undefined') ? cfg.lockscreen.enabled : false;
+      var isUnlocked = false;
+      try {
+        isUnlocked = localStorage.getItem('bebo_sanctuary_unlocked') === 'true';
+      } catch (e) {}
+
+      var lockScreen = document.getElementById('ipad-lock-screen');
+      if (!isLockEnabled || isUnlocked) {
+        document.documentElement.classList.add('lockscreen-dismissed');
+        if (lockScreen && lockScreen.parentNode) {
+          lockScreen.parentNode.removeChild(lockScreen);
+        }
+        return;
+      }
+
+      var TARGET_PASSCODE = (cfg.lockscreen && cfg.lockscreen.passcode) || '123987';
       var currentInput = '';
       var audio = document.getElementById('bg-audio-player');
-      var lockScreen = document.getElementById('ipad-lock-screen');
       var wallpaperView = document.getElementById('ipad-wallpaper-view');
       var passcodeView = document.getElementById('ipad-passcode-view');
       var lockIcon = document.getElementById('ipad-lock-icon');
@@ -769,6 +798,11 @@
       }
 
       function dismissLockScreen(trackId) {
+        try {
+          localStorage.setItem('bebo_sanctuary_unlocked', 'true');
+        } catch (e) {}
+        document.documentElement.classList.add('lockscreen-dismissed');
+
         if (trackId && window.audioEngine) {
           window.audioEngine.selectTrack(trackId, true);
         } else if (window.audioEngine) {
@@ -1844,7 +1878,6 @@
   </div>
 
   <!-- Scripts -->
-  <script src="config.js"></script>
   <script src="mediaData.js"></script>
   <script src="js/particles.js"></script>
   <script src="js/audio.js"></script>

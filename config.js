@@ -8,7 +8,7 @@
  * ============================================================================
  */
 
-const SANCTUARY_CONFIG = {
+var SANCTUARY_CONFIG = {
   // Couple Information
   recipientName: "Maria", // Your partner's name
   senderName: "Joel", // Your name or romantic signature
@@ -17,6 +17,13 @@ const SANCTUARY_CONFIG = {
   // Relationship Milestone Date (YYYY, MM-1, DD, HH, MM, SS)
   // Note: Month is 0-indexed (0 = Jan, 1 = Feb, 2 = Mar, ..., 8 = Sept, etc.)
   anniversaryDate: new Date(2023, 2, 14, 0, 0, 0), // March 14, 2023 (140323)
+
+  // Lockscreen & Screen Sleep Settings
+  lockscreen: {
+    enabled: false, // Set to false to prevent the annoying automatic lockscreen
+    passcode: "123987",
+    preventDeviceSleep: true // Uses HTML5 Screen Wake Lock API to prevent phone/iPad from automatically sleeping/locking
+  },
 
   // Hero Section Customization
   hero: {
