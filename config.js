@@ -20,7 +20,7 @@ var SANCTUARY_CONFIG = {
 
   // Lockscreen & Screen Sleep Settings
   lockscreen: {
-    enabled: false, // Set to false to prevent the annoying automatic lockscreen
+    enabled: true, // The iPad lock screen opens as the first thing on the site
     passcode: "123987",
     preventDeviceSleep: true // Uses HTML5 Screen Wake Lock API to prevent phone/iPad from automatically sleeping/locking
   },
@@ -39,8 +39,8 @@ var SANCTUARY_CONFIG = {
   audio: {
     autoplayPrompt: true, // Prompts subtle unmute on first user click
     defaultVolume: 0.85,
-    trackTitle: "Apocalypse — Cigarettes After Sex",
-    customAudioUrl: "assets/audio/Apocalypse.mp3",
+    trackTitle: "Cloud 9 — Beach Bunny",
+    customAudioUrl: "assets/audio/Cloud9.mp3",
     playlist: [
       {
         id: "apocalypse",

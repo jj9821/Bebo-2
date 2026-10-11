@@ -800,10 +800,6 @@ div[tabindex="0"]:focus-visible {
 /* --------------------------------------------------------------------------
    SOULMATE DNA & HEARTBEAT LOCKSCREEN
    -------------------------------------------------------------------------- */
-.lockscreen-dismissed #ipad-lock-screen {
-  display: none !important;
-}
-
 .y2k-keypad-btn {
   background: #ffffff;
   border: 3px solid var(--obsidian-velvet);

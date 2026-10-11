@@ -57,25 +57,15 @@
   <!-- Core Theme Stylesheet -->
   <link rel="stylesheet" href="styles/main.css" />
 
-  <!-- Global Sanctuary Configuration & Instant Lockscreen Guard -->
+  <!-- Global Sanctuary Configuration -->
   <script src="config.js"></script>
-  <script>
-    (function() {
-      try {
-        var isUnlocked = localStorage.getItem('bebo_sanctuary_unlocked') === 'true';
-        var isLockEnabled = (typeof SANCTUARY_CONFIG !== 'undefined' && SANCTUARY_CONFIG.lockscreen) ? SANCTUARY_CONFIG.lockscreen.enabled : false;
-        if (!isLockEnabled || isUnlocked) {
-          document.documentElement.classList.add('lockscreen-dismissed');
-        }
-      } catch (e) {}
-    })();
-  </script>
 </head>
 
 <body class="bg-canvas text-obsidian font-sans selection:bg-magenta selection:text-white relative min-h-screen">
 
   <!-- Direct HTML5 Background Audio Stream -->
   <audio id="bg-audio-player" preload="auto" loop playsinline>
+    <source src="assets/audio/Cloud9.mp3" type="audio/mpeg">
     <source src="assets/audio/1.mp3" type="audio/mpeg">
     <source src="1.mp3" type="audio/mpeg">
     <source src="assets/audio/our_song.mp3" type="audio/mpeg">
@@ -155,7 +145,7 @@
         <!-- Quick Soundtrack Indicator -->
         <div class="px-4 py-1.5 rounded-full bg-[#0D001A]/85 text-white border-[1.5px] border-cyan font-mono font-bold text-xs shadow-[2px_2px_0px_#00F5FF] flex items-center gap-2">
           <i data-lucide="music" class="w-3.5 h-3.5 text-magenta animate-pulse"></i>
-          <span>Soundtrack: <span id="lockscreen-selected-track-name" class="text-sunburst font-black">Apocalypse (Cigarettes After Sex)</span></span>
+          <span>Soundtrack: <span id="lockscreen-selected-track-name" class="text-sunburst font-black">Cloud 9 (Beach Bunny)</span></span>
         </div>
 
         <div class="px-7 py-3.5 rounded-full bg-magenta text-white border-[3px] border-obsidian font-mono font-bold text-sm tracking-wider shadow-[4px_4px_0px_#00F5FF,7px_7px_0px_#0D001A] hover:-translate-y-1 active:translate-x-1 active:translate-y-1 active:shadow-none transition-all flex items-center gap-2.5 animate-bounce" style="animation-duration: 2s;">
@@ -553,22 +543,12 @@
 
   <script>
     (function() {
-      var cfg = window.SANCTUARY_CONFIG || {};
-      var isLockEnabled = (cfg.lockscreen && typeof cfg.lockscreen.enabled !== 'undefined') ? cfg.lockscreen.enabled : false;
-      var isUnlocked = false;
       try {
-        isUnlocked = localStorage.getItem('bebo_sanctuary_unlocked') === 'true';
+        localStorage.removeItem('bebo_sanctuary_unlocked');
       } catch (e) {}
 
+      var cfg = window.SANCTUARY_CONFIG || {};
       var lockScreen = document.getElementById('ipad-lock-screen');
-      if (!isLockEnabled || isUnlocked) {
-        document.documentElement.classList.add('lockscreen-dismissed');
-        if (lockScreen && lockScreen.parentNode) {
-          lockScreen.parentNode.removeChild(lockScreen);
-        }
-        return;
-      }
-
       var TARGET_PASSCODE = (cfg.lockscreen && cfg.lockscreen.passcode) || '123987';
       var currentInput = '';
       var audio = document.getElementById('bg-audio-player');
@@ -707,10 +687,10 @@
             });
           }
 
-          // Transition to Phase 3: Song selection!
+          // Automatically play Cloud 9 by itself once unlocked!
           setTimeout(function() {
-            showSoundtrackView();
-          }, 350);
+            dismissLockScreen('cloud-9');
+          }, 400);
         } else {
           failedAttempts++;
           if (pinContainer) {
@@ -798,16 +778,11 @@
       }
 
       function dismissLockScreen(trackId) {
-        try {
-          localStorage.setItem('bebo_sanctuary_unlocked', 'true');
-        } catch (e) {}
-        document.documentElement.classList.add('lockscreen-dismissed');
-
-        if (trackId && window.audioEngine) {
-          window.audioEngine.selectTrack(trackId, true);
-        } else if (window.audioEngine) {
-          window.audioEngine.play();
+        var chosenTrackId = trackId || 'cloud-9';
+        if (window.audioEngine) {
+          window.audioEngine.selectTrack(chosenTrackId, true);
         } else if (audio) {
+          audio.src = 'assets/audio/Cloud9.mp3';
           audio.volume = 0.85;
           audio.play().catch(function() {});
         }
